@@ -1,4 +1,4 @@
-# EvolveU Cohort 6 - Project 2 - Front End
+# EvolveU Cohort 6 - Project 3
 
 App Title & Description
 
