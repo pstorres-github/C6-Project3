@@ -7,6 +7,11 @@ const chalk = require('chalk')
 // If you run with nodemon, you will get the input parroted back
 // to you for some reason.
 
+// TODO: 6/11 Backlog
+// Next I will build a basic websockets interface to connect to the
+// SDK and send basic commands, eg, `command command`.If I can power
+// I'll call that a hello world.
+
 // INIT TEST MODE FLAG
 let testState = ''
 let devMode = false
