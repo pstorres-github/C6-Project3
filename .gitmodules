@@ -1,0 +1,3 @@
+[submodule "RyzeTelloFirmware"]
+	path = RyzeTelloFirmware
+	url = https://github.com/MrJabu/RyzeTelloFirmware.git
