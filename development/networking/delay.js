@@ -31,4 +31,4 @@ const delay = {
     wifi: 500,
 }
 
-module.exports = delay
+export default delay
