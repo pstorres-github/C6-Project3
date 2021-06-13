@@ -60,7 +60,7 @@ export function send(message, port, ip) {
         if (error) {
             console.log('SEND ERROR')
         } else {
-            console.log(`SUCCESS: ${message} sent to ${ip}:${port}\n`)
+            console.log(`SEND: ${message} to ${ip}:${port}\n`)
         }
     })
     // TEST
