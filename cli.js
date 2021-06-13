@@ -33,6 +33,9 @@ import { send } from './development/networking/udpClient.js'
 // of concept will be scripting a take off, fly a one-meter square,
 // and land in the same place. VDR
 
+// 6/13
+// State reported as telemetry object
+
 // INIT TEST MODE FLAG
 let testState = ''
 let devMode = false
