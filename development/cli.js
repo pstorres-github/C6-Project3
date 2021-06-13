@@ -1,6 +1,7 @@
 // VDR
 
 import './networking/udpClient.js'
+import './networking/delay.js'
 
 import {
     commandPORT,
@@ -15,6 +16,7 @@ import chalk from 'chalk'
 import dgram from 'dgram'
 import readline from 'readline'
 import { send } from './networking/udpClient.js'
+import { wait } from './networking/delay.js'
 
 // ! VDR
 // This is a demonstration command line interface that, --as yet,
@@ -33,7 +35,7 @@ import { send } from './networking/udpClient.js'
 // of concept will be scripting a take off, fly a one-meter square,
 // and land in the same place. VDR
 
-// 6/13
+// 6/13 VDR
 // State reported as telemetry object
 
 // INIT TEST MODE FLAG
@@ -130,40 +132,42 @@ function handleInput(input) {
         case 'FLY':
         case 'fly':
             if (devMode === true) {
-                console.log(testState, `\nCommand: ${chalk.green('FLY')}.`)
-                // TODO: send(fly)
-            } else if (devMode === false) {
+                testState = `${chalk.green('SAFE')}:`
                 console.log(
                     testState,
-                    `\nCannot send command ${chalk.green(
-                        'fly'
-                    )} without first entering device SDK mode: ${chalk.green(
-                        'command'
-                    )}.`
+                    `\nSend 'takeoff' to ${testIP}:${statePORT}`
                 )
+                send('takeoff', statePORT, testIP)
+                break
+            } else if (devMode === false) {
+                testState = `${chalk.yellow('LIVE')}:`
+                send('takeoff', commandPORT, droneIP)
+                console.log(telemetry)
+                break
             } else {
                 console.log('Error: FLY')
+                break
             }
-            break
 
         case 'LAND':
         case 'land':
             if (devMode === true) {
-                console.log(testState, `\nCommand: ${chalk.green('LAND')}.`)
-                // TODO: send(land)
-            } else if (devMode === false) {
+                testState = `${chalk.green('SAFE')}:`
                 console.log(
                     testState,
-                    `\nCannot send command ${chalk.green(
-                        'land'
-                    )} without first entering device SDK mode: ${chalk.green(
-                        'command'
-                    )}.`
+                    `\nSend 'land' to ${testIP}:${statePORT}`
                 )
+                send('land', statePORT, testIP)
+                break
+            } else if (devMode === false) {
+                testState = `${chalk.yellow('LIVE')}:`
+                send('land', commandPORT, droneIP)
+                // console.log(telemetry)
+                break
             } else {
                 console.log('Error: LAND')
+                break
             }
-            break
 
         case 'EMERGENCY':
         case 'emergency':
@@ -172,21 +176,26 @@ function handleInput(input) {
         case 'KILL':
         case 'kill':
             if (devMode === true) {
-                console.log(testState, `\nCommand: ${chalk.green('LAND')}.`)
-                // TODO: send(emergency)
-            } else if (devMode === false) {
+                testState = `${chalk.green('SAFE')}:`
                 console.log(
                     testState,
-                    `\nCannot send command ${chalk.green(
-                        'land'
-                    )} without first entering device SDK mode: ${chalk.green(
-                        'command'
-                    )}.`
+                    `\nSend 'emergency' to ${testIP}:${statePORT}`
                 )
+                send('emergency', statePORT, testIP)
+                break
+            } else if (devMode === false) {
+                testState = `${chalk.yellow('LIVE')}:`
+                // UDP spam
+                // lets make sure it gets there
+                send('emergency', commandPORT, droneIP)
+                send('emergency', commandPORT, droneIP)
+                send('emergency', commandPORT, droneIP)
+                console.log(testState, telemetry)
+                break
             } else {
                 console.log('Error: KILL')
+                break
             }
-            break
 
         case 'Q':
         case 'q':
@@ -238,6 +247,90 @@ function handleInput(input) {
                 break
             }
 
+        case 'DEMO':
+        case 'demo':
+            if (devMode === true) {
+                testState = `${chalk.green('SAFE')}:`
+                // console.log(
+                //     testState,
+                //     `\nSend 'state' to ${testIP}:${statePORT}`
+                // )
+                // setTimeout(() => {
+                //     console.log(`'takeoff' wait…`, 250)
+                //     // send('takeoff', statePORT, testIP)
+                //     setTimeout(() => {
+                //         console.log('innter takeoff wait…', wait.takeoff)
+                //         send('takeoff', statePORT, testIP)
+                //     }, wait.takeoff)
+                // }, 250)
+                // setTimeout(() => {
+                //     console.log(`'land' wait…`, 250)
+                //     // send('takeoff', statePORT, testIP)
+                //     setTimeout(() => {
+                //         console.log('inner land wait…', wait.land)
+                //         send('land', statePORT, testIP)
+                //     }, wait.land)
+                // }, 250)
+
+                let logTelemetry = function () {
+                    console.log(telemetry)
+                }
+                let takeOff = function () {
+                    send('takeoff', statePORT, testIP)
+                }
+                let flipR = function () {
+                    send('flip R', statePORT, testIP)
+                }
+                let land = function () {
+                    send('land', statePORT, testIP)
+                }
+
+                var fArr = [logTelemetry, takeOff, flipR, land, logTelemetry]
+
+                chainLaunch(fArr, 2500)
+
+                break
+            } else if (devMode === false) {
+                testState = `${chalk.yellow('LIVE')}:`
+
+                // console.log(telemetry)
+
+                let logTelemetry = function () {
+                    console.log(telemetry)
+                }
+                let takeOff = function () {
+                    send('takeoff', commandPORT, droneIP)
+                }
+                let flipR = function () {
+                    send('flip r', commandPORT, droneIP)
+                }
+                let right25 = function () {
+                    send('right 25', commandPORT, droneIP)
+                }
+                let land = function () {
+                    send('land', commandPORT, droneIP)
+                }
+
+                var fArr = [
+                    logTelemetry,
+                    takeOff,
+                    right25,
+                    flipR,
+                    land,
+                    logTelemetry,
+                ]
+
+                chainLaunch(fArr, 2500)
+
+                // console.log(telemetry)
+
+                // send('state', statePORT, droneIP)
+                break
+            } else {
+                console.log('Error: STATE')
+                break
+            }
+
         default:
             console.log('Error: command', input, 'not recognized.')
             break
@@ -251,7 +344,9 @@ console.log(
         `${chalk.green('fly')}, ` +
         `${chalk.green('land')}, ` +
         `${chalk.red('KILL')} in emergencies, ` +
-        `or ${chalk.green('exit')} to quit.\n\n` +
+        `or ${chalk.green('exit')} to quit. ` +
+        `Use \n${chalk.green('demo')} to takeoff, flip-right once and land.` +
+        `\n\n` +
         `Test mode will only stage commands: ${chalk.green(
             'test true'
         )} or ${chalk.green('test false')}.\nIn test mode, ${chalk.green(
@@ -259,6 +354,18 @@ console.log(
         )} will request drone state on port ${statePORT}.\n`
 )
 read.on('line', handleInput)
+
+// This is some magic I don't understand but it works
+
+function chainLaunch(funcArray, delay) {
+    if (!funcArray || !funcArray.length) return
+    var fi = 0 // function index
+    var callFunction = function () {
+        funcArray[fi++]()
+        if (fi == funcArray.length) clearInterval(chainInterval)
+    }
+    var chainInterval = setInterval(callFunction, delay)
+}
 
 // **
 // all that server jazz

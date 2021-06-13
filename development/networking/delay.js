@@ -1,4 +1,4 @@
-const delay = {
+export const wait = {
     emergency: 0,
 
     command: 500,
@@ -30,5 +30,3 @@ const delay = {
     'time?': 500,
     wifi: 500,
 }
-
-export default delay
