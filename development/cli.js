@@ -1,4 +1,6 @@
-import './components/networking/udpClient.js'
+// VDR
+
+import './networking/udpClient.js'
 
 import {
     commandPORT,
@@ -7,12 +9,12 @@ import {
     statePORT,
     testIP,
     videoPORT,
-} from './components/networking/networkConfig.js'
+} from './networking/networkConfig.js'
 
 import chalk from 'chalk'
 import dgram from 'dgram'
 import readline from 'readline'
-import { send } from './components/networking/udpClient.js'
+import { send } from './networking/udpClient.js'
 
 // ! VDR
 // This is a demonstration command line interface that, --as yet,
@@ -30,6 +32,9 @@ import { send } from './components/networking/udpClient.js'
 // in the SDK.I expect we should be able to fly by day's end. Proof
 // of concept will be scripting a take off, fly a one-meter square,
 // and land in the same place. VDR
+
+// 6/13
+// State reported as telemetry object
 
 // INIT TEST MODE FLAG
 let testState = ''
