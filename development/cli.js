@@ -142,7 +142,7 @@ function handleInput(input) {
             } else if (devMode === false) {
                 testState = `${chalk.yellow('LIVE')}:`
                 send('takeoff', commandPORT, droneIP)
-                // console.log(telemetry)
+                console.log(telemetry)
                 break
             } else {
                 console.log('Error: FLY')
@@ -338,21 +338,20 @@ function handleInput(input) {
 }
 
 console.log(
-    `\n\n` +
-        `Test mode will only stage commands: ${chalk.green(
-            'test true'
-        )} or ${chalk.green('test false')}.\nIn test mode, ${chalk.green(
-            'state'
-        )} will request drone state on port ${statePORT}.\n` +
-        `\nInput a command: first, to wake up the drone and enable\n` +
-        `commands to be sent, enter ${chalk.green(
-            'command'
-        )} to enter the device SDK API \nmode, then ` +
+    `\nInput a command: first, enter ${chalk.green(
+        'command'
+    )} to enter the device SDK API \nmode, then ` +
         `${chalk.green('fly')}, ` +
         `${chalk.green('land')}, ` +
         `${chalk.red('KILL')} in emergencies, ` +
         `or ${chalk.green('exit')} to quit. ` +
-        `\n\nUse ${chalk.green('demo')} to takeoff, flip-right once and land.`
+        `Use \n${chalk.green('demo')} to takeoff, flip-right once and land.` +
+        `\n\n` +
+        `Test mode will only stage commands: ${chalk.green(
+            'test true'
+        )} or ${chalk.green('test false')}.\nIn test mode, ${chalk.green(
+            'state'
+        )} will request drone state on port ${statePORT}.\n`
 )
 read.on('line', handleInput)
 
