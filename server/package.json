@@ -1,28 +1,19 @@
 {
-  "type": "module",
-  "name": "pak",
-  "description": "App Title & Description",
+  "name": "server",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mKhan-11/c6-project3.git"
-  },
-  "keywords": [
-    "evolveu",
-    "c6",
-    "project-3"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mKhan-11/c6-project3/issues"
-  },
-  "homepage": "https://github.com/mKhan-11/c6-project3#readme",
   "dependencies": {
-    "chalk": "^4.1.1"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.12.14"
   }
 }
