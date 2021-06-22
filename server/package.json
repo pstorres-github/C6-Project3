@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "name": "pak",
+  "description": "App Title & Description",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mKhan-11/c6-project3.git"
+  },
+  "keywords": [
+    "evolveu",
+    "c6",
+    "project-3"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mKhan-11/c6-project3/issues"
+  },
+  "homepage": "https://github.com/mKhan-11/c6-project3#readme",
+  "dependencies": {
+    "chalk": "^4.1.1"
+  }
+}
