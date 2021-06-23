@@ -8,8 +8,8 @@ const userSchema = new Schema({
         email: String,
         password: String,
         work_orders: {
-            pending: String,
-            completed: String
+                pending: String,
+                completed: String
         }
 },
         { strict: true, versionKey: false })
