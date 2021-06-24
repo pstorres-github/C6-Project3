@@ -1,13 +1,32 @@
 import React from 'react'
+
+import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'
+
 import './App.css'
 
+import Homepage from './pages/Homepage'
+import PilotConsole from './pages/PilotConsole'
+import AuthenticationProvider from './AuthenticationProvider'
+
+
 function App() {
+
   return (
-    <div className="App">
+    <AuthenticationProvider>
+    
+    <Router>
+    
       <div className='app-content'>
-        PILOT CONSOLE FOR DRONE-APP GOES HERE
+            <Switch>
+              <Route exact path='/' render={() => (<Homepage />)} />
+              <Route exact path='/pilotconsole' render={() => (<PilotConsole />)} />
+            </Switch>
       </div>
-    </div>
+
+    </Router>
+    </AuthenticationProvider>
+
+
   )
 }
 

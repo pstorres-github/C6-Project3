@@ -1,0 +1,72 @@
+.console-container {
+    display:grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-template-rows: 40px 350px 350px 40px;
+    grid-gap: 20px;
+}
+
+
+.console-user-info {
+    grid-row: 1;
+    grid-column: span 2;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+
+}
+
+.console-flight-time {
+    grid-row: 1;
+    grid-column: 3;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-orientation{
+    grid-row: 2;
+    grid-column: 1;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-flightplan {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-video-feed {
+    grid-row: 2;
+    grid-column: 3;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-telemetry {
+    grid-row: 3;
+    grid-column: 2;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}    
+
+.console-horizon {
+    grid-row: 3;
+    grid-column: 1;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-controls {
+    grid-row: 3;
+    grid-column: 3;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
+.console-drone-status {
+    grid-row: 4;
+    grid-column: span 3;
+    background-color: rgb(194, 194, 194);
+    border-radius: 8px;
+}
+
