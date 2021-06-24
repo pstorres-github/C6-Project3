@@ -10,7 +10,7 @@ const workOrderSchema = new Schema({
         flight_plan: Array,
         flight_data: Array,
         analytics: {
-            video: String
+                video: String
         }
 
 },
