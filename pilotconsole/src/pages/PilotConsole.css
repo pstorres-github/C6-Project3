@@ -42,19 +42,19 @@
     border-radius: 8px;
 }
 
-.console-telemetry {
+.console-horizon {
     grid-row: 3;
     grid-column: 2;
     background-color: rgb(194, 194, 194);
     border-radius: 8px;
-}    
+}
 
-.console-horizon {
+.console-telemetry {
     grid-row: 3;
     grid-column: 1;
     background-color: rgb(194, 194, 194);
     border-radius: 8px;
-}
+}    
 
 .console-controls {
     grid-row: 3;
