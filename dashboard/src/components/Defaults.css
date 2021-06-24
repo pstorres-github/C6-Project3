@@ -1,0 +1,246 @@
+* {
+    padding: 0.85rem;
+    color: black;
+    margin-top: 0.025rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+
+    margin: 1rem;
+    padding: 0;
+    border-width: 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+:root {
+    --identify-me: red;
+    --identify-2: cornsilk;
+    --padding: 1rem;
+    --padding-tiny: 0.25rem;
+    --border-radius-small: 0.75rem;
+    --border-radius-medium: 1rem;
+    --border-radius-large: 1.25rem;
+    --border: 0.5px;
+    --shadow: 0.25rem 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+
+    /* placeholder */
+    --placeholder-standard-text: slategrey;
+
+    /* button defaults */
+    --button-standard-text: white;
+    --button-standard-bg: hsla(132, 79%, 57%, 1);
+    --button-standard-bg-hover: hsla(132, 79%, 69%, 1);
+    --button-standard-text-hover: hsla(221, 6%, 22%, 1);
+    --button-warn-text: white;
+    --button-warn-bg: hsla(39, 100%, 50%, 1);
+    --button-warn-bg-hover: hsla(39, 100%, 62%, 1);
+    --button-warn-text-hover: hsla(221, 6%, 22%, 1);
+    --button-alert-text: ghostwhite;
+    --button-alert-bg: hsla(360, 100%, 50%, 1);
+    --button-alert-bg-hover: hsla(360, 100%, 63%, 1);
+    --button-alert-text-hover: hsla(221, 6%, 22%, 1);
+    --button-cancel-text: rgb(118, 118, 129);
+    --button-cancel-bg: ghostwhite;
+    --button-cancel-bg-hover: rgb(118, 118, 129);
+    --button-cancel-text-hover: ghostwhite;
+}
+
+.error {
+    color: red;
+    font-size: 0.6em;
+}
+
+.identify-me {
+    background: var(--identify-me);
+}
+
+.identify-2 {
+    background: var(--identify-2);
+}
+
+.visually-hidden {
+    border-width: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+.two-columns {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto auto;
+
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    /* width: calc(100% - 1rem); */
+    /* grid-template-columns: repeat(1fr, 1fr); */
+}
+
+.full {
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / 3;
+
+    width: 100%;
+    /* width: calc(100% - 2rem); */
+    /* align-self is used to align a grid item along the column axis. */
+    /* align-self: center; */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: stretch;
+}
+
+.half-left {
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / 2;
+
+    /* align-self is used to align a grid item along the column axis. */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: start;
+
+    /* display: flex; */
+    justify-content: start;
+
+    width: 100%;
+}
+
+.half-right {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / -1;
+
+    /* align-self is used to align a grid item along the column axis. */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: start;
+
+    width: 100%;
+}
+
+form {
+    grid-template-columns: 50% 50%;
+    padding: var(--padding);
+    border-radius: var(--border-radius-large);
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input,
+select,
+textarea {
+    position: relative;
+    left: -0.5rem;
+    margin-left: var(--padding);
+    margin-right: var(--padding);
+    margin-top: var(--padding-tiny);
+    margin-bottom: var(--padding-tiny);
+    padding: var(--padding-tiny);
+
+    border: 0.5px solid lightgray;
+    border-radius: 0.25rem;
+    background-color: ghostwhite;
+    min-width: 10rem;
+    max-width: 25rem;
+}
+
+/* label {
+    margin-left: var(--padding);
+    padding-left: var(--padding);
+    position: relative;
+} */
+
+label {
+    font-size: 0.75rem;
+    margin: var(--padding);
+
+    /* position: relative; */
+}
+
+/* 
+span {
+    display: block;
+    overflow: hidden;
+}
+
+span > input {
+    width: 100%;
+} */
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+::placeholder {
+    font-size: 0.75rem;
+    color: var(--placeholder-standard-text);
+}
+
+textarea {
+    resize: vertical;
+    min-width: 10rem;
+    max-width: 25rem;
+}
+
+button {
+    background: var(--button-standard-bg);
+    color: var(--button-standard-text);
+    padding: var(--padding);
+    margin: 0.25rem;
+    border: none;
+    /* border-radius: 0.5rem; */
+}
+
+button:hover {
+    background: var(--button-standard-bg-hover);
+    color: var(--button-standard-text-hover);
+}
+
+.warn {
+    background: var(--button-warn-bg);
+    color: var(--button-warn-text);
+}
+
+.warn:hover {
+    background: var(--button-warn-bg-hover);
+    color: var(--button-warn-text-hover);
+}
+
+.alert {
+    background: var(--button-alert-bg);
+    color: var(--button-alert-text);
+}
+
+.alert:hover {
+    background: var(--button-alert-bg-hover);
+    color: var(--button-alert-text-hover);
+}
+
+.cancel {
+    background: var(--button-cancel-bg);
+    color: var(--button-cancel-text);
+    border: 0.25px solid rgb(118, 118, 129);
+}
+
+.cancel:hover {
+    background: var(--button-cancel-bg-hover);
+    color: var(--button-cancel-text-hover);
+}
+
+.text-area {
+    width: 26rem;
+}

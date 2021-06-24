@@ -1,15 +1,24 @@
 // TODO: Can this interaction be isolated to the current form only
 
-function ResetButton(field) {
-  function handleReset() {
+function ResetButton(props) {
+    function handleReset() {
+        // setForm('')
+        Array.from(document.querySelectorAll(props.field)).forEach(
+            (input) => (input.value = '')
+        )
 
-  } Array.from(document.querySelectorAll(field)).forEach(
-    input => (input.value = "")
-  );
+        // const resetState = () => {
+        //     () => {
+        //         props.action
+        //     }
+        // }
+    }
 
-  return (<div><button onClick={handleReset}>Cancel</button></div>)
-  
+    return (
+        <div>
+            <button onClick={handleReset}>Cancel</button>
+        </div>
+    )
 }
-  
-export default ResetButton
 
+export default ResetButton
