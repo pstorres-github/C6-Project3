@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage} from "formik"
+import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import "bootstrap/dist/css/bootstrap.css"
 import "./Login.css"
@@ -11,15 +11,15 @@ const Login = () => {
 
 
     return (
-        
-        <div class = "container">
+
+        <div className="container">
 
             <Formik
-                
-                initialValues = {{ email: "", password: "" }}
+
+                initialValues={{ email: "", password: "" }}
                 // validates against the validation schema defined as Yup Object
-                
-                validationSchema = { Yup.object({
+
+                validationSchema={Yup.object({
                     email: Yup.string()
                         .email('Invalid email address format')
                         .required('E-mail is Required'),
@@ -27,7 +27,7 @@ const Login = () => {
                         .required('Password is Required'),
                 })}
 
-                onSubmit = {(values)=> {
+                onSubmit={(values) => {
                     // on submission of form, set the values to be sent to login function
                     let authenticationInfo = {
                         email: values.email,
@@ -39,50 +39,50 @@ const Login = () => {
             >
 
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
-                {({errors, touched}) => (
-                <Form>
-                    <div className = "form-group">
-                       <div class="col-md">
-                            <label htmlFor="e-mail">Email Address</label>
-                            <Field  
-                                type="email"
-                                name ="email"
-                                placeholder="Enter e-mail"
-                                className={`form-control ${touched.email && errors.email ? "is-invalid" :""}`}
-                            />
-                            <ErrorMessage
-                                component="div"
-                                name="email"
-                                className="invalid-feedback"
+                {({ errors, touched }) => (
+                    <Form>
+                        <div className="form-group">
+                            <div class="col-md">
+                                <label htmlFor="e-mail">Email Address</label>
+                                <Field
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter e-mail"
+                                    className={`form-control ${touched.email && errors.email ? "is-invalid" : ""}`}
                                 />
+                                <ErrorMessage
+                                    component="div"
+                                    name="email"
+                                    className="invalid-feedback"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className = "form-group">
-                        <div class="col-md">
-                            <label htmlFor="password">Password</label>
-                            <Field  
-                                type="password"
-                                name ="password"
-                                placeholder="Enter password"
-                                className={`form-control ${touched.password && errors.password ? "is-invalid" :""}`}
+                        <div className="form-group">
+                            <div class="col-md">
+                                <label htmlFor="password">Password</label>
+                                <Field
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter password"
+                                    className={`form-control ${touched.password && errors.password ? "is-invalid" : ""}`}
                                 />
-                            <ErrorMessage
-                                component="div"
-                                name="password"
-                                className="invalid-feedback"
+                                <ErrorMessage
+                                    component="div"
+                                    name="password"
+                                    className="invalid-feedback"
                                 />
+                            </div>
                         </div>
-                    </div>
 
-                    <br/>
-                    <button type ="submit" className="btn btn-primary"> Submit </button>
+                        <br />
+                        <button type="submit" className="btn btn-primary"> Submit </button>
 
-                </Form>
-            )}
+                    </Form>
+                )}
             </Formik>
-                    
-        </div>        
+
+        </div>
     )
 }
 
