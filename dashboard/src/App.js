@@ -7,11 +7,12 @@ import Homepage from './pages/Homepage'
 import ScheduleJobs from './components/ScheduleJobs'
 import Workorders from './pages/Workorders'
 
-// TO DO:  import AuthenticationProvider from './AuthenticationProvider'
+import AuthenticationProvider from './AuthenticationProvider'
 
 
 function App() {
   return (
+      <AuthenticationProvider>
       <Router>
           <div className='app-content'>
                 <Switch>
@@ -21,6 +22,7 @@ function App() {
                 </Switch>
           </div>
       </Router>
+      </AuthenticationProvider>
   );
 }
 

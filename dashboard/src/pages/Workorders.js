@@ -1,13 +1,18 @@
 import React from 'react'
 import ScheduleJobs from '../components/ScheduleJobs'
+import AuthenticationContext from "../AuthenticationContext"
+import { useContext } from "react"
 
 const Workorders = () => {
+
+    const authContext = useContext(AuthenticationContext)
+    //Note:  Authentication not completed yet.  Currently, the authentication context only contains default values and is not updated to current login.
 
     return (
     
         <div>
             <div className = "header">
-                <h1>Welcome USERNAME</h1>
+                <h1>Welcome: {authContext.username}</h1>
             </div>
 
             <div>
