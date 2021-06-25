@@ -1,12 +1,11 @@
 import "./PilotConsole.css"
 import AuthenticationContext from "../AuthenticationContext"
-import DroneStatus from '../components/console/DroneStatus'
+import DroneStatus from '../components/DroneStatus'
 import { useContext } from "react"
 
-const PilotConsole = () => {
+const PilotConsole = ({ DroneConnection }) => {
 
     const authContext = useContext(AuthenticationContext)
-
 
     return (
         <div className="console-container">
@@ -32,7 +31,7 @@ const PilotConsole = () => {
             </div>
 
             <div className="console-drone-status" >
-                <DroneStatus />
+                <DroneStatus DroneConnection={DroneConnection}/>
             </div>
 
             <div className="console-video-feed" >
