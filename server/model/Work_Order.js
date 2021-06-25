@@ -11,7 +11,8 @@ const workOrderSchema = new Schema({
         flight_data: Array,
         analytics: {
                 video: String
-        }
+        },
+        status: String,
 
 },
         { strict: true, versionKey: false })
