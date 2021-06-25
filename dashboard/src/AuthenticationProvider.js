@@ -3,9 +3,10 @@ import AuthenticationContext from './AuthenticationContext'
 
 const AuthenticationProvider = ({ children }) => {
     
-    let [username, setUsername] = useState('Guest')
+    let [username, setUsername] = useState('Guest') //temporary as 'GUEST' until hooked to authentication
     let [email, setEmail] = useState()
     let [userID, setUserID] = useState()
+    // FUTURE note:  For dashboard, need to consider administrator role as well
 
      const logIn = (email, password) => {
         async function logintoServer() {
