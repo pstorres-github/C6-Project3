@@ -1,12 +1,12 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-
 import './App.css'
 
 import Homepage from './pages/Homepage'
 import PilotConsole from './pages/PilotConsole'
 import AuthenticationProvider from './AuthenticationProvider'
 
+// Establish Drone Connection
 const electron = window.require('electron')
 const dgram = electron.remote.require('dgram')
 
