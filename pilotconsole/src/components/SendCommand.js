@@ -1,6 +1,4 @@
-import DroneConnection from '../App'
-
-export function socketHandling() {
+export function socketHandling( {DroneConnection} ) {
 
     /// Drone Socket Connection ///
 
@@ -24,7 +22,7 @@ export function socketHandling() {
 }
 
 // Send Command to Drone
-const sendCommand = () => {
+const sendCommand = ( {DroneConnection} ) => {
     const droneCommand = 'command'
     const droneIP = '192.168.10.1'
     const commandPORT = 8889

@@ -34,5 +34,4 @@ function App() {
   )
 }
 
-export {DroneConnection}
 export default App;

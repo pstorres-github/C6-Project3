@@ -8,14 +8,12 @@ const DroneStatus = ({ DroneConnection }) => {
     const commandPORT = 8889
 
     const droneStartup = (droneCommand) => {
-
         DroneConnection.send(droneCommand, 0, droneCommand.length, commandPORT, droneIP, (error, bytes) => {
             if (error) throw error
             else {
                 console.log('Command : ' + droneCommand)
             }
         })
-
     }
 
     //Initial Connection
@@ -26,7 +24,15 @@ const DroneStatus = ({ DroneConnection }) => {
             setConnectionstatus(msg.toString())
             console.log('Data Received From Drone : ' + msg.toString())
         })
+    }, [])
 
+    // Maintain Connection (Command sent & interval cleared every 15 seconds)
+    useEffect(() => {
+        const interval = setInterval(() => {
+            droneStartup('command')
+        }, 15000)
+
+        return () => clearInterval(interval)
     }, [])
 
     return (
