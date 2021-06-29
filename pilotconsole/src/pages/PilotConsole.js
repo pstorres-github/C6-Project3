@@ -1,7 +1,10 @@
+import { useContext } from "react"
 import "./PilotConsole.css"
 import AuthenticationContext from "../AuthenticationContext"
+
+// Pilot Console Components
 import DroneStatus from '../components/DroneStatus'
-import { useContext } from "react"
+import FlightControls from '../components/FlightControls'
 
 const PilotConsole = ({ DroneConnection }) => {
 
@@ -39,7 +42,7 @@ const PilotConsole = ({ DroneConnection }) => {
             </div>
 
             <div className="console-controls" >
-                Drone Controls
+            <FlightControls DroneConnection={DroneConnection}/>
             </div>
 
             <div className="console-flight-time" >
