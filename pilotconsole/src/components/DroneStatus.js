@@ -4,22 +4,8 @@ const DroneStatus = ({ DroneConnection }) => {
 
     const [connectionStatus, setConnectionstatus] = useState('Disconnected')
 
-    const droneIP = '192.168.10.1'
-    const commandPORT = 8889
-
-    const droneControl = (droneCommand) => {
-        DroneConnection.send(droneCommand, 0, droneCommand.length, commandPORT, droneIP, (error, bytes) => {
-            if (error) throw error
-            else {
-                console.log('Command Sent: ' + droneCommand)
-            }
-        })
-    }
-
     //Initial Connection
     useEffect(() => {
-        // Initial Startup Command
-        droneControl('command')
 
         // Initial Reception Check
         let receptionCheck = setTimeout(() => {
@@ -27,15 +13,15 @@ const DroneStatus = ({ DroneConnection }) => {
             console.log('No Reception')
         }, 16000)
 
+        // Message Handling
         DroneConnection.on('message', (msg, info) => {
             // Reception Listener
             if (msg !== null) {
                 setConnectionstatus('Connected')
-                console.log('Data Received From Drone : ' + msg.toString())
+                console.log('Response : ' + msg.toString())
 
                 // Subsequest Reception Check Timer
-                clearTimeout(receptionCheck)
-                console.log('Reception Status Updated')
+                clearTimeout(receptionCheck) // Reception Status Updated
                 receptionCheck = setTimeout(() => {
                     setConnectionstatus('Disconnected')
                     console.log('No Reception')
@@ -46,13 +32,6 @@ const DroneStatus = ({ DroneConnection }) => {
                 console.log('Message Received Was Null')
             }
         })
-
-        // Maintain Connection (Command sent & interval cleared every 15 seconds)
-        const commandInterval = setInterval(() => {
-            droneControl('command')
-        }, 15000)
-
-        return () => clearInterval(commandInterval)
 
     }, [])
 
