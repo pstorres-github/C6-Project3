@@ -6,12 +6,17 @@ import Homepage from './pages/Homepage'
 import PilotConsole from './pages/PilotConsole'
 import AuthenticationProvider from './AuthenticationProvider'
 
-// Establish Drone Connection
+// Import Electron/Node Items
 const electron = window.require('electron')
 const dgram = electron.remote.require('dgram')
 
+// Drone Connection
 const DroneConnection = dgram.createSocket('udp4')
 DroneConnection.bind(8001)
+
+// Drone Video Feed
+const DroneVideoFeed = dgram.createSocket('udp4')
+DroneVideoFeed.bind(11111)
 
 function App() {
 
@@ -23,7 +28,7 @@ function App() {
         <div className='app-content'>
           <Switch>
             <Route exact path='/' render={() => (<Homepage />)} />
-            <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} />)} />
+            <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneVideoFeed={DroneVideoFeed} />)} />
           </Switch>
         </div>
 

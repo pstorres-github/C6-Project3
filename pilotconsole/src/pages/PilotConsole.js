@@ -7,7 +7,7 @@ import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
 import VideoFeed from '../components/VideoFeed'
 
-const PilotConsole = ({ DroneConnection }) => {
+const PilotConsole = ({ DroneConnection, DroneVideoFeed }) => {
 
     const authContext = useContext(AuthenticationContext)
 
@@ -39,7 +39,7 @@ const PilotConsole = ({ DroneConnection }) => {
             </div>
 
             <div className="console-video-feed" >
-                <VideoFeed DroneConnection={DroneConnection} />
+                <VideoFeed DroneVideoFeed={DroneVideoFeed} />
             </div>
 
             <div className="console-controls" >
