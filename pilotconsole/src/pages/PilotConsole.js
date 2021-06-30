@@ -6,8 +6,9 @@ import AuthenticationContext from "../AuthenticationContext"
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
 import VideoFeed from '../components/VideoFeed'
+import Telemetry from '../components/Telemetry'
 
-const PilotConsole = ({ DroneConnection, DroneVideoFeed }) => {
+const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
 
     const authContext = useContext(AuthenticationContext)
 
@@ -23,7 +24,7 @@ const PilotConsole = ({ DroneConnection, DroneVideoFeed }) => {
             </div>
 
             <div className="console-telemetry" >
-                Telemetry
+                <Telemetry DroneState={DroneState} />
             </div>
 
             <div className="console-orientation" >

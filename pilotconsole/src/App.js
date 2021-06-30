@@ -14,6 +14,10 @@ const dgram = electron.remote.require('dgram')
 const DroneConnection = dgram.createSocket('udp4')
 DroneConnection.bind(8001)
 
+// Drone State
+const DroneState = dgram.createSocket('udp4')
+DroneState.bind(8890)
+
 // Drone Video Feed
 const DroneVideoFeed = dgram.createSocket('udp4')
 DroneVideoFeed.bind(11111)
@@ -28,7 +32,7 @@ function App() {
         <div className='app-content'>
           <Switch>
             <Route exact path='/' render={() => (<Homepage />)} />
-            <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneVideoFeed={DroneVideoFeed} />)} />
+            <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} />)} />
           </Switch>
         </div>
 
