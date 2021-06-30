@@ -18,7 +18,7 @@ const DroneStatus = ({ DroneConnection }) => {
             // Reception Listener
             if (msg !== null) {
                 setConnectionstatus('Connected')
-                console.log('Response : ' + msg.toString())
+                console.log('Response : ' + msg.toString()) // Response from Drone
 
                 // Subsequest Reception Check Timer
                 clearTimeout(receptionCheck) // Reception Status Updated
@@ -29,7 +29,7 @@ const DroneStatus = ({ DroneConnection }) => {
             }
 
             else {
-                console.log('Message Received Was Null')
+                console.log('Message Received: Null')
             }
         })
 
