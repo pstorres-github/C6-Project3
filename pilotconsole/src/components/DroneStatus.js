@@ -14,7 +14,7 @@ const DroneStatus = ({ DroneConnection }) => {
         }, 16000)
 
         // Message Handling
-        DroneConnection.on('message', (msg, info) => {
+        DroneConnection.on('message', (msg) => {
             // Reception Listener
             if (msg !== null) {
                 setConnectionstatus('Connected')
