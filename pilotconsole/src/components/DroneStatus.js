@@ -29,7 +29,7 @@ const DroneStatus = ({ DroneConnection }) => {
             }
 
             else {
-                console.log('Message Received: Null')
+                console.log('Response: Null')
             }
         })
 
