@@ -5,6 +5,7 @@ import AuthenticationContext from "../AuthenticationContext"
 // Pilot Console Components
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
+import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection }) => {
 
@@ -34,15 +35,15 @@ const PilotConsole = ({ DroneConnection }) => {
             </div>
 
             <div className="console-drone-status" >
-                <DroneStatus DroneConnection={DroneConnection}/>
+                <DroneStatus DroneConnection={DroneConnection} />
             </div>
 
             <div className="console-video-feed" >
-                Drone Video Feed
+                <VideoFeed DroneConnection={DroneConnection} />
             </div>
 
             <div className="console-controls" >
-            <FlightControls DroneConnection={DroneConnection}/>
+                <FlightControls DroneConnection={DroneConnection} />
             </div>
 
             <div className="console-flight-time" >
