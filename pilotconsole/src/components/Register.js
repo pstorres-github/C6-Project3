@@ -2,9 +2,13 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import "bootstrap/dist/css/bootstrap.css"
 import { useHistory } from "react-router-dom"
+import Axios from "axios"
+import AuthenticationContext from "../AuthenticationContext"
+import { useContext } from "react"
 
 const Register = () => {
 
+    const authContext = useContext(AuthenticationContext)
     const history = useHistory()
 
     return (
@@ -30,19 +34,30 @@ const Register = () => {
                         .oneOf([Yup.ref('password'), null], "Passwords Must Match")
                         .required('Password Confirmation is Required'),
                 })}
-                onSubmit={(values) => {
+                onSubmit = {async (values)=> {
                     // on submission of form, set the values to create a new user
                     // assume always a pilot account type if registered on this platform
-                    //let authenticationInfo = {
-                    //    username: values.username,
-                    //    email: values.email,
-                    //    password: values.password,
-                    //    account_type: "pilot"
-                    //}
-                    alert(`${values.username}, ${values.email}, ${values.password} sent to database`)
-                    // TODO:
-                    // login(authenticationInfo)
-                    history.push('/pilotconsole')
+                    let authenticationInfo = {
+                        username: values.username,
+                        email: values.email,
+                        password: values.password,
+                        account_type: "pilot"
+                    }
+                    
+                    // Send registration data to database
+                    await Axios({
+                        method: "POST",
+                        data: authenticationInfo,
+                        withCredentials: true,
+                        url: "/register/",
+                      }).then((registerInfo) => {
+                        console.log(registerInfo.data)
+                      })
+
+                    // Once registration is complete, continue to log user in
+                    if (await authContext.login(values.email, values.password))
+                            history.push('/pilotconsole')
+                    
                 }}
             >
 

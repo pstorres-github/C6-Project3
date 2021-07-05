@@ -3,12 +3,15 @@ import * as Yup from "yup"
 import "bootstrap/dist/css/bootstrap.css"
 import "./Login.css"
 import AuthenticationContext from "../AuthenticationContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
 
     const authContext = useContext(AuthenticationContext)
 
+    const history = useHistory() 
+    const [loginError, setLoginError] = useState(false)
 
     return (
 
@@ -27,14 +30,15 @@ const Login = () => {
                         .required('Password is Required'),
                 })}
 
-                onSubmit={(values) => {
+                onSubmit={async (values) => {
                     // on submission of form, set the values to be sent to login function
-                    let authenticationInfo = {
-                        email: values.email,
-                        password: values.password
-                    }
-                    alert(`${values.email} and ${values.password} sent to database`)
-                    authContext.logIn(authenticationInfo)
+                    // if login fails, will ask user to try again
+                    let loginStatus = await authContext.login(values.email, values.password)
+                    console.log(loginStatus)
+                    if (loginStatus === "Login Successful")
+                        history.push('/pilotconsole')
+                    else
+                        setLoginError(loginStatus)
                 }}
             >
 
@@ -77,6 +81,8 @@ const Login = () => {
 
                         <br />
                         <button type="submit" className="btn btn-primary"> Submit </button>
+
+                        { loginError && <p className="login-error"> {loginError} </p>  }
 
                     </Form>
                 )}

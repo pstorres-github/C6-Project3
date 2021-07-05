@@ -1,46 +1,60 @@
 import { useState } from 'react'
 import AuthenticationContext from './AuthenticationContext'
+import Axios from "axios"
 
 const AuthenticationProvider = ({ children }) => {
 
     let [username, setUsername] = useState('Guest Pilot')
     let [email, setEmail] = useState()
+    let [accountType, setAccountType] = useState()
     let [userID, setUserID] = useState()
 
-    const logIn = (email, password) => {
+    const login = async (email, password) => {
         async function logintoServer() {
-            let loginOptions = {
+            
+            const loggedInUser = await Axios ({
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            }
-            let response = await fetch('/api/auth/login', loginOptions)
-            let loggedInUser = await response.json()
-            console.log('The call the auth returned: ', loggedInUser)
+                data: {username: email, password: password},
+                withCredentials: true,
+                url: "/login",
+            })
+            
+            console.log("Login result:", loggedInUser.data)
 
-            setUsername(loggedInUser.username)
-            setUserID(loggedInUser.userID)
-            setEmail(loggedInUser.email)
+            if (loggedInUser.data.loginAttempt === "Login Successful") {
+                //set the global authentication variables according to the user info returned from login process
+                setUsername(loggedInUser.data.username)
+                setEmail(loggedInUser.data.email)    
+                setAccountType(loggedInUser.data.account_type)  
+                setUserID(loggedInUser.data._id)  
+                return loggedInUser.data.loginAttempt
+            } else {   
+                //log in failed
+                return loggedInUser.data.loginAttempt
+            }   
 
         }
-        logintoServer()
+        
+        const logInSuccess = await logintoServer()
+        console.log (logInSuccess)
+        return logInSuccess
     }
 
-    const logOut = () => {
+    const logout = () => {
         setUsername(null)
-        setUserID(null)
         setEmail(null)
+        setAccountType(null)  
+        setUserID(null)
 
     }
 
     let contextValue = {
         username,
-        email,
+        email, 
+        accountType,
         userID,
-        logIn,
-        logOut
+        login,
+        logout
     }
 
     return (
