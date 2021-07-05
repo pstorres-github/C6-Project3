@@ -3,9 +3,16 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
-// Route Requirements [Express Router]
-const users = require('./routes/users')
-const work_orders = require('./routes/work_orders')
+// middleware for passport authentication
+const session = require("express-session")
+const cookieParser = require("cookie-parser");
+const passport = require ('passport')
+
+app.use(session({ secret: "secretToken" , resave: true, saveUninitialized: true}))
+app.use(cookieParser("secretToken"))
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 // Middleware
 app.use(express.json()) //JSON Parser
@@ -14,11 +21,23 @@ app.use(
     origin: ["http://localhost:4444", "http://localhost:4445"], // <-- location of the react apps we're connecting to
     credentials: true,
   })
-);
+  );
 
-// Routes
-app.use('/api/users', users)
-app.use('/api/work_orders',work_orders)
+  // Authentication routes
+  const login = require ('./routes/login')
+  const logout = require ('./routes/logout')
+  const register = require ('./routes/register')
+  app.use('/login', login)
+  app.use('/register', register)
+  app.use('/logout', logout)
+  
+  // Route Requirements [Express Router]
+  const users = require('./routes/users')
+  const work_orders = require('./routes/work_orders')
+
+  // Routes
+  app.use('/api/users', users)
+  app.use('/api/work_orders',work_orders)
 
 //Set PORT
 const PORT = process.env.PORT || 3000
