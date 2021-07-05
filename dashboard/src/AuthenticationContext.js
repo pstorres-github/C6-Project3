@@ -1,10 +1,12 @@
 import React from 'react'
 
 const AuthenticationContext = React.createContext({
-    userID: '',
     userName: '',
-    logIn: (email, password) => {},
-    logOut: () => {}
+    accountType: '',
+    email: '',
+    userID:'',
+    login: (email, password) => {},
+    logout: () => {}
 })
 
 export default AuthenticationContext

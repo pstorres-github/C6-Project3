@@ -5,3 +5,7 @@
 .form-group {
     margin:0
 }
+
+.login-error {
+    color: red;
+}

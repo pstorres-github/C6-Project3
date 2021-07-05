@@ -3,9 +3,13 @@ import * as Yup from "yup"
 import "bootstrap/dist/css/bootstrap.css"
 import "./Login-Register.css"
 import { useHistory } from "react-router-dom"
+import Axios from "axios"
+import AuthenticationContext from "../AuthenticationContext"
+import { useContext } from "react"
 
 const Register = () => {
 
+    const authContext = useContext(AuthenticationContext)
     const history = useHistory()
 
     return (
@@ -20,6 +24,21 @@ const Register = () => {
                         .required('Username is Required'),
                     email: Yup.string()
                         .email('Invalid email address format')
+                        .test(
+                            // check if e-mail address is already taken.  E-mail address must be unique.
+                            'E-mail is unique',
+                            'E-mail is already registered',
+                            async value => {
+                                let userExists = await Axios({
+                                    method: "GET",
+                                    withCredentials: true,
+                                    url: `/register?email=${value}`,
+                                })
+                                if (userExists.data.length === 0) 
+                                    return true
+                                else return false
+                            }
+                        )
                         .required('E-mail is Required'),
                     password: Yup.string()
                         .min(5, "Minimum 5 Characters")
@@ -31,21 +50,30 @@ const Register = () => {
                         .oneOf([Yup.ref('password'), null], "Passwords Must Match")                    
                         .required('Password Confirmation is Required'),
                     })}
-                onSubmit = {(values)=> {
+                onSubmit = {async (values)=> {
                     // on submission of form, set the values to create a new user
                     // assume always a pilot account type if registered on this platform
-                    //let authenticationInfo = {
-                    //    username: values.username,
-                    //    email: values.email,
-                    //    password: values.password,
-                    //    account_type: "pilot"
-                    //}
-                    alert(`${values.username}, ${values.email}, ${values.password} sent to database`)
-                    // TODO:
-                    // login(authenticationInfo)
-                    // TEMPORARY UNTIL AUTHENTICATION IS COMPLETE
-                    // NOTE:  AUTHENTICATION/RETRIEVING FROM DATABASE is IN PROGRESS.
-                    history.push('/workorders')
+                    let authenticationInfo = {
+                        username: values.username,
+                        email: values.email,
+                        password: values.password,
+                        account_type: "customer"
+                    }
+                    
+                    // Send registration data to database
+                    await Axios({
+                        method: "POST",
+                        data: authenticationInfo,
+                        withCredentials: true,
+                        url: "/register/",
+                      }).then((registerInfo) => {
+                        console.log(registerInfo.data)
+                      })
+
+                    // Once registration is complete, continue to log user in
+                    if (await authContext.login(values.email, values.password))
+                            history.push('/workorders')
+                    
                 }}
             >
 
@@ -59,7 +87,7 @@ const Register = () => {
                             <Field  
                                 type="text"
                                 name ="username"
-                                placeholder="Enter Pilot Name or Company Name"
+                                placeholder="Enter Customer or Company Name"
                                 className={`form-control ${touched.username && errors.username ? "is-invalid" :""}`}
                             />
                             <ErrorMessage

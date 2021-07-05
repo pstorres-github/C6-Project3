@@ -2,17 +2,21 @@ import React from 'react'
 import ScheduleJobs from '../components/ScheduleJobs'
 import AuthenticationContext from "../AuthenticationContext"
 import { useContext } from "react"
+import { useHistory } from "react-router-dom"
+
 
 const Workorders = () => {
 
     const authContext = useContext(AuthenticationContext)
-    //Note:  Authentication not completed yet.  Currently, the authentication context only contains default values and is not updated to current login.
-
+    const history = useHistory() 
+   
     return (
     
         <div>
             <div className = "header">
-                <h1>Welcome: {authContext.username}</h1>
+                <h1> Welcome: {authContext.username}</h1>
+                <p> Email:  {authContext.email} </p>
+                <p> Account Type:  {authContext.accountType} </p>
             </div>
 
             <div>
