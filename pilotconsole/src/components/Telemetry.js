@@ -1,15 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import throttle from 'lodash.throttle'
 
 const Telemetry = ({ DroneState }) => {
 
-    // let TelemetryInfo = ''
     const [telemetryStream, setTelemetryStream] = useState('')
-
-    // const updateTelemetry =  () => {
-    //     setTelemetryStream(TelemetryInfo)
-    // }
     
-    // let telemetryThrottle = setInterval(updateTelemetry, 500)
+    useEffect(() => {
+        DroneState.on('message', throttle((telemetryInformationStream) => {
+            setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
+           }, 1000, { 'trailing': true }))
+      }, []);
 
     const parseState = (state) => {
         return state
@@ -21,11 +21,11 @@ const Telemetry = ({ DroneState }) => {
             }, {});
     }
 
+    /*
     DroneState.on('message', (telemetryInformationStream) => {
-        // TelemetryInfo = `${JSON.stringify(parseState(telemetryInformationStream.toString()))}`
         setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
     })
-
+*/
     return (
         <div>
             <div>
