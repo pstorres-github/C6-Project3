@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Work_Order = require("../model/Work_Order");
 
+<<<<<<< HEAD
 router.get("/", checkAuthentication, async (req, res) => {
   let data = await Work_Order.find({});
   res.send(data);
@@ -51,4 +52,26 @@ router.get("/work_order/:id", async (req, res, next) => {
         flight: flightById.toObject({ getters: true })
     })
 })
+=======
+router.get("/", async (req, res) => {
+  let data = await Work_Order.find({});
+  res.send(data);
+});
+
+router.get("/:user", async (req, res, next) => {
+  const userInfo = req.params.user;
+
+  console.log("userInfo:", userInfo);
+
+  let userFlights = await Work_Order.find({ customer: userInfo });
+
+  if (!userFlights || userFlights.length === 0) {
+    res.send({ message: "Could not find flights for this user" });
+  } else {
+    res.send({ flights: userFlights });
+  }
+  console.log("userFlights:", userFlights);
+});
+
+>>>>>>> a22efa2 (find flightsByClient working on the server side, still have work to do on the frontend(react))
 module.exports = router;
