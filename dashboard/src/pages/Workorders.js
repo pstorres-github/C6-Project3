@@ -1,5 +1,6 @@
 import React from 'react'
 import ScheduleJobs from '../components/ScheduleJobs'
+import WorkOrdersByClient from '../components/WorkOrdersByClient'
 import AuthenticationContext from "../AuthenticationContext"
 import { useContext } from "react"
 import { useHistory } from "react-router-dom"
@@ -21,6 +22,7 @@ const Workorders = () => {
 
             <div>
                 <h3>Work Order List</h3>
+                <WorkOrdersByClient/>
                 <br/> <br/>
             
             </div>

@@ -1,5 +1,3 @@
-import './App.css';
-
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router, Redirect} from 'react-router-dom'
 
@@ -7,6 +5,7 @@ import Homepage from './pages/Homepage'
 import ScheduleJobs from './components/ScheduleJobs'
 import Header from './components/Header'
 import Workorders from './pages/Workorders'
+import WorkOrderDetails from './components/WorkOrderDetails'
 
 import AuthenticationProvider from './AuthenticationProvider'
 import AuthenticationContext from "./AuthenticationContext"
@@ -27,6 +26,7 @@ function App() {
                   <Route exact path='/' render={() => (<Homepage />)} />
                   <PrivateRoute exact path='/workorders'> <Workorders/> </PrivateRoute>
                   <PrivateRoute exact path='/schedulejobs'> <ScheduleJobs/> </PrivateRoute>
+                  <PrivateRoute exact path='/workorders/:id'> <WorkOrderDetails/> </PrivateRoute>
                 </Switch>
           </div>
       </Router>
