@@ -20,8 +20,6 @@ Before starting the Pilot Console:
 
 - Connect your computer wifi to the "Tello" network
 
-- Start the Pilot Console with terminal
-
 Open a terminal inside the pilotconsole folder:
 
 ```zsh
