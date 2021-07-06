@@ -2,7 +2,14 @@ import React, { useState } from "react"
 
 const Telemetry = ({ DroneState }) => {
 
+    // let TelemetryInfo = ''
     const [telemetryStream, setTelemetryStream] = useState('')
+
+    // const updateTelemetry =  () => {
+    //     setTelemetryStream(TelemetryInfo)
+    // }
+    
+    // let telemetryThrottle = setInterval(updateTelemetry, 500)
 
     const parseState = (state) => {
         return state
@@ -15,8 +22,8 @@ const Telemetry = ({ DroneState }) => {
     }
 
     DroneState.on('message', (telemetryInformationStream) => {
+        // TelemetryInfo = `${JSON.stringify(parseState(telemetryInformationStream.toString()))}`
         setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
-         // console.log('Decoded Telemetry : ', JSON.stringify(parseState(telemetryInformationStream.toString())))
     })
 
     return (

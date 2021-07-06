@@ -30,7 +30,8 @@ const Homepage = () => {
 
             <div className="section-nologin">
                 <h3>Continue without logging in</h3>
-                <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button>
+                {/* <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button> */}
+                <button className="btn btn-primary" onClick={() => { history.push('/pilotconsole') }}> Continue as a Guest </button>
             </div>
 
             <div className="section-login">

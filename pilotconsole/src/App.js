@@ -28,27 +28,28 @@ DroneVideoFeed.bind(11111)
 function App() {
 
   return (
-    <AuthenticationProvider>
+    // <AuthenticationProvider>
 
-      <Router>
+    <Router>
 
-        <div className='app-header'>
-            <Header/>
-        </div>
+      <div className='app-header'>
+        <Header />
+      </div>
 
-        <div className='app-content'>
-          <Switch>
-            <Route exact path='/' render={() => (<Homepage />)} />
+      <div className='app-content'>
+        <Switch>
+          <Route exact path='/' render={() => (<Homepage />)} />
 
-            {/* Private path for pilot console.  If using guest account, logged in as guest*/}
-            <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute>
+          {/* Private path for pilot console.  If using guest account, logged in as guest */}
+          {/* <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute> */}
+          <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} />)} />
 
+        </Switch>
+      </div>
 
-          </Switch>
-        </div>
+    </Router>
+    // </AuthenticationProvider>
 
-      </Router>
-    </AuthenticationProvider>
 
 
   )
@@ -56,14 +57,14 @@ function App() {
 
 // route wrapper.  Only allow access to PrivateRoutes if user is logged in
 function PrivateRoute({ children, ...rest }) {
- 
+
   const authContext = useContext(AuthenticationContext)
   console.log("authentication", authContext.email)
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        authContext.email ? (children) : (<Redirect to={{pathname: "/",state: { from: location }}}/>)
+        authContext.email ? (children) : (<Redirect to={{ pathname: "/", state: { from: location } }} />)
       }
     />
   );
