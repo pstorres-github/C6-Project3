@@ -14,6 +14,14 @@ npm install
 
 ## Usage
 
+Before starting the Pilot Console:
+
+- Turn on the Tello drone
+
+- Connect your computer wifi to the "Tello" network
+
+- Start the Pilot Console with terminal
+
 Open a terminal inside the pilotconsole folder:
 
 ```zsh
