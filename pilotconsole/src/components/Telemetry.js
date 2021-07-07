@@ -4,12 +4,12 @@ import throttle from 'lodash.throttle'
 const Telemetry = ({ DroneState }) => {
 
     const [telemetryStream, setTelemetryStream] = useState('')
-    
+
     useEffect(() => {
         DroneState.on('message', throttle((telemetryInformationStream) => {
             setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
-           }, 1000, { 'trailing': true }))
-      }, []);
+        }, 33, { 'trailing': true })) //30 FPS Refresh Rate
+    }, []);
 
     const parseState = (state) => {
         return state
@@ -21,11 +21,6 @@ const Telemetry = ({ DroneState }) => {
             }, {});
     }
 
-    /*
-    DroneState.on('message', (telemetryInformationStream) => {
-        setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
-    })
-*/
     return (
         <div>
             <div>
