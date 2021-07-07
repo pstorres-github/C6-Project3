@@ -25,10 +25,11 @@ const VideoFeed = ({ DroneVideoFeed }) => {
 
     }, [])
 
+    // Video Size => 640x360 (50% of Original 720p)
     return (
         <div>
             <div id="videoFeed">
-                <video autoPlay={true} id={"player"}></video>
+                <video autoPlay={true} resizeMode={"contain"} id={"player"} height={"360"} width={"640"}></video>
             </div>
         </div>
     )
