@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import throttle from 'lodash.throttle'
+import TelemetryContext from "../TelemetryContext"
+
 
 const Telemetry = ({ DroneState }) => {
 
-    const [telemetryStream, setTelemetryStream] = useState('')
+    const telemetryContext = useContext(TelemetryContext)
+//    const [telemetryStream, setTelemetryStream] = useState('')
     
     useEffect(() => {
         DroneState.on('message', throttle((telemetryInformationStream) => {
-            setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
-           }, 1000, { 'trailing': true }))
+//            setTelemetryStream(`${JSON.stringify(parseState(telemetryInformationStream.toString()))}`)
+            telemetryContext.telemetryUpdate(parseState(telemetryInformationStream.toString()))
+        
+        }, 1000, { 'trailing': true }))
       }, []);
 
     const parseState = (state) => {
@@ -29,8 +34,10 @@ const Telemetry = ({ DroneState }) => {
     return (
         <div>
             <div>
-                Telemetry:
-                {telemetryStream}
+                <p> Pitch: {telemetryContext.pitch} </p>
+                <p> Yaw: {telemetryContext.yaw} </p>
+                <p> Roll: {telemetryContext.roll} </p>
+                <p> Height: {telemetryContext.height} </p>
             </div>
 
         </div>

@@ -7,6 +7,8 @@ import PilotConsole from './pages/PilotConsole'
 import Header from './components/Header'
 import AuthenticationProvider from './AuthenticationProvider'
 import AuthenticationContext from "./AuthenticationContext"
+import TelemetryProvider from './TelemetryProvider'
+
 import { useContext } from "react"
 
 // Import Electron/Node Items
@@ -28,6 +30,8 @@ DroneVideoFeed.bind(11111)
 function App() {
 
   return (
+
+    <TelemetryProvider>
     // <AuthenticationProvider>
 
     <Router>
@@ -49,6 +53,7 @@ function App() {
 
     </Router>
     // </AuthenticationProvider>
+    </TelemetryProvider>
 
 
 
