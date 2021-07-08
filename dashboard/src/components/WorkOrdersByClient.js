@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NavLink, useHistory } from 'react-router-dom'
 import React, { useContext, useEffect, useState } from 'react'
 
@@ -30,6 +31,26 @@ const WorkOrdersByClient = (newOrder) => {
             let responseData = await flightsByUser.json()
             //   console.log("responseData:", responseData);
             setUserFlights(responseData.flights)
+=======
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory, NavLink } from "react-router-dom";
+import AuthenticationContext from "../AuthenticationContext";
+
+const WorkOrdersByClient = () => {
+  const [userFlights, setUserFlights] = useState([]);
+  const authContext = useContext(AuthenticationContext);
+
+  useEffect(() => {
+    const fetchFlights = async () => {
+      // console.log("UserName:", authContext.username);
+      let flightsByUser = await fetch(
+        `/api/work_orders/${authContext.username}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+>>>>>>> 07ecb43 (initiated PilotInfo component inside dashboard)
         }
         fetchFlights()
         // }, [authContext.username])
