@@ -6,7 +6,7 @@ const TelemetryProvider = ({ children }) => {
     const [pitch, setPitch] = useState()
     const [yaw, setYaw] = useState()
     const [roll, setRoll] = useState()
-    const [height, setHeight] = useState()
+    const [altitude, setAltitude] = useState()
 
     const [battery, setBattery] = useState()
 
@@ -32,7 +32,7 @@ const TelemetryProvider = ({ children }) => {
         setPitch(Number(telemetryData.pitch)) // in degrees
         setYaw(Number(telemetryData.yaw)) // in degrees
         setRoll(Number(telemetryData.roll)) // in degrees
-        setHeight(Number(telemetryData.h)) //height in cm
+        setAltitude(Number(telemetryData.h)) //altitude in cm
 
         setBattery(Number(telemetryData.bat)) //battery level in %
         
@@ -58,7 +58,7 @@ const TelemetryProvider = ({ children }) => {
         pitch, 
         yaw,
         roll,
-        height,
+        altitude,
         battery,
         speedX,
         speedY,

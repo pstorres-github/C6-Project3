@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import './App.css'
 
@@ -8,8 +8,6 @@ import Header from './components/Header'
 import AuthenticationProvider from './AuthenticationProvider'
 import AuthenticationContext from "./AuthenticationContext"
 import TelemetryProvider from './TelemetryProvider'
-
-import { useContext } from "react"
 
 // Import Electron/Node Items
 const electron = window.require('electron')
@@ -32,27 +30,27 @@ function App() {
   return (
 
     <TelemetryProvider>
-    // <AuthenticationProvider>
+      <AuthenticationProvider>
 
-    <Router>
+        <Router>
 
-      <div className='app-header'>
-        <Header />
-      </div>
+          <div className='app-header'>
+            <Header />
+          </div>
 
-      <div className='app-content'>
-        <Switch>
-          <Route exact path='/' render={() => (<Homepage />)} />
+          <div className='app-content'>
+            <Switch>
+              <Route exact path='/' render={() => (<Homepage />)} />
 
-          {/* Private path for pilot console.  If using guest account, logged in as guest */}
-          {/* <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute> */}
-          <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} />)} />
+              {/* Private path for pilot console.  If using guest account, logged in as guest */}
+              {/* <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute> */}
+              <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} />)} />
 
-        </Switch>
-      </div>
+            </Switch>
+          </div>
 
-    </Router>
-    // </AuthenticationProvider>
+        </Router>
+      </AuthenticationProvider>
     </TelemetryProvider>
 
 
