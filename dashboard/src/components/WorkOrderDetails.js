@@ -7,7 +7,7 @@ const WorkOrderDetails = () => {
 
   const [userFlight, setUserFlight] = useState([]);
 
-  useEffect(async () => {
+  useEffect( () => {
     const fetchFlight = async () => {
       let flightById = await fetch(
         `http://localhost:3000/api/work_orders/work_order/${flightId}`,
@@ -23,7 +23,7 @@ const WorkOrderDetails = () => {
       // console.log("responseData:", responseData);
       setUserFlight(responseData.flight);
     };
-    await fetchFlight();
+    fetchFlight();
     // console.log("userFlight:", userFlight);
   }, [flightId]);
 
@@ -36,7 +36,10 @@ const WorkOrderDetails = () => {
         <div>Flight Plan: {userFlight.flight_plan}</div>
         <div>Flight Data: {userFlight.flight_data}</div>
         <div>Status: {userFlight.status}</div>
+        <div><p>Video: Video will show here</p>
+          <video src={""} width={"320"} height={"240"} muted={"muted"}></video> 
         {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+        </div>
       </div>
     </div>
   );
