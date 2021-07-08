@@ -5,7 +5,7 @@ const TelemetryContext = React.createContext({
     pitch:'' ,
     yaw:'' ,
     roll:'',
-    height:'',
+    altitude:'',
     battery:'',
     speedX:'' ,
     speedY:'' ,

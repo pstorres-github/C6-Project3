@@ -3,10 +3,17 @@ import TelemetryContext from './TelemetryContext'
 
 const TelemetryProvider = ({ children }) => {
 
+<<<<<<< HEAD
     const [pitch, setPitch] = useState(0)
     const [yaw, setYaw] = useState(0)
     const [roll, setRoll] = useState(0)
     const [height, setHeight] = useState(0)
+=======
+    const [pitch, setPitch] = useState()
+    const [yaw, setYaw] = useState()
+    const [roll, setRoll] = useState()
+    const [altitude, setAltitude] = useState()
+>>>>>>> 1a0d0a9270b84afb1f4c760da05d0a7da625d130
 
     const [battery, setBattery] = useState(0)
 
@@ -32,7 +39,7 @@ const TelemetryProvider = ({ children }) => {
         setPitch(Number(telemetryData.pitch)) // in degrees
         setYaw(Number(telemetryData.yaw)) // in degrees
         setRoll(Number(telemetryData.roll)) // in degrees
-        setHeight(Number(telemetryData.h)) //height in cm
+        setAltitude(Number(telemetryData.h)) //altitude in cm
 
         setBattery(Number(telemetryData.bat)) //battery level in %
         
@@ -58,7 +65,7 @@ const TelemetryProvider = ({ children }) => {
         pitch, 
         yaw,
         roll,
-        height,
+        altitude,
         battery,
         speedX,
         speedY,

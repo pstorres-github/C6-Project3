@@ -28,13 +28,13 @@ const Orientation = () => {
             <th>Pitch (deg)</th>
             <th>Yaw (deg)</th>
             <th>Roll (deg)</th>
-            <th>Height (cm)</th>
+            <th>Altitude (cm)</th>
         </tr>      
         <tr>
             <td>{telemetryContext.pitch}</td>
             <td>{telemetryContext.yaw}</td>
             <td>{telemetryContext.roll}</td>
-            <td>{telemetryContext.height}</td>
+            <td>{telemetryContext.altitude}</td>
         </tr>   
         </table>
      </div>
