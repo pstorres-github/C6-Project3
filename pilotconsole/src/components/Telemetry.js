@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useEffect, useContext } from "react"
 import throttle from 'lodash.throttle'
 import TelemetryContext from "../TelemetryContext"
 

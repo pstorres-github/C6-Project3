@@ -3,32 +3,32 @@ import TelemetryContext from './TelemetryContext'
 
 const TelemetryProvider = ({ children }) => {
 
-    const [pitch, setPitch] = useState()
-    const [yaw, setYaw] = useState()
-    const [roll, setRoll] = useState()
-    const [height, setHeight] = useState()
+    const [pitch, setPitch] = useState(0)
+    const [yaw, setYaw] = useState(0)
+    const [roll, setRoll] = useState(0)
+    const [height, setHeight] = useState(0)
 
-    const [battery, setBattery] = useState()
+    const [battery, setBattery] = useState(0)
 
-    const [speedX, setSpeedX] = useState()
-    const [speedY, setSpeedY] = useState()
-    const [speedZ, setSpeedZ] = useState()
+    const [speedX, setSpeedX] = useState(0)
+    const [speedY, setSpeedY] = useState(0)
+    const [speedZ, setSpeedZ] = useState(0)
 
-    const [accelerationX, setAccelerationX] = useState()
-    const [accelerationY, setAccelerationY] = useState()
-    const [accelerationZ, setAccelerationZ] = useState()
+    const [accelerationX, setAccelerationX] = useState(0)
+    const [accelerationY, setAccelerationY] = useState(0)
+    const [accelerationZ, setAccelerationZ] = useState(0)
 
-    const [timeOfFlightDistance, setTimeOfFlightDistance] = useState()
+    const [timeOfFlightDistance, setTimeOfFlightDistance] = useState(0)
     
-    const [lowTemp, setLowTemp] = useState()
-    const [highTemp, setHighTemp] = useState()
+    const [lowTemp, setLowTemp] = useState(0)
+    const [highTemp, setHighTemp] = useState(0)
 
-    const [motorRunTime, setMotorRunTime] = useState()
+    const [motorRunTime, setMotorRunTime] = useState(0)
 
 
 
     let telemetryUpdate = (telemetryData) => {
-        console.log(telemetryData)
+
         setPitch(Number(telemetryData.pitch)) // in degrees
         setYaw(Number(telemetryData.yaw)) // in degrees
         setRoll(Number(telemetryData.roll)) // in degrees

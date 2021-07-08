@@ -7,6 +7,7 @@ import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
 import VideoFeed from '../components/VideoFeed'
 import Telemetry from '../components/Telemetry'
+import Orientation from '../components/Orientation'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
 
@@ -28,7 +29,8 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div>
 
             <div className="console-orientation" >
-                Drone Orientation
+                Drone 3D Orientation
+                <Orientation/>
             </div>
 
             <div className="console-flightplan" >
