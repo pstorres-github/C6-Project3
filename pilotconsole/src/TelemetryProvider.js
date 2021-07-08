@@ -3,17 +3,10 @@ import TelemetryContext from './TelemetryContext'
 
 const TelemetryProvider = ({ children }) => {
 
-<<<<<<< HEAD
     const [pitch, setPitch] = useState(0)
     const [yaw, setYaw] = useState(0)
     const [roll, setRoll] = useState(0)
-    const [height, setHeight] = useState(0)
-=======
-    const [pitch, setPitch] = useState()
-    const [yaw, setYaw] = useState()
-    const [roll, setRoll] = useState()
-    const [altitude, setAltitude] = useState()
->>>>>>> 1a0d0a9270b84afb1f4c760da05d0a7da625d130
+    const [altitude, setAltitude] = useState(0)
 
     const [battery, setBattery] = useState(0)
 
