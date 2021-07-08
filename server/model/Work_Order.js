@@ -1,8 +1,9 @@
 require('./db')
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
-const workOrderSchema = new Schema({
+const workOrderSchema = new Schema(
+    {
         customer: String,
         date: String,
         time: String,
@@ -10,11 +11,18 @@ const workOrderSchema = new Schema({
         flight_plan: Array,
         flight_data: Array,
         analytics: {
-                video: String
+            video: String,
         },
         status: String,
-
-},
-        { strict: true, versionKey: false })
+        jobTitle: String,
+        jobNumber: String,
+        jobDetails: String,
+        clientContact: String,
+        clientEmail: String,
+        customerName: String,
+        customerID: String,
+    },
+    { strict: true, versionKey: false }
+)
 
 module.exports = mongoose.model('Work_Order', workOrderSchema, 'work_orders')

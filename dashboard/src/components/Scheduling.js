@@ -4,50 +4,89 @@ import * as Yup from 'yup'
 
 import { Form, Formik, useField } from 'formik'
 
+import AuthenticationContext from '../AuthenticationContext'
 // import './Scheduling.css'
 import Checkbox from './Forms/Checkbox'
 import Select from './Forms/Select'
 import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
+import axios from 'axios'
+import { number } from 'yup/lib/locale'
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 
-function FormDemo() {
+function ScheduleWorkorder() {
+    const authContext = useContext(AuthenticationContext)
+    const history = useHistory()
+
+    function reloadOrders(newOrder) {
+        history.push('/workorders')
+        console.log('We should be reloading.')
+    }
+
     return (
         <div>
+            <button type="button" onClick={reloadOrders}>
+                Reload Orders
+            </button>
             <Formik
                 initialValues={{
-                    name: '',
-                    email: '',
-                    checkBox: true,
-                    dropdownList: '',
-                    startDate: new Date(),
+                    jobTitle: '',
+                    jobNumber: '',
+                    clientContact: '',
+                    jobDetails: ''
+                    // checkBox: true,
+                    // startDate: new Date(),
                 }}
                 validationSchema={Yup.object({
-                    name: Yup.string()
+                    // .email('Invalid email address.')
+                    // .max(15, 'Must be fifteen characters or less.')
+                    jobTitle: Yup.string()
                         .min(3, 'Must be at least three characters.')
-                        .max(15, 'Must be fifteen characters or less.')
                         .required('Required.'),
-                    email: Yup.string()
-                        .email('Invalid email address.')
+                    jobNumber: Yup.string()
+                        .min(3, 'Must be at least three characters.')
                         .required('Required.'),
-                    acceptedTerms: Yup.boolean()
+                    clientContact: Yup.string()
+                        .min(10, 'Must be at least 10 characters.')
                         .required('Required.')
-                        .oneOf(
-                            [true],
-                            'You must accept the terms and conditions.'
-                        ),
-                    specialPower: Yup.string()
-                        .oneOf(
-                            ['item1', 'item2', 'item3', 'other'],
-                            'Invalid selection.'
-                        )
-                        .required('Required.'),
+                    // acceptedTerms: Yup.boolean()
+                    // .required('Required.')
+                    // .oneOf(
+                    //     [true],
+                    //     'You must accept the terms and conditions.'
+                    // ),
+                    // specialPower: Yup.string()
+                    //     .oneOf(
+                    //         ['item1', 'item2', 'item3', 'other'],
+                    //         'Invalid selection.'
+                    //     )
+                    //     .required('Required.'),
                 })}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
+                        axios
+                            .post('/api/work_orders/create', {
+                                jobTitle: values.jobTitle,
+                                jobNumber: values.jobNumber,
+                                jobDetails: values.jobDetails,
+                                clientContact: values.clientContact,
+                                clientEmail: authContext.email,
+                                customerName: authContext.username,
+                                customerID: authContext.userID,
+                                status: 'Pending'
+                            })
+                            .then((response) => {
+                                console.log(response)
+                            })
+
+                        console.log(`authContext: `, authContext)
+
+                        console.log(`Form post values: `, values)
+                        reloadOrders(values)
                         resetForm()
                         setSubmitting(false)
-                    }, 3000)
+                    }, 500)
                 }}
             >
                 {(props) => (
@@ -56,7 +95,7 @@ function FormDemo() {
                             <TextInput
                                 label="Job name:"
                                 placeholder="Job name"
-                                name="job-title"
+                                name="jobTitle"
                                 type="text"
                             />
                         </div>
@@ -65,7 +104,16 @@ function FormDemo() {
                             <TextInput
                                 label="Job number:"
                                 placeholder="Job number"
-                                name="job-number"
+                                name="jobNumber"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            {/* <div className="half-right"> */}
+                            <TextInput
+                                label="Client contact number:"
+                                placeholder="Phone number"
+                                name="clientContact"
                                 type="text"
                             />
                         </div>
@@ -73,11 +121,20 @@ function FormDemo() {
                             <TextArea
                                 label="Job details:"
                                 placeholder="Job details"
-                                name="job-details"
+                                name="jobDetails"
                                 rows="4"
                             />
                         </div>
                         <div>
+                            <div className="grey">
+                                waypoints/map placeholder
+                            </div>
+                            <div className="grey">datepicker placeholder</div>
+                            <div className="grey">
+                                start/end time requests range placeholder
+                            </div>
+                        </div>
+                        {/* <div>
                             <Select label="Dropdown List:" name="dropdownList">
                                 <option value="">Select:</option>
                                 <option value="item1">Item 1</option>
@@ -85,22 +142,22 @@ function FormDemo() {
                                 <option value="item3">Item 3</option>
                                 <option value="other">Other</option>
                             </Select>
-                        </div>
-                        <div>
+                        </div> */}
+                        {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
                             </Checkbox>
-                        </div>
+                        </div> */}
                         <div>
                             <button type="submit">
-                                {props.isSubmitting ? 'Loading…' : 'Submit'}
+                                {props.isSubmitting ? 'Submitting…' : 'Submit'}
                             </button>
-                            <button className="warn">Warn</button>
-                            <button className="alert">Alert</button>
-                            <button className="cancel">Cancel</button>
+                            {/* <button className="warn">Warn</button>
+                            <button className="alert">Alert</button> */}
+                            <button type="reset" className="cancel">
+                                Cancel
+                            </button>
                         </div>
-
-                        <div></div>
                     </Form>
                 )}
             </Formik>
@@ -109,104 +166,4 @@ function FormDemo() {
     )
 }
 
-// function FormDemo() {
-//     return (
-//         <div>
-//             <Formik
-//                 initialValues={{
-//                     name: '',
-//                     email: '',
-//                     acceptedTerms: true,
-//                     specialPower: '',
-//                 }}
-//                 validationSchema={Yup.object({
-//                     name: Yup.string()
-//                         .min(3, 'Must be at least three characters.')
-//                         .max(15, 'Must be fifteen characters or less.')
-//                         .required('Required.'),
-//                     email: Yup.string()
-//                         .email('Invalid email address.')
-//                         .required('Required.'),
-//                     acceptedTerms: Yup.boolean()
-//                         .required('Required.')
-//                         .oneOf(
-//                             [true],
-//                             'You must accept the terms and conditions.'
-//                         ),
-//                     specialPower: Yup.string()
-//                         .oneOf(
-//                             ['item1', 'item2', 'item3', 'other'],
-//                             'Invalid selection.'
-//                         )
-//                         .required('Required.'),
-//                 })}
-//                 onSubmit={(values, { setSubmitting, resetForm }) => {
-//                     setTimeout(() => {
-//                         alert(JSON.stringify(values, null, 2))
-//                         resetForm()
-//                         setSubmitting(false)
-//                     }, 3000)
-//                 }}
-//             >
-//                 {(props) => (
-//                     <Form className="">
-//                         {/* <div className="two-columns identify-2"> */}
-//                         <div className="two-columns">
-//                             {/* <div className="half-left"> */}
-//                             <div>
-//                                 <TextInput
-//                                     label="Job name:"
-//                                     placeholder="Job name"
-//                                     name="job-title"
-//                                     type="text"
-//                                 />
-//                             </div>
-//                             <div>
-//                                 {/* <div className="half-right"> */}
-//                                 <TextInput
-//                                     label="Job number:"
-//                                     placeholder="Job number"
-//                                     name="job-number"
-//                                     type="text"
-//                                 />
-//                             </div>
-//                         </div>
-//                         <div className="two-columns">
-//                             {/* <div className="full identify-2"> */}
-//                             {/* <div className="full"> */}
-//                             <div>
-//                                 <TextArea
-//                                     label="Job details:"
-//                                     placeholder="Job details"
-//                                     name="job-details"
-//                                     rows="4"
-//                                 />
-//                             </div>
-//                         </div>
-//                         <div>
-//                             <Select label="Dropdown List" name="dropdownList">
-//                                 <option value="">Select:</option>
-//                                 <option value="item1">Item 1</option>
-//                                 <option value="item2">Item 2</option>
-//                                 <option value="item3">Item 3</option>
-//                                 <option value="other">Other</option>
-//                             </Select>
-//                         </div>
-//                         <div>
-//                             <Checkbox name="checkBox">Checkbox.</Checkbox>
-//                         </div>
-//                         <div>
-//                             <button type="submit">
-//                                 {props.isSubmitting ? 'Loading…' : 'Submit'}
-//                             </button>
-//                             <button className="warn">Warn</button>
-//                             <button className="alert">Alert</button>
-//                         </div>
-//                     </Form>
-//                 )}
-//             </Formik>
-//         </div>
-//     )
-// }
-
-export default FormDemo
+export default ScheduleWorkorder

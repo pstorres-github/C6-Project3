@@ -20,6 +20,7 @@
     --identify-2: cornsilk;
     --padding: 1rem;
     --padding-tiny: 0.25rem;
+    --mini: 0.0125rem;
     --border-radius-small: 0.75rem;
     --border-radius-medium: 1rem;
     --border-radius-large: 1.25rem;
@@ -46,6 +47,9 @@
     --button-cancel-bg: ghostwhite;
     --button-cancel-bg-hover: rgb(118, 118, 129);
     --button-cancel-text-hover: ghostwhite;
+
+    /* colors */
+    --grey: ghostwhite;
 }
 
 .error {
@@ -59,6 +63,12 @@
 
 .identify-2 {
     background: var(--identify-2);
+}
+
+.grey {
+    background-color: var(--grey);
+    font-size: 0.9rem;
+    padding: 1rem;
 }
 
 .visually-hidden {
@@ -165,7 +175,7 @@ textarea {
 
 label {
     font-size: 0.75rem;
-    margin: var(--padding);
+    margin: var(--padding-tiny);
 
     /* position: relative; */
 }
@@ -243,4 +253,9 @@ button:hover {
 
 .text-area {
     width: 26rem;
+}
+
+form > div {
+    /* border: 1px solid salmon; */
+    margin: var(--mini);
 }
