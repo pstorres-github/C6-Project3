@@ -26,18 +26,18 @@ function App() {
                 <div className="app-content">
                     <Switch>
                         <Route exact path="/" render={() => <Homepage />} />
-                        <PrivateRoute exact path="/workorders">
+                        <Route exact path="/workorders">
                             {' '}
                             <Workorders />{' '}
-                        </PrivateRoute>
-                        <PrivateRoute exact path="/schedulejobs">
+                        </Route>
+                        <Route exact path="/schedulejobs">
                             {' '}
                             <ScheduleJobs />{' '}
-                        </PrivateRoute>
-                        <PrivateRoute exact path="/workorders/:id">
+                        </Route>
+                        <Route exact path="/workorders/:id">
                             {' '}
                             <WorkOrderDetails />{' '}
-                        </PrivateRoute>
+                        </Route>
                     </Switch>
                 </div>
             </Router>

@@ -55,9 +55,9 @@ function Scheduling(props) {
                     //     )
                     //     .required('Required.'),
                 })}
-                onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setTimeout(() => {
-                        axios
+                onSubmit={(values,  { setSubmitting, resetForm }) => {
+                    setTimeout(async () => {
+                        await axios
                             .post('/api/work_orders/create', {
                                 jobTitle: values.jobTitle,
                                 jobNumber: values.jobNumber,
