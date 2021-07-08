@@ -1,4 +1,5 @@
 import './Defaults.css'
+import './WorkOrdersByClient'
 
 import * as Yup from 'yup'
 
@@ -15,20 +16,11 @@ import { number } from 'yup/lib/locale'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function ScheduleWorkorder() {
+function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
-    const history = useHistory()
-
-    function reloadOrders(newOrder) {
-        history.push('/workorders')
-        console.log('We should be reloading.')
-    }
 
     return (
         <div>
-            <button type="button" onClick={reloadOrders}>
-                Reload Orders
-            </button>
             <Formik
                 initialValues={{
                     jobTitle: '',
@@ -81,9 +73,10 @@ function ScheduleWorkorder() {
                             })
 
                         console.log(`authContext: `, authContext)
+                        props.newJobAdded()
 
                         console.log(`Form post values: `, values)
-                        reloadOrders(values)
+                        // reloadOrders(values)
                         resetForm()
                         setSubmitting(false)
                     }, 500)
@@ -166,4 +159,4 @@ function ScheduleWorkorder() {
     )
 }
 
-export default ScheduleWorkorder
+export default Scheduling

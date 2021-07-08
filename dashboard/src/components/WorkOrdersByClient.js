@@ -3,9 +3,17 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 
-const WorkOrdersByClient = () => {
+const WorkOrdersByClient = (newOrder) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
+
+    const history = useHistory()
+
+    // function reloadOrders(newOrder) {
+    //     // history.push('/workorders')
+    //     history.go(0)
+    //     console.log('We should be reloading.')
+    //}
 
     useEffect(() => {
         const fetchFlights = async () => {
@@ -24,7 +32,8 @@ const WorkOrdersByClient = () => {
             setUserFlights(responseData.flights)
         }
         fetchFlights()
-    }, [authContext.username])
+        // }, [authContext.username])
+    }, [newOrder])
 
     console.log('userFlights:', userFlights)
 
@@ -52,6 +61,10 @@ const WorkOrdersByClient = () => {
                                 <NavLink to={`/workorders/${flights.id}`}>
                                     Work Order Details
                                 </NavLink>
+
+                                {/* <button type="button" onClick={reloadOrders}>
+                                    Reload Orders
+                                </button> */}
                             </div>
                         )
                     })}

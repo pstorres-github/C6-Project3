@@ -20,6 +20,7 @@ function ScheduleJobs(props) {
             date: workDate,
         }
         setForm(newWorkOrder)
+        props.newJobAdded()
         console.log('work order created:', newWorkOrder)
     }
 

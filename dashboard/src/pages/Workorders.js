@@ -1,16 +1,25 @@
-import React from 'react'
-import ScheduleJobs from '../components/ScheduleJobs'
-import WorkOrdersByClient from '../components/WorkOrdersByClient'
-import AuthenticationContext from "../AuthenticationContext"
-import { useContext } from "react"
-import { useHistory } from "react-router-dom"
+import { useContext, useState } from "react"
 
+import AuthenticationContext from "../AuthenticationContext"
+import React from 'react'
+import Scheduling from '../components/Scheduling'
+import WorkOrdersByClient from '../components/WorkOrdersByClient'
+import { useHistory } from "react-router-dom"
 
 const Workorders = () => {
 
     const authContext = useContext(AuthenticationContext)
-    const history = useHistory() 
-   
+    const history = useHistory()    
+    const [jobStatusUpdated, setJobStatusUpdated] = useState(false)
+    
+    function statusUpdated() {
+        console.log("status pre:", jobStatusUpdated)
+        setJobStatusUpdated(!jobStatusUpdated)
+        // setJobStatusUpdated(true)
+        console.log("status post:", jobStatusUpdated)
+    }
+
+
     return (
     
         <div>
@@ -22,13 +31,13 @@ const Workorders = () => {
 
             <div>
                 <h3>Work Order List</h3>
-                <WorkOrdersByClient/>
+                <WorkOrdersByClient newOrder={jobStatusUpdated}/>
                 <br/> <br/>
             
             </div>
 
             <div>
-                <ScheduleJobs/>
+                <Scheduling newJobAdded={statusUpdated}/>
             </div>
 
 
