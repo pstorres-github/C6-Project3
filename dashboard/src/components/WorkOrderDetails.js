@@ -10,7 +10,7 @@ const WorkOrderDetails = () => {
   useEffect( () => {
     const fetchFlight = async () => {
       let flightById = await fetch(
-        `http://localhost:3000/api/work_orders/work_order/${flightId}`,
+        `/api/work_orders/work_order/${flightId}`,
         {
           method: "GET",
           headers: {
@@ -32,7 +32,6 @@ const WorkOrderDetails = () => {
       <div>
         <div>Date: {userFlight.date} </div>
         <div>Pilot: {userFlight.pilot}
-          <a href={`/pilot/${userFlight.pilot}`}>View Pilot Info</a>
         </div>
         <div>Flight Time: {userFlight.time}</div>
         <div>Flight Plan: {userFlight.flight_plan}</div>

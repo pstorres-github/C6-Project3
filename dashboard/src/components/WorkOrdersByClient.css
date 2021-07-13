@@ -1,0 +1,21 @@
+.flights-by-user-wrap-div {
+  display: flex;
+  align-items: flex-start;
+
+}
+a {
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  background: #f5ec8e;
+  color: #292929;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+a:hover,
+a:active,
+a.active {
+  background: #60d1e0;
+  border-color: white;
+  color: white;
+}
