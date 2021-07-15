@@ -29,7 +29,7 @@ const VideoFeed = ({ DroneVideoFeed }) => {
     return (
         <div>
             <div id="videoFeed">
-                <video autoPlay={true} resizeMode={"contain"} id={"player"} height={"360"} width={"640"}></video>
+                <video autoPlay={true} id={"player"} height={"360"} width={"640"}></video>
             </div>
         </div>
     )
