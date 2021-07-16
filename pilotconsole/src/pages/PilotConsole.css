@@ -1,10 +1,10 @@
 .console-container {
     display:grid;
-    grid-template-columns: 25% 25% 50%;
-    grid-template-rows: 40px 350px 700px 40px;
+    grid-template-columns: 25vw 25vw 50vw;
+    grid-template-rows: 40px 25vw 700px 40px;
     grid-gap: 20px;
+    position: relative;
 }
-
 
 .console-user-info {
     grid-row: 1;
@@ -49,6 +49,7 @@
     grid-column: 2;
     background-color: rgb(194, 194, 194);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .console-telemetry {
