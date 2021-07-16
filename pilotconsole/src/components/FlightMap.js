@@ -179,7 +179,7 @@ const FlightMap = () => {
                         <Form className = "form-initial-location">
                             <div className = "form-group">
                             <div className="col-md">
-                                    <label htmlFor="latitude">Enter latitude coordinate in degrees</label>
+                                    <label htmlFor="latitude">Enter starting latitude coordinate in degrees</label>
                                     <Field  
                                         type="text"
                                         name ="latitude"
@@ -196,7 +196,7 @@ const FlightMap = () => {
         
                             <div className = "form-group">
                                 <div className="col-md">
-                                    <label htmlFor="longitude">Enter current longitude in degrees:</label>
+                                    <label htmlFor="longitude">Enter starting longitude coordinate in degrees:</label>
                                     <Field  
                                         type="text"
                                         name ="longitude"
