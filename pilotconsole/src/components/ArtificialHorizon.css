@@ -19,7 +19,7 @@
 .horizon {
   background: yellow;
   z-index: -1000;
-  position: relativ;
+  position: relative;
 }
 
 .static-frame {
