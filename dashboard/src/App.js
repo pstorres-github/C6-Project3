@@ -2,50 +2,52 @@ import {
     Redirect,
     Route,
     BrowserRouter as Router,
-    Switch,
+    Switch
 } from 'react-router-dom'
 
 import AuthenticationContext from './AuthenticationContext'
 import AuthenticationProvider from './AuthenticationProvider'
 import Header from './components/Header'
 import Homepage from './pages/Homepage'
+import PilotInfo from './components/PilotInfo'
 import React from 'react'
 import ScheduleJobs from './components/ScheduleJobs'
 import WorkOrderDetails from './components/WorkOrderDetails'
 import Workorders from './pages/Workorders'
-import PilotInfo from './components/PilotInfo'
 import { useContext } from 'react'
 
 function App() {
     return (
-        <AuthenticationProvider>
-            <Router>
-                <div className="app-header">
-                    <Header />
-                </div>
+        <div className="contain">
+            <AuthenticationProvider>
+                <Router>
+                    <div className="app-header">
+                        <Header />
+                    </div>
 
-                <div className="app-content">
-                    <Switch>
-                        <Route exact path="/" render={() => <Homepage />} />
-                        <Route exact path="/workorders">
-                            {' '}
-                            <Workorders />{' '}
-                        </Route>
-                        <Route exact path="/schedulejobs">
-                            {' '}
-                            <ScheduleJobs />{' '}
-                        </Route>
-                        <Route exact path="/workorders/:id">
-                            {' '}
-                            <WorkOrderDetails />{' '}
-                        </Route>
-                        <Route exact path="/pilot/:pilot">
-                            <PilotInfo />
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
-        </AuthenticationProvider>
+                    <div className="app-content">
+                        <Switch>
+                            <Route exact path="/" render={() => <Homepage />} />
+                            <Route exact path="/workorders">
+                                {' '}
+                                <Workorders />{' '}
+                            </Route>
+                            <Route exact path="/schedulejobs">
+                                {' '}
+                                <ScheduleJobs />{' '}
+                            </Route>
+                            <Route exact path="/workorders/:id">
+                                {' '}
+                                <WorkOrderDetails />{' '}
+                            </Route>
+                            <Route exact path="/pilot/:pilot">
+                                <PilotInfo />
+                            </Route>
+                        </Switch>
+                    </div>
+                </Router>
+            </AuthenticationProvider>
+        </div>
     )
 }
 

@@ -1,17 +1,115 @@
+/* Table of contents:
+    - core reset styles
+        - root defaults
+        - button defaults
+        - colour variables
+    - font definitions
+    - basic styles
+    - class amendments (specific style modifications)
+    - forms
+    - buttons 
+    
+    Search for ||| to jump to a section.
+    */
+
+/* Use:
+
+External facing pages:
+.hero for giant, marketing-style headings
+.hero-copy for their associated text
+
+Internal pages:
+<h1> is pretty giant, and should only appear once on a page.
+<h2> for subheadings
+<h4> for general section headings. */
+
+/*  ||| Core Reset */
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+section {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,
+img {
+    border: 0;
+}
+address,
+caption,
+cite,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+caption,
+th {
+    text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+q:before,
+q:after {
+    content: '';
+}
+abbr,
+acronym {
+    border: 0;
+}
+
 * {
-    padding: 0.85rem;
+    /* padding: 0.85rem; */
+    /* margin-top: 0.025rem; */
+    /* font-size: 1rem; */
     color: black;
-    margin-top: 0.025rem;
-    font-size: 1rem;
     border-radius: 0.25rem;
     box-sizing: border-box;
 
-    margin: 1rem;
     padding: 0;
     border-width: 0;
 
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 
@@ -48,10 +146,140 @@
     --button-cancel-bg-hover: rgb(118, 118, 129);
     --button-cancel-text-hover: ghostwhite;
 
-    /* colors */
-    --grey: ghostwhite;
+    /*  ||| Colour definitions */
+    --ghost: ghostwhite;
+    --primary: black;
+    --secondary: black;
+    --highlight: black;
+
+    /* text sizes */
+    --base: 20px;
+    --hero: 3rem;
+    --hero-copy: 2.625rem;
+    --h1: 3rem;
+    --h2: 2.5rem;
+    --h3: 2rem;
+    --h4: 1rem;
+    --body: 1rem;
+    --small: 0.875rem;
+    --smaller: 0.75rem;
+    --tiny: 0.625rem;
 }
 
+/* ||| Font definitions  */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url('https://use.typekit.net/yrh8vwl.css');
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Medium-Trial.woff2') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Medium-Italic-Trial.woff2')
+        format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Bold-Trial.woff2') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Black-Trial.woff2') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*  ||| Basic definitions */
+p {
+    padding-block-end: 1.125rem;
+}
+
+em {
+    font-style: italic;
+    color: darkgray;
+    padding-left: 0.325rem;
+    padding-right: 0.325rem;
+}
+
+h1 {
+    font-family: 'GT-Flexa';
+    font-size: 3rem;
+    line-height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h2 {
+    font-family: 'GT-Flexa';
+    font-size: 2rem;
+    line-height: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h3 {
+    font-family: 'GT-Flexa';
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h4 {
+    font-family: 'GT-Flexa';
+    font-size: 1rem;
+    line-height: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+aside {
+    /* position: relative; */
+    /* display: run-in; */
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px;
+    width: 6.25rem;
+    left: -5rem;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+}
+details {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+}
+
+.plex {
+    font-family: ibm-plex-mono, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.plex-bold {
+    font-family: ibm-plex-mono, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+img {
+    border: 1px solid grey;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+}
+
+/*  ||| Class amendments */
 .error {
     color: red;
     font-size: 0.6em;
@@ -80,6 +308,19 @@
     position: absolute !important;
     white-space: nowrap !important;
     width: 1px !important;
+}
+
+/*  ||| Layout */
+
+.contain {
+    /* background: pink; */
+    margin: var(--padding);
+    width: calc(100vw - calc(2 * (var(--padding))));
+}
+
+.narrow-column {
+    /* padding-left: 5rem; */
+    width: calc(60vw);
 }
 
 .two-columns {
@@ -138,6 +379,8 @@
     width: 100%;
 }
 
+/*  ||| Forms */
+
 form {
     grid-template-columns: 50% 50%;
     padding: var(--padding);
@@ -147,6 +390,9 @@ form {
 
     flex-direction: column;
     align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
 }
 
 input,
@@ -167,6 +413,10 @@ textarea {
     max-width: 25rem;
 }
 
+input {
+    font-size: var(--small);
+    color: red;
+}
 /* label {
     margin-left: var(--padding);
     padding-left: var(--padding);
@@ -174,21 +424,11 @@ textarea {
 } */
 
 label {
-    font-size: 0.75rem;
+    font-size: var(--body);
     margin: var(--padding-tiny);
 
     /* position: relative; */
 }
-
-/* 
-span {
-    display: block;
-    overflow: hidden;
-}
-
-span > input {
-    width: 100%;
-} */
 
 button:disabled {
     cursor: not-allowed;
@@ -196,7 +436,7 @@ button:disabled {
 }
 
 ::placeholder {
-    font-size: 0.75rem;
+    font-size: var(--small);
     color: var(--placeholder-standard-text);
 }
 
@@ -206,6 +446,7 @@ textarea {
     max-width: 25rem;
 }
 
+/*  ||| Buttons */
 button {
     background: var(--button-standard-bg);
     color: var(--button-standard-text);
@@ -218,6 +459,17 @@ button {
 button:hover {
     background: var(--button-standard-bg-hover);
     color: var(--button-standard-text-hover);
+}
+
+.featured {
+    background-color: blue;
+}
+
+.secondary {
+    background-color: lightblue;
+}
+.secondary:hover {
+    background-color: lightcoral;
 }
 
 .warn {
@@ -257,5 +509,9 @@ button:hover {
 
 form > div {
     /* border: 1px solid salmon; */
-    margin: var(--mini);
+    margin-top: var(--mini);
+    margin-bottom: var(--mini);
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
 }
