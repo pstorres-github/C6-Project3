@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 const WorkOrderDetails = () => {
   const flightId = useParams().id;
@@ -7,10 +7,10 @@ const WorkOrderDetails = () => {
 
   const [userFlight, setUserFlight] = useState([]);
 
-  useEffect(async () => {
+  useEffect( () => {
     const fetchFlight = async () => {
       let flightById = await fetch(
-        `http://localhost:3000/api/work_orders/work_order/${flightId}`,
+        `/api/work_orders/work_order/${flightId}`,
         {
           method: "GET",
           headers: {
@@ -23,7 +23,7 @@ const WorkOrderDetails = () => {
       // console.log("responseData:", responseData);
       setUserFlight(responseData.flight);
     };
-    await fetchFlight();
+    fetchFlight();
     // console.log("userFlight:", userFlight);
   }, [flightId]);
 
@@ -31,12 +31,16 @@ const WorkOrderDetails = () => {
     <div className="work-order-details">
       <div>
         <div>Date: {userFlight.date} </div>
-        <div>Pilot: {userFlight.pilot}</div>
+        <div>Pilot: {userFlight.pilot}
+        </div>
         <div>Flight Time: {userFlight.time}</div>
         <div>Flight Plan: {userFlight.flight_plan}</div>
         <div>Flight Data: {userFlight.flight_data}</div>
         <div>Status: {userFlight.status}</div>
+        <div><p>Video: Video will show here</p>
+          <video src={""} width={"320"} height={"240"} muted={"muted"}></video> 
         {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+        </div>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ function checkAuthentication(req, res, next) {
     }
 }
 
+//GET all work_orders from a specific Customer
 router.get('/:user', async (req, res, next) => {
     const userInfo = req.params.user
     console.log('userInfo:', userInfo)
@@ -38,6 +39,8 @@ router.get('/:user', async (req, res, next) => {
     })
 })
 
+
+//GET one work_order by ID
 router.get('/work_order/:id', async (req, res, next) => {
     const flightId = req.params.id
     console.log('flightId:', flightId)
@@ -51,6 +54,24 @@ router.get('/work_order/:id', async (req, res, next) => {
     console.log('flightById:', flightById)
     res.json({
         flight: flightById.toObject({ getters: true })
+    })
+})
+
+//GET all flights from a specific Pilot
+
+router.get('/pilot/:pilot', async (req, res, next) => {
+    const pilot = req.params.pilot
+    console.log('pilot:', pilot)
+    let pilotFlights;
+    try{
+        pilotFlights = await Work_Order.find({ pilot: pilot})
+    } catch (err) {
+        const error = 'Fetching pilot flights failed'
+        return next(error)
+    }
+    console.log("pilotFlights:", pilotFlights)
+    res.json({
+        flights: pilotFlights
     })
 })
 

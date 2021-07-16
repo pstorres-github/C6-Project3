@@ -13,6 +13,7 @@ import React from 'react'
 import ScheduleJobs from './components/ScheduleJobs'
 import WorkOrderDetails from './components/WorkOrderDetails'
 import Workorders from './pages/Workorders'
+import PilotInfo from './components/PilotInfo'
 import { useContext } from 'react'
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
                         <Route exact path="/workorders/:id">
                             {' '}
                             <WorkOrderDetails />{' '}
+                        </Route>
+                        <Route exact path="/pilot/:pilot">
+                            <PilotInfo />
                         </Route>
                     </Switch>
                 </div>
