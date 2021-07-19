@@ -55,7 +55,7 @@ function Scheduling(props) {
                     //     )
                     //     .required('Required.'),
                 })}
-                onSubmit={(values,  { setSubmitting, resetForm }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(async () => {
                         await axios
                             .post('/api/work_orders/create', {
@@ -154,7 +154,6 @@ function Scheduling(props) {
                     </Form>
                 )}
             </Formik>
-            Datepicker tbd.
         </div>
     )
 }
