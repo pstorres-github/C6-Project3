@@ -5,11 +5,10 @@ import AuthenticationContext from '../AuthenticationContext'
 // Pilot Console Components
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
-import VideoFeed from '../components/VideoFeed'
-import Telemetry from '../components/Telemetry'
-import Orientation from '../components/Orientation'
-import ArtificialHorizon from '../components/ArtificialHorizon'
 import FlightMap from '../components/FlightMap_Leaflet'
+import Orientation from '../components/Orientation'
+import Telemetry from '../components/Telemetry'
+import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
     const authContext = useContext(AuthenticationContext)
