@@ -2,7 +2,7 @@ import {
     Redirect,
     Route,
     BrowserRouter as Router,
-    Switch,
+    Switch
 } from 'react-router-dom'
 
 import AuthenticationContext from './AuthenticationContext'
@@ -27,16 +27,13 @@ function App() {
                     <Switch>
                         <Route exact path="/" render={() => <Homepage />} />
                         <Route exact path="/workorders">
-                            {' '}
-                            <Workorders />{' '}
+                            <Workorders />
                         </Route>
                         <Route exact path="/schedulejobs">
-                            {' '}
-                            <ScheduleJobs />{' '}
+                            <ScheduleJobs />
                         </Route>
                         <Route exact path="/workorders/:id">
-                            {' '}
-                            <WorkOrderDetails />{' '}
+                            <WorkOrderDetails />
                         </Route>
                     </Switch>
                 </div>
