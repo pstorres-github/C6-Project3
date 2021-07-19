@@ -9,7 +9,7 @@ import VideoFeed from '../components/VideoFeed'
 import Telemetry from '../components/Telemetry'
 import Orientation from '../components/Orientation'
 import ArtificialHorizon from '../components/ArtificialHorizon'
-import FlightMap from '../components/FlightMap'
+import FlightMap from '../components/FlightMap_Leaflet'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
 
