@@ -1,7 +1,7 @@
 import './PilotConsole.css'
 
 import ArtificialHorizon from '../components/ArtificialHorizon'
-import AuthenticationContext from '../AuthenticationContext'
+// import AuthenticationContext from '../AuthenticationContext'
 // Pilot Console Components
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
@@ -11,12 +11,11 @@ import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
-    const authContext = useContext(AuthenticationContext)
 
     return (
         <div className="console-container">
             <div className="console-user-info">
-                Welcome: {authContext.username}
+                Welcome: Guest Pilot
             </div>
 
             <div className="console-horizon">
