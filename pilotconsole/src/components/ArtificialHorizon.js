@@ -7,10 +7,23 @@ import TelemetryContext from '../TelemetryContext'
 // import "./assets/HUD_static-frame.svg"
 
 const ArtificialHorizon = () => {
-    // const telemetryContext = useContext(TelemetryContext)
+    const telemetryContext = useContext(TelemetryContext)
 
+    // telemetryContext transform function goes here
+    // degrees * something to pixel values
+    // return transformed telemetry
+
+    let multiplier = 19.14;
+
+    const pitchOffset = 2160 + (telemetryContext.pitch * multiplier);
     const pitchPosition = {
-        backgroundPosition: 'calc(100%) calc(100% - 1890px)'
+        // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
+        // backgroundPosition: 'calc(100%) 1620px' // this is muhammad's default window size
+        backgroundPosition: `50%  ${pitchOffset}px` // muhammad full screen
+    }
+
+    const bankRotation = {
+        transform: `rotate(${telemetryContext.roll}deg)`
     }
 
     return (
@@ -29,10 +42,17 @@ const ArtificialHorizon = () => {
                     alt="Heading Indicator"
                 />
             </div> */}
+            {/* <div className="pitch-indicator" style={pitchPosition}>
+                <img
+                    src="./assets/HUD_pitch-indicator.svg"
+                    alt="Pitch Indicator"
+                />
+            </div> */}
             <div className="pitch-indicator" style={pitchPosition}>
                 {/* spacer */}
             </div>
-            <div className="angle-of-bank-indicator">
+
+            <div className="angle-of-bank-indicator" style={bankRotation}>
                 <img
                     src="./assets/HUD_angle-of-bank-indicator.svg"
                     alt="Angle of Bank Indicator"
