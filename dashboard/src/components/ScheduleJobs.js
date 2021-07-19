@@ -17,7 +17,7 @@ function ScheduleJobs(props) {
             title: workTitle,
             number: workNumber,
             details: workDetails,
-            date: workDate,
+            date: workDate
         }
         setForm(newWorkOrder)
         props.newJobAdded()
@@ -38,61 +38,3 @@ function ScheduleJobs(props) {
 }
 
 export default ScheduleJobs
-
-//     <form>
-//         <label>Job title:</label>
-//         <input
-//             type="text"
-//             id="job-title"
-//             placeholder="Job Title"
-//             value={workTitle}
-//             onChange={(event) => onInputChange(event, setWorkTitle)}
-//         ></input>
-
-//         {/* Possibly auto-assigned as a default and user can enter own details if required */}
-//         <label>Job number:</label>
-//         <input
-//             type="text"
-//             id="job-number"
-//             placeholder="Job Number"
-//             value={workNumber}
-//             onChange={(event) => onInputChange(event, setWorkNumber)}
-//         ></input>
-
-//         <br />
-//         <label>Job details:</label>
-//         <textarea
-//             type="text"
-//             id="job-details"
-//             placeholder="Job Details"
-//             value={workDetails}
-//             onChange={(event) => onInputChange(event, setWorkDetails)}
-//         ></textarea>
-
-//         <br />
-
-//         {/* <label for="datemax">
-//   Enter a date before 2019-01-01:
-// </label> */}
-
-//         <label>Job date:</label>
-//         <input
-//             type="date"
-//             min="2021-01-01"
-//             max="2030-01-01"
-//             value={workDate}
-//             onChange={(event) => onInputChange(event, setWorkDate)}
-//         />
-//     </form>
-//     {/* <ResetButton field="textarea, input" /> */}
-
-//     {/* <button
-//         onClick={() => {
-//             setForm([])
-//         }}
-//     >
-//         Clear
-//     </button>
-//     {console.log('clear was clicked:', form)} */}
-//     {/* <SubmitButton /> */}
-//     <button onClick={submitClicked}>Submit</button>

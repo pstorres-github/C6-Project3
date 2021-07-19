@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import JMuxer from "jmuxer"
+import "./VideoFeed.css"
 
 const Buffer = require('buffer').Buffer
 
@@ -27,9 +28,9 @@ const VideoFeed = ({ DroneVideoFeed }) => {
 
     // Video Size => 640x360 (50% of Original 720p)
     return (
-        <div>
+        <div className="video-main">
             <div id="videoFeed">
-                <video autoPlay={true} resizeMode={"contain"} id={"player"} height={"360"} width={"640"}></video>
+                <video autoPlay={true} id={"player"} height={"360"} width={"640"}></video>
             </div>
         </div>
     )

@@ -12,16 +12,16 @@ app.on('ready', () => {
         height: 300,
         center: true,
         backgroundColor: '#272727'
-
     })
 
     loadScreen.once('show', () => {
-
         // Define the Pilot Console Window Parameters
         const pilotConsoleWindow = new BrowserWindow({
             show: false,
-            width: 1366,
-            height: 768,
+            // width: 1366,
+            // height: 768,
+            width: 1920,
+            height: 1080,
             center: true,
             webPreferences: {
                 nodeIntegration: true,
@@ -45,7 +45,6 @@ app.on('ready', () => {
     loadScreen.loadURL(`file://${__dirname}/loadscreen.html`)
     loadScreen.show()
 })
-
 
 // MacOS Event Listeners - Quit when all Windows Are Closed
 

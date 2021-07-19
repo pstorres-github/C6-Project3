@@ -1,9 +1,11 @@
+import './WorkOrdersByClient.css'
+
 import { NavLink, useHistory } from 'react-router-dom'
 import React, { useContext, useEffect, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 
-const WorkOrdersByClient = ({newOrder}) => {
+const WorkOrdersByClient = () => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
 
@@ -19,7 +21,7 @@ const WorkOrdersByClient = ({newOrder}) => {
         const fetchFlights = async () => {
             // console.log("UserName:", authContext.username);
             let flightsByUser = await fetch(
-                `http://localhost:3000/api/work_orders/${authContext.username}`,
+                `/api/work_orders/${authContext.username}`,
                 {
                     method: 'GET',
                     headers: {
@@ -33,7 +35,7 @@ const WorkOrdersByClient = ({newOrder}) => {
         }
         fetchFlights()
         // }, [authContext.username])
-    }, [newOrder])
+    }, [])
 
     console.log('userFlights:', userFlights)
 
@@ -45,9 +47,14 @@ const WorkOrdersByClient = ({newOrder}) => {
                 <div className="flights-by-user-wrap-div">
                     {userFlights.map((flights) => {
                         return (
-                            <div>
+                            <div className="flight-details-parent">
                                 <div>Date: {flights.date}</div>
-                                <div>Pilot: {flights.pilot}</div>
+                                <div>
+                                    Pilot: {flights.pilot}
+                                    <a href={`/pilot/${flights.pilot}`}>
+                                        View Pilot Info
+                                    </a>
+                                </div>
                                 <div>Flight Time: {flights.time}</div>
                                 <div>Flight Plan: {flights.flight_plan}</div>
                                 <div>Flight Status: {flights.status}</div>

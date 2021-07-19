@@ -83,7 +83,7 @@ function Scheduling(props) {
                 }}
             >
                 {(props) => (
-                    <Form className="">
+                    <Form>
                         <div>
                             <TextInput
                                 label="Job name:"
