@@ -1,0 +1,504 @@
+/* Table of contents:
+    - core reset styles
+        - root defaults
+        - button defaults
+        - colour variables
+    - font definitions
+    - basic styles
+    - class amendments (specific style modifications)
+    - forms
+    - buttons 
+    
+    Search for ||| to jump to a section.
+    */
+
+/* Use:
+
+External facing pages:
+.hero for giant, marketing-style headings
+.hero-copy for their associated text
+
+Internal pages:
+<h1> is pretty giant, and should only appear once on a page.
+<h2> for subheadings
+<h4> for general section headings. */
+
+/*  ||| Core Reset */
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+section {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,
+img {
+    border: 0;
+}
+address,
+caption,
+cite,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+caption,
+th {
+    text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+q:before,
+q:after {
+    content: '';
+}
+abbr,
+acronym {
+    border: 0;
+}
+
+* {
+    color: black;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+
+    padding: 0;
+    border-width: 0;
+
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+:root {
+    --identify-me: red;
+    --identify-2: cornsilk;
+    --padding: 1rem;
+    --padding-tiny: 0.25rem;
+    --mini: 0.0125rem;
+    --border-radius-small: 0.75rem;
+    --border-radius-medium: 1rem;
+    --border-radius-large: 1.25rem;
+    --border: 0.5px;
+    --shadow: 0.25rem 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+
+    /* placeholder */
+    --placeholder-standard-text: slategrey;
+
+    /* button defaults */
+    --button-standard-text: white;
+    --button-standard-bg: hsla(132, 79%, 57%, 1);
+    --button-standard-bg-hover: hsla(132, 79%, 69%, 1);
+    --button-standard-text-hover: hsla(221, 6%, 22%, 1);
+    --button-warn-text: white;
+    --button-warn-bg: hsla(39, 100%, 50%, 1);
+    --button-warn-bg-hover: hsla(39, 100%, 62%, 1);
+    --button-warn-text-hover: hsla(221, 6%, 22%, 1);
+    --button-alert-text: ghostwhite;
+    --button-alert-bg: hsla(360, 100%, 50%, 1);
+    --button-alert-bg-hover: hsla(360, 100%, 63%, 1);
+    --button-alert-text-hover: hsla(221, 6%, 22%, 1);
+    --button-cancel-text: rgb(118, 118, 129);
+    --button-cancel-bg: ghostwhite;
+    --button-cancel-bg-hover: rgb(118, 118, 129);
+    --button-cancel-text-hover: ghostwhite;
+
+    /*  ||| Colour definitions */
+    --ghost: ghostwhite;
+    --primary: black;
+    --secondary: black;
+    --highlight: black;
+
+    /* text sizes */
+    --base: 20px;
+    --hero: 3rem;
+    --hero-copy: 2.625rem;
+    --h1: 3rem;
+    --h2: 2.5rem;
+    --h3: 2rem;
+    --h4: 1rem;
+    --body: 1rem;
+    --small: 0.875rem;
+    --smaller: 0.75rem;
+    --tiny: 0.625rem;
+}
+
+/* ||| Font definitions  */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url('https://use.typekit.net/yrh8vwl.css');
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Medium-Trial.woff2') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Medium-Italic-Trial.woff2')
+        format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Bold-Trial.woff2') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT-Flexa';
+    src: url('../fonts/GT-Flexa-Mono-Black-Trial.woff2') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*  ||| Basic definitions */
+p {
+    padding-block-end: 1.125rem;
+}
+
+em {
+    font-style: italic;
+    color: darkgray;
+    padding-left: 0.325rem;
+    padding-right: 0.325rem;
+}
+
+h1 {
+    font-family: 'GT-Flexa';
+    font-size: 3rem;
+    line-height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h2 {
+    font-family: 'GT-Flexa';
+    font-size: 2rem;
+    line-height: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h3 {
+    font-family: 'GT-Flexa';
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+h4 {
+    font-family: 'GT-Flexa';
+    font-size: 1rem;
+    line-height: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+}
+aside {
+    /* position: relative; */
+    /* display: run-in; */
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px;
+    width: 6.25rem;
+    left: -5rem;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+}
+details {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+}
+
+.plex {
+    font-family: ibm-plex-mono, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.plex-bold {
+    font-family: ibm-plex-mono, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*  ||| Class amendments */
+.error {
+    color: red;
+    font-size: 0.6em;
+}
+
+.identify-me {
+    background: var(--identify-me);
+}
+
+.identify-2 {
+    background: var(--identify-2);
+}
+
+.grey {
+    background-color: var(--grey);
+    font-size: 0.9rem;
+    padding: 1rem;
+}
+
+.visually-hidden {
+    border-width: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+/*  ||| Layout */
+
+.contain {
+    /* background: pink; */
+    margin: var(--padding);
+    width: calc(100vw - calc(2 * (var(--padding))));
+}
+
+.narrow-column {
+    /* padding-left: 5rem; */
+    width: calc(60vw);
+}
+
+.two-columns {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto auto;
+
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    /* width: calc(100% - 1rem); */
+    /* grid-template-columns: repeat(1fr, 1fr); */
+}
+
+.full {
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / 3;
+
+    width: 100%;
+    /* width: calc(100% - 2rem); */
+    /* align-self is used to align a grid item along the column axis. */
+    /* align-self: center; */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: stretch;
+}
+
+.half-left {
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / 2;
+
+    /* align-self is used to align a grid item along the column axis. */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: start;
+
+    /* display: flex; */
+    justify-content: start;
+
+    width: 100%;
+}
+
+.half-right {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / -1;
+
+    /* align-self is used to align a grid item along the column axis. */
+    align-self: end;
+    /* justify-self is used to align a grid item along the row axis. */
+    justify-self: start;
+
+    width: 100%;
+}
+
+/*  ||| Forms */
+
+form {
+    grid-template-columns: 50% 50%;
+    padding: var(--padding);
+    border-radius: var(--border-radius-large);
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
+}
+
+input,
+select,
+textarea {
+    position: relative;
+    left: -0.5rem;
+    margin-left: var(--padding);
+    margin-right: var(--padding);
+    margin-top: var(--padding-tiny);
+    margin-bottom: var(--padding-tiny);
+    padding: var(--padding-tiny);
+
+    border: 0.5px solid lightgray;
+    border-radius: 0.25rem;
+    background-color: ghostwhite;
+    min-width: 10rem;
+    max-width: 25rem;
+}
+
+input {
+    font-size: var(--small);
+    color: red;
+}
+/* label {
+    margin-left: var(--padding);
+    padding-left: var(--padding);
+    position: relative;
+} */
+
+label {
+    font-size: var(--body);
+    margin: var(--padding-tiny);
+
+    /* position: relative; */
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+::placeholder {
+    font-size: var(--small);
+    color: var(--placeholder-standard-text);
+}
+
+textarea {
+    resize: vertical;
+    min-width: 10rem;
+    max-width: 25rem;
+}
+
+/*  ||| Buttons */
+button {
+    background: var(--button-standard-bg);
+    color: var(--button-standard-text);
+    padding: var(--padding);
+    margin: 0.25rem;
+    border: none;
+    /* border-radius: 0.5rem; */
+}
+
+button:hover {
+    background: var(--button-standard-bg-hover);
+    color: var(--button-standard-text-hover);
+}
+
+.featured {
+    background-color: blue;
+}
+
+.secondary {
+    background-color: lightblue;
+}
+.secondary:hover {
+    background-color: lightcoral;
+}
+
+.warn {
+    background: var(--button-warn-bg);
+    color: var(--button-warn-text);
+}
+
+.warn:hover {
+    background: var(--button-warn-bg-hover);
+    color: var(--button-warn-text-hover);
+}
+
+.alert {
+    background: var(--button-alert-bg);
+    color: var(--button-alert-text);
+}
+
+.alert:hover {
+    background: var(--button-alert-bg-hover);
+    color: var(--button-alert-text-hover);
+}
+
+.cancel {
+    background: var(--button-cancel-bg);
+    color: var(--button-cancel-text);
+    border: 0.25px solid rgb(118, 118, 129);
+}
+
+.cancel:hover {
+    background: var(--button-cancel-bg-hover);
+    color: var(--button-cancel-text-hover);
+}
+
+.text-area {
+    width: 26rem;
+}
+
+form > div {
+    /* border: 1px solid salmon; */
+    margin-top: var(--mini);
+    margin-bottom: var(--mini);
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
