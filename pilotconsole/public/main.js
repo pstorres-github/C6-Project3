@@ -1,3 +1,4 @@
+const { hidden } = require('chalk')
 const { app, BrowserWindow } = require('electron')
 require('@electron/remote/main').initialize()
 
@@ -9,9 +10,10 @@ app.on('ready', () => {
         show: false,
         frame: false,
         width: 600,
-        height: 300,
+        height: 600,
         center: true,
-        backgroundColor: '#272727'
+        backgroundColor: '#272727',
+        overflow: hidden
     })
 
     loadScreen.once('show', () => {
@@ -21,7 +23,7 @@ app.on('ready', () => {
             // width: 1366,
             // height: 768,
             width: 1920,
-            height: 1080,
+            height: 1200,
             center: true,
             webPreferences: {
                 nodeIntegration: true,
