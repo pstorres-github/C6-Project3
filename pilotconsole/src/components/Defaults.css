@@ -123,8 +123,9 @@ acronym {
     --placeholder-standard-text: slategrey;
 
     /* button defaults */
-    --button-standard-text: white;
-    --button-standard-bg: hsla(132, 79%, 57%, 1);
+    --button-standard-text: #4d4d4d;
+    /* --button-standard-bg: hsla(132, 79%, 57%, 1); */
+    --button-standard-bg: rgb(196, 196, 196);
     --button-standard-bg-hover: hsla(132, 79%, 69%, 1);
     --button-standard-text-hover: hsla(221, 6%, 22%, 1);
     --button-warn-text: white;
