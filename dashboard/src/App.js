@@ -28,18 +28,18 @@ function App() {
                     <div className="app-content">
                         <Switch>
                             <Route exact path="/" render={() => <Homepage />} />
-                            <Route exact path="/workorders">
+                            <PrivateRoute exact path="/workorders">
                                 <Workorders />
-                            </Route>
-                            <Route exact path="/schedulejobs">
+                            </PrivateRoute>
+                            <PrivateRoute exact path="/schedulejobs">
                                 <ScheduleJobs />
-                            </Route>
-                            <Route exact path="/workorders/:id">
+                            </PrivateRoute>
+                            <PrivateRoute exact path="/workorders/:id">
                                 <WorkOrderDetails />
-                            </Route>
-                            <Route exact path="/pilot/:pilot">
+                            </PrivateRoute>
+                            <PrivateRoute exact path="/pilot/:pilot">
                                 <PilotInfo />
-                            </Route>
+                            </PrivateRoute>
                         </Switch>
                     </div>
                 </Router>

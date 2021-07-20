@@ -35,11 +35,10 @@ const Login = () => {
                     // on submission of form, set the values to be sent to login function
                     // if login fails, will ask user to try again
                     let loginStatus = await authContext.login(values.email, values.password)
-                    console.log(loginStatus)
-                    if (loginStatus === "Login Successful")
+                    if (loginStatus)
                         history.push('/workorders')
                     else
-                        setLoginError(loginStatus)
+                        setLoginError('Invalid e-mail or password.  Please try again')
                 
                 }}
             >

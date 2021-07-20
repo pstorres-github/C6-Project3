@@ -16,7 +16,8 @@
 
 .horizon > * {
     grid-area: container;
-    max-width: 100%;
+    min-width: 480px;
+    max-width: 480px;
 }
 
 .static-frame {
@@ -41,19 +42,36 @@
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 6;
     z-index: 1;
 }
 
 .pitch-indicator {
     background: url('./assets/HUD_pitch-indicator.svg');
-    background-size: 100%;
+    background-size: 480px;
+    /* background-position: 50%;  */
+    background-repeat: repeat-y;
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: -1;
-    z-index: 0;
+    z-index: 1;
+
+    /* overflow: hidden; */
+    /* min-width: 100%;
+    max-width: 100%; */
 }
+
+/* 
+.pitch-indicator {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    z-index: 1;
+
+    overflow: hidden;
+} */
 
 .alt-text {
     /* background: yellow; */

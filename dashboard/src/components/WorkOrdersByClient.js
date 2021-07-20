@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 
-const WorkOrdersByClient = () => {
+const WorkOrdersByClient = ({newOrder}) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
 
@@ -35,7 +35,7 @@ const WorkOrdersByClient = () => {
         }
         fetchFlights()
         // }, [authContext.username])
-    }, [])
+    }, [newOrder])
 
     console.log('userFlights:', userFlights)
 
