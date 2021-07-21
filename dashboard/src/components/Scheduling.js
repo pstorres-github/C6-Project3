@@ -13,12 +13,21 @@ import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
 import axios from 'axios'
 import { number } from 'yup/lib/locale'
-import { useContext } from 'react'
+import { useContext, useState, useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
+
+import FlightPlan from './FlightPlan.js'
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
 
+    const [waypoints, setWaypoints]=useState([])
+    //newWaypoints is passed from child component(FlightPlan) up to parent
+    function updateWaypoints (newWaypoints) {
+        setWaypoints(newWaypoints)
+    }
+    
+    
     return (
         <div>
             <Formik
@@ -66,6 +75,7 @@ function Scheduling(props) {
                                 clientEmail: authContext.email,
                                 customerName: authContext.username,
                                 customerID: authContext.userID,
+                                flight_plan: waypoints,
                                 status: 'Pending'
                             })
                             .then((response) => {
@@ -120,7 +130,8 @@ function Scheduling(props) {
                         </div>
                         <div>
                             <div className="grey">
-                                waypoints/map placeholder
+                               <FlightPlan updateWaypoints={updateWaypoints} mode="write"/>
+                               
                             </div>
                             <div className="grey">datepicker placeholder</div>
                             <div className="grey">
