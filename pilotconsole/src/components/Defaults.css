@@ -287,6 +287,10 @@ details {
     padding: 1rem;
 }
 
+.inline {
+    display: inline-block;
+}
+
 .visually-hidden {
     border-width: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
@@ -412,7 +416,7 @@ input {
 } */
 
 label {
-    font-size: var(--body);
+    font-size: var(--smaller);
     margin: var(--padding-tiny);
 
     /* position: relative; */
