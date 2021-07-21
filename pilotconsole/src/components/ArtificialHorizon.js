@@ -14,9 +14,16 @@ const ArtificialHorizon = () => {
     // degrees * something to pixel values
     // return transformed telemetry
 
-    let multiplier = 19.14
+    // OLD multiplier
+    // let multiplier = 19.14
+    // const pitchOffset = 2160 + telemetryContext.pitch * multiplier
 
-    const pitchOffset = 2160 + telemetryContext.pitch * multiplier
+    // VDR I've recalibrated the pitch to match an 85º max-angle
+    // and I've scaled the width of the pitch tape to better fit the
+    // window, which has effected the pitchOffset
+    let multiplier = 9.625
+    const pitchOffset = -785 + telemetryContext.pitch * multiplier
+
     const pitchPosition = {
         // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
         // backgroundPosition: 'calc(100%) 1620px' // this is muhammad's default window size
