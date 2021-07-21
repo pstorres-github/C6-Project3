@@ -1,11 +1,10 @@
-import AuthenticationContext from "../AuthenticationContext"
-import { useContext } from "react"
-import { useHistory } from "react-router-dom"
+import AuthenticationContext from '../AuthenticationContext'
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const Header = () => {
-
     const authContext = useContext(AuthenticationContext)
-    const history = useHistory() 
+    const history = useHistory()
 
     const logoutButton = () => {
         authContext.logout()
@@ -14,10 +13,18 @@ const Header = () => {
 
     return (
         <div>
-            { authContext.accountType && <button onClick={()=>{logoutButton()} } className="btn btn-primary"> Logout </button> }
+            {authContext.accountType && (
+                <button
+                    onClick={() => {
+                        logoutButton()
+                    }}
+                    className="btn btn-primary"
+                >
+                    Logout
+                </button>
+            )}
         </div>
     )
- 
 }
 
 export default Header
