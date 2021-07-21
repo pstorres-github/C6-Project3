@@ -50,14 +50,16 @@
     background: url('./assets/HUD_pitch-indicator.svg');
     background-size: 480px;
     /* background-position: 50%;  */
-    background-repeat: repeat-y;
+    /* background-repeat: repeat-y; */
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: -1;
     z-index: 1;
+    width: 480px;
+    height: 480px;
 
-    /* overflow: hidden; */
+    overflow: show;
     /* min-width: 100%;
     max-width: 100%; */
 }
