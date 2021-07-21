@@ -22,7 +22,7 @@ app.on('ready', () => {
             show: false,
             // width: 1366,
             // height: 768,
-            width: 1920,
+            width: 1900,
             height: 945,
             center: true,
             overflow: hidden,
@@ -67,7 +67,7 @@ app.on('activate', function () {
         const pilotConsoleWindow = new BrowserWindow({
             // width: 1366,
             // height: 768,
-            width: 1920,
+            width: 1900,
             height: 945,
             center: true,
             overflow: hidden,
