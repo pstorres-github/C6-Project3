@@ -56,7 +56,7 @@ const WorkOrdersByClient = ({newOrder}) => {
                                     </a>
                                 </div>
                                 <div>Flight Time: {flights.time}</div>
-                                <div>Flight Plan: {flights.flight_plan}</div>
+                                {/*<div>Flight Plan: {flights.flight_plan}</div>*/}
                                 <div>Flight Status: {flights.status}</div>
                                 <div>Job Number: {flights.jobNumber}</div>
                                 <div>Job Details: {flights.jobDetails}</div>

@@ -1,0 +1,20 @@
+
+.leaflet-container {
+    height: 500px;
+    width: 100%;
+    --button-standard-bg: none;
+  }
+
+.map-container {
+  background-color: rgb(192, 192, 192);
+}
+
+img {
+  border:none
+}
+
+.delete-button{
+  width: 30px;
+  height:30px;
+  border:none;
+}

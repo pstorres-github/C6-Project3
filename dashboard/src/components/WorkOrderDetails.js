@@ -2,12 +2,13 @@ import './WorkOrderDetails.css'
 
 import React, { useEffect, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
+import FlightPlan from './FlightPlan.js'
 
 const WorkOrderDetails = () => {
     const flightId = useParams().id
     console.log('flightId:', flightId)
 
-    const [userFlight, setUserFlight] = useState([])
+    const [userFlight, setUserFlight] = useState()
 
     useEffect(() => {
         const fetchFlight = async () => {
@@ -22,12 +23,15 @@ const WorkOrderDetails = () => {
             )
             let responseData = await flightById.json()
             // console.log("flightById:", flightById);
-            // console.log("responseData:", responseData);
+            //console.log("responseData:", responseData);
             setUserFlight(responseData.flight)
         }
         fetchFlight()
         // console.log("userFlight:", userFlight);
     }, [flightId])
+
+    if (!userFlight)
+        return null
 
     return (
         <div className="work-order-details">
@@ -35,7 +39,7 @@ const WorkOrderDetails = () => {
                 <div>Date: {userFlight.date} </div>
                 <div>Pilot: {userFlight.pilot}</div>
                 <div>Flight Time: {userFlight.time}</div>
-                <div>Flight Plan: {userFlight.flight_plan}</div>
+                <div>Flight Plan:  <FlightPlan mode="view" initialValues= {userFlight.flight_plan} updateWaypoints={()=>{}}/></div>
                 <div>Flight Data: {userFlight.flight_data}</div>
                 <div>Status: {userFlight.status}</div>
                 <div>
