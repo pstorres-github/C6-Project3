@@ -23,7 +23,7 @@ app.on('ready', () => {
             // width: 1366,
             // height: 768,
             width: 1900,
-            height: 945,
+            height: 950,
             center: true,
             overflow: hidden,
 
@@ -68,7 +68,7 @@ app.on('activate', function () {
             // width: 1366,
             // height: 768,
             width: 1900,
-            height: 945,
+            height: 950,
             center: true,
             overflow: hidden,
             webPreferences: {
