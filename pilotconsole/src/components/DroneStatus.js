@@ -23,17 +23,17 @@ const DroneStatus = ({ DroneConnection }) => {
         case 'Connected':
             // setConnectionIndicator('1')
             connectionStyle = { backgroundColor: `${colours.connected}` }
-            console.log('VDR Connection indicator: connected.')
+            // console.log('Connection indicator bullet: connected.')
             break
         case 'Disconnected':
             // setConnectionIndicator('0')
             connectionStyle = { backgroundColor: `${colours.disconnected}` }
-            console.log('VDR Connection indicator: disconnected.')
+            // console.log('Connection indicator bullet: disconnected.')
             break
         default:
             // setConnectionIndicator('x')
             connectionStyle = { backgroundColor: `${colours.alert}` }
-            console.log('VDR Connection indicator failed to initalize.')
+            console.log('Connection indicator bullet: failed to initalize.')
     }
 
     //Initial Connection

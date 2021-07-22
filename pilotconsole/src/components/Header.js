@@ -4,7 +4,6 @@ import { useContext } from "react"
 import { useHistory } from "react-router-dom"
 
 const Header = () => {
-
     const authContext = useContext(AuthenticationContext)
     const jobContext = useContext(JobDetailContext)
     const history = useHistory() 
@@ -19,7 +18,6 @@ const Header = () => {
 
         </div>
     )
- 
 }
 
 export default Header

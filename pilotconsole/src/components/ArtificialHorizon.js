@@ -14,9 +14,16 @@ const ArtificialHorizon = () => {
     // degrees * something to pixel values
     // return transformed telemetry
 
-    let multiplier = 19.14;
+    // OLD multiplier
+    // let multiplier = 19.14
+    // const pitchOffset = 2160 + telemetryContext.pitch * multiplier
 
-    const pitchOffset = 2160 + (telemetryContext.pitch * multiplier);
+    // VDR I've recalibrated the pitch to match an 85º max-angle
+    // and I've scaled the width of the pitch tape to better fit the
+    // window, which has effected the pitchOffset
+    let multiplier = 9.625
+    const pitchOffset = -785 + telemetryContext.pitch * multiplier
+
     const pitchPosition = {
         // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
         // backgroundPosition: 'calc(100%) 1620px' // this is muhammad's default window size
@@ -25,23 +32,20 @@ const ArtificialHorizon = () => {
     const pitchPosition2 = {
         backgroundPosition: `50%  ${pitchOffset}px`, // muhammad full screen
         transform: `rotate(${telemetryContext.roll}deg)`
-        }
+    }
 
     // -60 <= telemetryContext.roll && telemetryContext.roll <= 60
 
     useEffect(() => {
-
-        const AoB = document.getElementById("angle-of-bank-indicator")
+        const AoB = document.getElementById('angle-of-bank-indicator')
 
         if (-60 <= telemetryContext.roll && telemetryContext.roll <= 60) {
-            AoB.style.opacity = 1 
-            console.log("visible")
+            AoB.style.opacity = 1
+            // console.log('visible')
+        } else {
+            AoB.style.opacity = 0
+            // console.log('invisible')
         }
-        else {
-            AoB.style.opacity = 0 
-            console.log("invisible")
-        }
-
     }, [telemetryContext])
 
     const bankRotation = {
@@ -72,10 +76,14 @@ const ArtificialHorizon = () => {
             </div> */}
             {/* <div className="pitch-indicator" style={bankRotation && pitchPosition}> */}
             <div className="pitch-indicator" style={pitchPosition2}>
-                {/* spacer */}
+                &nbsp;
             </div>
 
-            <div className="angle-of-bank-indicator" id="angle-of-bank-indicator" style={bankRotation}>
+            <div
+                className="angle-of-bank-indicator"
+                id="angle-of-bank-indicator"
+                style={bankRotation}
+            >
                 <div id="angle-of-bank-indicator-visibility">
                     <img
                         src="./assets/HUD_angle-of-bank-indicator.svg"

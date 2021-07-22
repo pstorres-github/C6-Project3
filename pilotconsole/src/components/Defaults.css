@@ -142,7 +142,11 @@ acronym {
     --button-cancel-text-hover: ghostwhite;
 
     /*  ||| Colour definitions */
-    --ghost: ghostwhite;
+    /* --ghost: #f6f6f6; */
+    --white: white;
+    --ghost: hsla(0, 0%, 97.3%, 1);
+    --shadow: hsla(0, 0%, 13.7%, 1);
+    --black: black;
     --primary: black;
     --secondary: black;
     --highlight: black;
@@ -287,6 +291,10 @@ details {
     padding: 1rem;
 }
 
+.inline {
+    display: inline-block;
+}
+
 .visually-hidden {
     border-width: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
@@ -412,7 +420,7 @@ input {
 } */
 
 label {
-    font-size: var(--body);
+    font-size: var(--smaller);
     margin: var(--padding-tiny);
 
     /* position: relative; */

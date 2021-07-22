@@ -22,9 +22,11 @@ app.on('ready', () => {
             show: false,
             // width: 1366,
             // height: 768,
-            width: 1920,
-            height: 1200,
+            width: 1900,
+            height: 950,
             center: true,
+            overflow: hidden,
+
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: false,
@@ -63,9 +65,12 @@ app.on('activate', function () {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
         const pilotConsoleWindow = new BrowserWindow({
-            width: 1366,
-            height: 768,
+            // width: 1366,
+            // height: 768,
+            width: 1900,
+            height: 950,
             center: true,
+            overflow: hidden,
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: false,

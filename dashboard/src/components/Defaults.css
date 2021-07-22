@@ -147,7 +147,11 @@ acronym {
     --button-cancel-text-hover: ghostwhite;
 
     /*  ||| Colour definitions */
-    --ghost: ghostwhite;
+    /* --ghost: #f6f6f6; */
+    --white: white;
+    --ghost: hsla(0, 0%, 97.3%, 1);
+    --shadow: hsla(0, 0%, 13.7%, 1);
+    --black: black;
     --primary: black;
     --secondary: black;
     --highlight: black;

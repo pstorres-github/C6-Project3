@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react"
+import RangeSlider from 'react-bootstrap-range-slider'
+import "bootstrap/dist/css/bootstrap.css"
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
 
 const FlightControls = ({ DroneConnection }) => {
 
-    const [controlSensitivity, setControlSensitivity] = useState(20) // Range 20-500 cm
-    const [rotationSensitivity, setRotationSensitivity] = useState(5) // Range 1-3600 degrees
-    const [speedSetting, setSpeedSetting] = useState(10) // Range 10-100 cm/s
+    const [controlSensitivity, setControlSensitivity] = useState(20)
+    const [rotationSensitivity, setRotationSensitivity] = useState(5)
+    const [speedSetting, setSpeedSetting] = useState(10)
 
     const droneIP = '192.168.10.1'
     const commandPORT = 8889
@@ -32,6 +35,39 @@ const FlightControls = ({ DroneConnection }) => {
 
     return (
         <div>
+            <p>
+                Control Sensitivity
+                <RangeSlider
+                    min={20}
+                    max={500}
+                    variant={'secondary'}
+                    value={controlSensitivity}
+                    onChange={changeEvent => setControlSensitivity(changeEvent.target.value)}
+                />
+            </p>
+            <p>
+                Rotation Sensitivity
+                <RangeSlider
+                    min={1}
+                    max={3600}
+                    variant={'secondary'}
+                    value={rotationSensitivity}
+                    onChange={changeEvent => setRotationSensitivity(changeEvent.target.value)}
+                />
+            </p>
+            <p>
+                Speed Setting
+                <button onClick={() => sendCommand('speed ' + speedSetting)}>
+                    Set Speed {speedSetting}
+                </button>
+                <RangeSlider
+                    min={10}
+                    max={100}
+                    variant={'secondary'}
+                    value={speedSetting}
+                    onChange={changeEvent => setSpeedSetting(changeEvent.target.value)}
+                />
+            </p>
             <div className="takeoffButton">
                 <button onClick={() => sendCommand('takeoff')}>
                     Take off
@@ -80,11 +116,6 @@ const FlightControls = ({ DroneConnection }) => {
             <div className="backButton">
                 <button onClick={() => sendCommand('back ' + controlSensitivity)}>
                     Back
-                </button>
-            </div>
-            <div className="speedButton">
-                <button onClick={() => sendCommand('speed ' + speedSetting)}>
-                    Set Speed - Hardcoded at 10 cm/s
                 </button>
             </div>
             <div className="streamOnButton">

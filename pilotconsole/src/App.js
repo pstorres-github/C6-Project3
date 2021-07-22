@@ -1,9 +1,18 @@
-import React, {useContext} from 'react'
-import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import './App.css'
 
+import React, { useContext } from 'react'
+import {
+    Redirect,
+    Route,
+    BrowserRouter as Router,
+    Switch
+} from 'react-router-dom'
+
+import AuthenticationContext from './AuthenticationContext'
+import AuthenticationProvider from './AuthenticationProvider'
 import Homepage from './pages/Homepage'
 import PilotConsole from './pages/PilotConsole'
+<<<<<<< HEAD
 import PilotJobs from './pages/PilotJobs'
 
 import Header from './components/Header'
@@ -13,6 +22,8 @@ import AuthenticationProvider from './AuthenticationProvider'
 import AuthenticationContext from "./AuthenticationContext"
 import JobDetailProvider from './JobDetailProvider'
 
+=======
+>>>>>>> 679cb3b864a82d38538fbd60a65a1bb4bfa51447
 import TelemetryProvider from './TelemetryProvider'
 
 // Import Electron/Node Items
@@ -32,6 +43,7 @@ const DroneVideoFeed = dgram.createSocket('udp4')
 DroneVideoFeed.bind(11111)
 
 function App() {
+<<<<<<< HEAD
 
   return (
 
@@ -66,22 +78,55 @@ function App() {
 
 
   )
+=======
+    return (
+        <TelemetryProvider>
+            <AuthenticationProvider>
+                <Router>
+                    <div className="app-content">
+                        <Switch>
+                            <Route exact path="/" render={() => <Homepage />} />
+
+                            {/* Private path for pilot console.  If using guest account, logged in as guest */}
+                            {/* <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute> */}
+                            <Route
+                                exact
+                                path="/pilotconsole"
+                                render={() => (
+                                    <PilotConsole
+                                        DroneConnection={DroneConnection}
+                                        DroneState={DroneState}
+                                        DroneVideoFeed={DroneVideoFeed}
+                                    />
+                                )}
+                            />
+                        </Switch>
+                    </div>
+                </Router>
+            </AuthenticationProvider>
+        </TelemetryProvider>
+    )
+>>>>>>> 679cb3b864a82d38538fbd60a65a1bb4bfa51447
 }
 
 // route wrapper.  Only allow access to PrivateRoutes if user is logged in
 function PrivateRoute({ children, ...rest }) {
-
-  const authContext = useContext(AuthenticationContext)
-  console.log("authentication", authContext.email)
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        authContext.email ? (children) : (<Redirect to={{ pathname: "/", state: { from: location } }} />)
-      }
-    />
-  );
+    const authContext = useContext(AuthenticationContext)
+    console.log('authentication', authContext.email)
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                authContext.email ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{ pathname: '/', state: { from: location } }}
+                    />
+                )
+            }
+        />
+    )
 }
 
-
-export default App;
+export default App
