@@ -41,10 +41,10 @@ const ArtificialHorizon = () => {
 
         if (-60 <= telemetryContext.roll && telemetryContext.roll <= 60) {
             AoB.style.opacity = 1
-            console.log('visible')
+            // console.log('visible')
         } else {
             AoB.style.opacity = 0
-            console.log('invisible')
+            // console.log('invisible')
         }
     }, [telemetryContext])
 
