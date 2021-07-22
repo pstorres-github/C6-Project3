@@ -14,7 +14,6 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
 
     if (markers.length !== 0) {
         defaultCenter.current = [markers[0].lat, markers[0].lng]
-        console.log(defaultCenter)
     }
 
     useEffect(()=>{
@@ -42,20 +41,20 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
       });   
 
     function addMarker(e) {
-        setMarkers ([...markers,e.latlng], ()=>updateWaypoints(markers))
+        setMarkers ([...markers,e.latlng])
     }
     
     // if markers are dragged to another location, update the marker array with the new coordinates
     function updateMarker(e) {
         let updatedMarkers = [...markers]
         updatedMarkers[e.target.options.markerIndex]=e.target._latlng
-        setMarkers (updatedMarkers, ()=>updateWaypoints(markers))
+        setMarkers (updatedMarkers)
     }
 
     function deleteMarker(index) {
         let updatedMarkers = [...markers]
         updatedMarkers.splice(index,1)
-        setMarkers (updatedMarkers, ()=>updateWaypoints(markers))
+        setMarkers (updatedMarkers)
     }
 
     //allows user to reset and clear all markers
