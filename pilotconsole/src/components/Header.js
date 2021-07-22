@@ -1,20 +1,22 @@
 import AuthenticationContext from "../AuthenticationContext"
+import JobDetailContext from '../JobDetailContext'
 import { useContext } from "react"
 import { useHistory } from "react-router-dom"
 
 const Header = () => {
 
     const authContext = useContext(AuthenticationContext)
+    const jobContext = useContext(JobDetailContext)
     const history = useHistory() 
-
-    const logoutButton = () => {
-        authContext.logout()
-        history.push('/')
-    }
 
     return (
         <div>
-            { authContext.accountType && <button onClick={()=>{logoutButton()} } className="btn btn-primary"> Logout </button> }
+            { !authContext.userID && <button onClick={()=>{history.push('/') }} className="btn btn-primary"> Sign-in </button> }
+             <button onClick={()=>{history.push('/pilotConsole') }} className="btn btn-primary"> Pilot Console </button> 
+            
+            { authContext.userID && <button onClick={()=>{history.push('/pilotjobs')} } className="btn btn-primary"> Load/View Pilot Jobs </button> }
+            { authContext.userID && <button onClick={()=>{authContext.logout(); jobContext.clearJob(); history.push('/')} } className="btn btn-primary"> Logout </button> }
+
         </div>
     )
  

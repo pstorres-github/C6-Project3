@@ -4,9 +4,15 @@ import './App.css'
 
 import Homepage from './pages/Homepage'
 import PilotConsole from './pages/PilotConsole'
+import PilotJobs from './pages/PilotJobs'
+
 import Header from './components/Header'
+
+
 import AuthenticationProvider from './AuthenticationProvider'
 import AuthenticationContext from "./AuthenticationContext"
+import JobDetailProvider from './JobDetailProvider'
+
 import TelemetryProvider from './TelemetryProvider'
 
 // Import Electron/Node Items
@@ -30,7 +36,8 @@ function App() {
   return (
 
     <TelemetryProvider>
-      <AuthenticationProvider>
+    <AuthenticationProvider>
+    <JobDetailProvider>
 
         <Router>
 
@@ -45,13 +52,16 @@ function App() {
               {/* Private path for pilot console.  If using guest account, logged in as guest */}
               {/* <PrivateRoute exact path='/pilotconsole'> <PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} /> </PrivateRoute> */}
               <Route exact path='/pilotconsole' render={() => (<PilotConsole DroneConnection={DroneConnection} DroneState={DroneState} DroneVideoFeed={DroneVideoFeed} />)} />
-
+              <Route exact path='/pilotjobs' render={() => (<PilotJobs />)} />
             </Switch>
           </div>
 
         </Router>
-      </AuthenticationProvider>
+    
+    </JobDetailProvider>
+    </AuthenticationProvider>
     </TelemetryProvider>
+
 
 
 

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react"
-import { Map, TileLayer, Marker, Polyline } from "react-leaflet";
+import { Map, TileLayer, Marker, Polyline, Tooltip } from "react-leaflet";
 import localforage from "localforage";
 import 'leaflet-offline'
 import L from 'leaflet'
@@ -8,6 +8,8 @@ import { Formik, Field, Form, ErrorMessage} from "formik"
 import * as Yup from "yup"
 import "bootstrap/dist/css/bootstrap.css"
 import TelemetryContext from "../TelemetryContext"
+import JobDetailContext from '../JobDetailContext'
+import iconMarker from './assets/pin.png' 
 import './FlightMap.css'
 
 // Drone needs to be faced north intially
@@ -16,10 +18,9 @@ import './FlightMap.css'
 // Right is +Y speed (East)
 // Left is -Y speed (West)
 
-
-
 const FlightMap = () => {
 
+    const jobContext = useContext(JobDetailContext)    
     const telemetryContext = useContext(TelemetryContext)
     // reference variables (do not cause re-render)
     let initialLat = useRef(0)
@@ -47,20 +48,37 @@ const FlightMap = () => {
     currentXSpeed.current = telemetryContext.speedX
     currentYSpeed.current = telemetryContext.speedY
 
+    const [map, setMap] = useState()
 
     useEffect(()=>{
+        if (map) { 
+            L.tileLayer.offline("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", localforage,
+            {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abc',
+            minZoom: 15,
+            maxZoom: 22,
+            crossOrigin: true
+            }).addTo(map);
+        }
+      },[map])
 
-        let map = L.map('mapid')
-        const offlineLayer = L.tileLayer.offline("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", localforage,
-        {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        subdomains: 'abc',
-        minZoom: 15,
-        maxZoom: 22,
-        crossOrigin: true
-        });
-        offlineLayer.addTo(map);
-      },[])
+      useEffect(()=>{
+        if (jobContext.flightPlan.length!==0) {
+            //setCenterLat(jobContext.flightPlan[0].lat)    
+            //setCenterLng(jobContext.flightPlan[0].lng)    
+            updateStartCoordinates(jobContext.flightPlan[0].lat,jobContext.flightPlan[0].lng)
+        }       
+            
+      },[jobContext.flightPlan.length])
+      
 
+    // set up custom 'pin' type marker for flight path
+    const markerIcon = L.icon({
+        iconSize: [30, 30],
+        //iconAnchor: [10, 41],
+        //popupAnchor: [2, -40],
+        iconUrl: iconMarker,
+        }); 
 
 
     // updates the positionLat, positionLong from input fields in formik form or getStartCoordinatesfromGoogle
@@ -139,13 +157,9 @@ const FlightMap = () => {
      
     }
 
-    const mapStyles = {        
-        height: "300px",
-        width: "100%"
-    }
-      
+     
     const defaultCenter = [Number(centerLat), Number(centerLng)]
-    
+   
       
     function startRecording () 
     {
@@ -197,13 +211,13 @@ const FlightMap = () => {
                         <Form className = "form-initial-location">
                             <div className = "form-group">
                             <div className="col-md">
-                                    <label htmlFor="latitude">Enter starting latitude coordinate in degrees</label>
+                                    <label htmlFor="latitude">Update starting latitude coordinate in degrees</label>
                                     <Field  
                                         type="text"
                                         name ="latitude"
                                         placeholder="Enter latitude coordinate in degrees"
                                         className={`form-control ${touched.latitude && errors.latitude ? "is-invalid" :""}`}
-                                    />
+                                                                           />
                                     <ErrorMessage
                                         component="div"
                                         name="latitude"
@@ -214,7 +228,7 @@ const FlightMap = () => {
         
                             <div className = "form-group">
                                 <div className="col-md">
-                                    <label htmlFor="longitude">Enter starting longitude coordinate in degrees:</label>
+                                    <label htmlFor="longitude">Update starting longitude coordinate in degrees:</label>
                                     <Field  
                                         type="text"
                                         name ="longitude"
@@ -251,14 +265,25 @@ const FlightMap = () => {
                   
             <div id ="mapid">
 
-            <Map center={defaultCenter} zoom={13} scrollWheelZoom={true}>
+            <Map center={defaultCenter} zoom={13} scrollWheelZoom={true} whenCreated={map=>setMap(map)}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker key={'start'} position={defaultCenter}/>
+            <Marker key={'start'} position={defaultCenter}>
+                <Tooltip> Starting Position <br/> Lat: {initialLat.current}), Lng: {initialLng.current}</Tooltip>
+            </Marker>
             
             <Polyline positions={coordinates} color={'red'}/>
+
+
+            {/* if view mode, do not allow updates to map. */}
+            {  jobContext.flightPlan && 
+               jobContext.flightPlan.map((markers,index)=>
+                    <Marker icon={markerIcon} markerIndex={index} key={index} position={[Number(markers.lat),Number(markers.lng)]}>   
+                        <Tooltip> Location {index+1} <br/> Lat: {markers.lat}), Lng: {markers.lng}</Tooltip>
+                    </Marker>
+            )}
             
             </Map>
 

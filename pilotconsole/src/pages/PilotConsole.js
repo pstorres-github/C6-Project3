@@ -1,7 +1,8 @@
 import './PilotConsole.css'
-
+import React, { useContext} from 'react'
 import ArtificialHorizon from '../components/ArtificialHorizon'
-// import AuthenticationContext from '../AuthenticationContext'
+import AuthenticationContext from '../AuthenticationContext'
+import JobDetailContext from '../JobDetailContext'
 // Pilot Console Components
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
@@ -12,10 +13,15 @@ import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
 
+    const authContext = useContext(AuthenticationContext)
+    const jobContext = useContext(JobDetailContext)
+    
     return (
         <div className="console-container">
             <div className="console-user-info">
-                Welcome: Guest Pilot
+                Welcome: {authContext.username} 
+                {authContext.username!=="Guest Pilot"}
+                {jobContext.activeJob ? <> | Job Number Loaded: {jobContext.activeJob}</> : <> | No job currently loaded</>}
             </div>
 
             <div className="console-horizon">
