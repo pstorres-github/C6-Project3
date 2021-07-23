@@ -212,6 +212,7 @@ acronym {
 /*  ||| Basic definitions */
 p {
     /* padding-block-end: 1.125rem; */
+    margin: 0 !important;
 }
 
 em {
