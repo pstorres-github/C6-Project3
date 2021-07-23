@@ -4,30 +4,28 @@ import './WorkOrdersByClient'
 import * as Yup from 'yup'
 
 import { Form, Formik, useField } from 'formik'
+import { useCallback, useContext, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 // import './Scheduling.css'
 import Checkbox from './Forms/Checkbox'
+import FlightPlan from './FlightPlan.js'
 import Select from './Forms/Select'
 import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
 import axios from 'axios'
 import { number } from 'yup/lib/locale'
-import { useContext, useState, useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
-
-import FlightPlan from './FlightPlan.js'
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
 
-    const [waypoints, setWaypoints]=useState([])
+    const [waypoints, setWaypoints] = useState([])
     //newWaypoints is passed from child component(FlightPlan) up to parent
-    function updateWaypoints (newWaypoints) {
+    function updateWaypoints(newWaypoints) {
         setWaypoints(newWaypoints)
     }
-    
-    
+
     return (
         <div>
             <Formik
@@ -130,13 +128,16 @@ function Scheduling(props) {
                         </div>
                         <div>
                             <div className="grey">
-                               <FlightPlan updateWaypoints={updateWaypoints} mode="write"/>
-                               
+                                <FlightPlan
+                                    updateWaypoints={updateWaypoints}
+                                    mode="write"
+                                />
                             </div>
-                            <div className="grey">datepicker placeholder</div>
+                            {/* VDR hidden for demo day */}
+                            {/* <div className="grey">datepicker placeholder</div>
                             <div className="grey">
                                 start/end time requests range placeholder
-                            </div>
+                            </div> */}
                         </div>
                         {/* <div>
                             <Select label="Dropdown List:" name="dropdownList">
