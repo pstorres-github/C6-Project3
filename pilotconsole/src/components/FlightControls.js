@@ -84,11 +84,11 @@ const FlightControls = ({ DroneConnection }) => {
                 sendCommand('back ' + controlSensitivity)
                 e.onkeydown = ghostHover('back-button')
                 e.preventDefault()
-            } else if (e.key === 'q') {
+            } else if (e.key === 'e') {
                 sendCommand('ccw ' + rotationSensitivity)
                 e.onkeydown = ghostHover('ccw-button')
                 e.preventDefault()
-            } else if (e.key === 'e') {
+            } else if (e.key === 'q') {
                 sendCommand('cw ' + rotationSensitivity)
                 e.onkeydown = ghostHover('cw-button')
                 e.preventDefault()
