@@ -111,7 +111,7 @@ function Scheduling(props) {
                     <Form>
                         <div>
                             <TextInput
-                                label="Job name:"
+                                label="Job name: &nbsp;"
                                 placeholder="Job name"
                                 name="jobTitle"
                                 type="text"
@@ -120,7 +120,7 @@ function Scheduling(props) {
                         <div>
                             {/* <div className="half-right"> */}
                             <TextInput
-                                label="Job number:"
+                                label="Job number: &nbsp;"
                                 placeholder="Job number"
                                 name="jobNumber"
                                 type="text"
@@ -129,7 +129,7 @@ function Scheduling(props) {
                         <div>
                             {/* <div className="half-right"> */}
                             <TextInput
-                                label="Client contact number:"
+                                label="Client contact number: &nbsp;"
                                 placeholder="Phone number"
                                 name="clientContact"
                                 type="text"
@@ -137,7 +137,7 @@ function Scheduling(props) {
                         </div>
                         <div>
                             <TextArea
-                                label="Job details:"
+                                label="Job details: &nbsp;"
                                 placeholder="Job details"
                                 name="jobDetails"
                                 rows="4"

@@ -20,11 +20,13 @@ const Workorders = () => {
     }
 
     return (
-        <div>
+        <div className="customer-container">
             <div className="header">
-                <p> Welcome: {authContext.username}</p>
-                <p> Email: {authContext.email} </p>
-                <p> Account Type: {authContext.accountType} </p>
+                <div className="welcome-bar">
+                    <p> Welcome: {authContext.username}</p>
+                    <p> Email: {authContext.email} </p>
+                    <p> Account Type: {authContext.accountType} </p>
+                </div>
             </div>
 
             {/* VDR hidden for demo day */}
@@ -33,13 +35,16 @@ const Workorders = () => {
                 <DemoText />
             </div> */}
 
-            <div>
-                <Scheduling newJobAdded={statusUpdated} />
+            <div className="app-content-left">
+                <div>
+                    <Scheduling newJobAdded={statusUpdated} />
+                </div>
             </div>
-
-            <div>
-                <h3>Work Order List</h3>
-                <WorkOrdersByClient newOrder={jobStatusUpdated} />
+            <div className="app-content-right">
+                <div>
+                    <h3>Work Order List</h3>
+                    <WorkOrdersByClient newOrder={jobStatusUpdated} />
+                </div>
             </div>
         </div>
     )
