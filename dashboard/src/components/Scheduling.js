@@ -4,7 +4,7 @@ import './WorkOrdersByClient'
 import * as Yup from 'yup'
 
 import { Form, Formik, useField } from 'formik'
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 // import './Scheduling.css'
@@ -15,10 +15,7 @@ import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
 import axios from 'axios'
 import { number } from 'yup/lib/locale'
-import { useContext, useState, useCallback, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-
-import FlightPlan from './FlightPlan.js'
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
