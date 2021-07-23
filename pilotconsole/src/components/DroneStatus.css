@@ -17,11 +17,10 @@
     vertical-align: baseline;
 
     background-color: var(--status);
-    width: 0.85rem;
-    height: 0.85rem;
-    border-radius: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 100%;
     position: relative;
-    top: 1.25px;
 }
 
 .connected {
