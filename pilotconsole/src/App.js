@@ -10,7 +10,6 @@ import {
 
 import AuthenticationContext from './AuthenticationContext'
 import AuthenticationProvider from './AuthenticationProvider'
-// import Header from './components/Header'
 import Homepage from './pages/Homepage'
 import JobDetailProvider from './JobDetailProvider'
 import PilotConsole from './pages/PilotConsole'
@@ -39,10 +38,6 @@ function App() {
             <AuthenticationProvider>
                 <JobDetailProvider>
                     <Router>
-                        {/* <div className='app-header'>
-            <Header />
-          </div> */}
-
                         <div className="app-content">
                             <Switch>
                                 <Route
