@@ -6,17 +6,15 @@ import ArtificialHorizon from '../components/ArtificialHorizon'
 import DroneStatus from '../components/DroneStatus'
 import FlightControls from '../components/FlightControls'
 import FlightMap from '../components/FlightMap_Leaflet'
+import Header from '../components/Header'
 import Orientation from '../components/Orientation'
 import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
-
     return (
         <div className="console-container">
-            <div className="console-user-info">
-                Welcome: Guest Pilot
-            </div>
+            <div className="console-user-info">Welcome: Guest Pilot</div>
 
             <div className="console-horizon">
                 <ArtificialHorizon />
@@ -27,7 +25,6 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div>
 
             <div className="console-orientation">
-                Drone 3D Orientation
                 <Orientation />
             </div>
 
@@ -47,7 +44,22 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 <FlightControls DroneConnection={DroneConnection} />
             </div>
 
-            <div className="console-flight-time">Drone Flight Time</div>
+            <div className="console-things-that-are-not-graphs">
+                {/* VDR This is jsut something I put here until we have
+                things that are not graphs */}
+                Notes:
+                <textarea id="notes" className="small-text quiet notes">
+                    Calgary: 51.0447ºN, -114.0719ºW
+                </textarea>
+                {/* <span className="small-text quiet"></span> */}
+            </div>
+
+            {/* <div className="console-app-header">
+                <Header />
+                <p>TBD: app header content</p>
+            </div> */}
+
+            {/* <div className="console-flight-time">Drone Flight Time</div> */}
         </div>
     )
 }
