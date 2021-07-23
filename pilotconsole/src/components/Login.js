@@ -31,15 +31,20 @@ const Login = () => {
                     // on submission of form, set the values to be sent to login function
                     // if login fails, will ask user to try again
                     try {
-                        let loginStatus = await authContext.login(values.email, values.password)
+                        let loginStatus = await authContext.login(
+                            values.email,
+                            values.password
+                        )
                         console.log(loginStatus)
-                        if (loginStatus)
-                            history.push('/pilotconsole')
+                        if (loginStatus) history.push('/pilotconsole')
                         else
-                            setLoginError('Invalid e-mail or password.  Please try again')
-                    } 
-                    catch {
-                            setLoginError('Invalid e-mail or password.  Please try again')
+                            setLoginError(
+                                'Invalid e-mail or password.  Please try again'
+                            )
+                    } catch {
+                        setLoginError(
+                            'Invalid e-mail or password.  Please try again'
+                        )
                     }
                     console.log(loginError)
                 }}
@@ -48,7 +53,7 @@ const Login = () => {
                 {({ errors, touched }) => (
                     <Form>
                         <div className="form-group">
-                            <div class="col-md">
+                            <div class="">
                                 <label htmlFor="e-mail">Email Address</label>
                                 <Field
                                     type="email"
@@ -69,7 +74,7 @@ const Login = () => {
                         </div>
 
                         <div className="form-group">
-                            <div class="col-md">
+                            <div class="">
                                 <label htmlFor="password">Password</label>
                                 <Field
                                     type="password"

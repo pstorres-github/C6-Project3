@@ -1,17 +1,30 @@
 .grid-container {
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    display: grid;
+    grid-template-columns: 16.5% 1fr 1fr 16.5%;
+    grid-template-rows: 2.5vh 45vh max-content 2.5vh;
 }
 
 .header {
     grid-column: span 5;
-    grid-row:1;
+    grid-row: 1;
+    text-align: center;
+}
+
+.section-hero {
+    grid-column: span 4;
+    grid-row: 2;
     text-align: center;
 }
 
 .section-login {
-    grid-row:2;
-    grid-column:2;
+    background-color: var(--ghost);
+    margin: 1rem;
+    padding: 1rem;
+
+    border-radius: var(--border-radius-small);
+
+    grid-row: 3;
+    grid-column-start: 2;
+    grid-column-end: 4;
     text-align: center;
 }

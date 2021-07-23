@@ -1,10 +1,12 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
 // import "bootstrap/dist/css/bootstrap.css"
 import './Login-Register.css'
 
-import AuthenticationContext from '../AuthenticationContext'
+import * as Yup from 'yup'
+
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { useContext, useState } from 'react'
+
+import AuthenticationContext from '../AuthenticationContext'
 import { useHistory } from 'react-router-dom'
 
 const Login = () => {
@@ -44,7 +46,9 @@ const Login = () => {
                     <Form className="form-login-register">
                         <div className="form-group">
                             <div className="col-md">
-                                <label htmlFor="e-mail">Email Address</label>
+                                <label htmlFor="e-mail">
+                                    Email Address&nbsp;&nbsp;
+                                </label>
                                 <Field
                                     type="email"
                                     name="email"
@@ -65,7 +69,9 @@ const Login = () => {
 
                         <div className="form-group">
                             <div className="col-md">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">
+                                    Password&nbsp;&nbsp;
+                                </label>
                                 <Field
                                     type="password"
                                     name="password"
