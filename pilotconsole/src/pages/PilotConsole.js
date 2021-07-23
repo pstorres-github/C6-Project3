@@ -15,16 +15,23 @@ import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
-
     const authContext = useContext(AuthenticationContext)
     const jobContext = useContext(JobDetailContext)
-    
+
     return (
         <div className="console-container">
+            <div className="console-app-header">
+                <Header />
+            </div>
+
             <div className="console-user-info">
-                Welcome: {authContext.username} 
-                {authContext.username!=="Guest Pilot"}
-                {jobContext.activeJob ? <> | Job Number Loaded: {jobContext.activeJob}</> : <> | No job currently loaded</>}
+                Welcome: {authContext.username}
+                {authContext.username !== 'Guest Pilot'}
+                {jobContext.activeJob ? (
+                    <> | Job: {jobContext.activeJob}</>
+                ) : (
+                    <> | No job loaded</>
+                )}
             </div>
 
             <div className="console-horizon">

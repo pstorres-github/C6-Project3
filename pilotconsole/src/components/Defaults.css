@@ -504,6 +504,14 @@ button:hover {
     color: var(--button-standard-text-hover);
 }
 
+button.small-button {
+    margin: 0;
+    margin-right: 0.25rem;
+    padding: 0.25rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+}
+
 .featured {
     background-color: blue;
 }
