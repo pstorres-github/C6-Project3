@@ -22,14 +22,16 @@ const Workorders = () => {
     return (
         <div>
             <div className="header">
-                <h1> Welcome: {authContext.username}</h1>
+                <p> Welcome: {authContext.username}</p>
                 <p> Email: {authContext.email} </p>
                 <p> Account Type: {authContext.accountType} </p>
             </div>
 
-            <div>
+            {/* VDR hidden for demo day */}
+            {/* Not needed for now */}
+            {/* <div>
                 <DemoText />
-            </div>
+            </div> */}
 
             <div>
                 <Scheduling newJobAdded={statusUpdated} />
