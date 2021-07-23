@@ -2,6 +2,7 @@ import './WorkOrderDetails.css'
 
 import React, { useEffect, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
+
 import FlightPlan from './FlightPlan.js'
 
 const WorkOrderDetails = () => {
@@ -30,16 +31,22 @@ const WorkOrderDetails = () => {
         // console.log("userFlight:", userFlight);
     }, [flightId])
 
-    if (!userFlight)
-        return null
+    if (!userFlight) return null
 
     return (
         <div className="work-order-details">
-            <div>
+            <div className="app-content-right">
                 <div>Date: {userFlight.date} </div>
                 <div>Pilot: {userFlight.pilot}</div>
                 <div>Flight Time: {userFlight.time}</div>
-                <div>Flight Plan:  <FlightPlan mode="view" initialValues= {userFlight.flight_plan} updateWaypoints={()=>{}}/></div>
+                <div>
+                    Flight Plan:{' '}
+                    <FlightPlan
+                        mode="view"
+                        initialValues={userFlight.flight_plan}
+                        updateWaypoints={() => {}}
+                    />
+                </div>
                 <div>Flight Data: {userFlight.flight_data}</div>
                 <div>Status: {userFlight.status}</div>
                 <div>
