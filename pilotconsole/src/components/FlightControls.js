@@ -168,6 +168,7 @@ const FlightControls = ({ DroneConnection }) => {
                         <p className="small">
                             Speed Setting &nbsp;&nbsp;
                             <button
+                                className="small-button"
                                 onClick={() =>
                                     sendCommand('speed ' + speedSetting)
                                 }

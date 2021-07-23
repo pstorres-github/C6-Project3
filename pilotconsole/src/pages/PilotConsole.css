@@ -122,3 +122,11 @@ button:hover {
     grid-column-start: 4;
     grid-column-end: 5;
 }
+
+.range-slider__wrap {
+    height: calc(1em + 0.75rem + 2px) !important;
+}
+
+input[type='range'].range-slider {
+    height: 2rem !important;
+}
