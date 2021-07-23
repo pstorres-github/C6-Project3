@@ -1,4 +1,58 @@
-.leaflet-container {
-    height: 400px;
+@import './Defaults.css';
+
+.menu-container {
+    background-color: var(--ghost);
     width: 100%;
-  }
+    /* height: 2.5vh; */
+    height: 100%;
+    margin: 0rem;
+    padding: var(--padding);
+    border-radius: var(--border-radius-small);
+}
+
+/* VDR This is a bit of a dunce move,
+but we're up against time
+refactor this later */
+.spacer {
+    width: 7.5rem;
+}
+
+/* VDR Also the height of the map is borked
+by this vh reading. refactor this later. */
+.leaflet-container {
+    height: 28vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+position-map {
+    /* background-color: var(--identify-me); */
+    /* padding-top: var(padding); */
+}
+
+.lat-long {
+    /* background-color: var(--identify-me); */
+}
+.form-container {
+    margin: 0;
+    padding: 0;
+    padding-top: var(padding-tiny);
+    /* background-color: var(--identify-me); */
+}
+.recording-container {
+    padding-top: var(padding-tiny);
+    /* background-color: var(--identify-me); */
+}
+
+.form-item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-right: var(--padding-tiny);
+    padding-right: var(--padding-tiny);
+}
+
+.map-button {
+    padding-left: var(--padding-tiny);
+    /* border: 4px solid red; */
+}
