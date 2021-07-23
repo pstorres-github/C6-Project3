@@ -17,7 +17,7 @@ const AuthenticationProvider = ({ children }) => {
                 setUsername(data.username)
                 setEmail(data.email)
                 setAccountType(data.account_type)
-                setUserID(data.userID)
+                setUserID(data._id)
         }
         console.log("reconnected", data)
         setLoading(false)
@@ -43,7 +43,7 @@ const AuthenticationProvider = ({ children }) => {
                 setUsername(loggedInUser.data.username)
                 setEmail(loggedInUser.data.email)
                 setAccountType(loggedInUser.data.account_type)
-                setUserID(loggedInUser.data.userID)
+                setUserID(loggedInUser.data._id)
                 return true
             } else {
                 //log in failed

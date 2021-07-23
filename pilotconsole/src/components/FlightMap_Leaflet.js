@@ -1,4 +1,15 @@
+import React, { useState, useContext, useRef, useEffect } from 'react'
+import { Map, TileLayer, Marker, Polyline, Tooltip } from 'react-leaflet'
+import localforage from 'localforage'
 import 'leaflet-offline'
+import L from 'leaflet'
+
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+// import "bootstrap/dist/css/bootstrap.css"
+import TelemetryContext from '../TelemetryContext'
+import JobDetailContext from '../JobDetailContext'
+import iconMarker from './assets/pin.png'
 import './FlightMap.css'
 
 import * as Yup from 'yup'
@@ -19,6 +30,7 @@ import localforage from 'localforage'
 // Left is -Y speed (West)
 
 const FlightMap = () => {
+    const jobContext = useContext(JobDetailContext)
     const telemetryContext = useContext(TelemetryContext)
     // reference variables (do not cause re-render)
     let initialLat = useRef(0)
@@ -50,22 +62,45 @@ const FlightMap = () => {
     currentXSpeed.current = telemetryContext.speedX
     currentYSpeed.current = telemetryContext.speedY
 
+    const [map, setMap] = useState()
+
     useEffect(() => {
-        let map = L.map('mapid')
-        const offlineLayer = L.tileLayer.offline(
-            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            localforage,
-            {
-                attribution:
-                    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                subdomains: 'abc',
-                minZoom: 15,
-                maxZoom: 22,
-                crossOrigin: true
-            }
-        )
-        offlineLayer.addTo(map)
-    }, [])
+        if (map) {
+            L.tileLayer
+                .offline(
+                    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    localforage,
+                    {
+                        attribution:
+                            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                        subdomains: 'abc',
+                        minZoom: 15,
+                        maxZoom: 22,
+                        crossOrigin: true
+                    }
+                )
+                .addTo(map)
+        }
+    }, [map])
+
+    useEffect(() => {
+        if (jobContext.flightPlan.length !== 0) {
+            //setCenterLat(jobContext.flightPlan[0].lat)
+            //setCenterLng(jobContext.flightPlan[0].lng)
+            updateStartCoordinates(
+                jobContext.flightPlan[0].lat,
+                jobContext.flightPlan[0].lng
+            )
+        }
+    }, [jobContext.flightPlan.length])
+
+    // set up custom 'pin' type marker for flight path
+    const markerIcon = L.icon({
+        iconSize: [30, 30],
+        //iconAnchor: [10, 41],
+        //popupAnchor: [2, -40],
+        iconUrl: iconMarker
+    })
 
     // updates the positionLat, positionLong from input fields in formik form or getStartCoordinatesfromGoogle
     function updateStartCoordinates(lat, lng) {
@@ -158,11 +193,6 @@ const FlightMap = () => {
         console.log('coordinates in function', coordinates)
     }
 
-    const mapStyles = {
-        height: '400px',
-        width: '100%'
-    }
-
     const defaultCenter = [Number(centerLat), Number(centerLng)]
 
     function startRecording() {
@@ -218,7 +248,7 @@ const FlightMap = () => {
                                             <span className="small-text inline">
                                                 Starting coordinates: &nbsp;
                                             </span>
-                                            <div className="inline inline">
+                                            <div className="inline">
                                                 <Field
                                                     type="text"
                                                     name="latitude"
@@ -325,20 +355,49 @@ const FlightMap = () => {
                                 center={defaultCenter}
                                 zoom={13}
                                 scrollWheelZoom={true}
+                                whenCreated={(map) => setMap(map)}
                             >
                                 <TileLayer
-                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                // hiding this even if we might get in trouble? VDR
+                                // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
-                                <Marker
-                                    key={'start'}
-                                    position={defaultCenter}
-                                />
-
+                                <Marker key={'start'} position={defaultCenter}>
+                                    <Tooltip>
+                                        {' '}
+                                        Starting Position <br /> Lat:{' '}
+                                        {initialLat.current}), Lng:{' '}
+                                        {initialLng.current}
+                                    </Tooltip>
+                                </Marker>
                                 <Polyline
                                     positions={coordinates}
                                     color={'red'}
                                 />
+
+                                {/* if view mode, do not allow updates to map. */}
+                                {jobContext.flightPlan &&
+                                    jobContext.flightPlan.map(
+                                        (markers, index) => (
+                                            <Marker
+                                                icon={markerIcon}
+                                                markerIndex={index}
+                                                key={index}
+                                                position={[
+                                                    Number(markers.lat),
+                                                    Number(markers.lng)
+                                                ]}
+                                            >
+                                                <Tooltip>
+                                                    {' '}
+                                                    Location {index +
+                                                        1} <br /> Lat:{' '}
+                                                    {markers.lat}), Lng:{' '}
+                                                    {markers.lng}
+                                                </Tooltip>
+                                            </Marker>
+                                        )
+                                    )}
                             </Map>
                         </div>
                     </div>

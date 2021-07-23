@@ -30,14 +30,18 @@ const Login = () => {
                 onSubmit={async (values) => {
                     // on submission of form, set the values to be sent to login function
                     // if login fails, will ask user to try again
-                    let loginStatus = await authContext.login(
-                        values.email,
-                        values.password
-                    )
-                    console.log(loginStatus)
-                    if (loginStatus === 'Login Successful')
-                        history.push('/pilotconsole')
-                    else setLoginError(loginStatus)
+                    try {
+                        let loginStatus = await authContext.login(values.email, values.password)
+                        console.log(loginStatus)
+                        if (loginStatus)
+                            history.push('/pilotconsole')
+                        else
+                            setLoginError('Invalid e-mail or password.  Please try again')
+                    } 
+                    catch {
+                            setLoginError('Invalid e-mail or password.  Please try again')
+                    }
+                    console.log(loginError)
                 }}
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}

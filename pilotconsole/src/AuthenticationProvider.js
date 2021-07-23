@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import AuthenticationContext from './AuthenticationContext'
-import Axios from "axios"
+import Axios from 'axios'
+import { useState, useEffect, useContext } from 'react'
 
 const AuthenticationProvider = ({ children }) => {
 
@@ -8,44 +8,57 @@ const AuthenticationProvider = ({ children }) => {
     let [email, setEmail] = useState()
     let [accountType, setAccountType] = useState()
     let [userID, setUserID] = useState()
+    let [loading, setLoading] = useState(true)
+
+    const reconnect = async () => {
+        let { data } = await Axios.get('/login/loggedInUser')
+        if (data) {
+                setUsername(data.username)
+                setEmail(data.email)
+                setAccountType(data.account_type)
+                setUserID(data._id)
+        }
+        console.log("reconnected", data)
+        setLoading(false)
+    }
+    
+    useEffect ( () => { 
+        reconnect()
+    }, [])
+
 
     const login = async (email, password) => {
         async function logintoServer() {
-            
-            const loggedInUser = await Axios ({
+            const loggedInUser = await Axios({
                 method: 'POST',
-                data: {username: email, password: password},
+                data: { username: email, password: password },
                 withCredentials: true,
-                url: "/login",
+                url: '/login'
             })
-            
-            console.log("Login result:", loggedInUser.data)
 
-            if (loggedInUser.data.loginAttempt === "Login Successful") {
+            if (loggedInUser.data) {
                 //set the global authentication variables according to the user info returned from login process
                 setUsername(loggedInUser.data.username)
-                setEmail(loggedInUser.data.email)    
-                setAccountType(loggedInUser.data.account_type)  
-                setUserID(loggedInUser.data._id)  
-                return loggedInUser.data.loginAttempt
-            } else {   
+                setEmail(loggedInUser.data.email)
+                setAccountType(loggedInUser.data.account_type)
+                setUserID(loggedInUser.data._id)
+                return true
+            } else {
                 //log in failed
-                return loggedInUser.data.loginAttempt
-            }   
-
+                return false
+            }
         }
         
         const logInSuccess = await logintoServer()
-        console.log (logInSuccess)
         return logInSuccess
     }
 
-    const logout = () => {
-        setUsername(null)
+    const logout = async () => {
+        setUsername('Guest Pilot')
         setEmail(null)
         setAccountType(null)  
         setUserID(null)
-
+        await Axios.get('/logout')
     }
 
     let contextValue = {
@@ -54,12 +67,12 @@ const AuthenticationProvider = ({ children }) => {
         accountType,
         userID,
         login,
-        logout
+        logout,
     }
 
     return (
         <AuthenticationContext.Provider value={contextValue}>
-            {children}
+            {  loading ? <div> Loading...</div> : children }
         </AuthenticationContext.Provider>
     )
 }

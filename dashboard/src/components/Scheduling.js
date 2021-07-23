@@ -15,16 +15,32 @@ import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
 import axios from 'axios'
 import { number } from 'yup/lib/locale'
+import { useContext, useState, useCallback, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+
+import FlightPlan from './FlightPlan.js'
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
 
     const [waypoints, setWaypoints] = useState([])
+    const [pilots, setPilots] = useState([])
     //newWaypoints is passed from child component(FlightPlan) up to parent
     function updateWaypoints(newWaypoints) {
         setWaypoints(newWaypoints)
+        console.log('waypoints', waypoints)
     }
+
+    useEffect(() => {
+        async function getPilots() {
+            let { data } = await axios.get('/api/users?account_type=pilot')
+            if (data) {
+                console.log('userdata', data)
+            }
+            setPilots(data)
+        }
+        getPilots()
+    }, [])
 
     return (
         <div>
@@ -33,7 +49,8 @@ function Scheduling(props) {
                     jobTitle: '',
                     jobNumber: '',
                     clientContact: '',
-                    jobDetails: ''
+                    jobDetails: '',
+                    pilot: ''
                     // checkBox: true,
                     // startDate: new Date(),
                 }}
@@ -74,7 +91,8 @@ function Scheduling(props) {
                                 customerName: authContext.username,
                                 customerID: authContext.userID,
                                 flight_plan: waypoints,
-                                status: 'Pending'
+                                status: 'Pending',
+                                pilot: values.pilot
                             })
                             .then((response) => {
                                 console.log(response)
@@ -86,7 +104,9 @@ function Scheduling(props) {
                         console.log(`Form post values: `, values)
                         // reloadOrders(values)
                         resetForm()
+                        setWaypoints([])
                         setSubmitting(false)
+                        console.log(waypoints)
                     }, 500)
                 }}
             >
@@ -130,6 +150,7 @@ function Scheduling(props) {
                             <div className="grey">
                                 <FlightPlan
                                     updateWaypoints={updateWaypoints}
+                                    initialValues={waypoints}
                                     mode="write"
                                 />
                             </div>
@@ -139,15 +160,19 @@ function Scheduling(props) {
                                 start/end time requests range placeholder
                             </div> */}
                         </div>
-                        {/* <div>
-                            <Select label="Dropdown List:" name="dropdownList">
-                                <option value="">Select:</option>
-                                <option value="item1">Item 1</option>
-                                <option value="item2">Item 2</option>
-                                <option value="item3">Item 3</option>
-                                <option value="other">Other</option>
+                        <div>
+                            <Select label="Choose a pilot:" name="pilot">
+                                <option disabled selected value>
+                                    {' '}
+                                    ---select---
+                                </option>
+                                {pilots.map((pilot) => (
+                                    <option value={pilot._id}>
+                                        {pilot.username}
+                                    </option>
+                                ))}
                             </Select>
-                        </div> */}
+                        </div>
                         {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
@@ -159,7 +184,13 @@ function Scheduling(props) {
                             </button>
                             {/* <button className="warn">Warn</button>
                             <button className="alert">Alert</button> */}
-                            <button type="reset" className="cancel">
+                            <button
+                                type="reset"
+                                className="cancel"
+                                onClick={() => {
+                                    updateWaypoints([])
+                                }}
+                            >
                                 Cancel
                             </button>
                         </div>
