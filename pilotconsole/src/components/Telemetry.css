@@ -1,0 +1,22 @@
+@import '../components/Defaults.css';
+
+.telemetry-container {
+    background-color: var(--ghost);
+    display: grid;
+    /* width: calc(100% - var(--padding) - 0.5re); */
+    width: calc(100%);
+    /* height: calc(100% - var(--padding) - 0.5rem); */
+    height: calc(100%);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5rem;
+
+    margin: 0rem;
+    padding: 1rem;
+
+    border-radius: var(--border-radius-small);
+    /* margin: 0.5rem; */
+}
+
+.telemetry-display:not(p) {
+    color: var(--quiet);
+}
