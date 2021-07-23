@@ -1,5 +1,6 @@
 import 'leaflet-offline'
 import './FlightMap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 import * as Yup from 'yup'
 
@@ -9,7 +10,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import JobDetailContext from '../JobDetailContext'
 import L from 'leaflet'
-// import "bootstrap/dist/css/bootstrap.css"
 import TelemetryContext from '../TelemetryContext'
 import iconMarker from './assets/pin.png'
 import localforage from 'localforage'
@@ -349,9 +349,8 @@ const FlightMap = () => {
                                 whenCreated={(map) => setMap(map)}
                             >
                                 <TileLayer
-                                // hiding this even if we might get in trouble? VDR
-                                // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
                                 <Marker key={'start'} position={defaultCenter}>
                                     <Tooltip>
