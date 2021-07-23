@@ -1,26 +1,17 @@
-import React, { useState, useContext, useRef, useEffect } from 'react'
-import { Map, TileLayer, Marker, Polyline, Tooltip } from 'react-leaflet'
-import localforage from 'localforage'
 import 'leaflet-offline'
-import L from 'leaflet'
-
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-// import "bootstrap/dist/css/bootstrap.css"
-import TelemetryContext from '../TelemetryContext'
-import JobDetailContext from '../JobDetailContext'
-import iconMarker from './assets/pin.png'
 import './FlightMap.css'
 
 import * as Yup from 'yup'
 
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { Map, Marker, Polyline, TileLayer } from 'react-leaflet'
+import { Map, Marker, Polyline, TileLayer, Tooltip } from 'react-leaflet'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
+import JobDetailContext from '../JobDetailContext'
 import L from 'leaflet'
-// import 'bootstrap/dist/css/bootstrap.css'
+// import "bootstrap/dist/css/bootstrap.css"
 import TelemetryContext from '../TelemetryContext'
+import iconMarker from './assets/pin.png'
 import localforage from 'localforage'
 
 // Drone needs to be faced north intially
