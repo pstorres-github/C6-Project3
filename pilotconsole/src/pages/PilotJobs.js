@@ -4,6 +4,7 @@ import AuthenticationContext from '../AuthenticationContext'
 import JobDetailContext from '../JobDetailContext'
 import "./PilotJobs.css"
 import { useHistory } from "react-router-dom"
+import Header from '../components/Header'
 
 const PilotJobs = ({updateJobNumber}) => {
 
@@ -30,8 +31,14 @@ const PilotJobs = ({updateJobNumber}) => {
 
     return(
 
+        <div>
+        
+        <div className="pilot-jobs-header">
+            <Header />
+        </div>
+
         <div className='pilot-jobs-table'>
-        <h3>Select job to load into console:</h3>    
+            <h3>Select job to load into console:</h3>    
         <div className='table-pilot-job-header'>
             <div className='table-column-1'>Job Number</div>
             <div className='table-column-2'>Description</div> 
@@ -56,6 +63,8 @@ const PilotJobs = ({updateJobNumber}) => {
             </div>
         </div>   
         ))}
+        </div>
+
         </div>
     )
 }
