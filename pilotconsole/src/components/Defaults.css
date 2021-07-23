@@ -160,7 +160,7 @@ acronym {
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
     --secondary: black;
-    --highlight: rgb(91, 231, 247);
+    --highlight: var(--button-clicked);
 
     /* text sizes */
     --base: 14px;
