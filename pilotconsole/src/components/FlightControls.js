@@ -130,43 +130,65 @@ const FlightControls = ({ DroneConnection }) => {
 
     return (
         <div className="controls-container">
-            <div className="primary-controls">
-                {/* This was manually merged. Here goes nothin! */}
+            <div className="slider-controls">
+                <div className="slider-controls-container">
+                    <div className="slider-one">
+                        <p className="small">
+                            Control Sensitivity
+                            <RangeSlider
+                                min={20}
+                                max={500}
+                                variant={'secondary'}
+                                value={controlSensitivity}
+                                onChange={(changeEvent) =>
+                                    setControlSensitivity(
+                                        changeEvent.target.value
+                                    )
+                                }
+                            />
+                        </p>
+                    </div>
+                    <div className="slider-two">
+                        <p className="small">
+                            Rotation Sensitivity
+                            <RangeSlider
+                                min={1}
+                                max={3600}
+                                variant={'secondary'}
+                                value={rotationSensitivity}
+                                onChange={(changeEvent) =>
+                                    setRotationSensitivity(
+                                        changeEvent.target.value
+                                    )
+                                }
+                            />
+                        </p>
+                    </div>
+                    <div className="slider-three">
+                        <p className="small">
+                            Speed Setting &nbsp;&nbsp;
+                            <button
+                                onClick={() =>
+                                    sendCommand('speed ' + speedSetting)
+                                }
+                            >
+                                Set Speed {speedSetting}
+                            </button>
+                            <RangeSlider
+                                min={10}
+                                max={100}
+                                variant={'secondary'}
+                                value={speedSetting}
+                                onChange={(changeEvent) =>
+                                    setSpeedSetting(changeEvent.target.value)
+                                }
+                            />
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-                {/* <p>
-                Control Sensitivity
-                <RangeSlider
-                    min={20}
-                    max={500}
-                    variant={'secondary'}
-                    value={controlSensitivity}
-                    onChange={changeEvent => setControlSensitivity(changeEvent.target.value)}
-                />
-            </p>
-            <p>
-                Rotation Sensitivity
-                <RangeSlider
-                    min={1}
-                    max={3600}
-                    variant={'secondary'}
-                    value={rotationSensitivity}
-                    onChange={changeEvent => setRotationSensitivity(changeEvent.target.value)}
-                />
-            </p>
-            <p>
-                Speed Setting
-                <button onClick={() => sendCommand('speed ' + speedSetting)}>
-                    Set Speed {speedSetting}
-                </button>
-                <RangeSlider
-                    min={10}
-                    max={100}
-                    variant={'secondary'}
-                    value={speedSetting}
-                    onChange={changeEvent => setSpeedSetting(changeEvent.target.value)}
-                />
-                </p>
-                 */}
+            <div className="primary-controls">
                 <div className="primary-controls-container">
                     <div className="takeoff-button">
                         <button
@@ -175,7 +197,6 @@ const FlightControls = ({ DroneConnection }) => {
                             id="takeoff-button"
                             onClick={() => {
                                 sendCommand('takeoff')
-                                // console.log('foo')
                                 ghostHover('takeoff-button')
                             }}
                         >
