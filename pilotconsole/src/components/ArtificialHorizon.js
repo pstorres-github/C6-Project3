@@ -22,7 +22,7 @@ const ArtificialHorizon = () => {
     // and I've scaled the width of the pitch tape to better fit the
     // window, which has effected the pitchOffset
     let multiplier = 9.625
-    const pitchOffset = -785 + telemetryContext.pitch * multiplier
+    const pitchOffset = -780 + telemetryContext.pitch * multiplier
 
     const pitchPosition = {
         // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
@@ -41,10 +41,10 @@ const ArtificialHorizon = () => {
 
         if (-60 <= telemetryContext.roll && telemetryContext.roll <= 60) {
             AoB.style.opacity = 1
-            console.log('visible')
+            // console.log('visible')
         } else {
             AoB.style.opacity = 0
-            console.log('invisible')
+            // console.log('invisible')
         }
     }, [telemetryContext])
 
@@ -52,10 +52,18 @@ const ArtificialHorizon = () => {
         transform: `rotate(${telemetryContext.roll}deg)`
     }
 
+    let altitude = telemetryContext.altitude // uncorrected
+    let speed = telemetryContext.speedX // uncorrected
+
     return (
         <div className="horizon">
-            <div className="alt-text plex">ALT</div>
-            <div className="air-text plex">SPEED</div>
+            <div className="alt-text plex">
+                <span className="tiny-text">alt&#8201;</span>
+                {altitude}
+            </div>
+            <div className="air-text plex">
+                {speed} <span className="tiny-text">&#8201;spd</span>
+            </div>
             <div className="static-frame">
                 <img
                     src="./assets/HUD_static-frame.svg"

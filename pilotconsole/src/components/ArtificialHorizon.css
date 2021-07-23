@@ -1,5 +1,5 @@
 /* Ignore this for now */
-/* @import '../components/Defaults.css'; */
+@import '../components/Defaults.css';
 
 /* parent container */
 .horizon {
@@ -93,7 +93,7 @@
     align-items: center;
     text-align: right;
 
-    padding-left: 2.25rem;
+    padding-left: 1.25rem;
     padding-bottom: 2px;
 
     /* text styles */
@@ -111,10 +111,12 @@
     z-index: 1;
 
     display: flex;
-    justify-content: left;
+    text-align: right;
+    justify-content: right;
     align-items: center;
 
-    padding-left: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 1rem;
     padding-bottom: 2px;
 
     /* text styles */
