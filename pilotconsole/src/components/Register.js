@@ -4,13 +4,15 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 
 import AuthenticationContext from '../AuthenticationContext'
 import Axios from 'axios'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 // import "bootstrap/dist/css/bootstrap.css"
 import { useHistory } from 'react-router-dom'
 
 const Register = () => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
+
+    const [registerError, setRegisterError] = useState(true)
 
     return (
         <div className="container">
@@ -45,20 +47,32 @@ const Register = () => {
                         account_type: 'pilot'
                     }
 
-                    // Send registration data to database
-                    await Axios({
-                        method: 'POST',
-                        data: authenticationInfo,
-                        withCredentials: true,
-                        url: '/register/'
-                    }).then((registerInfo) => {
-                        console.log(registerInfo.data)
-                    })
+                    try {
+                        // Send registration data to database
+                        await Axios({
+                            method: 'POST',
+                            data: authenticationInfo,
+                            withCredentials: true,
+                            url: '/register/'
+                        }).then((registerInfo) => {
+                            console.log(registerInfo.data)
+                        })
+                    } catch (error) {    
+                        setRegisterError('Problem encountered registering user.  Please try again later.')
+                    }
 
                     // Once registration is complete, continue to log user in
-                    if (await authContext.login(values.email, values.password))
+                    let registerStatus = await authContext.login(values.email, values.password)
+                    
+                    if (registerStatus==='Network Unavailable') {
+                        setRegisterError('Network unavailable.  Please try again later.')
+                    }    
+                    else if (registerStatus === true)
                         history.push('/pilotconsole')
+                    else 
+                        setRegisterError('Problem encountered registering user.  Please try again later.')
                 }}
+                
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
@@ -152,11 +166,19 @@ const Register = () => {
                             </div>
                         </div>
 
+                        {registerError && (
+                            <p className="error"> {registerError} </p>
+                        )}
+
                         <br />
                         <button type="submit" className="btn btn-primary">
                             {' '}
                             Register and Login{' '}
                         </button>
+
+
+                    
+                    
                     </Form>
                 )}
             </Formik>
