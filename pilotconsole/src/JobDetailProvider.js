@@ -7,8 +7,8 @@ const JobDetailProvider = ({ children }) => {
     let [activeJob, setActiveJob] = useState()
     let [flightPlan, setFlightPlan] = useState([])
 
-
-
+    
+    
     const updateActiveJob = (newJob) => {
         //update active job ONLY IF an internet connection is available.
         setActiveJob(newJob)
@@ -18,8 +18,19 @@ const JobDetailProvider = ({ children }) => {
             console.log(flightById.data.flight.flight_plan)
         }
         fetchFlight()
-    
+        
     } 
+    
+    const updateVideoFilename = async (filename) => {
+   /*     let videoFilenameUpdate = await Axios({
+            // method: 'PUT',
+            method: 'PATCH',
+            data: { videoURL: `http://rmrvbucket.s3.us-east-2.amazonaws.com/${filename}` },
+            withCredentials: true,
+            url: `http://localhost:3001/api/work_orders/work_order/${activeJob}`
+        })
+        console.log("function ran and posted video url")*/
+    }    
     
     function clearJob () {
         setActiveJob(null)
@@ -32,7 +43,8 @@ const JobDetailProvider = ({ children }) => {
         clearJob,
         updateActiveJob,
         activeJob,
-        flightPlan
+        flightPlan,
+        updateVideoFilename
 
     }
 

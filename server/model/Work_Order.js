@@ -21,6 +21,7 @@ const workOrderSchema = new Schema(
         clientEmail: String,
         customerName: String,
         customerID: String,
+        videoURL: String,
     },
     { strict: true, versionKey: false }
 )

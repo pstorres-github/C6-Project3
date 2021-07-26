@@ -5,7 +5,6 @@ import DemoText from '../components/DemoText'
 import React from 'react'
 import Scheduling from '../components/Scheduling'
 import WorkOrdersByClient from '../components/WorkOrdersByClient'
-import VideoUploadForm from '../components/VideoUploadForm'
 
 import { useHistory } from 'react-router-dom'
 
@@ -37,9 +36,6 @@ const Workorders = () => {
                 <DemoText />
             </div> */}
             {/* </div> */}
-            <div>
-                <VideoUploadForm />
-            </div>
 
             <div className="app-content-left">
                 <div>

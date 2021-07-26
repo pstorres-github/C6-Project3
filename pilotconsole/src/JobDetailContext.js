@@ -4,7 +4,8 @@ const JobDetailContext = React.createContext({
     clearJob: () => {},
     updateActiveJob: (newJob) => {},
     activeJob:'',
-    flightPlan:[]
+    flightPlan:[],
+    updateVideoFilename:(filename)=>{}
 })
 
 export default JobDetailContext

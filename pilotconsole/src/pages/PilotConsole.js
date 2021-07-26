@@ -13,6 +13,7 @@ import JobDetailContext from '../JobDetailContext'
 import Orientation from '../components/Orientation'
 import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
+import VideoUploadForm from '../components/VideoUploadForm'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
     const authContext = useContext(AuthenticationContext)
@@ -70,6 +71,10 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                     Calgary: 51.0447ºN, -114.0719ºW
                 </textarea>
                 {/* <span className="small-text quiet"></span> */}
+            </div>
+
+            <div>
+                <VideoUploadForm />
             </div>
 
             {/* <div className="console-app-header">

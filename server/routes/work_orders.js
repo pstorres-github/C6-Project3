@@ -96,6 +96,46 @@ router.post('/create', async function (req, res) {
     }
 })
 
+router.patch('/work_order/:id', async (req, res, next) => {
+    const fieldsToUpdate = req.body
+    const workOrderId = req.params.id
+    // console.log('flightId:', flightId)
+    console.log('workOrderId:', workOrderId)
+    console.log('fieldsToUpdate:', fieldsToUpdate)
+    // try {
+    //     let workOrder = await Work_Order.findByIdandUpdate({workOrderId}, {fieldsToUpdate})
+    // } catch (err) {
+    //     const error = 'Fetching work order failed'
+    //     return (error)
+    // }
+    let workOrder
+    try {
+        workOrder = await Work_Order.findById(workOrderId);
+      } catch (err) {
+        console.log("error:", err)
+        return next(err);
+      }
+
+    workOrder.videoURL = fieldsToUpdate.videoURL
+
+      try {
+        await workOrder.save();
+      } catch (err) {
+        console.log("error:", err)
+        return next(err);
+      }
+      res.status(200).json({ workOrder: workOrder.toObject({ getters: true }) });
+    }
+    
+
+    // res.send('field updated', fieldsToUpdate)
+    // console.log('flightById:', flightById)
+    //res.json({
+    //    flight: flightById.toObject({ getters: true })
+    // })
+)
+
+
 // VDR
 
 module.exports = router

@@ -16,6 +16,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Middleware
+const fileUpload = require("express-fileupload")
+app.use(fileUpload())
+
 app.use(express.json()) //JSON Parser
 app.use(
     cors({
