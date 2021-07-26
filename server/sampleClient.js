@@ -56,5 +56,8 @@ const createAndUpload = async () => {
 }
 
 
+<<<<<<< HEAD
 createBucket()
+=======
+>>>>>>> 8e5ab3b (working on the component to add a video on AWS uploading the file on the dashboard app)
 createAndUpload()

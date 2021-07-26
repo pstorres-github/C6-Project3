@@ -19,7 +19,7 @@ function checkAuthentication(req, res, next) {
 //GET all work_orders from a specific Customer
 router.get('/:user', async (req, res, next) => {
     const userInfo = req.params.user
-    console.log('userInfo:', userInfo)
+    // console.log('userInfo:', userInfo)
     let userFlights
     try {
         userFlights = await Work_Order.find({ customerName: userInfo })
@@ -31,7 +31,7 @@ router.get('/:user', async (req, res, next) => {
         const error = 'Could not find flights for this user'
         return next(error)
     }
-    console.log('userFlights:', userFlights)
+    // console.log('userFlights:', userFlights)
     res.json({
         flights: userFlights.map((flights) =>
             flights.toObject({ getters: true })
@@ -43,7 +43,7 @@ router.get('/:user', async (req, res, next) => {
 //GET one work_order by ID
 router.get('/work_order/:id', async (req, res, next) => {
     const flightId = req.params.id
-    console.log('flightId:', flightId)
+    // console.log('flightId:', flightId)
     let flightById
     try {
         flightById = await Work_Order.findOne({ _id: flightId })
@@ -51,7 +51,7 @@ router.get('/work_order/:id', async (req, res, next) => {
         const error = 'Fetching work order failed'
         return next(error)
     }
-    console.log('flightById:', flightById)
+    // console.log('flightById:', flightById)
     res.json({
         flight: flightById.toObject({ getters: true })
     })
@@ -61,7 +61,7 @@ router.get('/work_order/:id', async (req, res, next) => {
 
 router.get('/pilot/:pilot', async (req, res, next) => {
     const pilot = req.params.pilot
-    console.log('pilot:', pilot)
+    // console.log('pilot:', pilot)
     let pilotFlights;
     try{
         pilotFlights = await Work_Order.find({ pilot: pilot})
@@ -69,7 +69,7 @@ router.get('/pilot/:pilot', async (req, res, next) => {
         const error = 'Fetching pilot flights failed'
         return next(error)
     }
-    console.log("pilotFlights:", pilotFlights)
+    // console.log("pilotFlights:", pilotFlights)
     res.json({
         flights: pilotFlights
     })

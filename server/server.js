@@ -32,6 +32,10 @@ app.use('/login', login)
 app.use('/register', register)
 app.use('/logout', logout)
 
+// AWS routes
+const awsRoute = require('./routes/uploadVideo')
+app.use('/api/aws', awsRoute)
+
 // Route Requirements [Express Router]
 const users = require('./routes/users')
 const work_orders = require('./routes/work_orders')
