@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 
+import { useHistory } from 'react-router-dom'
+
 import Axios from 'axios'
 
 import JobDetailContext from "../JobDetailContext";
@@ -8,6 +10,8 @@ const VideoUploadForm = () => {
 
   const [fileInput, setFileInput] = useState()
   const [videoName, setVideoName] = useState()
+
+  const history = useHistory()
 
   const jobContext = useContext(JobDetailContext)
  
@@ -50,6 +54,7 @@ const VideoUploadForm = () => {
         url: `http://localhost:3001/api/work_orders/work_order/${jobContext.activeJob}`,
     })
     console.log(videoFilenameUpdate)
+    
       } catch (err) {
         console.log("Error:", err)
       }

@@ -22,7 +22,7 @@ app.use(fileUpload())
 app.use(express.json()) //JSON Parser
 app.use(
     cors({
-        origin: ['http://localhost:4444', 'http://localhost:4445'], // <-- location of the react apps we're connecting to
+        origin: ['http://localhost:4444', 'http://localhost:3000'], // <-- location of the react apps we're connecting to
         credentials: true,
     })
 )

@@ -99,15 +99,9 @@ router.post('/create', async function (req, res) {
 router.patch('/work_order/:id', async (req, res, next) => {
     const fieldsToUpdate = req.body
     const workOrderId = req.params.id
-    // console.log('flightId:', flightId)
-    console.log('workOrderId:', workOrderId)
-    console.log('fieldsToUpdate:', fieldsToUpdate)
-    // try {
-    //     let workOrder = await Work_Order.findByIdandUpdate({workOrderId}, {fieldsToUpdate})
-    // } catch (err) {
-    //     const error = 'Fetching work order failed'
-    //     return (error)
-    // }
+    // console.log('workOrderId:', workOrderId)
+    // console.log('fieldsToUpdate:', fieldsToUpdate)
+
     let workOrder
     try {
         workOrder = await Work_Order.findById(workOrderId);
@@ -117,6 +111,8 @@ router.patch('/work_order/:id', async (req, res, next) => {
       }
 
     workOrder.videoURL = fieldsToUpdate.videoURL
+
+    console.log("workOrder.videoURL:", workOrder.videoURL)
 
       try {
         await workOrder.save();

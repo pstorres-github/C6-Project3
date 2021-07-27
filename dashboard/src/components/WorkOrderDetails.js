@@ -52,10 +52,12 @@ const WorkOrderDetails = () => {
                 <div>
                     <p>Video: Video will show here</p>
                     <video
-                        src={''}
-                        width={'320'}
-                        height={'240'}
+                        src={userFlight.videoURL}
+                        width={'720'}
+                        height={'720'}
                         muted={'muted'}
+                        autoPlay
+                        controls
                     ></video>
                     {/* <div>Analytics: {userFlight.analytics.video} </div> */}
                 </div>
