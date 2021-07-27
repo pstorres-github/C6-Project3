@@ -34,5 +34,31 @@ router.post('/upload_video', async (req, res) => {
 
 })
 
+router.get('/download_video/:filename', async (req, res) => {
+
+    let filename = req.params.filename
+
+    // Load the AWS SDK for Node.js
+    let AWS = require('aws-sdk');
+    // Set the region 
+    AWS.config.update({region: 'us-east-2'});
+
+    // Create S3 service object
+    let s3 = new AWS.S3();
+
+    // call S3 to retrieve file from specified bucket
+    let downloadParams = {Bucket: 'rmrvbucket', Key: filename}
+
+    // call S3 to retrieve file to specified bucket
+    let readstream
+
+    try {
+        let readstream = s3.getObject (downloadParams).createReadStream()
+    } catch (error) {
+        console.log('Error retreiving file from AWS')
+        res.send ('Error')
+    }
+    readstream.pipe(res)
+})
 
 module.exports = router
