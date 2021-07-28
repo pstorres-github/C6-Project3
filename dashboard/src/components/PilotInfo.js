@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import moment from "moment"; 
+import { useParams, useHistory } from "react-router-dom";
+import moment from "moment";
+import Modal from "../components/modal/Modal";
 
 const PilotInfo = () => {
   const [pilotData, setPilotData] = useState();
@@ -8,7 +9,11 @@ const PilotInfo = () => {
   const pilotName = useParams().pilot;
   console.log("pilotName:", pilotName);
 
+  const history = useHistory();
+
   // let qtyOfFlights
+
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const fetchPilot = async () => {
@@ -23,46 +28,67 @@ const PilotInfo = () => {
       setPilotData(responseData.flights);
     };
     fetchPilot();
-    
   }, []);
-
 
   let listOfFlights = [];
   let totalHoursOfFlight;
 
   if (pilotData) {
-    console.log("pilotData:", pilotData)
+    console.log("pilotData:", pilotData);
 
     for (let data of pilotData) {
-      listOfFlights.push(data.time)
+      if (data.status === "Completed") {
+        listOfFlights.push(data.time);
+      }
     }
 
     console.log("listOfFlights:", listOfFlights);
-  
+
     const sumOfFlightTime = listOfFlights
       .slice(1)
-      .reduce((prev, cur) => moment.duration(cur).add(prev),
-        moment.duration(listOfFlights[0]));
+      .reduce(
+        (prev, cur) => moment.duration(cur).add(prev),
+        moment.duration(listOfFlights[0])
+      );
 
-    totalHoursOfFlight =  moment.utc(sumOfFlightTime.asMilliseconds()).format("HH:mm:ss");
-
-
+    totalHoursOfFlight = moment
+      .utc(sumOfFlightTime.asMilliseconds())
+      .format("HH:mm:ss");
   }
-console.log("totalHoursOfFlight:", totalHoursOfFlight)
-
-
+  console.log("totalHoursOfFlight:", totalHoursOfFlight);
 
   return (
-    <div>
-      <div>Pilot: {pilotName}</div>
-      {pilotData && (
-        <div>
-          <div>Number of flights: {pilotData.length}</div>
-          <div>Hours of flight: {totalHoursOfFlight} </div>
+    <React.Fragment>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        {/* <Button onClick={() => setShow(true)}>Open Modal</Button> */}
+      </div>
+      <Modal 
+        show={show} 
+        onClose={() => {
+          setShow(false)
+          history.push("/workorders")
+        }}>
+        <div className="content">
+          <div>Pilot: {pilotName}</div>
+          {pilotData && (
+            <div>
+              <div>Number of flights: {listOfFlights.length}</div>
+              <div>Hours of flight: {totalHoursOfFlight} </div>
+            </div>
+          )}
+          {!pilotData && (
+            <div>There are no previous flights for this pilot</div>
+          )}
         </div>
-      )}
-      {!pilotData && <div>There are no previous flights for this pilot</div>}
-    </div>
+      </Modal>
+    </React.Fragment>
   );
 };
 
