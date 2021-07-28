@@ -1,21 +1,16 @@
 import './WorkOrdersByClient.css'
 
 import { NavLink, useHistory } from 'react-router-dom'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useMemo } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
+import TableContainer, {SelectColumnFilter} from './TableContainer.js'
 
 const WorkOrdersByClient = ({newOrder}) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
 
     const history = useHistory()
-
-    // function reloadOrders(newOrder) {
-    //     // history.push('/workorders')
-    //     history.go(0)
-    //     console.log('We should be reloading.')
-    //}
 
     useEffect(() => {
         const fetchFlights = async () => {
@@ -39,46 +34,51 @@ const WorkOrdersByClient = ({newOrder}) => {
 
     console.log('userFlights:', userFlights)
 
-    if (userFlights.length === 0) {
-        return <p>There are no previous flights for this user</p>
-    } else {
-        return (
-            <div className="main-div">
-                <div className="flights-by-user-wrap-div">
-                    {userFlights.map((flights) => {
-                        return (
-                            <div className="flight-details-parent">
-                                <div>Date: {flights.date}</div>
-                                <div>
-                                    Pilot: {flights.pilot}
-                                    <a href={`/pilot/${flights.pilot}`}>
-                                        View Pilot Info
-                                    </a>
-                                </div>
-                                <div>Flight Time: {flights.time}</div>
-                                {/*<div>Flight Plan: {flights.flight_plan}</div>*/}
-                                <div>Flight Status: {flights.status}</div>
-                                <div>Job Number: {flights.jobNumber}</div>
-                                <div>Job Details: {flights.jobDetails}</div>
-                                <div>
-                                    Client Contact Number:{' '}
-                                    {flights.clientContact}
-                                </div>
-                                <div>Client Email: {flights.clientEmail}</div>
-                                <NavLink to={`/workorders/${flights.id}`}>
-                                    Work Order Details
-                                </NavLink>
 
-                                {/* <button type="button" onClick={reloadOrders}>
-                                    Reload Orders
-                                </button> */}
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
+    const columns = useMemo (
+        () => [
+            {Header: "Job Number", accessor: "jobNumber"},
+            {Header: "Pilot", accessor: "pilot", Cell: ({cell})=> {
+                const {value} = cell
+                if (!value) return null
+                return (
+                   <>   
+                        {value}
+                        <a href={`/pilot/${value}`}> View Pilot Info </a>
+                   </>
+                )
+                }
+            },
+            {Header: "Flight Date", accessor: "date"},
+            {Header: "Flight Time", accessor: "time"},
+            {Header: "Client Contact", accessor: "clientContact"},
+            {Header: "Client Email", accessor: "clientEmail"},
+            {Header: "Work Order Details", accessor: "id", Cell: ({cell})=> {              
+                const {value} = cell
+                if (!value) return null
+                return (
+                    <>   
+                        {value}
+                        <a href={`/workorders/${value}`}> View Work Order Details </a>
+                    </>
+                )
+                }
+            },
+            {Header: "Details", accessor: "jobdetails"},    
+            {Header: "Status", accessor: "status", Filter: SelectColumnFilter, filter:'equals'},
+
+        ],[]
+    )
+
+        if (userFlights.length === 0) 
+            return <p>There are no previous flights for this user</p>
+
+        return (
+            <TableContainer columns={columns} data={userFlights}/>
         )
-    }
+
 }
 
 export default WorkOrdersByClient
+
+

@@ -3,8 +3,8 @@ import './WorkOrdersByClient'
 
 import * as Yup from 'yup'
 
-import { Form, Formik, useField } from 'formik'
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { Form, Formik, useField, Field } from 'formik'
+import { useCallback, useContext, useEffect, useState, useRef } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 // import './Scheduling.css'
@@ -21,23 +21,25 @@ function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
 
     const [waypoints, setWaypoints] = useState([])
-    const [pilots, setPilots] = useState([])
+    //const [pilots, setPilots] = useState([])
+    const resetMapToggle = useRef(false)
     //newWaypoints is passed from child component(FlightPlan) up to parent
     function updateWaypoints(newWaypoints) {
         setWaypoints(newWaypoints)
         console.log('waypoints', waypoints)
     }
 
-    useEffect(() => {
-        async function getPilots() {
-            let { data } = await axios.get('/api/users?account_type=pilot')
-            if (data) {
-                console.log('userdata', data)
-            }
-            setPilots(data)
-        }
-        getPilots()
-    }, [])
+    /* moved ability to choose pilot to administrative page */    
+    // useEffect(() => {
+    //     async function getPilots() {
+    //         let { data } = await axios.get('/api/users?account_type=pilot')
+    //         if (data) {
+    //             console.log('userdata', data)
+    //         }
+    //         setPilots(data)
+    //     }
+    //     getPilots()
+    // }, [])
 
     return (
         <div>
@@ -47,7 +49,9 @@ function Scheduling(props) {
                     jobNumber: '',
                     clientContact: '',
                     jobDetails: '',
-                    pilot: ''
+                    pilotName: '',
+                    pilotID: '',
+
                     // checkBox: true,
                     // startDate: new Date(),
                 }}
@@ -89,7 +93,10 @@ function Scheduling(props) {
                                 customerID: authContext.userID,
                                 flight_plan: waypoints,
                                 status: 'Pending',
-                                pilot: values.pilot
+                                // move pilot assignment to administrator page
+                                //pilotName: values.pilot.username,
+                                //pilotID: values.pilot.id
+
                             })
                             .then((response) => {
                                 console.log(response)
@@ -101,7 +108,8 @@ function Scheduling(props) {
                         console.log(`Form post values: `, values)
                         // reloadOrders(values)
                         resetForm()
-                        setWaypoints([])
+                        resetMapToggle.current = true
+                        resetMapToggle.current = false
                         setSubmitting(false)
                         console.log(waypoints)
                     }, 500)
@@ -117,8 +125,7 @@ function Scheduling(props) {
                                 type="text"
                             />
                         </div>
-                        <div>
-                            {/* <div className="half-right"> */}
+                        <div className="half-left"> 
                             <TextInput
                                 label="Job number: &nbsp;"
                                 placeholder="Job number"
@@ -126,8 +133,7 @@ function Scheduling(props) {
                                 type="text"
                             />
                         </div>
-                        <div>
-                            {/* <div className="half-right"> */}
+                        <div className="half-left">
                             <TextInput
                                 label="Client contact number: &nbsp;"
                                 placeholder="Phone number"
@@ -135,7 +141,7 @@ function Scheduling(props) {
                                 type="text"
                             />
                         </div>
-                        <div>
+                        <div className="half-left">
                             <TextArea
                                 label="Job details: &nbsp;"
                                 placeholder="Job details"
@@ -143,12 +149,14 @@ function Scheduling(props) {
                                 rows="4"
                             />
                         </div>
-                        <div>
+                            <div className="half-right">
+
                             <div className="grey">
                                 <FlightPlan
                                     updateWaypoints={updateWaypoints}
                                     initialValues={waypoints}
                                     mode="write"
+                                    reset={resetMapToggle.current}
                                 />
                             </div>
                             {/* VDR hidden for demo day */}
@@ -157,19 +165,16 @@ function Scheduling(props) {
                                 start/end time requests range placeholder
                             </div> */}
                         </div>
+                        {/*  Will move this logic (ability to choose pilot) to administrator page 
                         <div>
-                            <Select label="Choose a pilot:" name="pilot">
-                                <option disabled selected value>
-                                    {' '}
-                                    ---select---
-                                </option>
+                            <Field as='select' name="pilot" onClick={(value)=>{console.log("value.value", Formik.values.pilot)}}>
                                 {pilots.map((pilot) => (
-                                    <option value={pilot._id}>
+                                    <option value={"ME"}>
                                         {pilot.username}
                                     </option>
                                 ))}
-                            </Select>
-                        </div>
+                            </Field>
+                        </div>*/}
                         {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
@@ -185,7 +190,9 @@ function Scheduling(props) {
                                 type="reset"
                                 className="cancel"
                                 onClick={() => {
-                                    updateWaypoints([])
+                                    resetMapToggle.current = true
+                                    resetMapToggle.current = false
+            
                                 }}
                             >
                                 Cancel

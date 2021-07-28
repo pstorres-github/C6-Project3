@@ -12,6 +12,7 @@ const Workorders = () => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
     const [jobStatusUpdated, setJobStatusUpdated] = useState(false)
+    const [formToggle, setFormToggle] = useState(false)
 
     function statusUpdated() {
         console.log('status pre:', jobStatusUpdated)
@@ -36,13 +37,20 @@ const Workorders = () => {
                 <DemoText />
             </div> */}
             {/* </div> */}
-
-            <div className="app-content-left">
+            <div>
+                <button className="big-button" onClick={()=>{setFormToggle(!formToggle)}}> 
+                    {formToggle ? <>➖ </> : <>➕ </>}
+                    Schedule a new job </button>
+            </div>    
+            
+            {formToggle && <div className="app-content-top">
+              
                 <div>
                     <Scheduling newJobAdded={statusUpdated} />
                 </div>
-            </div>
-            <div className="app-content-right">
+            </div> }
+            
+            <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
                     <WorkOrdersByClient newOrder={jobStatusUpdated} />

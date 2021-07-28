@@ -1,0 +1,10 @@
+th,td {
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 1rem
+}
+
+tbody tr:hover {
+    background-color: lightgray;
+    text-align: center
+}
