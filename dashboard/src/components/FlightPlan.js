@@ -1,11 +1,12 @@
 import { Map, TileLayer, Marker, Tooltip} from "react-leaflet";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, forwardRef, } from "react";
 import L from 'leaflet' 
 import './FlightPlan.css'
 import iconMarker from '../assets/pin.png' 
 import deleteIcon from '../assets/delete.png' 
 
-const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
+const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset}) => {
+/* props notes:  if mode = write, then way points can be updated.  if mode = view, waypoints cannot be updated */
 
     const [markers, setMarkers] = useState(initialValues)
         
@@ -15,6 +16,16 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
     if (markers.length !== 0) {
         defaultCenter.current = [markers[0].lat, markers[0].lng]
     }
+
+    useEffect(()=>{
+        /*watch prop(reset).  If it is set to true, clear markers */
+        if (reset.current===true) {
+            resetMarkers()
+            reset.current = false
+        }    
+        console.log('reset called')
+
+    },[reset.current])
 
     useEffect(()=>{
         // if viewing a flight plan with established points, center map on the first waypoint
@@ -31,6 +42,8 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
        //send the updated way points to the parent component
        updateWaypoints(markers)
     },[markers])
+
+
 
     // set up custom 'pin' type marker for flight path
     const markerIcon = L.icon({
@@ -83,8 +96,11 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
             </Map>
 
             {/* list of coordinates of the markers and delete icon */}
-            {markers.map((markers,index)=><><img className="delete-button" src={deleteIcon} alt="X" onClick={()=>deleteMarker(index)}/> #{index+1}, Lat:{Number(markers.lat)}, Lng{Number(markers.lng)}<br/></>
-                )}
+            {markers.map((markers,index)=>
+                // only show X (delete icon) if NOT in view mode
+                <> {  mode==="write"  && <img className="delete-button" src={deleteIcon} alt="X" onClick={()=>deleteMarker(index)}/>}
+                    #{index+1}, Lat:{Number(markers.lat)}, Lng{Number(markers.lng)}<br/></>
+            )}
 
             {/* if view mode, do not allow updates to map, thus do not show instructions */}
             { mode==="view" ? <></> : 
@@ -101,6 +117,6 @@ const FlightPlan = ({updateWaypoints, mode, initialValues=[]}) => {
         </div>
     );
 
-}
+})
 
 export default FlightPlan

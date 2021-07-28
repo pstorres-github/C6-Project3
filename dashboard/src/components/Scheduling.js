@@ -109,9 +109,7 @@ function Scheduling(props) {
                         // reloadOrders(values)
                         resetForm()
                         resetMapToggle.current = true
-                        resetMapToggle.current = false
                         setSubmitting(false)
-                        console.log(waypoints)
                     }, 500)
                 }}
             >
@@ -156,7 +154,7 @@ function Scheduling(props) {
                                     updateWaypoints={updateWaypoints}
                                     initialValues={waypoints}
                                     mode="write"
-                                    reset={resetMapToggle.current}
+                                    reset={resetMapToggle}
                                 />
                             </div>
                             {/* VDR hidden for demo day */}
@@ -191,8 +189,6 @@ function Scheduling(props) {
                                 className="cancel"
                                 onClick={() => {
                                     resetMapToggle.current = true
-                                    resetMapToggle.current = false
-            
                                 }}
                             >
                                 Cancel
