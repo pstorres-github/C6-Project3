@@ -1,4 +1,4 @@
-import './WorkOrdersByClient.css'
+//import './WorkOrdersByClient.css'
 
 import { NavLink, useHistory } from 'react-router-dom'
 import React, { useContext, useEffect, useState, useMemo } from 'react'
@@ -6,17 +6,18 @@ import React, { useContext, useEffect, useState, useMemo } from 'react'
 import AuthenticationContext from '../AuthenticationContext'
 import TableContainer, {SelectColumnFilter} from './TableContainer.js'
 
-const WorkOrdersByClient = ({newOrder}) => {
+const WorkOrdersAdmin = () => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
 
     const history = useHistory()
 
+    /* access all flights */
     useEffect(() => {
         const fetchFlights = async () => {
             // console.log("UserName:", authContext.username);
             let flightsByUser = await fetch(
-                `/api/work_orders/${authContext.username}`,
+                `/api/work_orders/`,
                 {
                     method: 'GET',
                     headers: {
@@ -30,7 +31,7 @@ const WorkOrdersByClient = ({newOrder}) => {
         }
         fetchFlights()
         // }, [authContext.username])
-    }, [newOrder])
+    }, [])
 
     console.log('userFlights:', userFlights)
 
@@ -79,6 +80,6 @@ const WorkOrdersByClient = ({newOrder}) => {
 
 }
 
-export default WorkOrdersByClient
+export default WorkOrdersAdmin
 
 

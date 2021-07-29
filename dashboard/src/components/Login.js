@@ -34,11 +34,15 @@ const Login = () => {
                         values.email,
                         values.password
                     )
-                    if (loginStatus) history.push('/workorders')
-                    else
-                        setLoginError(
-                            'Invalid e-mail or password.  Please try again'
-                        )
+                    if (loginStatus==="admin") {
+                            history.push('/admin')
+                    }    
+                    else if (loginStatus==="user") {
+                            history.push('/workorders')
+                    }
+                    else {
+                        setLoginError('Invalid e-mail or password.  Please try again')
+                    }    
                 }}
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}

@@ -16,6 +16,7 @@ import React from 'react'
 import ScheduleJobs from './components/ScheduleJobs'
 import WorkOrderDetails from './components/WorkOrderDetails'
 import Workorders from './pages/Workorders'
+import Adminpage from './pages/Adminpage'
 import { useContext } from 'react'
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
                             </PrivateRoute>
                             <PrivateRoute exact path="/pilot/:pilot">
                                 <PilotInfo />
+                            </PrivateRoute>
+                            <PrivateRoute exact path="/admin">
+                                <Adminpage />
                             </PrivateRoute>
                         </Switch>
                     </div>

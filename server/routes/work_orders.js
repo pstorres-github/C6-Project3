@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Work_Order = require('../model/Work_Order')
 
-router.get('/', checkAuthentication, async (req, res) => {
+/*router.get('/', checkAuthentication, async (req, res) => {
     let data = await Work_Order.find({})
     res.send(data)
 })
@@ -14,7 +14,22 @@ function checkAuthentication(req, res, next) {
         console.log('not logged in')
         res.redirect('/')
     }
-}
+}*/
+
+router.get('/', async (req, res) => {
+    let data
+    try {
+        data = await Work_Order.find({})
+    } catch (err) { 
+        const error = 'Fetching items failed'
+        return next(error)
+    }
+    res.json({
+        flights: data
+    })
+})
+
+
 
 //GET all work_orders from a specific Customer
 router.get('/:user', async (req, res, next) => {

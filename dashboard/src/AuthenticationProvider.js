@@ -12,14 +12,23 @@ const AuthenticationProvider = ({ children }) => {
     // FUTURE note:  For dashboard, need to consider administrator role as well
 
     const reconnect = async () => {
-        let { data } = await Axios.get('/login/loggedInUser')
-        if (data) {
-                setUsername(data.username)
-                setEmail(data.email)
-                setAccountType(data.account_type)
-                setUserID(data._id)
+        let user 
+        try {
+            user = await Axios.get('/login/loggedInUser')
+        } catch (error) {            
+            if (error.request) {
+                // connection to database is unavailable
+                // retain the last loaded values
+                setLoading(false)
+            }
+        }    
+        if (user) {
+            setUsername(user.data.username)
+            setEmail(user.data.email)
+            setAccountType(user.data.account_type)
+            setUserID(user.data._id)
         }
-        console.log("reconnected", data)
+        console.log("reconnected", user)
         setLoading(false)
     }
     
@@ -31,12 +40,20 @@ const AuthenticationProvider = ({ children }) => {
 
     const login = async (email, password) => {
         async function logintoServer() {
-            const loggedInUser = await Axios({
-                method: 'POST',
-                data: { username: email, password: password },
-                withCredentials: true,
-                url: '/login'
-            })
+            let loggedInUser
+            
+            try {
+                loggedInUser = await Axios({
+                    method: 'POST',
+                    data: { username: email, password: password },
+                    withCredentials: true,
+                    url: '/login'
+                })
+            }  catch (error) {
+                if (error.request) {
+                    return 'Network Unavailable'
+                }
+            }
 
             if (loggedInUser.data) {
                 //set the global authentication variables according to the user info returned from login process
@@ -44,7 +61,11 @@ const AuthenticationProvider = ({ children }) => {
                 setEmail(loggedInUser.data.email)
                 setAccountType(loggedInUser.data.account_type)
                 setUserID(loggedInUser.data._id)
-                return true
+            
+                if (loggedInUser.data.account_type ==='admin')
+                    return 'admin'
+                else return 'user'
+            
             } else {
                 //log in failed
                 return false
