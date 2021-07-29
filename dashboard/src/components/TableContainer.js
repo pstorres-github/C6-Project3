@@ -1,21 +1,30 @@
 import './Defaults.css'
 import './TableContainer.css'
 import React from 'react'
-import {useTable, useFilters, useSortBy, usePagination} from 'react-table'
+import {useTable, useFilters, useSortBy, usePagination, useResizeColumns, useBlockLayout} from 'react-table'
 
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
 const TableContainer = ({columns, data}) => {
 
+ 
+    const defaultColumn = React.useMemo(
+      () => ({
+        // if desired to override the default width for a column, this should be done in the parent component
+        defaultWidth:300,
+        minWidth: 100,
+        maxWidth: 500,
+        Filter: DefaultColumnFilter
+      }),
+      []
+    )
+
   const {
-      getTableProps,
+      getTableProps,          // getProps is used to resolve any props that are required for the table wrapper
       getTableBodyProps,
       headerGroups,
-      //rows,
       prepareRow,
-      page, // Instead of using 'rows', we'll use page,
-      // which has only the rows for the active page
-  
+      page, 
       canPreviousPage,
       canNextPage,
       pageOptions,
@@ -26,15 +35,20 @@ const TableContainer = ({columns, data}) => {
       setPageSize,
       state: { pageIndex, pageSize },
 
-    } = useTable({
+    } = useTable({  // useTable is the root hook
       columns,
       data,
-      defaultColumn: {Filter: DefaultColumnFilter},
+      defaultColumn,
       initialState: {pageIndex: 0}
-    }, 
-    useFilters, 
-    useSortBy, 
-    usePagination)
+      }, 
+        // additional hooks to use the table features
+        useResizeColumns,
+        useBlockLayout,
+        useFilters, 
+        useSortBy, 
+        usePagination
+    )
+
 
     /* displays sorting indicator icon on table header if table header is clicked on */
     const generateSortingIndicator = column => {
@@ -42,7 +56,6 @@ const TableContainer = ({columns, data}) => {
     }
 
     return (
-
       <div className = "table-container">
       
       {/* table body */}
@@ -54,10 +67,13 @@ const TableContainer = ({columns, data}) => {
                 <th {...column.getHeaderProps()}>
                   <div  {...column.getSortByToggleProps()}>
                     {column.render("Header")}
-                    {generateSortingIndicator(column)}
+                     {generateSortingIndicator(column)}
+                     <Filter column={column} />
                   </div>
-                  <Filter column={column} />
+                <div {...column.getResizerProps()} className={`resizer ${column.isResizing ? 'isResizing' : ''}`}/>
+                              
                 </th>
+                     
             ))}
             </tr>
         ))}
@@ -104,8 +120,9 @@ const TableContainer = ({columns, data}) => {
 export default TableContainer
 
 
-/* code for search filters */
+// ----  THIS CODE IS FOR THE FILTERS USED IN THE TABLE COMPONENT ------
 
+/* code for search filters */
 export const Filter = ({column}) => {
     return (
       <div style={{ marginTop: 5 }}>
@@ -114,7 +131,8 @@ export const Filter = ({column}) => {
     )
   }
 
- const DefaultColumnFilter = ({
+ /* for text input filter-search box */
+const DefaultColumnFilter = ({
     column: {
       filterValue,
       setFilter,
@@ -122,7 +140,7 @@ export const Filter = ({column}) => {
     },
   }) => {
     return (
-      <input
+      <input className ="input-search-box"
         value={filterValue || ""}
         onChange={e => {
           setFilter(e.target.value || undefined)
@@ -132,6 +150,7 @@ export const Filter = ({column}) => {
     )
   }
 
+  /* for dropdown filter-search box */
   export const SelectColumnFilter = ({
     column: { filterValue, setFilter, preFilteredRows, id },
   }) => {
