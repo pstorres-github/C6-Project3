@@ -111,7 +111,9 @@ acronym {
     --identify-me: red;
     --identify-2: cornsilk;
     --padding: 1rem;
+    --padding-small: 0.625rem;
     --padding-tiny: 0.25rem;
+    --padding-beefy: 2rem;
     --mini: 0.0125rem;
     --border-radius-tiny: 0.25rem;
     --border-radius-small: 0.5rem;
@@ -169,7 +171,8 @@ acronym {
     --h1: 3rem;
     --h2: 2.5rem;
     --h3: 2rem;
-    --h4: 1rem;
+    --h3-5: 1.625rem;
+    --h4: 1.25rem;
     --body: 1rem;
     --small: 0.875rem;
     --smaller: 0.7rem;
@@ -420,7 +423,7 @@ input,
 select,
 textarea {
     position: relative;
-    left: -0.5rem;
+    /* left: -0.5rem; */
     margin-left: var(--padding-tiny);
     margin-right: var(--padding-tiny);
     margin-top: var(--padding-tiny);
