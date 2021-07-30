@@ -21,7 +21,8 @@ const PilotJobs = ({updateJobNumber}) => {
            
             let jobsForPilot 
             try {
-                jobsForPilot = await Axios(`/api/work_orders/pilot/${authContext.userID}`)
+                jobsForPilot = await Axios(`/api/work_orders/pilot/${authContext.username}`)
+                //jobsForPilot = await Axios(`/api/work_orders/pilot/${authContext.userID}`)
             } catch (error) {
                 if (error.request) {
                     setNetworkAvailable(false)
