@@ -124,12 +124,12 @@ router.patch('/work_order/:id', async (req, res, next) => {
       }
 
     // update only fields that are included in the body of the request  
-    // add here for additional fields to update
-
-    if (typeof fieldsToUpdate.videoURL !== 'undefined') {workOrder.videoURL = fieldsToUpdate.videoURL}
-    if (typeof fieldsToUpdate.status!== 'undefined') {workOrder.status = fieldsToUpdate.status}
-    if (typeof fieldsToUpdate.pilot !== 'undefined') {workOrder.pilot = fieldsToUpdate.pilot}
-
+    if (fieldsToUpdate) {
+        // make an array of the fields which are to be updated
+        const fields = Object.keys(fieldsToUpdate)
+        // update only those fields in the database record
+        fields.map((field)=>{workOrder[field] = fieldsToUpdate[field]})  
+    }    
       try {
         await workOrder.save();
       } catch (err) {
