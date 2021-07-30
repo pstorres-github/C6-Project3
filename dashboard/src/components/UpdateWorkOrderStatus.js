@@ -62,11 +62,11 @@ const UpdateWorkOrderStatus = ({workOrderID, handleChildUpdated}) => {
             <label htmlFor="status-assign"> Update Status:
                 <select onChange={(event)=>handleChange(event)}>
                     <option selected disabled>--Select--</option>
-                    <option value={"REQUESTED"}>REQUESTED</option>
-                    <option value={"PENDING"}>PENDING</option>
-                    <option value={"COMPLETED"}>COMPLETED</option>
-                    <option value={"CANCELLED"}>CANCELLED</option>
-                    <option value={"DELETE"}>DELETE RECORD</option>
+                    <option value={"Requested"}>Requested</option>
+                    <option value={"Pending"}>Pending</option>
+                    <option value={"Completed"}>Completed</option>
+                    <option value={"Cancelled"}>Cancelled</option>
+                    <option value={"Delete"}>Delete</option>
                 </select>
             </label>
             <button onClick={()=>{handleSubmit()}}> Submit </button>
