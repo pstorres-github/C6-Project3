@@ -114,8 +114,6 @@ router.post('/create', async function (req, res) {
 router.patch('/work_order/:id', async (req, res, next) => {
     const fieldsToUpdate = req.body
     const workOrderId = req.params.id
-    // console.log('workOrderId:', workOrderId)
-    // console.log('fieldsToUpdate:', fieldsToUpdate)
 
     let workOrder
     try {
@@ -125,10 +123,13 @@ router.patch('/work_order/:id', async (req, res, next) => {
         return next(err);
       }
 
-    workOrder.videoURL = fieldsToUpdate.videoURL
-
-    console.log("workOrder.videoURL:", workOrder.videoURL)
-
+    // update only fields that are included in the body of the request  
+    if (fieldsToUpdate) {
+        // make an array of the fields which are to be updated
+        const fields = Object.keys(fieldsToUpdate)
+        // update only those fields in the database record
+        fields.map((field)=>{workOrder[field] = fieldsToUpdate[field]})  
+    }    
       try {
         await workOrder.save();
       } catch (err) {
@@ -139,14 +140,25 @@ router.patch('/work_order/:id', async (req, res, next) => {
     }
     
 
-    // res.send('field updated', fieldsToUpdate)
-    // console.log('flightById:', flightById)
-    //res.json({
-    //    flight: flightById.toObject({ getters: true })
-    // })
 )
 
 
-// VDR
+router.delete('/work_order/:id/delete', async (req, res, next) => {
+    const workOrderId = req.params.id
+
+    let workOrder
+    try {
+        workOrder = await Work_Order.findByIdAndDelete(workOrderId);
+      } catch (err) {
+        console.log("error:", err)
+        return next(err);
+      }
+
+      res.status(200).json({ workOrder: workOrder.toObject({ getters: true }) });
+    }
+    
+
+)
+
 
 module.exports = router

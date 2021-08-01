@@ -83,24 +83,20 @@ function Scheduling(props) {
                     })}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         setTimeout(async () => {
-                            await axios
-                                .post('/api/work_orders/create', {
-                                    jobTitle: values.jobTitle,
-                                    jobNumber: values.jobNumber,
-                                    jobDetails: values.jobDetails,
-                                    clientContact: values.clientContact,
-                                    clientEmail: authContext.email,
-                                    customerName: authContext.username,
-                                    customerID: authContext.userID,
-                                    flight_plan: waypoints,
-                                    status: 'Pending'
-                                    // move pilot assignment to administrator page
-                                    //pilotName: values.pilot.username,
-                                    //pilotID: values.pilot.id
-                                })
-                                .then((response) => {
-                                    console.log(response)
-                                })
+                            await axios.post('/api/work_orders/create', {
+                                jobTitle: values.jobTitle,
+                                jobNumber: values.jobNumber,
+                                jobDetails: values.jobDetails,
+                                clientContact: values.clientContact,
+                                clientEmail: authContext.email,
+                                customerName: authContext.username,
+                                customerID: authContext.userID,
+                                flight_plan: waypoints,
+                                status: 'REQUESTED'
+                                // move pilot assignment to administrator page
+                                //pilotName: values.pilot.username,
+                                //pilotID: values.pilot.id
+                            })
 
                             console.log(`authContext: `, authContext)
                             props.newJobAdded()

@@ -37,8 +37,8 @@ const WorkOrdersByClient = ({newOrder}) => {
 
     const columns = useMemo (
         () => [
-            {Header: "Job Number", accessor: "jobNumber"},
-            {Header: "Pilot", accessor: "pilot", Cell: ({cell})=> {
+            {Header: "Job Number", accessor: "jobNumber", width: 50},
+            {Header: "Pilot", accessor: "pilot", width:300, Cell: ({cell})=> {
                 const {value} = cell
                 if (!value) return null
                 return (
@@ -53,7 +53,7 @@ const WorkOrdersByClient = ({newOrder}) => {
             {Header: "Flight Time", accessor: "time"},
             {Header: "Client Contact", accessor: "clientContact"},
             {Header: "Client Email", accessor: "clientEmail"},
-            {Header: "Work Order Details", accessor: "_id", Cell: ({cell})=> {              
+            {Header: "Work Order Details", accessor: "_id",width:300, Cell: ({cell})=> {              
                 const {value} = cell
                 if (!value) return null
                 return (
@@ -64,7 +64,7 @@ const WorkOrdersByClient = ({newOrder}) => {
                 )
                 }
             },
-            {Header: "Details", accessor: "jobdetails"},    
+            {Header: "Details", accessor: "jobdetails",width:300,},    
             {Header: "Status", accessor: "status", Filter: SelectColumnFilter, filter:'equals'},
 
         ],[]

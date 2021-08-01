@@ -50,3 +50,47 @@ table {
     font-size: var(--body);
     color: var(--quiet);
 }
+
+/* PT Previous table styles */
+/* .table {
+    display: inline-block;
+    border-spacing: 0;
+    border: 1px solid black;
+}    
+
+th,td {
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0;
+  
+    position: relative;
+}
+
+tbody tr:hover {
+    background-color: lightgray;
+    text-align: center
+} */
+
+/* makes the fancy blue highlight on table to show the column is resizable */
+.resizer {
+    display: inline-block;
+    background: blue;
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(50%);
+    z-index: 1;
+}
+
+/* makes the fancy red highlight on table to show the column is being resized */
+.isResizing {
+    background: red;
+}
+
+/* ensures input box is not larger than the column width */
+.input-search-box {
+    width: 100%;
+}

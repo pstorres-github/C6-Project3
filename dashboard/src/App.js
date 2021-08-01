@@ -13,7 +13,7 @@ import Header from './components/Header'
 import Homepage from './pages/Homepage'
 import PilotInfo from './components/PilotInfo'
 import React from 'react'
-import ScheduleJobs from './components/ScheduleJobs'
+//import ScheduleJobs from './components/ScheduleJobs'
 import WorkOrderDetails from './components/WorkOrderDetails'
 import Workorders from './pages/Workorders'
 import Adminpage from './pages/Adminpage'
@@ -34,9 +34,9 @@ function App() {
                             <PrivateRoute exact path="/workorders">
                                 <Workorders />
                             </PrivateRoute>
-                            <PrivateRoute exact path="/schedulejobs">
+                            {/*<PrivateRoute exact path="/schedulejobs">
                                 <ScheduleJobs />
-                            </PrivateRoute>
+                            </PrivateRoute>*/}
                             <PrivateRoute exact path="/workorders/:id">
                                 <WorkOrderDetails />
                             </PrivateRoute>
