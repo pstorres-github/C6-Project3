@@ -94,3 +94,22 @@ button {
 .text-area {
     width: 26rem;
 }
+
+.scheduling-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: var(--identify-2);
+}
+
+.scheduling-form-details {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 1;
+}
+
+.scheduling-map-container {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 1;
+}

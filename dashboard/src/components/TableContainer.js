@@ -4,6 +4,13 @@ import './TableContainer.css'
 import { useFilters, usePagination, useSortBy, useTable } from 'react-table'
 
 import React from 'react'
+import { library } from '@fortawesome/react-fontawesome'
+
+// FontAwesome Icon library initialization VDR
+
+
+
+
 
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
@@ -160,7 +167,7 @@ const DefaultColumnFilter = ({
             onChange={(e) => {
                 setFilter(e.target.value || undefined)
             }}
-            placeholder={`search ...`}
+            placeholder={`Search`}
         />
     )
 }
