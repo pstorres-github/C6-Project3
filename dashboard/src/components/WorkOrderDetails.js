@@ -39,13 +39,13 @@ const WorkOrderDetails = () => {
             <div className="workorder-header">
                 <div className="workorder-header-inner-container">
                     <div className="workorder-header-primary">
-                        Pilot: {userFlight.pilot}
+                        {/* Pilot: {userFlight.pilot} */}
                     </div>
                     <div className="workorder-header-secondary">
-                        Date: {userFlight.date}{' '}
+                        {/* Date: {userFlight.date} */}
                     </div>
                     <div className="workorder-header-secondary">
-                        Flight Time: {userFlight.time}
+                        {/* Flight Time: {userFlight.time} */}
                     </div>
                 </div>
             </div>
@@ -65,10 +65,14 @@ const WorkOrderDetails = () => {
 
             <div className="workorder-details">
                 <div className="workorder-details-inner-container">
-                    <div className="details-1">add: date / time</div>
-                    <div className="details-2">add: location</div>
-                    <div className="details-3">add: client</div>
-                    <div className="details-4">add: client contact</div>
+                    <div className="details-date">
+                        Date: {userFlight.date} /
+                    </div>
+                    <div className="details-location">add: location</div>
+                    <div className="details-pilot">Pilot: {userFlight.pilot}</div>
+                    <div className="details-flight">
+                        Flight Time: {userFlight.time}
+                    </div>
                     <div className="details-data">
                         Flight Data: {userFlight.flight_data}
                     </div>

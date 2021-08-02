@@ -6,12 +6,12 @@
 
 .workorder-container {
     display: grid;
-    width: calc(100vw - var(--padding) - 2rem);
-    height: calc(100vh - var(--padding) - 1.75rem);
+    width: calc(100vw - var(--padding) - 4rem);
+    height: calc(100vh - var(--padding) - 4rem);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 5vh 30vh 30vh 15vh 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 10px;
+    grid-gap: 2rem;
+    margin: 2rem;
 }
 
 .workorder-header {
@@ -62,7 +62,7 @@
 
 .details-data {
     border-radius: 0;
-    border-bottom: 1px solid var(--quiet);
+    /* border-bottom: 1px solid var(--quiet); */
     height: 100%;
     grid-row: 1;
     grid-column: 1;
@@ -76,7 +76,7 @@
     grid-column: 2/-1;
 }
 
-.details-1 {
+.details-date {
     border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
@@ -84,7 +84,7 @@
     grid-column: 2;
 }
 
-.details-2 {
+.details-location {
     border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
@@ -92,7 +92,7 @@
     grid-column: 3;
 }
 
-.details-3 {
+.details-pilot {
     border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
@@ -100,7 +100,7 @@
     grid-column: 2;
 }
 
-.details-4 {
+.details-flight {
     border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
