@@ -36,13 +36,13 @@ const Login = () => {
                         )
                         if (loginStatus==='Network Unavailable')
                             setLoginError(
-                                'Network unavailable.  Please try again later.'
+                                'Network unavailable.  Please try again later or login as guest.'
                             )
                         else if (loginStatus===true) {        
                             history.push('/pilotconsole')
                         } else {
                             setLoginError(
-                                'Invalid e-mail or password.  Please try again'
+                                'Invalid e-mail or password.  Please try again or login as guest'
                             )
                     }
                 }}

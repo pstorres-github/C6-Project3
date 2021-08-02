@@ -332,6 +332,8 @@ const FlightMap = () => {
                             onClick={() => {
                                 clearInterval(timerID.current)
                                 console.log('recording stopped')
+                                //save flight array to jobContext
+                                jobContext.updateFlightData(coordinates)
                                 setRecording(false)
                             }}
                         >
