@@ -5,7 +5,6 @@ import DemoText from '../components/DemoText'
 import React from 'react'
 import Scheduling from '../components/Scheduling'
 import WorkOrdersByClient from '../components/WorkOrdersByClient'
-
 import { useHistory } from 'react-router-dom'
 
 const Workorders = () => {
@@ -31,25 +30,26 @@ const Workorders = () => {
                 </div>
             </div>
 
-            {/* VDR hidden for demo day */}
-            {/* Not needed for now */}
-            {/* <div>
-                <DemoText />
-            </div> */}
-            {/* </div> */}
             <div>
-                <button className="big-button" onClick={()=>{setFormToggle(!formToggle)}}> 
+                <button
+                    className="big-button"
+                    onClick={() => {
+                        setFormToggle(!formToggle)
+                    }}
+                >
                     {formToggle ? <>➖ </> : <>➕ </>}
-                    Schedule a new job </button>
-            </div>    
-            
-            {formToggle && <div className="app-content-top">
-              
-                <div>
-                    <Scheduling newJobAdded={statusUpdated} />
+                    Schedule a new job{' '}
+                </button>
+            </div>
+
+            {formToggle && (
+                <div className="app-content-top">
+                    <div>
+                        <Scheduling newJobAdded={statusUpdated} />
+                    </div>
                 </div>
-            </div> }
-            
+            )}
+
             <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
