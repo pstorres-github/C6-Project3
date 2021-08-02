@@ -18,7 +18,6 @@ td {
 
 tbody tr:hover {
     background-color: var(--ghost);
-    margin: 3rem;
 }
 
 table {
