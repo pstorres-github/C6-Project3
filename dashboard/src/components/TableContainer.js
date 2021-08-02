@@ -12,10 +12,6 @@ import {
 
 import React from 'react'
 
-// Ignore this for now
-// import { library } from '@fortawesome/react-fontawesome'
-// // FontAwesome Icon library initialization VDR
-
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
 const TableContainer = ({ columns, data }) => {
