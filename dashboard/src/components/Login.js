@@ -34,63 +34,63 @@ const Login = () => {
                         values.email,
                         values.password
                     )
-                    if (loginStatus==="admin") {
-                            history.push('/admin')
-                    }    
-                    else if (loginStatus==="user") {
-                            history.push('/workorders')
+                    if (loginStatus === 'admin') {
+                        history.push('/admin')
+                    } else if (loginStatus === 'user') {
+                        history.push('/workorders')
+                    } else {
+                        setLoginError(
+                            'Invalid e-mail or password.  Please try again'
+                        )
                     }
-                    else {
-                        setLoginError('Invalid e-mail or password.  Please try again')
-                    }    
                 }}
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
                     <Form className="form-login-register">
                         <div className="form-group">
-                            <div className="col-md">
-                                <label htmlFor="e-mail">
-                                    Email Address&nbsp;&nbsp;
-                                </label>
-                                <Field
-                                    type="email"
-                                    name="email"
-                                    placeholder="Enter e-mail"
-                                    className={`form-control ${
-                                        touched.email && errors.email
-                                            ? 'is-invalid'
-                                            : ''
-                                    }`}
-                                />
-                                <ErrorMessage
-                                    component="div"
-                                    name="email"
-                                    className="invalid-feedback"
-                                />
-                            </div>
-                        </div>
+                            <div className="label-column">
+                                <div className="column-left">
+                                    <label htmlFor="e-mail">
+                                        Email Address&nbsp;&nbsp;
+                                    </label>
+                                    <Field
+                                        type="email"
+                                        name="email"
+                                        placeholder="Enter e-mail"
+                                        className={`form-control ${
+                                            touched.email && errors.email
+                                                ? 'is-invalid'
+                                                : ''
+                                        }`}
+                                    />
+                                    <ErrorMessage
+                                        component="div"
+                                        name="email"
+                                        className="invalid-feedback"
+                                    />
+                                </div>
 
-                        <div className="form-group">
-                            <div className="col-md">
-                                <label htmlFor="password">
-                                    Password&nbsp;&nbsp;
-                                </label>
-                                <Field
-                                    type="password"
-                                    name="password"
-                                    placeholder="Enter password"
-                                    className={`form-control ${
-                                        touched.password && errors.password
-                                            ? 'is-invalid'
-                                            : ''
-                                    }`}
-                                />
-                                <ErrorMessage
-                                    component="div"
-                                    name="password"
-                                    className="invalid-feedback"
-                                />
+                                <div className="column-right">
+                                    <label htmlFor="password">
+                                        Password&nbsp;&nbsp;
+                                    </label>
+                                    <Field
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter password"
+                                        className={`form-control ${
+                                            touched.password && errors.password
+                                                ? 'is-invalid'
+                                                : ''
+                                        }`}
+                                    />
+                                    <ErrorMessage
+                                        component="div"
+                                        name="password"
+                                        className="invalid-feedback"
+                                    />
+                                </div>
                             </div>
                         </div>
 
