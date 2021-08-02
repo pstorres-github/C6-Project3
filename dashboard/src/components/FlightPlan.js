@@ -1,11 +1,11 @@
-import { Map, TileLayer, Marker, Tooltip} from "react-leaflet";
+import { Map, TileLayer, Marker, Tooltip, Polyline} from "react-leaflet";
 import { useEffect, useState, useRef, forwardRef, } from "react";
 import L from 'leaflet' 
 import './FlightPlan.css'
 import iconMarker from '../assets/pin.png' 
 import deleteIcon from '../assets/delete.png' 
 
-const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset}) => {
+const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset, flightData}) => {
 /* props notes:  if mode = write, then way points can be updated.  if mode = view, waypoints cannot be updated */
 
     const [markers, setMarkers] = useState(initialValues)
@@ -92,6 +92,8 @@ const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset})
                     </Marker>
                 )}
 
+                {/* if view mode and flight data is available, show path on map*/}
+                { (mode==="view") && <Polyline positions={flightData} color={'red'}/>}
                     
             </Map>
 

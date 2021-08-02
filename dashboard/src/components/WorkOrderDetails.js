@@ -41,15 +41,18 @@ const WorkOrderDetails = () => {
                 <div>Pilot: {userFlight.pilot}</div>
                 <div>Flight Time: {userFlight.time}</div>
                 <div>
-                    Flight Plan:{' '}
+                    Flight Plan:
+                    If completed, flight path is shown in red.
+                    {' '}
                     <FlightPlan
                         mode="view"
                         initialValues={userFlight.flight_plan}
                         updateWaypoints={() => {}}
                         reset={resetMapToggle}
+                        flightData={userFlight.flight_data}
                     />
                 </div>
-                <div>Flight Data: {userFlight.flight_data}</div>
+                {/*<div>Flight Data: {userFlight.flight_data}</div>*/}
                 <div>Status: {userFlight.status}</div>
                 <div>
                     <p>Video: Video will show here</p>
