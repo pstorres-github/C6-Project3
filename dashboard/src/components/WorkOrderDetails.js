@@ -23,13 +23,15 @@ const WorkOrderDetails = () => {
                     }
                 }
             )
+            console.log('userFlight:', userFlight)
+
             let responseData = await flightById.json()
             // console.log("flightById:", flightById);
             //console.log("responseData:", responseData);
             setUserFlight(responseData.flight)
         }
         fetchFlight()
-        // console.log("userFlight:", userFlight);
+        // console.log('userFlight:', userFlight)
     }, [flightId])
 
     if (!userFlight) return null
@@ -39,14 +41,15 @@ const WorkOrderDetails = () => {
             <div className="workorder-header">
                 <div className="workorder-header-inner-container">
                     <div className="workorder-header-primary">
-                        {/* Pilot: {userFlight.pilot} */}
+                        Hello, {userFlight.pilot}.
                     </div>
                     <div className="workorder-header-secondary">
+                        Work order number: {userFlight.id}
                         {/* Date: {userFlight.date} */}
                     </div>
-                    <div className="workorder-header-secondary">
-                        {/* Flight Time: {userFlight.time} */}
-                    </div>
+                    {/* <div className="workorder-header-secondary"> */}
+                    {/* Flight Time: {userFlight.time} */}
+                    {/* </div> */}
                 </div>
             </div>
 
