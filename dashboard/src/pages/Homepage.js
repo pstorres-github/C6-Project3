@@ -85,8 +85,9 @@ const Homepage = () => {
             <div className="header"></div>
 
             <div className="section-hero">
-                <h1>Team Silvereyes</h1>
-                <h2>Customer dashboard</h2>
+                {/* <h1>Team Silvereyes</h1> */}
+                {/* <h2>Customer dashboard</h2> */}
+                <h2>Silvereyes</h2>
             </div>
 
             <div className="section-login">
