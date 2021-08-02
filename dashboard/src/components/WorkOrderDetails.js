@@ -1,6 +1,6 @@
 import './WorkOrderDetails.css'
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 
 import FlightPlan from './FlightPlan.js'
@@ -10,7 +10,7 @@ const WorkOrderDetails = () => {
     console.log('flightId:', flightId)
 
     const [userFlight, setUserFlight] = useState()
-    const resetMapToggle = useRef(false)  // required for flight plan component.  No reset required.
+    const resetMapToggle = useRef(false) // required for flight plan component.  No reset required.
 
     useEffect(() => {
         const fetchFlight = async () => {
@@ -35,35 +35,50 @@ const WorkOrderDetails = () => {
     if (!userFlight) return null
 
     return (
-        <div className="work-order-details">
-            <div className="app-content-right">
-                <div>Date: {userFlight.date} </div>
-                <div>Pilot: {userFlight.pilot}</div>
-                <div>Flight Time: {userFlight.time}</div>
-                <div>
-                    Flight Plan:{' '}
-                    <FlightPlan
-                        mode="view"
-                        initialValues={userFlight.flight_plan}
-                        updateWaypoints={() => {}}
-                        reset={resetMapToggle}
-                    />
-                </div>
-                <div>Flight Data: {userFlight.flight_data}</div>
-                <div>Status: {userFlight.status}</div>
-                <div>
-                    <p>Video: Video will show here</p>
-                    <video
-                        src={userFlight.videoURL}
-                        width={'720'}
-                        height={'720'}
-                        muted={'muted'}
-                        autoPlay
-                        controls
-                    ></video>
-                    {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+        <div className="workorder-container">
+            <div className="workorder-header">
+                <div className="workorder-header-inner-container">
+                    <div className="workorder-header-primary">
+                        Pilot: {userFlight.pilot}
+                    </div>
+                    <div className="workorder-header-secondary">
+                        Date: {userFlight.date}{' '}
+                    </div>
+                    <div className="workorder-header-secondary">
+                        Flight Time: {userFlight.time}
+                    </div>
                 </div>
             </div>
+
+            <div className="workorder-video">
+                {/* <p>Video: Video will show here</p> */}
+                <video
+                    src={userFlight.videoURL}
+                    width={'100%'}
+                    height={'100%'}
+                    muted={'muted'}
+                    autoPlay
+                    controls
+                ></video>
+                {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+            </div>
+
+            <div className="workorder-details">
+                <div>Flight Data: {userFlight.flight_data}</div>
+                <div>Status: {userFlight.status}</div>
+            </div>
+
+            <div className="workorder-map">
+                Flight Plan:
+                <FlightPlan
+                    mode="view"
+                    initialValues={userFlight.flight_plan}
+                    updateWaypoints={() => {}}
+                    reset={resetMapToggle}
+                />
+            </div>
+
+            <div className="workorder-nav">BUTTON return to table</div>
         </div>
     )
 }
