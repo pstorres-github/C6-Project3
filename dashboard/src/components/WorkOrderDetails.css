@@ -41,11 +41,28 @@
     grid-column-end: -1;
 }
 
+.workorder-video-label {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: right;
+    align-self: end;
+}
+
 .workorder-details {
     grid-row-start: 4;
     grid-row-end: 5;
     grid-column-start: 2;
     grid-column-end: -1;
+}
+
+.workorder-details-label {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    text-align: right;
 }
 
 .workorder-details-inner-container {
@@ -113,6 +130,14 @@
     grid-row-end: 6;
     grid-column-start: 2;
     grid-column-end: -1;
+}
+
+.workorder-map-label {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    text-align: right;
 }
 
 .workorder-nav {

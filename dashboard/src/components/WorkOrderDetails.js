@@ -50,6 +50,9 @@ const WorkOrderDetails = () => {
                 </div>
             </div>
 
+            <div className="workorder-video-label">
+                <h3>Analysis</h3>
+            </div>
             <div className="workorder-video">
                 {/* <p>Video: Video will show here</p> */}
                 <video
@@ -63,13 +66,18 @@ const WorkOrderDetails = () => {
                 {/* <div>Analytics: {userFlight.analytics.video} </div> */}
             </div>
 
+            <div className="workorder-details-label">
+                <h3>Details</h3>
+            </div>
             <div className="workorder-details">
                 <div className="workorder-details-inner-container">
                     <div className="details-date">
                         Date: {userFlight.date} /
                     </div>
                     <div className="details-location">add: location</div>
-                    <div className="details-pilot">Pilot: {userFlight.pilot}</div>
+                    <div className="details-pilot">
+                        Pilot: {userFlight.pilot}
+                    </div>
                     <div className="details-flight">
                         Flight Time: {userFlight.time}
                     </div>
@@ -80,6 +88,9 @@ const WorkOrderDetails = () => {
                 </div>
             </div>
 
+            <div className="workorder-map-label">
+                <h3>Flight plan</h3>
+            </div>
             <div className="workorder-map">
                 <FlightPlan
                     mode="view"
