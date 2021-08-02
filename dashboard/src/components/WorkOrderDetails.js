@@ -64,12 +64,19 @@ const WorkOrderDetails = () => {
             </div>
 
             <div className="workorder-details">
-                <div>Flight Data: {userFlight.flight_data}</div>
-                <div>Status: {userFlight.status}</div>
+                <div className="workorder-details-inner-container">
+                    <div className="details-1">add: date / time</div>
+                    <div className="details-2">add: location</div>
+                    <div className="details-3">add: client</div>
+                    <div className="details-4">add: client contact</div>
+                    <div className="details-data">
+                        Flight Data: {userFlight.flight_data}
+                    </div>
+                    <div className="details-status">{userFlight.status}</div>
+                </div>
             </div>
 
             <div className="workorder-map">
-                Flight Plan:
                 <FlightPlan
                     mode="view"
                     initialValues={userFlight.flight_plan}

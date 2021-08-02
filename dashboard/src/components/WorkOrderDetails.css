@@ -48,6 +48,66 @@
     grid-column-end: -1;
 }
 
+.workorder-details-inner-container {
+    display: grid;
+    border: 1px solid var(--quiet);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.workorder-details-inner-container div {
+    margin: 0;
+    padding: var(--padding);
+}
+
+.details-data {
+    border-radius: 0;
+    border-bottom: 1px solid var(--quiet);
+    height: 100%;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.details-status {
+    border-radius: 0;
+    border-left: 1px solid var(--quiet);
+    height: 100%;
+    grid-row: 3;
+    grid-column: 2/-1;
+}
+
+.details-1 {
+    border-radius: 0;
+    border-left: 1px solid var(--quiet);
+    border-bottom: 1px solid var(--quiet);
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.details-2 {
+    border-radius: 0;
+    border-left: 1px solid var(--quiet);
+    border-bottom: 1px solid var(--quiet);
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.details-3 {
+    border-radius: 0;
+    border-left: 1px solid var(--quiet);
+    border-bottom: 1px solid var(--quiet);
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.details-4 {
+    border-radius: 0;
+    border-left: 1px solid var(--quiet);
+    border-bottom: 1px solid var(--quiet);
+    grid-row: 2;
+    grid-column: 3;
+}
+
 .workorder-map {
     grid-row-start: 5;
     grid-row-end: 6;
