@@ -15,18 +15,15 @@
     color: white;
 }
 
-.customer-container {
-    /* VDR TEMP refactor */
+/* .customer-container {
     display: grid;
     width: calc(100vw - var(--padding) - 2rem);
     height: calc(100vh - var(--padding) - 1.75rem);
-    /* grid-template-columns: 12.5vw 12.5rem 12.5rem 1fr;
-    grid-template-rows: 2.5vh 12.5rem 12.5rem 0.75fr 1fr 15rem; */
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 5vh 5vh auto auto;
     grid-gap: 10px;
     margin: 10px;
-}
+} */
 
 button.small-button {
     margin: 0;
@@ -67,7 +64,7 @@ button.small-button {
 }
 
 .app-content-top {
-    grid-row:3;
+    grid-row: 3;
     grid-column: 1;
     margin: 0;
     padding: 0;
