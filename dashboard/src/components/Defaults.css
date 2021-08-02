@@ -164,6 +164,9 @@ acronym {
     --secondary: black;
     --highlight: var(--button-clicked);
 
+    --alert: var(--button-warn-bg);
+    --error: var(--button-alert-bg);
+
     /* text sizes */
     --base: 14px;
     --hero: 3rem;
@@ -428,9 +431,9 @@ textarea {
     margin-right: var(--padding-tiny);
     margin-top: var(--padding-tiny);
     margin-bottom: var(--padding-tiny);
-    padding: var(--padding-tiny);
+    padding: var(--padding-small);
 
-    border: 0.5px solid lightgray;
+    border: 0.5px solid var(--ghost-hover);
     border-radius: 0.25rem;
     background-color: ghostwhite;
     /* min-width: 10rem; */
@@ -438,8 +441,9 @@ textarea {
 }
 
 input {
-    font-size: var(--small);
-    color: red;
+    font-size: var(--body);
+    color: var(--secondary);
+    /* color: red; */
 }
 /* label {
     margin-left: var(--padding);
@@ -448,10 +452,33 @@ input {
 } */
 
 label {
-    font-size: var(--smaller);
+    font-size: var(--body);
     margin: var(--padding-tiny);
 
-    /* position: relative; */
+    position: absolute;
+    transform: translate(0px, -15px);
+    transition: opacity 0.2s ease-in-out 0.2s;
+    user-select: none;
+}
+
+.label-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding: 30px 32px 32px;
+    box-sizing: border-box;
+    transition: color 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
+    cursor: text;
+}
+
+.column-left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.column-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 button:disabled {
@@ -567,3 +594,4 @@ form > div {
     margin-right: 0;
     padding: 0;
 }
+
