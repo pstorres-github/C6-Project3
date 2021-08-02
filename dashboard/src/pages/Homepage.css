@@ -11,8 +11,10 @@
 }
 
 .section-hero {
-    grid-column: span 4;
-    grid-row: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 4;
     text-align: center;
 }
 
@@ -27,4 +29,31 @@
     grid-column-start: 2;
     grid-column-end: 4;
     text-align: center;
+}
+
+/* Background image scheduling rotation css */
+
+.background-image {
+    z-index: -1;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    opacity: 1;
+    transition: 1s;
+}
+
+.img1 {
+    /* background-image: url('../assets/backgrounds/1.png'); */
+    z-index: -2;
+}
+
+.img2 {
+    /* background-image: url('../assets/backgrounds/2.png'); */
+    z-index: -3;
+}
+
+.img3 {
+    /* background-image: url('../assets/backgrounds/3.png'); */
+    z-index: -4;
 }
