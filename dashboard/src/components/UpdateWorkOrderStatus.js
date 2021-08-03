@@ -52,8 +52,11 @@ const UpdateWorkOrderStatus = ({workOrderID, handleChildUpdated}) => {
     
     return(
         <div>
-    
-        { !update && <button onClick={()=>{setUpdate(true)}}> Update Status</button> } 
+            {/* <div  className="tiny-text inline right" >
+                { !update && <button onClick={()=>{setUpdate(true)}}>EDIT</button> } 
+            </div> */}
+
+            {!update && <button onClick={() => { setUpdate(true) }}>EDIT</button>}
     
         { update &&
     
