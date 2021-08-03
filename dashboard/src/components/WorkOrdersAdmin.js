@@ -86,7 +86,7 @@ const WorkOrdersAdmin = () => {
                 if (!value) return null
                 return (
                     <>   
-                        {value}<br/>
+                        {value.slice(0, 8)}<br/>
                         <a href={`/workorders/${value}`}> View Work Order Details </a>
                     </>
                 )
