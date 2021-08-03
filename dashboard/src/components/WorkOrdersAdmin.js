@@ -66,22 +66,22 @@ const WorkOrdersAdmin = () => {
 
     const columns = useMemo (
         () => [
-            {Header: "Job No", accessor: "jobNumber", width:100},
             {Header: "Pilot", accessor: "pilot", width:400, Cell: ({cell})=> {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
-                   <>   
+                    <>   
                         <em> Current Pilot: </em> {value ? value : "None Assigned"} <br></br>
                         <AssignPilot pilotList = {pilotList} workOrderID={row.original._id} handleChildUpdated={handleChildUpdated}/>
                    </>
                 )
-                }
-            },
-            {Header: "Flight Date", width: 100, accessor: "date"},
-            {Header: "Flight Time", width: 100, accessor: "time"},
-            {Header: "Client Contact", width: 200, accessor: "clientContact"},
-            {Header: "Client Email", width: 200, accessor: "clientEmail"},
-            {Header: "Work Order Details", width: 200, accessor: "_id", Cell: ({cell})=> {              
+            }
+        },
+        {Header: "Flight Date", width: 100, accessor: "date"},
+        {Header: "Flight Time", width: 100, accessor: "time"},
+        {Header: "Client Contact", width: 200, accessor: "clientContact"},
+        {Header: "Client Email", width: 200, accessor: "clientEmail"},
+        {Header: "Job No", accessor: "jobNumber", width:100},
+            {Header: "Work Order", width: 200, accessor: "_id", Cell: ({cell})=> {              
                 const {value} = cell
                 if (!value) return null
                 return (
