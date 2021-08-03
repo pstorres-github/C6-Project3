@@ -41,12 +41,13 @@ const WorkOrderDetails = () => {
             <div className="workorder-header">
                 <div className="workorder-header-inner-container">
                     <div className="workorder-header-primary">
-                        Hello, {userFlight.pilot}.
+                        <h3>Hello, {userFlight.pilot}.</h3>
                     </div>
-                    <div className="workorder-header-secondary">
-                        Work order number: {userFlight.id}
+                    <div className="workorder-header-primary align-right">
+                        <h3>Work order</h3> 
                         {/* Date: {userFlight.date} */}
                     </div>
+                    <div className="workorder-header-secondary">{userFlight.id.slice(0, 8)}</div>
                     {/* <div className="workorder-header-secondary"> */}
                     {/* Flight Time: {userFlight.time} */}
                     {/* </div> */}

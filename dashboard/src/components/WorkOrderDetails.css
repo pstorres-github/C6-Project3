@@ -27,24 +27,58 @@
     padding: 0;
     width: 100%;
     height: 100%;
+        align-self: start;
+
 }
 
 .workorder-header-primary {
     display: inline-block;
     grid-column: 1;
     grid-row: 1/-1;
+    height: 100%;
+
+    /* tiny reset */
+
     padding: var(--padding-tiny);
-    /* background: var(--ghost); */
+    padding-top: calc(2px + var(--padding-tiny));
+
+    padding: 0;
+    margin: 0;
+
+    align-self: start;
+        /* background: var(--ghost); */
     /* background: var(--identify-me); */
+}
+
+.align-right {
+    padding: 0;
+    margin: 0;
+    text-align: right;
 }
 
 .workorder-header-secondary {
     display: inline-block;
     grid-column: 2/-1;
     grid-row: 1/-1;
+    height: 100%;
     padding: var(--padding-tiny);
+    padding-top: calc(2px + var(--padding-tiny));
+        align-self: start;
+
     /* background: var(--ghost); */
 }
+
+/* This is to fix the dopiest little misalignment
+that nobody but me would ever notice and
+it's driving me mad. */
+.workorder-header-primary > h3,
+.workorder-header-secondary > h3,
+.align-right > h3 {
+    padding: var(--padding-tiny);
+    padding-top: calc(3px + var(--padding-tiny));
+}
+
+
 
 .workorder-video {
     grid-row-start: 2;
