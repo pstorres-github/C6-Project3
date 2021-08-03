@@ -75,20 +75,20 @@ const WorkOrderDetails = () => {
             </div>
             <div className="workorder-details">
                 <div className="workorder-details-inner-container">
-                    <div className="details-date">
+                    <div className="details-date plex">
                         Date: {userFlight.date} /
                     </div>
-                    <div className="details-location">add: location</div>
-                    <div className="details-pilot">
+                    <div className="details-location plex">add: location</div>
+                    <div className="details-pilot plex">
                         Pilot: {userFlight.pilot}
                     </div>
-                    <div className="details-flight">
+                    <div className="details-flight plex">
                         Flight Time: {userFlight.time}
                     </div>
-                    <div className="details-data">
+                    <div className="details-data plex">
                         Flight Data: {userFlight.flight_data}
                     </div>
-                    <div className="details-status">{userFlight.status}</div>
+                    <div className="details-status plex">{userFlight.status}</div>
                 </div>
             </div>
 
