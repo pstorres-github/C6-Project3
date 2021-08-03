@@ -1,6 +1,8 @@
 import './Defaults.css'
 
 import AuthenticationContext from '../AuthenticationContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -15,17 +17,18 @@ const Header = () => {
 
     return (
         <div>
-            {authContext.accountType && (
-                <button
-                    onClick={() => {
-                        logoutButton()
-                    }}
-                    className="small-button"
-                >
-                    {' '}
-                    Logout{' '}
-                </button>
-            )}
+            <div className="inline">
+                {authContext.accountType && (
+                    <button
+                        onClick={() => {
+                            logoutButton()
+                        }}
+                        className="small-button"
+                    >
+                        <FontAwesomeIcon icon={faUserCircle} /> Logout{' '}
+                    </button>
+                )}
+            </div>
         </div>
     )
 }
