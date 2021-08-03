@@ -22,6 +22,7 @@ const TableContainer = ({ columns, data }) => {
             minWidth: 100,
             maxWidth: 500,
             Filter: DefaultColumnFilter
+
         }),
         []
     )
@@ -65,7 +66,7 @@ const TableContainer = ({ columns, data }) => {
     return (
         <div className="table-container">
             {/* table body */}
-            <table {...getTableProps()}>
+            <table className="full-width-table" {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
