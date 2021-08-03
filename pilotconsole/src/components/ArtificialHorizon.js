@@ -34,6 +34,19 @@ const ArtificialHorizon = () => {
         transform: `rotate(${telemetryContext.roll}deg)`
     }
 
+    // const horizonPosition = {
+    //     background: linear - gradient(180, rgba(42, 170, 225, 1) 0 %, rgba(42, 170, 225, 1) 50 %, rgba(161, 131, 75, 1) 50 %, rgba(161, 131, 75, 1) 100 %)
+    // }
+
+    let gradientDegrees = telemetryContext.roll
+
+    const horizonPosition = {
+        background: `linear-gradient(${gradientDegrees}deg, #a1834b 0 50%, #2aaae1 50% 100%)`
+    }
+
+    // blue #2aaae1
+    // brown #a1834b
+
     // -60 <= telemetryContext.roll && telemetryContext.roll <= 60
 
     useEffect(() => {
@@ -57,12 +70,11 @@ const ArtificialHorizon = () => {
 
     return (
         <div className="horizon">
-            <div className="alt-text plex">
-                <span className="tiny-text">alt&#8201;</span>
-                {altitude}
+            <div className="alt-text">
+                <div className="float-right inline plex">{altitude}</div>
             </div>
             <div className="air-text plex">
-                {speed} <span className="tiny-text">&#8201;spd</span>
+                {speed}
             </div>
             <div className="static-frame">
                 <img
@@ -84,6 +96,10 @@ const ArtificialHorizon = () => {
             </div> */}
             {/* <div className="pitch-indicator" style={bankRotation && pitchPosition}> */}
             <div className="pitch-indicator" style={pitchPosition2}>
+                &nbsp;
+            </div>
+
+            <div className="horizon-indicator" style={horizonPosition}>
                 &nbsp;
             </div>
 
