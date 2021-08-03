@@ -71,9 +71,10 @@ const WorkOrdersAdmin = () => {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
                     <>   
-                        <em><FontAwesomeIcon icon={["far", "coffee"]} /> Pilot:</em>
+                        {/* <em><FontAwesomeIcon icon={["far", "coffee"]} /> Pilot:</em> */}
+                        <FontAwesomeIcon icon={["far", "id-badge"]} />
                         {value ? value : "None Assigned"}
-                        <AssignPilot pilotList = {pilotList} workOrderID={row.original._id} handleChildUpdated={handleChildUpdated}/>
+                        <div className="inline right tiny-text"><AssignPilot pilotList = {pilotList} workOrderID={row.original._id} handleChildUpdated={handleChildUpdated}/></div>
                    </>
                 )
             }
@@ -89,7 +90,9 @@ const WorkOrdersAdmin = () => {
                 return (
                     <>   
                         {value.slice(0, 8)} 
-                        <a href={`/workorders/${value}`}>Edit</a>
+                        <div className="inline right tiny-text"><a href={`/workorders/${value}`}>Edit</a></div>
+                        {/* This doesn't work VDR 👇🏻 */}
+                        {/* <div className="inline right"><button className=" tiny-text" onclick={`/workorders/${value}`}>Edit</button></div> */}
                     </>
                 )
                 }
