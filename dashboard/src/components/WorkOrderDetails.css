@@ -71,6 +71,7 @@
 /* This is to fix the dopiest little misalignment
 that nobody but me would ever notice and
 it's driving me mad. */
+
 .workorder-header-primary > h3,
 .workorder-header-secondary > h3,
 .align-right > h3 {
@@ -93,7 +94,7 @@ it's driving me mad. */
     grid-column-start: 1;
     grid-column-end: 1;
     text-align: right;
-    align-self: end;
+    align-self: start;
 }
 
 .workorder-details {
