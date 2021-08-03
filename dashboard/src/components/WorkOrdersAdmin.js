@@ -66,8 +66,8 @@ const WorkOrdersAdmin = () => {
 
     const columns = useMemo (
         () => [
-            {Header: "Job Number", accessor: "jobNumber", width:100},
-            {Header: "Pilot", accessor: "pilot", width:300, Cell: ({cell})=> {
+            {Header: "Job No", accessor: "jobNumber", width:100},
+            {Header: "Pilot", accessor: "pilot", width:400, Cell: ({cell})=> {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
                    <>   
@@ -77,11 +77,11 @@ const WorkOrdersAdmin = () => {
                 )
                 }
             },
-            {Header: "Flight Date", accessor: "date"},
-            {Header: "Flight Time", accessor: "time"},
-            {Header: "Client Contact", accessor: "clientContact"},
-            {Header: "Client Email", accessor: "clientEmail"},
-            {Header: "Work Order Details", accessor: "_id", Cell: ({cell})=> {              
+            {Header: "Flight Date", width: 100, accessor: "date"},
+            {Header: "Flight Time", width: 100, accessor: "time"},
+            {Header: "Client Contact", width: 200, accessor: "clientContact"},
+            {Header: "Client Email", width: 200, accessor: "clientEmail"},
+            {Header: "Work Order Details", width: 200, accessor: "_id", Cell: ({cell})=> {              
                 const {value} = cell
                 if (!value) return null
                 return (
@@ -92,8 +92,8 @@ const WorkOrdersAdmin = () => {
                 )
                 }
             },
-            {Header: "Details", accessor: "jobdetails"},    
-            {Header: "Status", accessor: "status", Filter: SelectColumnFilter, filter:'equals', width:50, Cell: ({cell, row}) => {
+            {Header: "Details", width: 200, accessor: "jobdetails"},    
+            {Header: "Status", width: 200, accessor: "status", Filter: SelectColumnFilter, filter:'equals', width:50, Cell: ({cell, row}) => {
                 const {value} = cell
                 if (!value) return null
                 return (
