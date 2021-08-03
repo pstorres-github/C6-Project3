@@ -5,49 +5,18 @@ import React, { useContext, useEffect } from 'react'
 import TelemetryContext from '../TelemetryContext'
 import { findAllByTestId } from '@testing-library/react'
 
-// import "./assets/HUD_static-frame.svg"
-
 const ArtificialHorizon = () => {
     const telemetryContext = useContext(TelemetryContext)
 
-    // telemetryContext transform function goes here
-    // degrees * something to pixel values
-    // return transformed telemetry
+    let scale = 10.0
+    let translate = (((telemetryContext.pitch - (-90))/180) * 100)
+    console.log("Translate : ", translate)
 
-    // OLD multiplier
-    // let multiplier = 19.14
-    // const pitchOffset = 2160 + telemetryContext.pitch * multiplier
+    // let transformString = `scale(${scale}), translateY(${translate}%)`
+    let transformString = `scale(10.0), translateY(50%)`
 
-    // VDR I've recalibrated the pitch to match an 85º max-angle
-    // and I've scaled the width of the pitch tape to better fit the
-    // window, which has effected the pitchOffset
-    let multiplier = 9.625
-    const pitchOffset = -780 + telemetryContext.pitch * multiplier
-
-    const pitchPosition = {
-        // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
-        // backgroundPosition: 'calc(100%) 1620px' // this is muhammad's default window size
-        backgroundPosition: `50%  ${pitchOffset}px` // muhammad full screen
-    }
-    const pitchPosition2 = {
-        backgroundPosition: `50%  ${pitchOffset}px`, // muhammad full screen
-        transform: `rotate(${telemetryContext.roll}deg)`
-    }
-
-    // const horizonPosition = {
-    //     background: linear - gradient(180, rgba(42, 170, 225, 1) 0 %, rgba(42, 170, 225, 1) 50 %, rgba(161, 131, 75, 1) 50 %, rgba(161, 131, 75, 1) 100 %)
-    // }
-
-    let gradientDegrees = telemetryContext.roll
-
-    const horizonPosition = {
-        background: `linear-gradient(${gradientDegrees}deg, #a1834b 0 50%, #2aaae1 50% 100%)`
-    }
-
-    // blue #2aaae1
-    // brown #a1834b
-
-    // -60 <= telemetryContext.roll && telemetryContext.roll <= 60
+    const horizonPosition = { transform: `scale(${scale})`}
+    const horizontranslate = {transform: `translateY(${translate}%)`}
 
     useEffect(() => {
         const AoB = document.getElementById('angle-of-bank-indicator')
@@ -65,8 +34,8 @@ const ArtificialHorizon = () => {
         transform: `rotate(${telemetryContext.roll}deg)`
     }
 
-    let altitude = telemetryContext.altitude // uncorrected
-    let speed = telemetryContext.speedX // uncorrected
+    let altitude = telemetryContext.altitude
+    let speed = Math.abs(telemetryContext.speedX)
 
     return (
         <div className="horizon">
@@ -94,12 +63,12 @@ const ArtificialHorizon = () => {
                     alt="Pitch Indicator"
                 />
             </div> */}
-            {/* <div className="pitch-indicator" style={bankRotation && pitchPosition}> */}
-            <div className="pitch-indicator" style={pitchPosition2}>
-                &nbsp;
+
+            <div className="pitch-indicator" style={horizonPosition}>
+                <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
             </div>
 
-            <div className="horizon-indicator" style={horizonPosition}>
+            <div className="horizon-indicator">
                 &nbsp;
             </div>
 

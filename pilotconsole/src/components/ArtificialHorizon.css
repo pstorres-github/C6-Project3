@@ -59,23 +59,37 @@
 }
 
 .pitch-indicator {
-    background: url('./assets/HUD_pitch-indicator.svg');
+    /* background: url('./assets/HUD_pitch-indicator.svg'); */
     /* background-size: 480px; */
-    background-size: 240px;
-    background-repeat: no-repeat;
+    /* background-size: 240px; */
+    /* background-size: 1000px; */
+
+    /* background: yellow; */
+
+    /* margin: 0;
+    padding: 0; */
+
+    /* background-size: contain;
+    background-repeat: no-repeat; */
+
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 1;
-    grid-row-end: -1;
+    grid-row-end: 4;
     z-index: 1;
     /* width: 480px;
     height: 480px; */
 
-    width: 25rem;
-    height: 25rem;
-
+    /* width: 25rem;
+    height: 25rem; */
+    /* height: 100%; */
     overflow: show;
 }
+/* 
+.pitch-translate {
+    transform: scale(10.0) translateY(50%);
+        transform: translateX(-50%);
+} */
 
 /* 
 .pitch-indicator {
