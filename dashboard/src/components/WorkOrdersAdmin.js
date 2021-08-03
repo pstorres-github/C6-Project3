@@ -70,7 +70,8 @@ const WorkOrdersAdmin = () => {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
                     <>   
-                        <em> Current Pilot: </em> {value ? value : "None Assigned"} 
+                        <em>Current Pilot:</em>
+                        {value ? value : "None Assigned"}
                         <AssignPilot pilotList = {pilotList} workOrderID={row.original._id} handleChildUpdated={handleChildUpdated}/>
                    </>
                 )
