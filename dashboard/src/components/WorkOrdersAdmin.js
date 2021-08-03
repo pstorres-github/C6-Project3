@@ -8,6 +8,7 @@ import TableContainer, {SelectColumnFilter} from './TableContainer.js'
 import Axios from 'axios'
 import AssignPilot from './AssignPilot.js'
 import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const WorkOrdersAdmin = () => {
 
@@ -70,7 +71,7 @@ const WorkOrdersAdmin = () => {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
                     <>   
-                        <em>Current Pilot:</em>
+                        <em><FontAwesomeIcon icon={["far", "coffee"]} /> Pilot:</em>
                         {value ? value : "None Assigned"}
                         <AssignPilot pilotList = {pilotList} workOrderID={row.original._id} handleChildUpdated={handleChildUpdated}/>
                    </>
