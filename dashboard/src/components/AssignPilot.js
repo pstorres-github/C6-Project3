@@ -44,7 +44,7 @@ const AssignPilot = ({pilotList, workOrderID, handleChildUpdated}) => {
     return(
         <div>
     
-        { !update && <button onClick={()=>{setUpdate(true)}}> Update pilot</button> } 
+        { !update && <button onClick={()=>{setUpdate(true)}}>Edit</button> } 
     
         { update &&
 
@@ -58,8 +58,8 @@ const AssignPilot = ({pilotList, workOrderID, handleChildUpdated}) => {
                     ))}  
                 </select>
             </label>
-            <button onClick={()=>{handleSubmit()}}> Submit </button>
-            <button onClick={()=>{setUpdate(false)}}> Cancel </button>    
+            <button onClick={()=>{handleSubmit()}}>Submit</button>
+            <button onClick={()=>{setUpdate(false)}}>Cancel</button>    
             
             </div>
 
