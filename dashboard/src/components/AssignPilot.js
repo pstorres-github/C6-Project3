@@ -44,7 +44,7 @@ const AssignPilot = ({pilotList, workOrderID, handleChildUpdated}) => {
     return(
         <div className="inline">
     
-        { !update && <button className="small-text" onClick={()=>{setUpdate(true)}}>Edit</button> } 
+        { !update && <button className="tiny-text" onClick={()=>{setUpdate(true)}}>Edit</button> } 
     
         { update &&
 
