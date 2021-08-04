@@ -5,36 +5,14 @@ import React, { useContext, useEffect } from 'react'
 import TelemetryContext from '../TelemetryContext'
 import { findAllByTestId } from '@testing-library/react'
 
-// import "./assets/HUD_static-frame.svg"
-
 const ArtificialHorizon = () => {
     const telemetryContext = useContext(TelemetryContext)
 
-    // telemetryContext transform function goes here
-    // degrees * something to pixel values
-    // return transformed telemetry
+    const scale = 10.0
+    const translate = (((telemetryContext.pitch - (-90))/180) * 100)/2
+    console.log("Translate : ", translate)
 
-    // OLD multiplier
-    // let multiplier = 19.14
-    // const pitchOffset = 2160 + telemetryContext.pitch * multiplier
-
-    // VDR I've recalibrated the pitch to match an 85º max-angle
-    // and I've scaled the width of the pitch tape to better fit the
-    // window, which has effected the pitchOffset
-    let multiplier = 9.625
-    const pitchOffset = -780 + telemetryContext.pitch * multiplier
-
-    const pitchPosition = {
-        // backgroundPosition: 'calc(100%) calc(100% - 1600px)'
-        // backgroundPosition: 'calc(100%) 1620px' // this is muhammad's default window size
-        backgroundPosition: `50%  ${pitchOffset}px` // muhammad full screen
-    }
-    const pitchPosition2 = {
-        backgroundPosition: `50%  ${pitchOffset}px`, // muhammad full screen
-        transform: `rotate(${telemetryContext.roll}deg)`
-    }
-
-    // -60 <= telemetryContext.roll && telemetryContext.roll <= 60
+    const transformString = {transform: `translateY(${translate}%) rotate(${telemetryContext.roll}deg) scale(${scale})`}
 
     useEffect(() => {
         const AoB = document.getElementById('angle-of-bank-indicator')
@@ -52,17 +30,16 @@ const ArtificialHorizon = () => {
         transform: `rotate(${telemetryContext.roll}deg)`
     }
 
-    let altitude = telemetryContext.altitude // uncorrected
-    let speed = telemetryContext.speedX // uncorrected
+    let altitude = telemetryContext.altitude
+    let speed = Math.abs(telemetryContext.speedX)
 
     return (
         <div className="horizon">
-            <div className="alt-text plex">
-                <span className="tiny-text">alt&#8201;</span>
-                {altitude}
+            <div className="alt-text">
+                <div className="float-right inline plex">{altitude}</div>
             </div>
             <div className="air-text plex">
-                {speed} <span className="tiny-text">&#8201;spd</span>
+                {speed}
             </div>
             <div className="static-frame">
                 <img
@@ -82,8 +59,13 @@ const ArtificialHorizon = () => {
                     alt="Pitch Indicator"
                 />
             </div> */}
-            {/* <div className="pitch-indicator" style={bankRotation && pitchPosition}> */}
-            <div className="pitch-indicator" style={pitchPosition2}>
+
+            <div className="pitch-indicator" style={transformString}>
+            {/* <div className="pitch-indicator" > */}
+                <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
+            </div>
+
+            <div className="horizon-indicator">
                 &nbsp;
             </div>
 

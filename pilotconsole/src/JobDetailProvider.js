@@ -6,7 +6,7 @@ const JobDetailProvider = ({ children }) => {
 
     let [activeJob, setActiveJob] = useState()
     let [flightPlan, setFlightPlan] = useState([])
-
+    let [flightData, setFlightData] = useState([])
     
     
     const updateActiveJob = (newJob) => {
@@ -21,16 +21,11 @@ const JobDetailProvider = ({ children }) => {
         
     } 
     
-    const updateVideoFilename = async (filename) => {
-   /*     let videoFilenameUpdate = await Axios({
-            // method: 'PUT',
-            method: 'PATCH',
-            data: { videoURL: `http://rmrvbucket.s3.us-east-2.amazonaws.com/${filename}` },
-            withCredentials: true,
-            url: `http://localhost:3001/api/work_orders/work_order/${activeJob}`
-        })
-        console.log("function ran and posted video url")*/
-    }    
+    const updateFlightData = (completedflight) => {
+        setFlightData(completedflight)
+        console.log("Completed Flight Plan",completedflight)
+    }
+    
     
     function clearJob () {
         setActiveJob(null)
@@ -44,7 +39,8 @@ const JobDetailProvider = ({ children }) => {
         updateActiveJob,
         activeJob,
         flightPlan,
-        updateVideoFilename
+        updateFlightData,
+        flightData
 
     }
 

@@ -25,7 +25,7 @@ const Homepage = () => {
             <div className="header"></div>
             <div className="section-hero">
                 <h1>Team Silvereyes</h1>
-                <h2>Operator console</h2>
+                <h2>Pilot Console</h2>
             </div>
             <div className="section-info"> </div>
             <div className="section-login-guest">
