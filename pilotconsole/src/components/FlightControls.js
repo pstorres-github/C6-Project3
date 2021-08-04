@@ -153,7 +153,7 @@ const FlightControls = ({ DroneConnection }) => {
                             Rotation Sensitivity
                             <RangeSlider
                                 min={1}
-                                max={3600}
+                                max={360}
                                 variant={'secondary'}
                                 value={rotationSensitivity}
                                 onChange={(changeEvent) =>
