@@ -104,7 +104,7 @@ const WorkOrderDetails = () => {
                 />
             </div>
 
-            <div className="workorder-nav">BUTTON return to table</div>
+            <div className="workorder-nav">Return to work orders.&nbsp;<button onclick="history.back(-1)" className="">EXIT</button></div>
         </div>
     )
 }
