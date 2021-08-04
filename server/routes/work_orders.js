@@ -137,11 +137,43 @@ router.patch('/work_order/:id', async (req, res, next) => {
         return next(err);
       }
       res.status(200).json({ workOrder: workOrder.toObject({ getters: true }) });
-    }
+    })
+ 
+    router.patch('/work_order/update/:id', async (req, res, next) => {
+        const fieldsToUpdate = req.body
+        const workOrderId = req.params.id
+        // console.log('workOrderId:', workOrderId)
+        console.log('fieldsToUpdate:', fieldsToUpdate)
     
-
+        let workOrder
+        try {
+            workOrder = await Work_Order.findById(workOrderId);
+        } catch (err) {
+          console.log("error:", err)
+          return next(err);
+        }
+    
+        workOrder.flight_plan = fieldsToUpdate.flight_plan
+        workOrder.flight_data = fieldsToUpdate.flight_Data
+        workOrder.status = fieldsToUpdate.status
+        workOrder.jobTitle = fieldsToUpdate.jobTitle
+        workOrder.jobNumber= fieldsToUpdate.jobNumber
+        workOrder.jobDetails = fieldsToUpdate.jobDetails
+        workOrder.clientContact = fieldsToUpdate.clientContact
+        workOrder.clientEmail = fieldsToUpdate.clientEmail
+        workOrder.customerName = fieldsToUpdate.customerName
+    
+        // console.log("workOrder.videoURL:", workOrder.videoURL)
+        console.log("workOrder", workOrder)
+          try {
+            await workOrder.save();
+          } catch (err) {
+            console.log("error:", err)
+            return next(err);
+          }
+          res.status(200).json({ workOrder: workOrder.toObject({ getters: true }) });
+        }
 )
-
 
 router.delete('/work_order/:id/delete', async (req, res, next) => {
     const workOrderId = req.params.id

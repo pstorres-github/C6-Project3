@@ -39,6 +39,16 @@ const Header = () => {
                     Load/View Pilot Jobs
                 </button>
             )}
+            {jobContext.activeJob && (
+                <button
+                    onClick={() => {
+                        history.push('/flightreport')
+                    }}
+                    className="small-button"
+                >
+                    Submit Report
+                </button>
+            )}
             {authContext.userID && (
                 <button
                     onClick={() => {

@@ -56,6 +56,9 @@ const VideoUploadForm = () => {
 
     return (
       <>
+          <label htmlFor="video-upload">
+            Upload Video
+          </label>
           <input
             id="file"
             name="file"
@@ -63,10 +66,7 @@ const VideoUploadForm = () => {
             // accept="image/*"
             onChange={videoUpload}
           />
-          <label htmlFor="video-upload">
-            Upload Video
-          </label>
-          <button type="submit" onClick={submitFileToAWS}>upload</button>
+          <button type="submit" onClick={submitFileToAWS}>upload video</button>
       </>
     );
   } else {

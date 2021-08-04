@@ -15,6 +15,7 @@ import JobDetailProvider from './JobDetailProvider'
 import PilotConsole from './pages/PilotConsole'
 import PilotJobs from './pages/PilotJobs'
 import TelemetryProvider from './TelemetryProvider'
+import FlightReportPage from './pages/FlightReportPage'
 
 // Import Electron/Node Items
 const electron = window.require('electron')
@@ -63,6 +64,11 @@ function App() {
                                     exact
                                     path="/pilotjobs"
                                     render={() => <PilotJobs />}
+                                />
+                                <Route 
+                                    exact
+                                    path ="/flightreport"
+                                    render={() => <FlightReportPage />}
                                 />
                             </Switch>
                         </div>

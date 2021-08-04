@@ -73,9 +73,6 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 {/* <span className="small-text quiet"></span> */}
             </div>
 
-            <div>
-                <VideoUploadForm />
-            </div>
 
             {/* <div className="console-app-header">
                 <Header />
