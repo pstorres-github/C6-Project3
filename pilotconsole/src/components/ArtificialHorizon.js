@@ -8,15 +8,11 @@ import { findAllByTestId } from '@testing-library/react'
 const ArtificialHorizon = () => {
     const telemetryContext = useContext(TelemetryContext)
 
-    let scale = 10.0
-    let translate = (((telemetryContext.pitch - (-90))/180) * 100)
+    const scale = 10.0
+    const translate = (((telemetryContext.pitch - (-90))/180) * 100)/2
     console.log("Translate : ", translate)
 
-    // let transformString = `scale(${scale}), translateY(${translate}%)`
-    let transformString = `scale(10.0), translateY(50%)`
-
-    const horizonPosition = { transform: `scale(${scale})`}
-    const horizontranslate = {transform: `translateY(${translate}%)`}
+    const transformString = {transform: `translateY(${translate}%) rotate(${telemetryContext.roll}deg) scale(${scale})`}
 
     useEffect(() => {
         const AoB = document.getElementById('angle-of-bank-indicator')
@@ -64,7 +60,8 @@ const ArtificialHorizon = () => {
                 />
             </div> */}
 
-            <div className="pitch-indicator" style={horizonPosition}>
+            <div className="pitch-indicator" style={transformString}>
+            {/* <div className="pitch-indicator" > */}
                 <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
             </div>
 
