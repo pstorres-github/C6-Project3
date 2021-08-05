@@ -68,7 +68,7 @@ const FlightReportPage = () => {
         setSaveError(errorMessage);
       } else {
         setSaveError(undefined);
-        history.push(`/pilotconsole`);
+        // history.push(`/pilotconsole`);
       }
     } catch (error) {
       console.error("Fetch failed to reach the server.");
