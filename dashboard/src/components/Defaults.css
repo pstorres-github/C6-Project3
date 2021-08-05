@@ -167,6 +167,9 @@ acronym {
     --alert: var(--button-warn-bg);
     --error: var(--button-alert-bg);
 
+    --badge-blue: rgba(78, 161, 238, 1);
+    --medium-green: rgba(96, 211, 81, 1);
+
     /* text sizes */
     --base: 14px;
     --hero: 3rem;
@@ -189,28 +192,28 @@ acronym {
 @import url('https://use.typekit.net/yrh8vwl.css');
 
 @font-face {
-font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     /* src: url('../fonts/GT-Flexa-Mono-Medium-Trial.woff2') format('opentype'); */
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     /* src: url('../fonts/GT-Flexa-Mono-Medium-Italic-Trial.woff2') format('opentype'); */
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
-font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     /* src: url('../fonts/GT-Flexa-Mono-Bold-Trial.woff2') format('opentype'); */
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     /* src: url('../fonts/GT-Flexa-Mono-Black-Trial.woff2') format('opentype'); */
     font-weight: 700;
     font-style: normal;
@@ -356,6 +359,28 @@ details {
     width: 1px !important;
 }
 
+/* ||| Fontawesome icon styling */
+.icon {
+    margin: var(--padding-tiny);
+    vertical-align: middle;
+    transform: translateY(-2px);
+}
+
+.fontawesome-icon-admin svg path {
+    /* color: var(--secondary); */
+    color: var(--badge-blue);
+}
+
+.fontawesome-icon-pilot svg path {
+    /* color: var(--secondary); */
+    color: var(--quiet);
+}
+
+.fontawesome-icon-customer svg path {
+    /* color: var(--secondary); */
+    color: var(--medium-green);
+}
+
 /*  ||| Layout */
 
 .contain {
@@ -426,7 +451,7 @@ details {
 }
 
 .right {
-  float: right;
+    float: right;
 }
 
 /*  ||| Forms */
@@ -617,4 +642,3 @@ form > div {
     margin-right: 0;
     padding: 0;
 }
-
