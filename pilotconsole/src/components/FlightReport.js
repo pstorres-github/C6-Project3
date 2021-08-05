@@ -105,12 +105,12 @@ const FlightReport = ({ onSave, flight }) => {
 
     // to inform the pilot if the video was uploaded to AWS and the URL stored in the DB
     if (awsResponse === "OK" && dbResponse === "OK") {
-      alert("Your report has been submitted");
+      alert("Your video has been uploaded");
     } else {
-      alert("Sorry, we couldn't submit your report, please try again later");
+      alert("Sorry, we couldn't your video, please try again later");
     }
     setIsUpoading(false);
-    history.push(`/pilotconsole`)
+    history.push("/pilotconsole")
   }
 
   // Set a new state when the user type something 
