@@ -5,6 +5,12 @@ import DemoText from '../components/DemoText'
 import React from 'react'
 import Scheduling from '../components/Scheduling'
 import WorkOrdersByClient from '../components/WorkOrdersByClient'
+import accountTypeIcons from '../components/AccountTypeIcons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faPlusSquare,
+    faMinusSquare
+} from '@fortawesome/free-regular-svg-icons'
 import { useHistory } from 'react-router-dom'
 
 const Workorders = () => {
@@ -22,24 +28,46 @@ const Workorders = () => {
 
     return (
         <div className="customer-container">
-            <div className="header">
-                <div className="welcome-bar">
-                    <p> Welcome: {authContext.username}</p>
-                    <p> Email: {authContext.email} </p>
-                    <p> Account Type: {authContext.accountType} </p>
-                </div>
+            {/* <div className="header"> */}
+            <div className="welcome-bar">
+                <p>Welcome: {authContext.username}</p>
             </div>
+            <div className="welcome-bar-secondary">
+                {/* <p>Email: {authContext.email} ({authContext.accountType})</p> */}
+                <p>
+                    UserName: {authContext.email} {accountTypeIcons()}
+                </p>
+            </div>
+            {/* </div> */}
 
-            <div>
+            <div className="scheduling-interface">
                 <button
-                    className="big-button"
+                    className="big-button job-scheduling"
                     onClick={() => {
                         setFormToggle(!formToggle)
                     }}
                 >
-                    {formToggle ? <>➖ </> : <>➕ </>}
-                    Schedule a new job{' '}
+                    {formToggle ? (
+                        <>
+                            <FontAwesomeIcon
+                                icon={faMinusSquare}
+                                className="icon"
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <FontAwesomeIcon
+                                icon={faPlusSquare}
+                                className="icon"
+                            />
+                        </>
+                    )}
+                    Schedule a new job
                 </button>
+            </div>
+
+            <div className="customer-workorder-preview">
+                {/* video preview */}
             </div>
 
             {formToggle && (
