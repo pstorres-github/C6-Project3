@@ -1,0 +1,99 @@
+.flight-form {
+  margin: 3rem auto;
+  width: 70%;
+  /* height: 10rem; */
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: lightblue;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+}
+
+label {
+  padding-left: 2rem;
+}
+
+.form-input {
+  margin-left: 2rem;
+  display: flex;
+}
+
+flight-form label,
+form-flight-plan label,
+.flight-form input,
+.form-flight-plan input,
+.flight-form textarea,
+.form-flight-plan textarea {
+  display: flex;
+}
+
+.flight-form,
+.form-flight-plan label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.flight-form input,
+.flight-form select,
+.flight-form textarea {
+  width: 93%;
+  font: inherit;
+  border: 1px solid rgb(163, 30, 30);
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+}
+
+.flight-form input:focus,
+.flight-form textarea:focus {
+  outline: none;
+  background: #ebebeb;
+  border-color: #510077;
+}
+
+.form-flight-plan {
+  margin: 10px auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: lightblue;
+  border-radius: 10px;
+  display: block;
+  text-align: left;
+}
+.individual-flight-plan {
+  display: flex;
+  margin: 3px auto;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.form-flight-plan,
+.individual-flight-plan input,
+.form-flight-plan,
+.individual-flight-plan select,
+.form-flight-plan,
+.individual-flight-plan textarea {
+  width: 80%;
+  font: inherit;
+  border: 1px solid rgb(163, 30, 30);
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+}
+
+button {
+  margin: 1rem;
+}
+
+.videoUpload {
+  display: block;
+  text-align: center;
+}
+
+.videoUpload input{
+  margin-left: 2rem;
+  background: none;
+  border: none
+}

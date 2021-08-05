@@ -34,7 +34,6 @@ const WorkOrdersByClient = ({newOrder}) => {
 
     console.log('userFlights:', userFlights)
 
-
     const columns = useMemo (
         () => [
             {Header: "Job Number", accessor: "jobNumber", width: 50},
