@@ -6,6 +6,9 @@ import React, { useContext, useEffect, useState, useMemo } from 'react'
 import AuthenticationContext from '../AuthenticationContext'
 import TableContainer, { SelectColumnFilter } from './TableContainer.js'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
+
 const WorkOrdersByClient = ({ newOrder }) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
@@ -67,8 +70,11 @@ const WorkOrdersByClient = ({ newOrder }) => {
                         <>
                             {value.slice(0, 8)}
                             <a href={`/workorders/${value}`}>
-                                {' '}
-                                View Work Order Details{' '}
+                                <FontAwesomeIcon
+                                    icon={faEdit}
+                                    className="icon"
+                                />
+                                Edit
                             </a>
                         </>
                     )
