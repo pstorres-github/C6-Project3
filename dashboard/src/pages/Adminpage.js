@@ -1,10 +1,9 @@
-import { useContext } from 'react'
-
 import AuthenticationContext from '../AuthenticationContext'
 import React from 'react'
 import WorkOrdersAdmin from '../components/WorkOrdersAdmin'
-
+import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import accountTypeIcons from '../components/AccountTypeIcons'
 
 const Adminpage = () => {
     const authContext = useContext(AuthenticationContext)
@@ -12,12 +11,18 @@ const Adminpage = () => {
 
     return (
         <div className="customer-container">
-            <div className="header">
+            {/* <div className="header"> */}
                 <div className="welcome-bar">
-                    <p> Welcome: {authContext.username}</p>
-                    <p> Email: {authContext.email} </p>
-                    <p> Account Type: {authContext.accountType} </p>
+                    <p>Welcome: {authContext.username}</p>
                 </div>
+                <div className="welcome-bar-secondary">
+                    {/* <p>Email: {authContext.email} ({authContext.accountType})</p> */}
+                    <p>Email: {authContext.email} {accountTypeIcons()}</p>
+                </div>
+            {/* </div> */}
+
+            <div className="customer-workorder-preview">
+                video preview
             </div>
 
             
