@@ -37,8 +37,8 @@ const WorkOrderDetails = () => {
     if (!userFlight) return null
 
     return (
-        <div className="work-order-details">
             <div className="app-content-right">
+        <div className="work-order-details">
                 <div>Date: {userFlight.date} </div>
                 <div>Pilot: {userFlight.pilot}</div>
                 <div>Flight Time: {userFlight.time}</div>
