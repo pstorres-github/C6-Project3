@@ -1,10 +1,11 @@
 import Axios from 'axios'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const AssignPilot = ({pilotList, workOrderID, handleChildUpdated}) => {
-
-    const [update, setUpdate]=useState(false)
-    const [pilot, setPilot]=useState()
+const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
+    const [update, setUpdate] = useState(false)
+    const [pilot, setPilot] = useState()
     // const [pilotList, setPilotList] = useState("")
 
     // useEffect(() => {
@@ -14,62 +15,81 @@ const AssignPilot = ({pilotList, workOrderID, handleChildUpdated}) => {
     //     }
     //     getPilots()
     // }, [])
-    
+
     const handleChange = (event) => {
-        console.log('selected',event.target.value)
+        console.log('selected', event.target.value)
         setPilot(event.target.value)
-        console.log("work order ID",workOrderID)
+        console.log('work order ID', workOrderID)
     }
 
     const handleSubmit = async () => {
         let pilotUpdate
         try {
             pilotUpdate = await Axios({
-            method: 'PATCH',
-            data: { pilot: pilot },
-            withCredentials: true,
-            url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`,
-        
-        })
-        console.log(pilotUpdate)
+                method: 'PATCH',
+                data: { pilot: pilot },
+                withCredentials: true,
+                url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
+            })
+            console.log(pilotUpdate)
         } catch (err) {
-            console.log("Error:", err)
+            console.log('Error:', err)
         }
-        console.log("new pilot sent to database")
-        
+        console.log('new pilot sent to database')
+
         setUpdate(false)
         handleChildUpdated()
     }
 
-    return(
+    return (
         <div className="inline">
-    
-        { !update && <button className="tiny-text" onClick={()=>{setUpdate(true)}}>Edit</button> } 
-    
-        { update &&
+            {!update && (
+                <button
+                    className="smaller"
+                    onClick={() => {
+                        setUpdate(true)
+                    }}
+                >
+                    <FontAwesomeIcon icon={faEdit} className="icon" />
+                    Edit
+                </button>
+            )}
 
-            <div>
-            
-            <label htmlFor="pilot-assign"> Update pilot:
-                <select onChange={(event)=>handleChange(event)}>
-                    <option selected disabled>--Select--</option>
-                    {pilotList.map((pilot) => (
-                        <option value={pilot.username}> {pilot.username} </option>
-                    ))}  
-                </select>
-            </label>
-            <button onClick={()=>{handleSubmit()}}>Submit</button>
-            <button onClick={()=>{setUpdate(false)}}>Cancel</button>    
-            
-            </div>
-
-        }
-
-        </div>   
+            {update && (
+                <div>
+                    <label htmlFor="pilot-assign">
+                        {' '}
+                        Update pilot:
+                        <select onChange={(event) => handleChange(event)}>
+                            <option selected disabled>
+                                --Select--
+                            </option>
+                            {pilotList.map((pilot) => (
+                                <option value={pilot.username}>
+                                    {' '}
+                                    {pilot.username}{' '}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <button
+                        onClick={() => {
+                            handleSubmit()
+                        }}
+                    >
+                        Submit
+                    </button>
+                    <button
+                        onClick={() => {
+                            setUpdate(false)
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </div>
+            )}
+        </div>
     )
-
-
-
 }
 
 export default AssignPilot
@@ -104,17 +124,15 @@ export default AssignPilot
 //                                 <option value={pilot._id}>
 //                                     {pilot.username}
 //                                 </option>
-//                           ))}   
+//                           ))}
 //                     </Field>*/}
-
 
 //                     <Field as="select" name="selectedPilot">
 //                     {pilotList.map((pilot) => (
 //                                 <option value={pilot._id} name={pilot._id}>
 //                                     {pilot.username}
 //                                 </option>
-//                           ))}   
-
+//                           ))}
 
 // </Field>
 
