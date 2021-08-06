@@ -10,7 +10,7 @@ import AssignPilot from './AssignPilot.js'
 import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const WorkOrdersAdmin = () => {
+const WorkOrdersAdmin = ({selectedJob}) => {
 
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order 
@@ -62,12 +62,9 @@ const WorkOrdersAdmin = () => {
         console.log("childUpdated")
     }
 
-
-
-
     const columns = useMemo (
         () => [
-            {Header: "Pilot", accessor: "pilot", width:400, Cell: ({cell})=> {
+            {Header: "Pilot", accessor: "pilot", Cell: ({cell})=> {
                 const {value, row} = cell //row is destructured, can access the row content by row.original."accessor" name
                 return (
                     <>   
@@ -79,12 +76,12 @@ const WorkOrdersAdmin = () => {
                 )
             }
         },
-        {Header: "Flight Date", width: 100, accessor: "date"},
-        {Header: "Flight Time", width: 100, accessor: "time"},
-        {Header: "Client Contact", width: 200, accessor: "clientContact"},
-        {Header: "Client Email", width: 200, accessor: "clientEmail"},
-        {Header: "Job No", accessor: "jobNumber", width:100},
-            {Header: "Work Order", width: 200, accessor: "_id", Cell: ({cell})=> {              
+        {Header: "Flight Date",accessor: "date"},
+        {Header: "Flight Time", accessor: "time"},
+        {Header: "Client Contact", accessor: "clientContact"},
+        {Header: "Client Email", accessor: "clientEmail"},
+        {Header: "Job No", accessor: "jobNumber" },
+            {Header: "Work Order", accessor: "_id", Cell: ({cell})=> {              
                 const {value} = cell
                 if (!value) return null
                 return (
@@ -97,8 +94,8 @@ const WorkOrdersAdmin = () => {
                 )
                 }
             },
-            {Header: "Details", width: 200, accessor: "jobdetails"},    
-            {Header: "Status", width: 200, accessor: "status", Filter: SelectColumnFilter, filter:'equals', width:50, Cell: ({cell, row}) => {
+            {Header: "Details",accessor: "jobdetails"},    
+            {Header: "Status", accessor: "status", Filter: SelectColumnFilter, filter:'equals', Cell: ({cell, row}) => {
                 const {value} = cell
                 if (!value) return null
                 return (
@@ -127,10 +124,7 @@ const WorkOrdersAdmin = () => {
         return (
             <div>
             
-            <button onClick={()=>handleChildUpdated}>Refresh</button>
-            <AssignPilot pilotList={pilots}/>
-
-            <TableContainer columns={columns} data={userFlights}/>
+            <TableContainer columns={columns} data={userFlights} selectedJob={(job)=>selectedJob(job)}/>
             </div>
         )
 

@@ -5,7 +5,7 @@ import './FlightPlan.css'
 import iconMarker from '../assets/pin.png' 
 import deleteIcon from '../assets/delete.png' 
 
-const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset, flightData}) => {
+const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData}) => {
 /* props notes:  if mode = write, then way points can be updated.  if mode = view, waypoints cannot be updated */
 
     const [markers, setMarkers] = useState(initialValues)
@@ -41,7 +41,7 @@ const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset, 
     }
        //send the updated way points to the parent component
        updateWaypoints(markers)
-    },[markers])
+    },[markers, initialValues])
 
 
 
@@ -93,7 +93,7 @@ const FlightPlan = forwardRef(({updateWaypoints, mode, initialValues=[], reset, 
                 )}
 
                 {/* if view mode and flight data is available, show path on map*/}
-                { (mode==="view") && <Polyline positions={flightData} color={'red'}/>}
+                {/* (mode==="view") && (flightData) && <Polyline positions={flightData} color={'red'}/>*/}
                     
             </Map>
 
