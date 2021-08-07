@@ -32,12 +32,12 @@
 }
 
 .heading-indicator {
-    /* margin: 0;
-    padding: 0;
-    z-index: 8;
-    position: absolute;
-    top: -50%;
-    left: 0; */
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    z-index: 1;
+    transform: translateY(82%) rotate(-90deg);
 }
 
 .angle-of-bank-indicator {
