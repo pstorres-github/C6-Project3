@@ -37,7 +37,7 @@
     grid-row-start: 1;
     grid-row-end: 6;
     z-index: 1;
-    transform: translateY(82%) rotate(-90deg);
+    transform: translateY(82%);
 }
 
 .angle-of-bank-indicator {
