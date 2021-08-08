@@ -24,8 +24,7 @@ const Homepage = () => {
         <div className="grid-container">
             <div className="header"></div>
             <div className="section-hero">
-                <h1>Team Silvereyes</h1>
-                <h2>Pilot Console</h2>
+                <h1>Pilot Console</h1>
             </div>
             <div className="section-info"> </div>
             <div className="section-login-guest">

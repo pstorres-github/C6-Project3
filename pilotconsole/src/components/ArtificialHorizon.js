@@ -8,11 +8,8 @@ import { findAllByTestId } from '@testing-library/react'
 const ArtificialHorizon = () => {
     const telemetryContext = useContext(TelemetryContext)
 
-    const scale = 10.0
-    const translate = (((telemetryContext.pitch - (-90))/180) * 100)/2
-    console.log("Translate : ", translate)
-
-    const transformString = {transform: `translateY(${translate}%) rotate(${telemetryContext.roll}deg) scale(${scale})`}
+    const translate = ((90 + (((1000 * telemetryContext.pitch) + 90000) / 360) - 250) - 180 / 2)
+    const transformString = {transform: `rotate(${telemetryContext.roll}deg) translateY(${translate}%) scale(10)`}
 
     useEffect(() => {
         const AoB = document.getElementById('angle-of-bank-indicator')
@@ -33,6 +30,10 @@ const ArtificialHorizon = () => {
     let altitude = telemetryContext.altitude
     let speed = Math.abs(telemetryContext.speedX)
 
+    const hdgString = {
+        transform: `translateY(80%) rotate(${-telemetryContext.yaw}deg)`
+    }
+
     return (
         <div className="horizon">
             <div className="alt-text">
@@ -47,23 +48,23 @@ const ArtificialHorizon = () => {
                     alt="Artificial Horizon Base Frame"
                 />
             </div>
-            {/* <div className="heading-indicator">
+
+            <div className="pitch-indicator" style={transformString}>
+                <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
+            </div>
+
+            <div className="heading-indicator" style={hdgString}>
                 <img
                     src="./assets/HUD_heading-indicator.svg"
                     alt="Heading Indicator"
                 />
-            </div> */}
+            </div>
             {/* <div className="pitch-indicator" style={pitchPosition}>
                 <img
                     src="./assets/HUD_pitch-indicator.svg"
                     alt="Pitch Indicator"
                 />
             </div> */}
-
-            <div className="pitch-indicator" style={transformString}>
-            {/* <div className="pitch-indicator" > */}
-                <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
-            </div>
 
             <div className="horizon-indicator">
                 &nbsp;

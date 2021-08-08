@@ -10,17 +10,19 @@ import {
     useTable
 } from 'react-table'
 
-import React from 'react'
+import React, {useState} from 'react'
 
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
-const TableContainer = ({ columns, data }) => {
+const TableContainer = ({ columns, data, selectedJob }) => {
+
+    
     const defaultColumn = React.useMemo(
         () => ({
             // if desired to override the default width for a column, this should be done in the parent component
-            defaultWidth: 300,
-            minWidth: 100,
-            maxWidth: 500,
+            //defaultWidth: 300,
+            //minWidth: 100,
+            //maxWidth: 500,
             Filter: DefaultColumnFilter
 
         }),
@@ -64,7 +66,8 @@ const TableContainer = ({ columns, data }) => {
     }
 
     return (
-        <div className="table-container">
+        
+       <div className="table-container">
             {/* table body */}
             <table className="full-width-table" {...getTableProps()}>
                 <thead>
@@ -95,7 +98,7 @@ const TableContainer = ({ columns, data }) => {
                     {page.map((row) => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()}>
+                            <tr {...row.getRowProps()} onClick={()=>{selectedJob(row.original)}}>
                                 {row.cells.map((cell) => {
                                     return (
                                         <td {...cell.getCellProps()}>
@@ -157,6 +160,7 @@ const TableContainer = ({ columns, data }) => {
                 </select>
             </div>
         </div>
+
     )
 }
 export default TableContainer

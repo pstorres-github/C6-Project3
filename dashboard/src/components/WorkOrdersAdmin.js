@@ -11,7 +11,8 @@ import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersAdmin = () => {
+const WorkOrdersAdmin = ({selectedJob}) => {
+
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order
     //    - delete work order from database
@@ -144,14 +145,13 @@ const WorkOrdersAdmin = () => {
     if (userFlights.length === 0)
         return <p>There are no previous flights for this user</p>
 
-    return (
-        <div>
-            <button onClick={() => handleChildUpdated}>Refresh</button>
-            <AssignPilot pilotList={pilots} />
-
-            <TableContainer columns={columns} data={userFlights} />
-        </div>
-    )
+        return (
+            <div>
+            
+            <TableContainer columns={columns} data={userFlights} selectedJob={(job)=>selectedJob(job)}/>
+            </div>
+        )
+    
 }
 
 export default WorkOrdersAdmin

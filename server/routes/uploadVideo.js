@@ -37,6 +37,7 @@ router.post('/upload_video', async (req, res) => {
 router.get('/download_video/:filename', async (req, res) => {
 
     let filename = req.params.filename
+    console.log (filename)
 
     // Load the AWS SDK for Node.js
     let AWS = require('aws-sdk');
@@ -54,11 +55,12 @@ router.get('/download_video/:filename', async (req, res) => {
 
     try {
         let readstream = s3.getObject (downloadParams).createReadStream()
+        readstream.pipe(res)
     } catch (error) {
         console.log('Error retreiving file from AWS')
         res.send ('Error')
     }
-    readstream.pipe(res)
+//    readstream.pipe(res)
 })
 
 module.exports = router
