@@ -211,7 +211,7 @@ const FlightMap = () => {
 
     return (
         // V1.0 strictly for Friday demo day
-        <div>
+        <div className="flightmap-container">
             <div className="position-query">
                 <div className="menu-container">
                     <div className="form-container">
@@ -308,7 +308,7 @@ const FlightMap = () => {
                             </span>
                         </p>
                     </div>
-                    <div className="spacer inline"></div>
+                    {/* <div className="spacer inline"></div> */}
                     <div className="recording-container inline">
                         <span className="small-text inline">
                             Flight recording: &nbsp;
