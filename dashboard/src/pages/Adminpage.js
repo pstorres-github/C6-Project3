@@ -5,15 +5,54 @@ import { useContext, useState,useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import accountTypeIcons from '../components/AccountTypeIcons'
 import Preview from '../components/Preview'
+import {
+    faExclamationCircle,
+    faClock,
+    faCheckCircle
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Adminpage = () => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
     const [selectedJob, setSelectedJob] = useState()
+    const [userFlights, setUserFlights] = useState()
 
     useEffect(() => {
-        console.log(selectedJob)
-    },[selectedJob])
+        const fetchFlights = async () => {
+            let flightsByUser = await fetch(`/api/work_orders/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            let responseData = await flightsByUser.json()
+            setUserFlights(responseData.flights)
+        }
+        fetchFlights()
+        }
+
+    ,[])
+
+    if (!userFlights) return null
+
+    const flightStats = () => {
+
+        let numberRequested=0
+        let numberCompleted=0
+        let numberPending=0
+
+        userFlights.forEach(flight => {
+            console.log(flight)
+            if (flight.status === "Requested") numberRequested++
+            if (flight.status === "Completed") numberCompleted++
+            if (flight.status === "Pending") numberPending++
+        });
+
+        return ([numberRequested, numberPending, numberCompleted])
+    }
+
+    let jobNumbers = flightStats()
 
     return (
         <div className="customer-container">
@@ -22,12 +61,40 @@ const Adminpage = () => {
                 <p>Welcome: {authContext.username}</p>
             </div>
             <div className="welcome-bar-secondary">
-                {/* <p>Email: {authContext.email} ({authContext.accountType})</p> */}
                 <p>
                     UserName: {authContext.email} {accountTypeIcons()}
                 </p>
             </div>
-            {/* </div> */}
+
+            <div className="customer-workorder-alerts">
+                <h3>Notices:</h3>
+
+                <div className="status-card">
+                    <FontAwesomeIcon
+                        icon={faExclamationCircle}
+                        className="status-card-icon"
+                    /><br/> 
+                    {jobNumbers[0]} jobs awaiting pilot assignment
+                </div>
+
+                <div className="status-card">
+                    <FontAwesomeIcon
+                        icon={faClock}
+                        className="status-card-icon"
+                    /><br/> 
+                    {jobNumbers[1]} jobs are pending
+                </div>          
+                    
+                <div className="status-card">
+                    <FontAwesomeIcon
+                        icon={faCheckCircle}
+                        className="status-card-icon"
+                        size="5"
+                    /><br/>  
+                {jobNumbers[2]} jobs are completed
+                </div>
+            
+            </div>
 
             <div className="customer-workorder-preview">
                 <Preview selectedJob={selectedJob}/>
