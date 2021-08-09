@@ -1,5 +1,15 @@
 @import './Defaults.css';
 
+.flightmap-container {
+    width: 100%;
+    height: 100%;
+}
+
+.position-query {
+    width: 100%;
+    height: 100%;
+}
+
 .menu-container {
     background-color: var(--ghost);
     width: 100%;
@@ -8,6 +18,10 @@
     margin: 0rem;
     padding: var(--padding);
     border-radius: var(--border-radius-small);
+
+    display: grid;
+    grid-template-columns: 4rem 1fr 1fr;
+    grid-template-rows: 2.5rem auto 1fr auto;
 }
 
 /* VDR This is a bit of a dunce move,
@@ -25,22 +39,67 @@ by this vh reading. refactor this later. */
     overflow: hidden;
 }
 
-position-map {
+.position-map {
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+    grid-row-start: 2;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
     /* background-color: var(--identify-me); */
     /* padding-top: var(padding); */
 }
 
 .lat-long {
-    /* background-color: var(--identify-me); */
+    text-align: right;
+    z-index: 1;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 3;
+    grid-column-end: -1;
+    background-color: var(--identify-me);
+    padding: var(--padding-tiny);
 }
+
 .form-container {
+    /* "starting coordinates" */
+
+    z-index: 1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: -1;
+
     margin: 0;
     padding: 0;
     padding-top: var(padding-tiny);
-    /* background-color: var(--identify-me); */
+    background-color: var(--ghost);
+
+    text-align: right;
 }
+
+input[name='latitude'],
+input[name='longitude'] {
+    border: 0px solid white;
+}
+
 .recording-container {
-    padding-top: var(padding-tiny);
+    /* recording options */
+    padding: 0;
+    margin: 0;
+
+    z-index: 1;
+
+    grid-row-start: 4;
+    grid-row-end: -1;
+    grid-column-start: 2;
+    grid-column-end: -1;
+    padding-top: var(--padding-tiny);
+    padding-bottom: var(--padding-tiny);
+    padding-left: var(--padding);
+    background-color: var(--ghost);
     /* background-color: var(--identify-me); */
 }
 

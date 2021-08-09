@@ -27,8 +27,7 @@
     padding: 0;
     width: 100%;
     height: 100%;
-        align-self: start;
-
+    align-self: start;
 }
 
 .workorder-header-primary {
@@ -46,7 +45,7 @@
     margin: 0;
 
     align-self: start;
-        /* background: var(--ghost); */
+    /* background: var(--ghost); */
     /* background: var(--identify-me); */
 }
 
@@ -63,7 +62,7 @@
     height: 100%;
     padding: var(--padding-tiny);
     padding-top: calc(2px + var(--padding-tiny));
-        align-self: start;
+    align-self: start;
 
     /* background: var(--ghost); */
 }
@@ -79,13 +78,12 @@ it's driving me mad. */
     padding-top: calc(3px + var(--padding-tiny));
 }
 
-
-
 .workorder-video {
     grid-row-start: 2;
     grid-row-end: 4;
     grid-column-start: 2;
     grid-column-end: -1;
+    background: var(--ghost);
 }
 
 .workorder-video-label {
@@ -125,7 +123,7 @@ it's driving me mad. */
 }
 
 .details-data {
-    border-radius: 0;
+    /* border-radius: 0; */
     /* border-bottom: 1px solid var(--quiet); */
     height: 100%;
     grid-row: 1;
@@ -133,7 +131,7 @@ it's driving me mad. */
 }
 
 .details-status {
-    border-radius: 0;
+    /* border-radius: 0; */
     border-left: 1px solid var(--quiet);
     height: 100%;
     grid-row: 3;
@@ -141,7 +139,7 @@ it's driving me mad. */
 }
 
 .details-date {
-    border-radius: 0;
+    /* border-radius: 0; */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
@@ -149,7 +147,7 @@ it's driving me mad. */
 }
 
 .details-location {
-    border-radius: 0;
+    /* border-radius: 0; */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
@@ -157,7 +155,7 @@ it's driving me mad. */
 }
 
 .details-pilot {
-    border-radius: 0;
+    /* border-radius: 0; */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 2;
@@ -165,11 +163,17 @@ it's driving me mad. */
 }
 
 .details-flight {
-    border-radius: 0;
+    /* border-radius: 0; */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 2;
     grid-column: 3;
+    background: var(--ghost);
+}
+
+.small-padding-top {
+    /* minor padding on paragraph in Flight Plan panel */
+    padding-top: var(--padding);
 }
 
 .workorder-map {

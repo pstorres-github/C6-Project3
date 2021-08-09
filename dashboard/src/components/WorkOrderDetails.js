@@ -37,36 +37,62 @@ const WorkOrderDetails = () => {
     if (!userFlight) return null
 
     return (
-            <div className="app-content-right">
-        <div className="work-order-details">
-                <div>Date: {userFlight.date} </div>
-                <div>Pilot: {userFlight.pilot}</div>
-                <div>Flight Time: {userFlight.time}</div>
-                <div>
-                    Flight Plan:
-                    If completed, flight path is shown in red.
-                    {' '}
-                    <FlightPlan
-                        mode="view"
-                        initialValues={userFlight.flight_plan}
-                        updateWaypoints={() => {}}
-                        reset={resetMapToggle}
-                        flightData={userFlight.flight_data}
-                    />
+        <div className="workorder-container">
+            <div className="workorder-header">
+                <div className="workorder-header-inner-container">
+                    <div className="workorder-header-primary">
+                        <h3>Hello, {userFlight.pilot}.</h3>
+                    </div>
+                    <div className="workorder-header-primary align-right">
+                        <h3>Work order</h3>
+                        {/* Date: {userFlight.date} */}
+                    </div>
+                    <div className="workorder-header-secondary">
+                        {userFlight.id.slice(0, 8)}
+                    </div>
+                    {/* <div className="workorder-header-secondary"> */}
+                    {/* Flight Time: {userFlight.time} */}
+                    {/* </div> */}
                 </div>
-                {/*<div>Flight Data: {userFlight.flight_data}</div>*/}
-                <div>Status: {userFlight.status}</div>
-                <div>
-                    <p>Video: Video will show here</p>
-                    <video
-                        src={userFlight.videoURL}
-                        width={'720'}
-                        height={'720'}
-                        muted={'muted'}
-                        autoPlay
-                        controls
-                    ></video>
-                    {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+            </div>
+
+            <div className="workorder-video-label">
+                <h3>Analysis</h3>
+            </div>
+            <div className="workorder-video">
+                {/* <p>Video: Video will show here</p> */}
+                <video
+                    src={userFlight.videoURL}
+                    width={'100%'}
+                    height={'100%'}
+                    muted={'muted'}
+                    autoPlay
+                    controls
+                ></video>
+                {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+            </div>
+
+            <div className="workorder-details-label">
+                <h3>Details</h3>
+            </div>
+            <div className="workorder-details">
+                <div className="workorder-details-inner-container">
+                    <div className="details-date plex">
+                        Date: {userFlight.date} /
+                    </div>
+                    <div className="details-location plex">add: location</div>
+                    <div className="details-pilot plex">
+                        Pilot: {userFlight.pilot}
+                    </div>
+                    <div className="details-flight plex">
+                        Flight Time: {userFlight.time}
+                    </div>
+                    <div className="details-data plex">
+                        Flight Data: {userFlight.flight_data}
+                    </div>
+                    <div className="details-status plex">
+                        {userFlight.status}
+                    </div>
                 </div>
             </div>
 
@@ -80,9 +106,17 @@ const WorkOrderDetails = () => {
                     updateWaypoints={() => {}}
                     reset={resetMapToggle}
                 />
+                <p className="small-padding-top">
+                    If completed, flight path is shown in red.
+                </p>
             </div>
 
-            <div className="workorder-nav">Return to work orders.&nbsp;<button onclick="history.back(-1)" className="">EXIT</button></div>
+            <div className="workorder-nav">
+                <button onclick="history.back(-1)" className="">
+                    Cancel
+                </button>{' '}
+                and return to work orders.
+            </div>
         </div>
     )
 }
