@@ -64,7 +64,7 @@ const WorkOrdersAdmin = ({selectedJob}) => {
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
-                width: 400,
+                width: 200,
                 Cell: ({ cell }) => {
                     const { value, row } = cell //row is destructured, can access the row content by row.original."accessor" name
                     return (
@@ -83,15 +83,15 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                     )
                 }
             },
-            { Header: 'Flight Date', width: 100, accessor: 'date' },
-            { Header: 'Flight Time', width: 100, accessor: 'time' },
-            { Header: 'Client Contact', width: 200, accessor: 'clientContact' },
-            { Header: 'Client Email', width: 200, accessor: 'clientEmail' },
-            { Header: 'Job No', accessor: 'jobNumber', width: 100 },
+            { Header: 'Flight Date', accessor: 'date' },
+            { Header: 'Flight Time', accessor: 'time' },
+            { Header: 'Client Contact', accessor: 'clientContact' },
+            { Header: 'Client Email', accessor: 'clientEmail' },
+            { Header: 'Job No', accessor: 'jobNumber' },
             {
                 Header: 'Work Order',
-                width: 200,
                 accessor: '_id',
+                width:325,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -113,25 +113,25 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                     )
                 }
             },
-            { Header: 'Details', width: 200, accessor: 'jobdetails' },
+            { Header: 'Details', accessor: 'jobDetails',  width:200, },
             {
                 Header: 'Status',
-                width: 200,
                 accessor: 'status',
                 Filter: SelectColumnFilter,
                 filter: 'equals',
-                width: 50,
+                width:200,
                 Cell: ({ cell, row }) => {
                     const { value } = cell
                     if (!value) return null
                     return (
                         <>
                             {value}
-                            <br />
+                            <div className="inline right smaller">
                             <UpdateWorkOrderStatus
                                 workOrderID={row.original._id}
                                 handleChildUpdated={handleChildUpdated}
                             />
+                            </div>
                         </>
                     )
                 }
