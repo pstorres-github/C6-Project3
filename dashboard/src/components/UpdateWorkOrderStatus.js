@@ -2,10 +2,16 @@ import Axios from 'axios'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import './ConfirmModal_custom.css'; // Import custom css for the confirm modal
+
 
 const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
     const [update, setUpdate] = useState(false)
     const [status, setStatus] = useState()
+    const [show, setShow] = useState(false)
 
     const handleChange = (event) => {
         console.log('selected', event.target.value)
@@ -17,7 +23,42 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
         let statusUpdate
 
         /* DELETE STATUS */
-        if (status === 'DELETE') {
+        if (status === 'Delete') {
+
+            confirmAlert({
+                closeOnClickOutside: false,
+        
+                customUI: ({ onClose }) => {
+                    return (
+                    <div className='confirm-modal-container'>
+                            <div className='confirm-modal-header'>
+                                    <FontAwesomeIcon icon={faTrashAlt} className="icon" />
+                                    Confirm Deletion
+                            </div>
+
+                            <p>Deleting work order cannot be undone, and all data within the work order will be lost.</p>
+    
+                            <div className='confirm-modal-button-group'>
+                                <button onClick={onClose}>Cancel</button>
+                                <button
+                                    onClick={() => {
+                                        deleteWorkOrder()
+                                        onClose();
+                                    }}
+                                    >
+                                    Delete
+                                </button>
+                            </div>
+                    </div>
+                    );
+                }
+            })
+        }
+
+        // //pop-up modal to confirm deletion
+        async function deleteWorkOrder () {
+            console.log ("I am deleting")
+
             try {
                 statusUpdate = await Axios({
                     method: 'DELETE',
@@ -28,23 +69,23 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
             } catch (err) {
                 console.log('Error:', err)
             }
-            console.log('Updated status sent to database')
-            /* ALL OTHER STATUS UPDATES */
-        } else {
-            try {
-                statusUpdate = await Axios({
-                    method: 'PATCH',
-                    data: { status: status },
-                    withCredentials: true,
-                    url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
-                })
-                console.log(statusUpdate)
-            } catch (err) {
-                console.log('Error:', err)
-            }
-            console.log('Updated status sent to database')
         }
 
+        /* ALL OTHER STATUS UPDATES */
+        try {
+            statusUpdate = await Axios({
+                method: 'PATCH',
+                data: { status: status },
+                withCredentials: true,
+                url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
+            })
+            console.log(statusUpdate)
+        } catch (err) {
+            console.log('Error:', err)
+        }
+        console.log('Updated status sent to database')
+    
+    
         setUpdate(false)
         handleChildUpdated()
     }

@@ -92,7 +92,7 @@ function Scheduling(props) {
                                 customerName: authContext.username,
                                 customerID: authContext.userID,
                                 flight_plan: waypoints,
-                                status: 'REQUESTED'
+                                status: 'Requested'
                                 // move pilot assignment to administrator page
                                 //pilotName: values.pilot.username,
                                 //pilotID: values.pilot.id
