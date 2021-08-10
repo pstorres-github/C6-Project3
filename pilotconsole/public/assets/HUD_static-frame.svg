@@ -9,7 +9,7 @@
 	.st3{display:none;enable-background:new    ;}
 	.st4{font-family:'IBMPlexMono-Text';}
 	.st5{font-size:30px;}
-	.st6{fill:none;stroke:#231F20;stroke-width:5;stroke-miterlimit:10;}
+	.st6{fill:#FFFFFF;}
 </style>
 <g id="EXPORT">
 	<polyline class="st0" points="868.2,868.2 866.4,866.4 851.8,851.8 844.4,844.4 	"/>
@@ -72,7 +72,7 @@
 	<path d="M989.4,457.6V476h-2.9v-18.4h-6.8v-2.5h16.5v2.5H989.4z"/>
 </g>
 <g id="EXPORT_00000062898806876547992250000014663426795531075241_">
-	<polygon class="st2" points="514.7,53.7 495.3,87.4 534.1,87.4 	"/>
-	<line class="st6" x1="495.3" y1="94.4" x2="534.1" y2="94.4"/>
+	<polygon class="st6" points="514.7,53.7 495.3,87.4 534.1,87.4 	"/>
+	<rect x="495.3" y="91.9" class="st6" width="38.9" height="5"/>
 </g>
 </svg>
