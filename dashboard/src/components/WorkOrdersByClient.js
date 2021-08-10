@@ -9,7 +9,7 @@ import TableContainer, { SelectColumnFilter } from './TableContainer.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersByClient = ({ newOrder }) => {
+const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
 
@@ -80,7 +80,7 @@ const WorkOrdersByClient = ({ newOrder }) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobdetails', width: 300 },
+            { Header: 'Details', accessor: 'jobDetails', width: 300 },
             {
                 Header: 'Status',
                 accessor: 'status',
@@ -94,7 +94,7 @@ const WorkOrdersByClient = ({ newOrder }) => {
     if (userFlights.length === 0)
         return <p>There are no previous flights for this user</p>
 
-    return <TableContainer columns={columns} data={userFlights} />
+    return <TableContainer columns={columns} data={userFlights} selectedJob={(job)=>selectedJob(job)} />
 }
 
 export default WorkOrdersByClient

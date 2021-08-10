@@ -12,12 +12,14 @@ import {
     faMinusSquare
 } from '@fortawesome/free-regular-svg-icons'
 import { useHistory } from 'react-router-dom'
+import Preview from '../components/Preview'
 
 const Workorders = () => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
     const [jobStatusUpdated, setJobStatusUpdated] = useState(false)
     const [formToggle, setFormToggle] = useState(false)
+    const [selectedJob, setSelectedJob] = useState()
 
     function statusUpdated() {
         console.log('status pre:', jobStatusUpdated)
@@ -67,21 +69,22 @@ const Workorders = () => {
             </div>
 
             <div className="customer-workorder-preview">
-                {/* video preview */}
+                <Preview selectedJob={selectedJob} />
             </div>
 
             {formToggle && (
                 <div className="customer-workorder-preview">
-                    <div>
-                        <Scheduling newJobAdded={statusUpdated} />
-                    </div>
+                    <Scheduling newJobAdded={statusUpdated} />
                 </div>
             )}
 
             <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
-                    <WorkOrdersByClient newOrder={jobStatusUpdated} />
+                    <WorkOrdersByClient
+                        newOrder={jobStatusUpdated}
+                        selectedJob={(job) => setSelectedJob(job)}
+                    />
                 </div>
             </div>
         </div>

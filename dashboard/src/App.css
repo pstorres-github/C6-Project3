@@ -103,8 +103,44 @@ button.small-button {
     /* margin: 0;
     padding: 0; */
 
-    /* width: 100%;
-    height: 100%; */
+    width: max-content;
+    height: max-content;
+    display: inline-flex;
+    background-color: var(--ghost);
+    border-radius: var(--border-radius-small);
+}
+
+.customer-workorder-alerts {
+    background-color: var(--ghost);
+    border-radius: var(--border-radius-small);
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.status-card {
+    grid-row: 2;
+    border: 2px;
+    text-align: center;
+    border-width: var(--mini);
+    border-color: var(--quiet);
+}
+
+.status-card-icon {
+    font-size: 1.5rem;
+}
+
+.customer-workorder-preview-description {
+    margin-right: 2rem;
+    height: 100%;
+}
+
+.customer-workorder-preview-map {
+    margin-right: 2rem;
+    height: 100%;
+}
+.customer-workorder-preview-video {
+    height: 25%;
 }
 
 .app-content-bottom {
@@ -117,4 +153,5 @@ button.small-button {
     padding: var(--padding);
 
     background: var(--ghost);
+    margin-top: 10rem;
 }

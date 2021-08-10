@@ -83,6 +83,7 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
                             <option value={'Delete'}>Delete</option>
                         </select>
                     </label>
+                    <br></br>
                     <button
                         onClick={() => {
                             handleSubmit()

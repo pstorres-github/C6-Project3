@@ -1,13 +1,17 @@
 .leaflet-container {
-    height: 25vw;
+    height: 25vh;;
     width: 100%;
     --button-standard-bg: none;
+}
+
+.map {
+    width:auto
 }
 
 .map-container {
     margin: 0rem;
     padding: 0rem;
-    width: 100%;
+    width: 40rem;
 
     background-color: var(--ghost);
     border-radius: var(--border-radius-small);

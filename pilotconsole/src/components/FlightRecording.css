@@ -1,0 +1,39 @@
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(228, 7, 7);
+  border-radius: 50%;
+  display: inline-block;
+  margin:1em
+}
+
+.square {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(228, 7, 7);
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.flightrecording-stop {
+  margin-bottom: 0.5rem
+}
+
+
+
+.flightrecording-message {
+  color: rgb(228, 7, 7);
+  animation: blink;
+  display: inline-block;
+  animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+  }
+
+.flightrecording-container {
+  background-color: var(--ghost);
+}

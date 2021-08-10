@@ -92,7 +92,8 @@ const FlightReport = ({ onSave, flight }) => {
       videoFilenameUpdate = await Axios({
         method: "PATCH",
         data: {
-          videoURL: `https://rmrvbucket.s3.us-east-2.amazonaws.com/${videoName}`,
+          videoURL:   `http://localhost:3001/api/aws/download_video/${videoName}`
+          //videoURL: `https://rmrvbucket.s3.us-east-2.amazonaws.com/${videoName}`,
         },
         withCredentials: true,
         url: `http://localhost:3001/api/work_orders/work_order/${jobContext.activeJob}`,

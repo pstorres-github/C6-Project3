@@ -10,16 +10,18 @@
 table {
     margin-left: 0;
     padding-left: 0;
-    /* width: 100%;
-    background: yellow; */
+    /*width: 100%;*/
+    /*background: yellow;*/
 }
 
 .full-width-table {
-/* background: green;
-width: 100%; */
+width: 100%;
 
 }
 
+tr {
+    width: calc(100vw - var(--padding) - var(--padding));
+}
 th,
 td {
     border-bottom: 1px solid var(--ghost-hover);
@@ -90,8 +92,8 @@ background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 2
     width: 1rem;
     height: 1.5rem;
     position: absolute;
-    left: -.75rem;
-    right: 0;
+    /*left: -.75rem;*/
+    right: -.2rem;
     top: 50%;
     transform: translateX(50%);
     z-index: 1;

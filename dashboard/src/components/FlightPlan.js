@@ -1,21 +1,18 @@
 import { Map, TileLayer, Marker, Tooltip, Polyline} from "react-leaflet";
-import { useEffect, useState, useRef, forwardRef, } from "react";
+import { useEffect, useState} from "react";
 import L from 'leaflet' 
 import './FlightPlan.css'
 import iconMarker from '../assets/pin.png' 
 import deleteIcon from '../assets/delete.png' 
 
-const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData}) => {
+const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData=[]}) => {
 /* props notes:  if mode = write, then way points can be updated.  if mode = view, waypoints cannot be updated */
 
     const [markers, setMarkers] = useState(initialValues)
-        
-    const mapRef = useRef()
-    let defaultCenter = useRef([Number(50),Number(-120)])
+//    const mapRef = useRef()
 
-    if (markers.length !== 0) {
-        defaultCenter.current = [markers[0].lat, markers[0].lng]
-    }
+    //default center of Calgary
+    const [defaultCenter, setDefaultCenter] = useState([Number(51.0511),Number(-114.08529)])
 
     useEffect(()=>{
         /*watch prop(reset).  If it is set to true, clear markers */
@@ -27,23 +24,30 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
 
     },[reset.current])
 
-    useEffect(()=>{
-        // if viewing a flight plan with established points, center map on the first waypoint
-        // else, locate the user and center the map on their position
-        if (markers.length ===0) {
-          const {current={}}=mapRef  // allows grabbing the leaflet element
-          const {leafletElement: map} = current 
-          //if location is found, the map will center on this location for initial rendering
-          map.locate({
-            setView: true,
-            setZoom: true
-        })
-    }
-       //send the updated way points to the parent component
-       updateWaypoints(markers)
-    },[markers, initialValues])
+    //useEffect(()=>{
+    //     // // if viewing a flight plan with established points, center map on the first waypoint
+    //     // // else, locate the user and center the map on their position
+    //     // if (markers.length ===0) {
+    //     //   const {current={}}=mapRef  // allows grabbing the leaflet element
+    //     //   const {leafletElement: map} = current 
+    //     //   //if location is found, the map will center on this location for initial rendering
+    //     //   map.locate({
+    //     //     setView: true,
+    //     //     setZoom: true
+    //     //   })
+    //     // }    
+    //     //   //send the updated way points to the parent component
+    //    updateWaypoints(markers)
+    //},[markers])
 
+    useEffect (()=> {
+        setMarkers(initialValues)
+        if (initialValues.length !== 0) {
+            setDefaultCenter([initialValues[0].lat, initialValues[0].lng])
+            console.log([initialValues[0].lat, initialValues[0].lng])
+        }
 
+   },[initialValues])
 
     // set up custom 'pin' type marker for flight path
     const markerIcon = L.icon({
@@ -74,12 +78,12 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
     function resetMarkers() {
         setMarkers([])
     }
-
+ //   ref={mapRef}
     return (
         <div className="map-container">
-          <div id ="mapid">
+          <div id ="mapid" className="map">
     
-            <Map ref={mapRef} center={defaultCenter.current} zoom={17} scrollWheelZoom={true} onClick={mode==="view" ? ()=>{}: (e) => {addMarker(e)}}>
+            <Map center={defaultCenter} zoom={16} scrollWheelZoom={false} onClick={mode==="view" ? ()=>{}: (e) => {addMarker(e)}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -93,14 +97,15 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
                 )}
 
                 {/* if view mode and flight data is available, show path on map*/}
-                {/* (mode==="view") && (flightData) && <Polyline positions={flightData} color={'red'}/>*/}
+                {((mode==="view") && (flightData.length!==0)) && <Polyline positions={flightData} color={'red'}/>}
+                
                     
             </Map>
 
             {/* list of coordinates of the markers and delete icon */}
             {markers.map((markers,index)=>
                 // only show X (delete icon) if NOT in view mode
-                <> {  mode==="write"  && <img className="delete-button" src={deleteIcon} alt="X" onClick={()=>deleteMarker(index)}/>}
+                <> {  mode==="write"  && <img className="delete-button" key={index} src={deleteIcon} alt="X" onClick={()=>deleteMarker(index)}/>}
                     #{index+1}, Lat:{Number(markers.lat)}, Lng{Number(markers.lng)}<br/></>
             )}
 

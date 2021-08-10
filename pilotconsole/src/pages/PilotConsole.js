@@ -14,6 +14,7 @@ import Orientation from '../components/Orientation'
 import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
 import VideoUploadForm from '../components/VideoUploadForm'
+import FlightRecording from '../components/FlightRecording'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
     const authContext = useContext(AuthenticationContext)
@@ -58,6 +59,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             <div className="console-video-feed">
                 <VideoFeed DroneVideoFeed={DroneVideoFeed} />
             </div>
+            <FlightRecording/>
 
             <div className="console-controls">
                 <FlightControls DroneConnection={DroneConnection} />
@@ -70,6 +72,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 <textarea id="notes" className="small-text quiet notes">
                     Calgary: 51.0447ºN, -114.0719ºW
                 </textarea>
+
                 {/* <span className="small-text quiet"></span> */}
             </div>
 
@@ -80,6 +83,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div> */}
 
             {/* <div className="console-flight-time">Drone Flight Time</div> */}
+            
         </div>
     )
 }

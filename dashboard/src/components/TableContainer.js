@@ -16,7 +16,7 @@ import React, {useState} from 'react'
 
 const TableContainer = ({ columns, data, selectedJob }) => {
 
-    
+      
     const defaultColumn = React.useMemo(
         () => ({
             // if desired to override the default width for a column, this should be done in the parent component
@@ -43,6 +43,7 @@ const TableContainer = ({ columns, data, selectedJob }) => {
         nextPage,
         previousPage,
         setPageSize,
+        useFlexLayout,
         state: { pageIndex, pageSize }
     } = useTable(
         {
