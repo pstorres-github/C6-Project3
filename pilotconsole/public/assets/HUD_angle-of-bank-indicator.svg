@@ -7,6 +7,7 @@
 	.st1{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
 	.st2{fill:none;}
 	.st3{fill:#FFFFFF;}
+	.st4{fill:#383838;}
 </style>
 <g>
 	<polyline class="st0" points="170.3,185 162.9,177.6 148.3,163 146.4,161.1 	"/>
@@ -32,5 +33,8 @@
 	<line class="st1" x1="670.1" y1="47.3" x2="663" y2="66.8"/>
 	<line class="st1" x1="586.4" y1="24.9" x2="582.8" y2="45.3"/>
 </g>
-<polygon class="st3" points="500,48.4 519.4,14.7 480.6,14.7 "/>
+<polygon class="st3" points="500,48.4 523.2,18.1 476.8,18.1 "/>
+<g>
+	<path class="st4" d="M469.9,9 M570.3,140.6 M530.1,9 M429.7,140.6"/>
+</g>
 </svg>
