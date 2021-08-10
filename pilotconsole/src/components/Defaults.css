@@ -92,7 +92,6 @@ acronym {
 }
 
 * {
-    color: black;
     border-radius: 0.25rem;
     box-sizing: border-box;
 
@@ -151,6 +150,7 @@ acronym {
     /* --ghost: #f6f6f6; */
     --white: white;
     --ghost: hsla(0, 0%, 97.3%, 1);
+    --ghost-transparent: hsla(0, 0%, 97.3%, 0.85);
     --ghost-hover: hsla(0, 0%, 94.5%, 1);
     /* --button-clicked: hsla(199, 100%, 86.3%, 1); */
     --button-clicked: hsla(199, 100%, 88.8%, 1);

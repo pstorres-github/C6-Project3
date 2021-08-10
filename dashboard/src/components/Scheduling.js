@@ -7,7 +7,7 @@ import { Field, Form, Formik, useField } from 'formik'
 import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
-// import './Scheduling.css'
+import './Scheduling.css'
 import Checkbox from './Forms/Checkbox'
 import FlightPlan from './FlightPlan.js'
 import Select from './Forms/Select'
@@ -43,7 +43,7 @@ function Scheduling(props) {
 
     return (
         <div className="scheduling-container">
-            <div className="scheduling-form-details">
+            <div>
                 <Formik
                     initialValues={{
                         jobTitle: '',
@@ -110,38 +110,40 @@ function Scheduling(props) {
                     }}
                 >
                     {(props) => (
-                        <Form>
-                            <div className="form-job-name">
-                                <TextInput
-                                    label="Job name: &nbsp;"
-                                    placeholder="Job name"
-                                    name="jobTitle"
-                                    type="text"
-                                />
-                            </div>
-                            <div className="form-job-number">
-                                <TextInput
-                                    label="Job number: &nbsp;"
-                                    placeholder="Job number"
-                                    name="jobNumber"
-                                    type="text"
-                                />
-                            </div>
-                            <div className="form-client-number">
-                                <TextInput
-                                    label="Client contact number: &nbsp;"
-                                    placeholder="Phone number"
-                                    name="clientContact"
-                                    type="text"
-                                />
-                            </div>
-                            <div className="form-job-details">
-                                <TextArea
-                                    label="Job details: &nbsp;"
-                                    placeholder="Job details"
-                                    name="jobDetails"
-                                    rows="4"
-                                />
+                        <Form className="scheduling-form-details">
+                            <div className="scheduling-form">
+                                <div className="form-job-name">
+                                    <TextInput
+                                        label="Job name: &nbsp;"
+                                        placeholder="Job name"
+                                        name="jobTitle"
+                                        type="text"
+                                    />
+                                </div>
+                                <div className="form-job-number">
+                                    <TextInput
+                                        label="Job number: &nbsp;"
+                                        placeholder="Job number"
+                                        name="jobNumber"
+                                        type="text"
+                                    />
+                                </div>
+                                <div className="form-client-number">
+                                    <TextInput
+                                        label="Client contact number: &nbsp;"
+                                        placeholder="Phone number"
+                                        name="clientContact"
+                                        type="text"
+                                    />
+                                </div>
+                                <div className="form-job-details">
+                                    <TextArea
+                                        label="Job details: &nbsp;"
+                                        placeholder="Job details"
+                                        name="jobDetails"
+                                        rows="4"
+                                    />
+                                </div>
                             </div>
                             <div className="scheduling-map-container">
                                 <div className="form-flight-plan">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import ReactDOM from "react-dom"
 import moment from "moment";
 import Modal from "../components/modal/Modal";
 
@@ -59,6 +60,8 @@ const PilotInfo = () => {
 
   return (
     <React.Fragment>
+      {ReactDOM.createPortal(
+        <div>
       <div
         style={{
           display: "flex",
@@ -88,6 +91,9 @@ const PilotInfo = () => {
           )}
         </div>
       </Modal>
+      </div>, document.getElementById('overlay-root')
+
+      )}
     </React.Fragment>
   );
 };

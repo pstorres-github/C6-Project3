@@ -69,21 +69,22 @@ const Workorders = () => {
             </div>
 
             <div className="customer-workorder-preview">
-                <Preview selectedJob={selectedJob}/>
-                
+                <Preview selectedJob={selectedJob} />
             </div>
 
             {formToggle && (
-                    <div>
-                        <Scheduling newJobAdded={statusUpdated} />
-                    </div>
-                
+                <div className="customer-workorder-preview">
+                    <Scheduling newJobAdded={statusUpdated} />
+                </div>
             )}
 
             <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
-                    <WorkOrdersByClient newOrder={jobStatusUpdated} selectedJob={job => setSelectedJob(job)} />
+                    <WorkOrdersByClient
+                        newOrder={jobStatusUpdated}
+                        selectedJob={(job) => setSelectedJob(job)}
+                    />
                 </div>
             </div>
         </div>

@@ -59,7 +59,7 @@ by this vh reading. refactor this later. */
     grid-row-end: 2;
     grid-column-start: 3;
     grid-column-end: -1;
-    background-color: var(--identify-me);
+    /* background-color: var(--identify-me); */
     padding: var(--padding-tiny);
 }
 
@@ -75,7 +75,7 @@ by this vh reading. refactor this later. */
     margin: 0;
     padding: 0;
     padding-top: var(padding-tiny);
-    background-color: var(--ghost);
+    background-color: var(--ghost-transparent);
 
     text-align: right;
 }
@@ -87,6 +87,7 @@ input[name='longitude'] {
 
 .recording-container {
     /* recording options */
+    text-align: right;
     padding: 0;
     margin: 0;
 
@@ -96,11 +97,18 @@ input[name='longitude'] {
     grid-row-end: -1;
     grid-column-start: 2;
     grid-column-end: -1;
-    padding-top: var(--padding-tiny);
-    padding-bottom: var(--padding-tiny);
     padding-left: var(--padding);
-    background-color: var(--ghost);
-    /* background-color: var(--identify-me); */
+    /* padding-bottom: var(--padding-tiny); */
+    padding-bottom: 0px;
+    /* padding-top: var(--padding-tiny); */
+    padding-top: 0px;
+    background-color: var(--ghost-transparent);
+}
+
+.recording-button {
+    display: inline-block;
+    margin: 0;
+    margin-left: var(--padding-tiny);
 }
 
 .form-item {

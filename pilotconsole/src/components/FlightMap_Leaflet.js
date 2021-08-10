@@ -284,7 +284,7 @@ const FlightMap = () => {
                                             <div className="form-item inline">
                                                 <button
                                                     type="submit"
-                                                    className="map-button"
+                                                    className="map-button inline"
                                                 >
                                                     Submit
                                                 </button>
@@ -309,12 +309,13 @@ const FlightMap = () => {
                         </p>
                     </div>
                     {/* <div className="spacer inline"></div> */}
-                    <div className="recording-container inline">
-                        <span className="small-text inline">
+                    <div className="recording-container">
+                        <span className="small-text">
                             Flight recording: &nbsp;
                         </span>
                         {!recording && (
                             <button
+                                className="recording-button"
                                 onClick={() => {
                                     startRecording(
                                         telemetryContext.accelerationX,
@@ -329,6 +330,7 @@ const FlightMap = () => {
                         {recording && <button> Recording…</button>}
 
                         <button
+                            className="recording-button"
                             onClick={() => {
                                 clearInterval(timerID.current)
                                 console.log('recording stopped')
@@ -340,7 +342,12 @@ const FlightMap = () => {
                             Stop
                         </button>
 
-                        <button onClick={handleClearRecording}>Clear</button>
+                        <button
+                            onClick={handleClearRecording}
+                            className="recording-button"
+                        >
+                            Clear
+                        </button>
                     </div>
                     <div className="position-map">
                         <div id="mapid">

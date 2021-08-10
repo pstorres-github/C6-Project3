@@ -11,8 +11,7 @@ import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersAdmin = ({selectedJob}) => {
-
+const WorkOrdersAdmin = ({ selectedJob }) => {
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order
     //    - delete work order from database
@@ -91,7 +90,7 @@ const WorkOrdersAdmin = ({selectedJob}) => {
             {
                 Header: 'Work Order',
                 accessor: '_id',
-                width:325,
+                width: 325,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -104,7 +103,7 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                                         icon={faEdit}
                                         className="icon"
                                     />
-                                    Edit
+                                    Details
                                 </a>
                             </div>
                             {/* This doesn't work VDR 👇🏻 */}
@@ -113,13 +112,13 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobDetails',  width:200, },
+            { Header: 'Details', accessor: 'jobDetails', width: 200 },
             {
                 Header: 'Status',
                 accessor: 'status',
                 Filter: SelectColumnFilter,
                 filter: 'equals',
-                width:200,
+                width: 200,
                 Cell: ({ cell, row }) => {
                     const { value } = cell
                     if (!value) return null
@@ -127,10 +126,10 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                         <>
                             {value}
                             <div className="inline right smaller">
-                            <UpdateWorkOrderStatus
-                                workOrderID={row.original._id}
-                                handleChildUpdated={handleChildUpdated}
-                            />
+                                <UpdateWorkOrderStatus
+                                    workOrderID={row.original._id}
+                                    handleChildUpdated={handleChildUpdated}
+                                />
                             </div>
                         </>
                     )
@@ -145,13 +144,15 @@ const WorkOrdersAdmin = ({selectedJob}) => {
     if (userFlights.length === 0)
         return <p>There are no previous flights for this user</p>
 
-        return (
-            <div>
-            
-            <TableContainer columns={columns} data={userFlights} selectedJob={(job)=>selectedJob(job)}/>
-            </div>
-        )
-    
+    return (
+        <div>
+            <TableContainer
+                columns={columns}
+                data={userFlights}
+                selectedJob={(job) => selectedJob(job)}
+            />
+        </div>
+    )
 }
 
 export default WorkOrdersAdmin
