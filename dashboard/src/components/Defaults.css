@@ -384,13 +384,12 @@ details {
 /*  ||| Layout */
 
 .contain {
-    /* background: pink; */
-    margin: var(--padding);
-    width: calc(100vw - calc(2 * (var(--padding))));
+    /* passing padding down to interior elements VDR */
+    margin: 0;
+    padding: 0;
 }
 
 .narrow-column {
-    /* padding-left: 5rem; */
     width: calc(60vw);
 }
 
@@ -457,14 +456,14 @@ details {
 /*  ||| Forms */
 
 form {
-    grid-template-columns: 50% 50%;
-    padding: var(--padding);
+    /* grid-template-columns: 50% 50%; */
+    /* padding: var(--padding); */
     border-radius: var(--border-radius-large);
 
-    display: flex;
+    /* display: flex;
 
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; */
 
     margin: 0;
     padding: 0;
@@ -483,7 +482,7 @@ textarea {
 
     border: 0.5px solid var(--ghost-hover);
     border-radius: 0.25rem;
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
     /* min-width: 10rem; */
     /* max-width: 25rem; */
 }
@@ -504,7 +503,7 @@ label {
     margin: var(--padding-tiny);
 
     position: absolute;
-    transform: translate(0px, -15px);
+    /* transform: translate(0px, -15px); */
     transition: opacity 0.2s ease-in-out 0.2s;
     user-select: none;
 }
