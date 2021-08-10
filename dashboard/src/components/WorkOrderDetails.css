@@ -123,7 +123,7 @@ it's driving me mad. */
 }
 
 .details-data {
-    /* border-radius: 0; */
+    border-radius: 0;
     /* border-bottom: 1px solid var(--quiet); */
     height: 100%;
     grid-row: 1;
@@ -131,7 +131,7 @@ it's driving me mad. */
 }
 
 .details-status {
-    /* border-radius: 0; */
+    border-radius: 0;
     border-left: 1px solid var(--quiet);
     height: 100%;
     grid-row: 3;
@@ -139,7 +139,7 @@ it's driving me mad. */
 }
 
 .details-date {
-    /* border-radius: 0; */
+    border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
@@ -147,7 +147,7 @@ it's driving me mad. */
 }
 
 .details-location {
-    /* border-radius: 0; */
+    border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
@@ -155,7 +155,7 @@ it's driving me mad. */
 }
 
 .details-pilot {
-    /* border-radius: 0; */
+    border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 2;
@@ -163,7 +163,7 @@ it's driving me mad. */
 }
 
 .details-flight {
-    /* border-radius: 0; */
+    border-radius: 0;
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 2;
