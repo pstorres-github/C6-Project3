@@ -11,8 +11,7 @@ import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersAdmin = ({selectedJob}) => {
-
+const WorkOrdersAdmin = ({ selectedJob }) => {
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order
     //    - delete work order from database
@@ -104,7 +103,7 @@ const WorkOrdersAdmin = ({selectedJob}) => {
                                         icon={faEdit}
                                         className="icon"
                                     />
-                                    Edit
+                                    Details
                                 </a>
                             </div>
                             {/* This doesn't work VDR 👇🏻 */}
@@ -116,11 +115,10 @@ const WorkOrdersAdmin = ({selectedJob}) => {
             { Header: 'Details', width: 200, accessor: 'jobdetails' },
             {
                 Header: 'Status',
-                width: 200,
                 accessor: 'status',
                 Filter: SelectColumnFilter,
                 filter: 'equals',
-                width: 50,
+                width: 250,
                 Cell: ({ cell, row }) => {
                     const { value } = cell
                     if (!value) return null
@@ -145,13 +143,15 @@ const WorkOrdersAdmin = ({selectedJob}) => {
     if (userFlights.length === 0)
         return <p>There are no previous flights for this user</p>
 
-        return (
-            <div>
-            
-            <TableContainer columns={columns} data={userFlights} selectedJob={(job)=>selectedJob(job)}/>
-            </div>
-        )
-    
+    return (
+        <div>
+            <TableContainer
+                columns={columns}
+                data={userFlights}
+                selectedJob={(job) => selectedJob(job)}
+            />
+        </div>
+    )
 }
 
 export default WorkOrdersAdmin
