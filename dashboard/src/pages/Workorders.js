@@ -71,7 +71,7 @@ const Workorders = () => {
             </div>
 
             {formToggle && (
-                <div className="app-content-top">
+                <div className="customer-workorder-preview">
                     <div>
                         <Scheduling newJobAdded={statusUpdated} />
                     </div>
