@@ -8,8 +8,11 @@ import { findAllByTestId } from '@testing-library/react'
 const ArtificialHorizon = () => {
     const telemetryContext = useContext(TelemetryContext)
 
-    const translate = ((90 + (((1000 * telemetryContext.pitch) + 90000) / 360) - 250) - 180 / 2)
-    const transformString = {transform: `rotate(${telemetryContext.roll}deg) translateY(${translate}%) scale(10)`}
+    const translate =
+        90 + (1000 * telemetryContext.pitch + 90000) / 360 - 250 - 180 / 2
+    const transformString = {
+        transform: `rotate(${telemetryContext.roll}deg) translateY(${translate}%) scale(10)`
+    }
 
     useEffect(() => {
         const AoB = document.getElementById('angle-of-bank-indicator')
@@ -39,9 +42,7 @@ const ArtificialHorizon = () => {
             <div className="alt-text">
                 <div className="float-right inline plex">{altitude}</div>
             </div>
-            <div className="air-text plex">
-                {speed}
-            </div>
+            <div className="air-text plex">{speed}</div>
             <div className="static-frame">
                 <img
                     src="./assets/HUD_static-frame.svg"
@@ -50,7 +51,21 @@ const ArtificialHorizon = () => {
             </div>
 
             <div className="pitch-indicator" style={transformString}>
-                <img className="pitch-translate" src="./assets/HUD_pitch-indicator.svg" alt="pitch indicator svg" width="100%"/>
+                <img
+                    className="pitch-translate"
+                    src="./assets/HUD_pitch-indicator.svg"
+                    alt="pitch indicator svg"
+                    width="100%"
+                />
+            </div>
+
+            <div className="pitch-indicator-colour" style={transformString}>
+                <img
+                    className="pitch-translate"
+                    src="./assets/HUD_pitch-indicator_colour.svg"
+                    alt="pitch indicator svg"
+                    width="100%"
+                />
             </div>
 
             <div className="heading-indicator" style={hdgString}>
@@ -66,9 +81,7 @@ const ArtificialHorizon = () => {
                 />
             </div> */}
 
-            <div className="horizon-indicator">
-                &nbsp;
-            </div>
+            <div className="horizon-indicator">&nbsp;</div>
 
             <div
                 className="angle-of-bank-indicator"
