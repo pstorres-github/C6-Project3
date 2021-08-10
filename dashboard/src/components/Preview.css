@@ -1,0 +1,21 @@
+.customer-workorder-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: hsla(0, 0%, 97.3%, 1);
+}
+
+.customer-workorder-preview-description {
+  margin: auto;
+  text-align: center;
+}
+
+h3 {
+  background-color: hsla(0, 0%, 94.5%, 1);
+}
+
+.customer-workorder-preview-map,
+.customer-workorder-preview-video {
+  margin: 2rem;
+  align-self: center;
+}
