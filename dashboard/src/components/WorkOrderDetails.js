@@ -1,7 +1,7 @@
 import './WorkOrderDetails.css'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { Redirect, useParams } from 'react-router-dom'
+import { Redirect, useParams, useHistory } from 'react-router-dom'
 
 import FlightPlan from './FlightPlan.js'
 
@@ -11,6 +11,8 @@ const WorkOrderDetails = () => {
 
     const [userFlight, setUserFlight] = useState()
     const resetMapToggle = useRef(false) // required for flight plan component.  No reset required.
+
+    const history = useHistory()
 
     useEffect(() => {
         const fetchFlight = async () => {
@@ -112,7 +114,11 @@ const WorkOrderDetails = () => {
             </div>
 
             <div className="workorder-nav">
-                <button onclick="history.back(-1)" className="">
+                <button 
+                    onClick={() => {
+                    history.goBack(-1)
+                    }} 
+                    className="">
                     Cancel
                 </button>{' '}
                 and return to work orders.
