@@ -44,7 +44,7 @@ const ArtificialHorizon = () => {
             // style="enable-background:new 0 0 7604.6 7604.6;"
             xmlSpace="preserve"
         >
-            <style>{`.st0{fill=${props.fill}`}</style>
+            <style>{`.st0{fill=${props.fill}}`}</style>
             <path
                 id="pitch"
                 class="st0"
@@ -353,8 +353,7 @@ const ArtificialHorizon = () => {
                         alt="pitch indicator svg"
                         width="100%"
                     /> */}
-
-                    <PitchIndicator fill="white" />
+                    <PitchIndicator fill="#FFFFFF" /> {/* INLINE SVG */}
                 </div>
             </div>
 
