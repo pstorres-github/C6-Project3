@@ -83,6 +83,7 @@ function Scheduling(props) {
                     })}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         setTimeout(async () => {
+                            console.log(waypoints)
                             await axios.post('/api/work_orders/create', {
                                 jobTitle: values.jobTitle,
                                 jobNumber: values.jobNumber,

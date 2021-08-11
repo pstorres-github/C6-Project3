@@ -46,7 +46,6 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
             setDefaultCenter([initialValues[0].lat, initialValues[0].lng])
             console.log([initialValues[0].lat, initialValues[0].lng])
         }
-
    },[initialValues])
 
     // set up custom 'pin' type marker for flight path
@@ -59,6 +58,7 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
 
     function addMarker(e) {
         setMarkers ([...markers,e.latlng])
+        updateWaypoints([...markers,e.latlng])
     }
     
     // if markers are dragged to another location, update the marker array with the new coordinates
@@ -66,28 +66,58 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
         let updatedMarkers = [...markers]
         updatedMarkers[e.target.options.markerIndex]=e.target._latlng
         setMarkers (updatedMarkers)
+        updateWaypoints(updatedMarkers)
     }
 
     function deleteMarker(index) {
         let updatedMarkers = [...markers]
         updatedMarkers.splice(index,1)
         setMarkers (updatedMarkers)
+        updateWaypoints(updatedMarkers)
     }
 
     //allows user to reset and clear all markers
     function resetMarkers() {
         setMarkers([])
+        updateWaypoints([])
     }
- //   ref={mapRef}
+ 
+    // Some mapping options
+
+    // topographical map
+    const URL1 = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    const attribution1 = 'Tiles &copy; Esri'
+
+    // airport data
+    const URL2 = "http://2.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{-y}.png"
+    const attribution2 = '<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
+
+    //satellite with streets 
+    const URL3="https://api.mapbox.com/styles/v1/pstorres/cks70fjex09x617pnci9ccpq3/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHN0b3JyZXMiLCJhIjoiY2tzNnkzaHZ4MDRwbjJ3bm9jNG9vOXVuOCJ9.D77_DIhMPf7gCDFAL4bJAg"
+    const attribution3= 'Tiles &copy; Mapbox'
+    
     return (
         <div className="map-container">
           <div id ="mapid" className="map">
     
             <Map center={defaultCenter} zoom={16} scrollWheelZoom={false} onClick={mode==="view" ? ()=>{}: (e) => {addMarker(e)}}>
-                <TileLayer
+                {/*<TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />*/}
+                <TileLayer
+                    attribution={attribution3}
+                    url={URL3}
                 />
+                <TileLayer
+                    attribution={attribution2}
+                    url={URL2}
+                />
+
+                {/*<TileLayer
+                    attribution={attribution1}
+                    url={URL1}
+                />*/}
 
                 {/* if view mode, do not allow updates to map. */}
                 {markers.map((markers,index)=>

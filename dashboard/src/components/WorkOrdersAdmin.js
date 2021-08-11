@@ -11,7 +11,7 @@ import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersAdmin = ({ selectedJob }) => {
+const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order
     //    - delete work order from database
@@ -54,7 +54,8 @@ const WorkOrdersAdmin = ({ selectedJob }) => {
     }, [childUpdated])
 
     const handleChildUpdated = () => {
-        setChildUpdated(!childUpdated)
+        setChildUpdated(childUpdated=>!childUpdated)
+        handleTableUpdated()
         console.log('childUpdated')
     }
 
@@ -98,7 +99,7 @@ const WorkOrdersAdmin = ({ selectedJob }) => {
                         <>
                             {value.slice(0, 8)}
                             <div className="inline right smaller">
-                                <a href={`/workorders/${value}`}>
+                                <a href={`/workorders/${value}`} onClick={event=>event.stopPropagation}>
                                     <FontAwesomeIcon
                                         icon={faEdit}
                                         className="icon"
@@ -125,10 +126,11 @@ const WorkOrdersAdmin = ({ selectedJob }) => {
                     return (
                         <>
                             {value}
-                            <div className="inline right smaller">
+                            <div className="inline right smaller" onClick={event=>event.stopPropagation}>
                                 <UpdateWorkOrderStatus
                                     workOrderID={row.original._id}
                                     handleChildUpdated={handleChildUpdated}
+                                    
                                 />
                             </div>
                         </>
@@ -136,7 +138,7 @@ const WorkOrdersAdmin = ({ selectedJob }) => {
                 }
             }
         ],
-        [handleChildUpdated]
+        [childUpdated]
     )
 
     if (!pilots) return null

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
 const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
+    //if pilot is assigned, then update status as well to Pending
     const [update, setUpdate] = useState(false)
     const [pilot, setPilot] = useState()
     
@@ -18,7 +19,9 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
         try {
             pilotUpdate = await Axios({
                 method: 'PATCH',
-                data: { pilot: pilot },
+                data: { pilot: pilot,
+                        status: "Pending" 
+                        },
                 withCredentials: true,
                 url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
             })
@@ -37,8 +40,9 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
             {!update && (
                 <button
                     className="smaller"
-                    onClick={() => {
+                    onClick={(event) => {
                         setUpdate(true)
+                        event.stopPropagation()
                     }}
                 >
                     <FontAwesomeIcon icon={faEdit} className="icon" />
@@ -51,7 +55,7 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
                     <label htmlFor="pilot-assign">
                         {' '}
                         Update pilot:
-                        <select onChange={(event) => handleChange(event)}>
+                        <select onChange={(event) => handleChange(event)} onClick={(event)=>event.stopPropagation()}>
                             <option selected disabled>
                                 --Select--
                             </option>
@@ -65,14 +69,16 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
                     </label>
                     <br></br>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             handleSubmit()
                         }}
                     >
                         Submit
                     </button>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             setUpdate(false)
                         }}
                     >

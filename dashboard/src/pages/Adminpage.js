@@ -17,6 +17,7 @@ const Adminpage = () => {
     const history = useHistory()
     const [selectedJob, setSelectedJob] = useState()
     const [userFlights, setUserFlights] = useState()
+    const [tableUpdated, setTableUpdated] = useState(false)
 
     useEffect(() => {
         const fetchFlights = async () => {
@@ -32,7 +33,12 @@ const Adminpage = () => {
         fetchFlights()
         }
 
-    ,[])
+    ,[tableUpdated])
+    
+    const handleTableUpdated = () => {
+        setTableUpdated(!tableUpdated)
+        console.log('childUpdated')
+    }
 
     if (!userFlights) return null
 
@@ -104,7 +110,7 @@ const Adminpage = () => {
             <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
-                    <WorkOrdersAdmin selectedJob={job => setSelectedJob(job)}  />
+                    <WorkOrdersAdmin selectedJob={job => setSelectedJob(job)} handleTableUpdated={handleTableUpdated}  />
                 </div>
             </div>
         </div>
