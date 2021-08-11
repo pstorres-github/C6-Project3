@@ -40,8 +40,9 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
             {!update && (
                 <button
                     className="smaller"
-                    onClick={() => {
+                    onClick={(event) => {
                         setUpdate(true)
+                        event.stopPropagation()
                     }}
                 >
                     <FontAwesomeIcon icon={faEdit} className="icon" />
@@ -54,7 +55,7 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
                     <label htmlFor="pilot-assign">
                         {' '}
                         Update pilot:
-                        <select onChange={(event) => handleChange(event)}>
+                        <select onChange={(event) => handleChange(event)} onClick={(event)=>event.stopPropagation()}>
                             <option selected disabled>
                                 --Select--
                             </option>
@@ -68,14 +69,16 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
                     </label>
                     <br></br>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             handleSubmit()
                         }}
                     >
                         Submit
                     </button>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             setUpdate(false)
                         }}
                     >

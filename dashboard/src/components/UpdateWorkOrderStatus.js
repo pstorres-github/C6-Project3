@@ -105,7 +105,8 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
             {!update && (
                 <button
                     className="smaller"
-                    onClick={() => {
+                    onClick={(event) => {
+                        event.stopPropagation() //prevent preview modal from showing up when clicked
                         setUpdate(true)
                     }}
                 >
@@ -119,7 +120,7 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
                     <label htmlFor="status-assign">
                         {' '}
                         Update Status:
-                        <select onChange={(event) => handleChange(event)}>
+                        <select onChange={(event) => handleChange(event)} onClick={(event)=> event.stopPropagation()}>
                             <option selected disabled>
                                 --Select--
                             </option>
@@ -132,7 +133,8 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
                     </label>
                     <br></br>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             handleSubmit()
                         }}
                     >
@@ -140,7 +142,8 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
                         Submit{' '}
                     </button>
                     <button
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                             setUpdate(false)
                         }}
                     >
