@@ -154,7 +154,7 @@ router.patch('/work_order/:id', async (req, res, next) => {
         }
     
         workOrder.flight_plan = fieldsToUpdate.flight_plan
-        workOrder.flight_data = fieldsToUpdate.flight_Data
+        workOrder.flight_data = fieldsToUpdate.flight_data
         workOrder.status = fieldsToUpdate.status
         workOrder.jobTitle = fieldsToUpdate.jobTitle
         workOrder.jobNumber= fieldsToUpdate.jobNumber
