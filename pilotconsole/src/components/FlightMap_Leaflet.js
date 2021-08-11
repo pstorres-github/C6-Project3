@@ -15,6 +15,10 @@ import TelemetryContext from '../TelemetryContext'
 import iconMarker from './assets/pin.png'
 import localforage from 'localforage'
 
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import './ConfirmModal_custom.css'; // Import custom css for the confirm modal
+
 //Refactor:
 //if drone is connected, start recording.
 //store flight data directly to job context flight data
@@ -282,8 +286,37 @@ const FlightMap = () => {
 
     }
 
-    const handleClearRecording = () =>
-        updateStartCoordinates(initialLat.current, initialLng.current)
+    const handleClearRecording = () =>{
+        confirmAlert({
+            closeOnClickOutside: false,
+
+            customUI: ({ onClose }) => {
+                return (
+                <div className='confirm-modal-container'>
+                        <div className='confirm-modal-header'>
+                                Confirm Deletion
+                        </div>
+
+                        <p>Deleting flight data cannot be undone.  Are you sure?</p>
+
+                        <div className='confirm-modal-button-group'>
+                            <button onClick={onClose}>Cancel</button>
+                            <button
+                                onClick={async () => {
+                                    updateStartCoordinates(initialLat.current, initialLng.current)
+                                    onClose();
+                                }}
+                                >
+                                Delete
+                            </button>
+                        </div>
+                </div>
+                );
+            }
+
+        })
+    }
+
 
 
 
