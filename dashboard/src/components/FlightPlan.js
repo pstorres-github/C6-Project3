@@ -59,6 +59,7 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
 
     function addMarker(e) {
         setMarkers ([...markers,e.latlng])
+        updateWaypoints([...markers,e.latlng])
     }
     
     // if markers are dragged to another location, update the marker array with the new coordinates
@@ -66,17 +67,20 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
         let updatedMarkers = [...markers]
         updatedMarkers[e.target.options.markerIndex]=e.target._latlng
         setMarkers (updatedMarkers)
+        updateWaypoints(updatedMarkers)
     }
 
     function deleteMarker(index) {
         let updatedMarkers = [...markers]
         updatedMarkers.splice(index,1)
         setMarkers (updatedMarkers)
+        updateWaypoints(updatedMarkers)
     }
 
     //allows user to reset and clear all markers
     function resetMarkers() {
         setMarkers([])
+        updateWaypoints([])
     }
  //   ref={mapRef}
     return (

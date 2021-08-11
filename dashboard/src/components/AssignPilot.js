@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
 const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
+    //if pilot is assigned, then update status as well to Pending
     const [update, setUpdate] = useState(false)
     const [pilot, setPilot] = useState()
     
@@ -18,7 +19,9 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
         try {
             pilotUpdate = await Axios({
                 method: 'PATCH',
-                data: { pilot: pilot },
+                data: { pilot: pilot,
+                        status: "Pending" 
+                        },
                 withCredentials: true,
                 url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
             })
