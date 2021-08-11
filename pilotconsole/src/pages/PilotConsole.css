@@ -57,6 +57,8 @@ button:hover {
     grid-row: 1;
     grid-column-start: 4;
     grid-column-end: 5;
+    display:flex;
+    justify-content: space-between
 }
 
 .console-drone-status {

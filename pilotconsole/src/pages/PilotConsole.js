@@ -34,6 +34,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 ) : (
                     <> | No job loaded</>
                 )}
+                <FlightRecording/>
             </div>
 
             <div className="console-horizon">
@@ -59,7 +60,6 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             <div className="console-video-feed">
                 <VideoFeed DroneVideoFeed={DroneVideoFeed} />
             </div>
-            <FlightRecording/>
 
             <div className="console-controls">
                 <FlightControls DroneConnection={DroneConnection} />
