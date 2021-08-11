@@ -31,6 +31,8 @@ const ArtificialHorizon = () => {
     }
 
     const PitchIndicator = (props) => (
+        // console.log(props.fill)
+
         <svg
             version="1.1"
             id="Layer_1"
@@ -39,11 +41,10 @@ const ArtificialHorizon = () => {
             x="0px"
             y="0px"
             viewBox="0 0 7604.6 7604.6"
-            style="enable-background:new 0 0 7604.6 7604.6;"
+            // style="enable-background:new 0 0 7604.6 7604.6;"
             xmlSpace="preserve"
         >
-            fill={props.fill}
-            {/* <style>{`.st0{fill:${fill}`}</style> */}
+            <style>{`.st0{fill=${props.fill}`}</style>
             <path
                 id="pitch"
                 class="st0"
