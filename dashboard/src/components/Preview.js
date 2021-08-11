@@ -53,7 +53,7 @@ const Preview = ({ selectedJob }) => {
         show={show} 
         onClose={() => {
           setShow(false)
-          history.push("/admin")
+          document.location.reload()
         }}>
             <div className="customer-workorder-preview-wrapper"> 
           <div className="customer-workorder-preview-description">

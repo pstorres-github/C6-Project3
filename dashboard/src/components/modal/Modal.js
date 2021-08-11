@@ -21,11 +21,12 @@ const Modal = ({ modalStyle, children, show, onClose, backdropStyle }) => {
     return (
         <React.Fragment>
             <div ref={modalRef} style={backdropStyle} className={`${styles.modal__wrap}`}>
-                <button
+                <img
+                    alt="close-button"
+                    src="close-icon.png"
                     onClick={onClose}
-                    style={{ width: 60, height: 40, position: 'absolute', top: 0, right: 0, margin: '1rem' }}
-                >
-                </button>
+                    style={{ width: 40, height: 40, position: 'absolute', top: 0, right: 0, margin: '1rem' }}
+                ></img>
                 <div style={modalStyle} className={styles.modal}>
                     {children}
                 </div>
