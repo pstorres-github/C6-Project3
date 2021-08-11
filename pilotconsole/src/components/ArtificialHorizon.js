@@ -50,13 +50,15 @@ const ArtificialHorizon = () => {
                 />
             </div>
 
-            <div className="pitch-indicator" style={transformString}>
-                <img
-                    className="pitch-translate"
-                    src="./assets/HUD_pitch-indicator.svg"
-                    alt="pitch indicator svg"
-                    width="100%"
-                />
+                <div className="pitch-mask">
+                <div className="pitch-indicator" style={transformString}>
+                    <img
+                        className="pitch-translate"
+                        src="./assets/HUD_pitch-indicator.svg"
+                        alt="pitch indicator svg"
+                        width="100%"
+                    />
+                </div>
             </div>
 
             <div className="pitch-indicator-colour" style={transformString}>
