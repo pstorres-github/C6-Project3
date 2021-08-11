@@ -58,8 +58,8 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
 
             <div className="console-video-feed">
                 <VideoFeed DroneVideoFeed={DroneVideoFeed} />
+                <FlightRecording />
             </div>
-            <FlightRecording/>
 
             <div className="console-controls">
                 <FlightControls DroneConnection={DroneConnection} />
@@ -72,10 +72,8 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 <textarea id="notes" className="small-text quiet notes">
                     Calgary: 51.0447ºN, -114.0719ºW
                 </textarea>
-
                 {/* <span className="small-text quiet"></span> */}
             </div>
-
 
             {/* <div className="console-app-header">
                 <Header />
@@ -83,7 +81,6 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div> */}
 
             {/* <div className="console-flight-time">Drone Flight Time</div> */}
-            
         </div>
     )
 }
