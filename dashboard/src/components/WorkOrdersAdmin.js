@@ -11,7 +11,7 @@ import UpdateWorkOrderStatus from './UpdateWorkOrderStatus.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
 
-const WorkOrdersAdmin = ({ selectedJob }) => {
+const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
     // ADMINISTRATOR SHOULD BE ABLE TO:
     //    - assign pilot to work order
     //    - delete work order from database
@@ -55,6 +55,7 @@ const WorkOrdersAdmin = ({ selectedJob }) => {
 
     const handleChildUpdated = () => {
         setChildUpdated(!childUpdated)
+        handleTableUpdated()
         console.log('childUpdated')
     }
 
