@@ -75,13 +75,12 @@
     grid-row-start: 1;
     grid-row-end: 4;
     z-index: 1;
-
-    mask-size: 100% 100%;
-    mask-origin: view-box;
+    /* mask-size: 100% 100%; */
+    /* mask-origin: view-box; */
     /* mask-size: auto auto; */
-    mask-mode: alpha;
+    /* mask-mode: alpha; */
     /* image-rendering: crisp-edges; */
-    mask-image: url('../components/assets/HUD_static-frame_MASK.png');
+    mask-image: url('../components/assets/HUD_static-frame_MASK.inverted.svg');
 }
 
 .pitch-indicator-colour {
@@ -91,6 +90,7 @@
     grid-row-end: 4;
     z-index: 0;
     overflow: show;
+    /* mask-image: url('../components/assets/HUD_static-frame_STAR.svg'); */
 }
 
 .alt-text {
