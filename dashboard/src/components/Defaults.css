@@ -161,7 +161,8 @@ acronym {
     --black: black;
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
-    --secondary: black;
+    /* --secondary: black; */
+    --secondary: var(--badge-blue);
     --highlight: var(--button-clicked);
 
     --alert: var(--button-warn-bg);
