@@ -55,20 +55,24 @@ const FlightMap = () => {
     currentYSpeed.current = telemetryContext.speedY
 
     const [map, setMap] = useState()
-    
+
     // Some mapping options
 
     // topographical map
-    const URL1 = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    const URL1 =
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
     const attribution1 = 'Tiles &copy; Esri'
 
     // airport data
-    const URL2 = "http://2.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{-y}.png"
-    const attribution2 = '<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
+    const URL2 =
+        'http://2.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{-y}.png'
+    const attribution2 =
+        '<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
 
-    //satellite with streets 
-    const URL3="https://api.mapbox.com/styles/v1/pstorres/cks70fjex09x617pnci9ccpq3/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHN0b3JyZXMiLCJhIjoiY2tzNnkzaHZ4MDRwbjJ3bm9jNG9vOXVuOCJ9.D77_DIhMPf7gCDFAL4bJAg"
-    const attribution3= 'Tiles &copy; Mapbox'
+    //satellite with streets
+    const URL3 =
+        'https://api.mapbox.com/styles/v1/pstorres/cks70fjex09x617pnci9ccpq3/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHN0b3JyZXMiLCJhIjoiY2tzNnkzaHZ4MDRwbjJ3bm9jNG9vOXVuOCJ9.D77_DIhMPf7gCDFAL4bJAg'
+    const attribution3 = 'Tiles &copy; Mapbox'
 
     useEffect(() => {
         /*if (map) {
@@ -90,36 +94,25 @@ const FlightMap = () => {
 
         if (map) {
             L.tileLayer
-                .offline(
-                    URL2,
-                    localforage,
-                    {
-                        attribution:
-                            attribution2,
-                        subdomains: 'abc',
-                        minZoom: 15,
-                        maxZoom: 22,
-                        crossOrigin: true
-                    }
-                )
+                .offline(URL2, localforage, {
+                    attribution: attribution2,
+                    subdomains: 'abc',
+                    minZoom: 15,
+                    maxZoom: 22,
+                    crossOrigin: true
+                })
                 .addTo(map)
 
             L.tileLayer
-                .offline(
-                    URL3,
-                    localforage,
-                    {
-                        attribution:
-                            attribution3,
-                        subdomains: 'abc',
-                        minZoom: 15,
-                        maxZoom: 22,
-                        crossOrigin: true
-                    }
-                )
-            .addTo(map)
+                .offline(URL3, localforage, {
+                    attribution: attribution3,
+                    subdomains: 'abc',
+                    minZoom: 15,
+                    maxZoom: 22,
+                    crossOrigin: true
+                })
+                .addTo(map)
         }
-
     }, [map])
 
     useEffect(() => {
@@ -256,7 +249,6 @@ const FlightMap = () => {
 
     const handleClearRecording = () =>
         updateStartCoordinates(initialLat.current, initialLng.current)
-
 
     return (
         // V1.0 strictly for Friday demo day
