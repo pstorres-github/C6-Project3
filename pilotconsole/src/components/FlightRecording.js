@@ -148,10 +148,10 @@ const FlightRecording = () => {
 
     return (
         <div className="flightrecording-container">
-            Flight Screen Recording:
-            {!recording && <button className="flight-button smaller plex" onClick={onClickStartButton}><span className="dot"/>Record</button>}
-            {recording && <button className="flight-button smaller plex" onClick={onClickStopButton}><span className="square"/>Stop</button>}
-            {recording && <span className="flightrecording-message">Screen recording in progress</span>}
+            {recording && <span className="flightrecording-message">Screen recording in progress &nbsp;</span>}
+            Flight Screen Recording:&nbsp;
+            {!recording && <button className="small-button flightrecording-button" onClick={onClickStartButton}><span className="dot"/>Record</button>}
+            {recording && <button className="small-button flightrecording-button" onClick={onClickStopButton}><span className="square"/>Stop</button>}
 
         </div>
     )

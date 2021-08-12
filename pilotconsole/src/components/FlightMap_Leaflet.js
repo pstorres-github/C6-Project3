@@ -15,6 +15,14 @@ import TelemetryContext from '../TelemetryContext'
 import iconMarker from './assets/pin.png'
 import localforage from 'localforage'
 
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import './ConfirmModal_custom.css' // Import custom css for the confirm modal
+
+//Refactor:
+//if drone is connected, start recording.
+//store flight data directly to job context flight data
+
 // Drone needs to be faced north intially
 // Forward is +X speed (North)
 // Backward is -X speed (South)
@@ -25,11 +33,11 @@ const FlightMap = () => {
     const jobContext = useContext(JobDetailContext)
     const telemetryContext = useContext(TelemetryContext)
     // reference variables (do not cause re-render)
-    let initialLat = useRef(0)
-    let initialLng = useRef(0)
+    let initialLat = useRef(51.0447)
+    let initialLng = useRef(-114.0719)
 
-    let positionLat = useRef(0)
-    let positionLong = useRef(0)
+    let positionLat = useRef(51.0447)
+    let positionLong = useRef(-114.0719)
 
     let timerID = useRef(null)
 
@@ -126,6 +134,12 @@ const FlightMap = () => {
         }
     }, [jobContext.flightPlan.length])
 
+    //start recording if drone connected
+    useEffect(() => {
+        if (telemetryContext.droneStatus === 'Connected') startRecording()
+        if (telemetryContext.droneStatus === 'Disconnected') stopRecording()
+    }, [telemetryContext.droneStatus])
+
     // set up custom 'pin' type marker for flight path
     const markerIcon = L.icon({
         iconSize: [30, 30],
@@ -212,11 +226,18 @@ const FlightMap = () => {
         console.log('latBdegrees in getCoordinates', latBdegrees)
         console.log('longBdegrees in getCoordinates', longBdegrees)
 
+        //update coordinates with new
+        jobContext.updateFlightData((coordinates) => [
+            ...coordinates,
+            [Number(latBdegrees), Number(longBdegrees)]
+        ])
+
         // update coordinate array with new coordinates
         setCoordinates((coordinates) => [
             ...coordinates,
             [Number(latBdegrees), Number(longBdegrees)]
         ])
+
         positionLat.current = latBdegrees
         positionLong.current = longBdegrees
         // return array with new coordinates
@@ -229,6 +250,7 @@ const FlightMap = () => {
 
     function startRecording() {
         console.log('Recording has started')
+        setRecording(true)
 
         function doCalculations() {
             //only update array if the drone is moving
@@ -247,8 +269,47 @@ const FlightMap = () => {
         timerID.current = setInterval(doCalculations, recordingInterval)
     }
 
-    const handleClearRecording = () =>
-        updateStartCoordinates(initialLat.current, initialLng.current)
+    function stopRecording() {
+        console.log('Recording has stopped')
+        setRecording(false)
+        clearInterval(timerID.current)
+        console.log('stored flight data', jobContext.flightData)
+    }
+
+    const handleClearRecording = () => {
+        confirmAlert({
+            closeOnClickOutside: false,
+
+            customUI: ({ onClose }) => {
+                return (
+                    <div className="confirm-modal-container">
+                        <div className="confirm-modal-header">
+                            Confirm Deletion
+                        </div>
+
+                        <p>
+                            Deleting flight data cannot be undone. Are you sure?
+                        </p>
+
+                        <div className="confirm-modal-button-group">
+                            <button onClick={onClose}>Cancel</button>
+                            <button
+                                onClick={async () => {
+                                    updateStartCoordinates(
+                                        initialLat.current,
+                                        initialLng.current
+                                    )
+                                    onClose()
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
+        })
+    }
 
     return (
         // V1.0 strictly for Friday demo day
@@ -278,13 +339,17 @@ const FlightMap = () => {
                                     <div className="form-group">
                                         <div className="form-item">
                                             <span className="small-text inline">
-                                                Starting coordinates: &nbsp;
+                                                Edit starting coordinates:
+                                                &nbsp;
                                             </span>
                                             <div className="inline">
                                                 <Field
                                                     type="text"
                                                     name="latitude"
                                                     id="lat"
+                                                    defaultValue={
+                                                        initialLat.current
+                                                    }
                                                     placeholder="Latitude (degrees)"
                                                     className={`form-control ${
                                                         touched.latitude &&
@@ -308,6 +373,9 @@ const FlightMap = () => {
                                                     type="text"
                                                     name="longitude"
                                                     id="long"
+                                                    defaultValue={
+                                                        initialLng.current
+                                                    }
                                                     placeholder="Longitude (degrees)"
                                                     className={`form-control ${
                                                         touched.longitude &&
@@ -352,36 +420,10 @@ const FlightMap = () => {
                     {/* <div className="spacer inline"></div> */}
                     <div className="recording-container">
                         <span className="small-text">
-                            Flight recording: &nbsp;
+                            Storing flight data: &nbsp;
+                            {recording && <> In Progress...</>}
+                            {!recording && <> Paused... </>}
                         </span>
-                        {!recording && (
-                            <button
-                                className="recording-button"
-                                onClick={() => {
-                                    startRecording(
-                                        telemetryContext.accelerationX,
-                                        telemetryContext.accelerationY
-                                    )
-                                    setRecording(true)
-                                }}
-                            >
-                                Start
-                            </button>
-                        )}
-                        {recording && <button> Recording…</button>}
-
-                        <button
-                            className="recording-button"
-                            onClick={() => {
-                                clearInterval(timerID.current)
-                                console.log('recording stopped')
-                                //save flight array to jobContext
-                                jobContext.updateFlightData(coordinates)
-                                setRecording(false)
-                            }}
-                        >
-                            Stop
-                        </button>
 
                         <button
                             onClick={handleClearRecording}
@@ -390,13 +432,14 @@ const FlightMap = () => {
                             Clear
                         </button>
                     </div>
+
                     <div className="position-map">
                         <div id="mapid">
                             <Map
                                 center={defaultCenter}
                                 zoom={13}
                                 scrollWheelZoom={true}
-                                whenCreated={(map) => setMap(map)}
+                                //whenCreated={(map) => setMap(map)}
                             >
                                 {/*<TileLayer
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
