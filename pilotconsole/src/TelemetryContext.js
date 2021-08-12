@@ -16,7 +16,9 @@ const TelemetryContext = React.createContext({
     timeOfFlightDistance:'',
     lowTemp:'',
     highTemp:'',
-    motorRunTime:''
+    motorRunTime:'',
+    setDroneStatus:() => {},
+    droneStatus:''
 
 })
 

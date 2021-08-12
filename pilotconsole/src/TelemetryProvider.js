@@ -25,6 +25,8 @@ const TelemetryProvider = ({ children }) => {
 
     const [motorRunTime, setMotorRunTime] = useState(0)
 
+    const [droneStatus, setDroneStatus] = useState('Disconnected')
+
 
 
     let telemetryUpdate = (telemetryData) => {
@@ -69,7 +71,10 @@ const TelemetryProvider = ({ children }) => {
         timeOfFlightDistance,
         lowTemp,
         highTemp,
-        motorRunTime
+        motorRunTime,
+        setDroneStatus,
+        droneStatus
+
         
     }
 

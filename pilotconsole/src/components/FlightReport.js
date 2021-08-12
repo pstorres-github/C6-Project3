@@ -26,11 +26,12 @@ const FlightReport = ({ onSave, flight }) => {
   const [insertedClientEmail, setInsertedClientEmail] = useState(flight.clientEmail);
   const [insertedCustomerName, setInsertedCustomerName] = useState(flight.customerName);
 
-
-  // get flight_data from jobContext only if it's not an empty array, otherwise it will delete some info we might have in database
-  if (jobContext.flightData.length !== 0) {
-    setInsertedFlightData(jobContext.flightData)
-  }
+ useEffect(()=>{
+    // get flight_data from jobContext only if it's not an empty array, otherwise it will delete some info we might have in database
+    if (jobContext.flightData.length !== 0) {
+      setInsertedFlightData(jobContext.flightData)
+    }
+  },[])
 
   // select a video file when choose file button is clicked
   const videoUpload = async (e) => {
