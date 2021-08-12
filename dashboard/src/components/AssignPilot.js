@@ -35,6 +35,8 @@ const AssignPilot = ({ pilotList, workOrderID, handleChildUpdated }) => {
         handleChildUpdated()
     }
 
+    if (!pilotList)
+        return null
     return (
         <div className="inline">
             {!update && (

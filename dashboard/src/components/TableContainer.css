@@ -5,22 +5,25 @@
     /* background: red; */
     width: calc(100vw - var(--padding) - var(--padding));
     /* width: calc(100vw - 4rem); */
+    width:100%;
+    padding: 0rem;
+    display: block;
 }
 
 table {
     margin-left: 0;
     padding-left: 0;
-    /*width: 100%;*/
+    width: 100%
     /*background: yellow;*/
 }
 
 .full-width-table {
-width: 100%;
-
+    width:100%;
 }
 
 tr {
-    width: calc(100vw - var(--padding) - var(--padding));
+    /*width: calc(100vw - var(--padding) - var(--padding));*/
+    height:fit-content
 }
 th,
 td {
@@ -93,7 +96,7 @@ background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 2
     height: 1.5rem;
     position: absolute;
     /*left: -.75rem;*/
-    right: -.2rem;
+    right: .3rem;
     top: 50%;
     transform: translateX(50%);
     z-index: 1;
@@ -107,4 +110,8 @@ background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 2
 /* ensures input box is not larger than the column width */
 .input-search-box {
     width: 100%;
+}
+
+#custom-select {
+    width:100%
 }

@@ -100,7 +100,7 @@ const FlightPlan = (({updateWaypoints, mode, initialValues=[], reset, flightData
         <div className="map-container">
           <div id ="mapid" className="map">
     
-            <Map center={defaultCenter} zoom={16} scrollWheelZoom={false} onClick={mode==="view" ? ()=>{}: (e) => {addMarker(e)}}>
+            <Map center={defaultCenter} zoom={18} scrollWheelZoom={false} onClick={mode==="view" ? ()=>{}: (e) => {addMarker(e)}}>
                 {/*<TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

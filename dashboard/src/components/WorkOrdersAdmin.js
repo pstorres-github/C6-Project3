@@ -64,7 +64,6 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
-                width: 200,
                 Cell: ({ cell }) => {
                     const { value, row } = cell //row is destructured, can access the row content by row.original."accessor" name
                     return (
@@ -91,7 +90,6 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
             {
                 Header: 'Work Order',
                 accessor: '_id',
-                width: 325,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -113,13 +111,12 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobDetails', width: 200 },
+            { Header: 'Details', accessor: 'jobDetails'},
             {
                 Header: 'Status',
                 accessor: 'status',
                 Filter: SelectColumnFilter,
                 filter: 'equals',
-                width: 200,
                 Cell: ({ cell, row }) => {
                     const { value } = cell
                     if (!value) return null
