@@ -71,7 +71,7 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                             {/* <em><FontAwesomeIcon icon={["far", "coffee"]} /> Pilot:</em> */}
                             <FontAwesomeIcon icon={['far', 'id-badge']} />
                             {value ? value : 'None Assigned'}
-                            <div className="inline right tiny-text">
+                            <div className="inline right smaller">
                                 <AssignPilot
                                     pilotList={pilotList}
                                     workOrderID={row.original._id}
