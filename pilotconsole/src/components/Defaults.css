@@ -112,6 +112,7 @@ acronym {
     --padding: 1rem;
     --padding-tiny: 0.25rem;
     --mini: 0.0125rem;
+    --border-tiny: 0.125rem;
     --border-radius-tiny: 0.25rem;
     --border-radius-small: 0.5rem;
     --border-radius-medium: 1rem;
@@ -159,7 +160,7 @@ acronym {
     --black: black;
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
-    --secondary: black;
+    --secondary: var(--badge-blue);
     --highlight: var(--button-clicked);
 
     /* text sizes */
@@ -485,7 +486,7 @@ textarea.notes::selection {
 
 textarea.notes:focus {
     outline: none !important;
-    border: 0px solid red;
+    border: var(--border-tiny) solid var(--secondary);
     /* box-shadow: 0 0 10px #719ece; */
 }
 
