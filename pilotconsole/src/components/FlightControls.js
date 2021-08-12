@@ -348,7 +348,7 @@ const FlightControls = ({ DroneConnection }) => {
                             </button>
                         </div>
                     </div>
-                    <div className="speedButton">
+                    {/* <div className="speedButton">
                         <button
                             className="flight-button plex smaller"
                             id="speed-button"
@@ -358,9 +358,8 @@ const FlightControls = ({ DroneConnection }) => {
                             }}
                         >
                             Speed
-                            {/* Speed Hardcoded at 10 cm/s */}
                         </button>
-                    </div>
+                    </div> */}
                     <div className="streamOnButton">
                         <button
                             className="flight-button plex smaller"
@@ -370,10 +369,10 @@ const FlightControls = ({ DroneConnection }) => {
                                 ghostHover('stream-button')
                             }}
                         >
-                            Stream
+                            Stream On
                         </button>
                     </div>
-                    <div className="keys-button">
+                    {/* <div className="keys-button">
                         <button
                             className="flight-button plex smaller"
                             id="keys-button"
@@ -384,29 +383,16 @@ const FlightControls = ({ DroneConnection }) => {
                         >
                             Keys
                         </button>
-                    </div>
+                    </div> */}
                     {/* NOTE: set button to show state -VDR */}
-                    {/* <div className="streamOffButton ">
+                    <div className="streamOffButton ">
                         <button
                             className="flight-button smaller"
                             onClick={() => sendCommand('streamoff')}
                         >
                             Stream Off
                         </button>
-                    </div> */}
-                    {/* <div className="batteryStatus ">
-                        <button
-                            className="center-flight-button plex smaller"
-                            id="battery-button"
-                            onClick={() => {
-                                sendCommand('battery?')
-                                ghostHover('battery-button')
-                            }}
-                        >
-                            BATT
-                        </button>
-                    </div> */}
-                    {/* <div className="battery-display">⌧</div> */}
+                    </div>
                 </div>
             </div>
         </div>

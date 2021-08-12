@@ -338,22 +338,22 @@ const ArtificialHorizon = () => {
 
             <div className="pitch-mask">
                 {/* <div className="pitch-indicator-test" style={transformString}> */}
-                <div className="pitch-indicator-test">
+                {/* <div className="pitch-indicator-test">
                     <img
                         className="pitch-translate"
                         src="./assets/HUD_pitch-indicator_TEST.svg"
                         alt="pitch indicator svg"
                         width="100%"
                     />
-                </div>
+                </div> */}
                 <div className="pitch-indicator" style={transformString}>
-                    {/* <img
+                    <img
                         className="pitch-translate"
                         src="./assets/HUD_pitch-indicator_SOLO.svg"
                         alt="pitch indicator svg"
                         width="100%"
-                    /> */}
-                    <PitchIndicator fill="#FFFFFF" /> {/* INLINE SVG */}
+                    />
+                    {/* <PitchIndicator fill="#FFFFFF" /> INLINE SVG */}
                 </div>
             </div>
 

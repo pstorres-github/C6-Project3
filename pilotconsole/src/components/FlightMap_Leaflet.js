@@ -16,8 +16,8 @@ import iconMarker from './assets/pin.png'
 import localforage from 'localforage'
 
 import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import './ConfirmModal_custom.css'; // Import custom css for the confirm modal
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import './ConfirmModal_custom.css' // Import custom css for the confirm modal
 
 //Refactor:
 //if drone is connected, start recording.
@@ -63,20 +63,24 @@ const FlightMap = () => {
     currentYSpeed.current = telemetryContext.speedY
 
     const [map, setMap] = useState()
-    
+
     // Some mapping options
 
     // topographical map
-    const URL1 = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    const URL1 =
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
     const attribution1 = 'Tiles &copy; Esri'
 
     // airport data
-    const URL2 = "http://2.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{-y}.png"
-    const attribution2 = '<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
+    const URL2 =
+        'http://2.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{-y}.png'
+    const attribution2 =
+        '<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
 
-    //satellite with streets 
-    const URL3="https://api.mapbox.com/styles/v1/pstorres/cks70fjex09x617pnci9ccpq3/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHN0b3JyZXMiLCJhIjoiY2tzNnkzaHZ4MDRwbjJ3bm9jNG9vOXVuOCJ9.D77_DIhMPf7gCDFAL4bJAg"
-    const attribution3= 'Tiles &copy; Mapbox'
+    //satellite with streets
+    const URL3 =
+        'https://api.mapbox.com/styles/v1/pstorres/cks70fjex09x617pnci9ccpq3/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHN0b3JyZXMiLCJhIjoiY2tzNnkzaHZ4MDRwbjJ3bm9jNG9vOXVuOCJ9.D77_DIhMPf7gCDFAL4bJAg'
+    const attribution3 = 'Tiles &copy; Mapbox'
 
     useEffect(() => {
         /*if (map) {
@@ -98,35 +102,25 @@ const FlightMap = () => {
 
         if (map) {
             L.tileLayer
-                .offline(
-                    URL2,
-                    localforage,
-                    {
-                        attribution:
-                            attribution2,
-                        subdomains: 'abc',
-                        minZoom: 15,
-                        maxZoom: 22,
-                        crossOrigin: true
-                    }
-                )
+                .offline(URL2, localforage, {
+                    attribution: attribution2,
+                    subdomains: 'abc',
+                    minZoom: 15,
+                    maxZoom: 22,
+                    crossOrigin: true
+                })
                 .addTo(map)
 
             L.tileLayer
-                .offline(
-                    URL3,
-                    localforage,
-                    {
-                        attribution:
-                            attribution3,
-                        subdomains: 'abc',
-                        minZoom: 15,
-                        maxZoom: 22,
-                        crossOrigin: true
-                    }
-                )
-            .addTo(map)
-                }
+                .offline(URL3, localforage, {
+                    attribution: attribution3,
+                    subdomains: 'abc',
+                    minZoom: 15,
+                    maxZoom: 22,
+                    crossOrigin: true
+                })
+                .addTo(map)
+        }
     }, [map])
 
     useEffect(() => {
@@ -142,10 +136,8 @@ const FlightMap = () => {
 
     //start recording if drone connected
     useEffect(() => {
-        if (telemetryContext.droneStatus==='Connected')
-            startRecording()
-        if (telemetryContext.droneStatus==='Disconnected')
-            stopRecording()
+        if (telemetryContext.droneStatus === 'Connected') startRecording()
+        if (telemetryContext.droneStatus === 'Disconnected') stopRecording()
     }, [telemetryContext.droneStatus])
 
     // set up custom 'pin' type marker for flight path
@@ -234,18 +226,17 @@ const FlightMap = () => {
         console.log('latBdegrees in getCoordinates', latBdegrees)
         console.log('longBdegrees in getCoordinates', longBdegrees)
 
-        //update coordinates with new    
+        //update coordinates with new
         jobContext.updateFlightData((coordinates) => [
             ...coordinates,
             [Number(latBdegrees), Number(longBdegrees)]
         ])
-        
+
         // update coordinate array with new coordinates
         setCoordinates((coordinates) => [
             ...coordinates,
             [Number(latBdegrees), Number(longBdegrees)]
         ])
-
 
         positionLat.current = latBdegrees
         positionLong.current = longBdegrees
@@ -282,43 +273,43 @@ const FlightMap = () => {
         console.log('Recording has stopped')
         setRecording(false)
         clearInterval(timerID.current)
-        console.log("stored flight data",jobContext.flightData)
-
+        console.log('stored flight data', jobContext.flightData)
     }
 
-    const handleClearRecording = () =>{
+    const handleClearRecording = () => {
         confirmAlert({
             closeOnClickOutside: false,
 
             customUI: ({ onClose }) => {
                 return (
-                <div className='confirm-modal-container'>
-                        <div className='confirm-modal-header'>
-                                Confirm Deletion
+                    <div className="confirm-modal-container">
+                        <div className="confirm-modal-header">
+                            Confirm Deletion
                         </div>
 
-                        <p>Deleting flight data cannot be undone.  Are you sure?</p>
+                        <p>
+                            Deleting flight data cannot be undone. Are you sure?
+                        </p>
 
-                        <div className='confirm-modal-button-group'>
+                        <div className="confirm-modal-button-group">
                             <button onClick={onClose}>Cancel</button>
                             <button
                                 onClick={async () => {
-                                    updateStartCoordinates(initialLat.current, initialLng.current)
-                                    onClose();
+                                    updateStartCoordinates(
+                                        initialLat.current,
+                                        initialLng.current
+                                    )
+                                    onClose()
                                 }}
-                                >
+                            >
                                 Delete
                             </button>
                         </div>
-                </div>
-                );
+                    </div>
+                )
             }
-
         })
     }
-
-
-
 
     return (
         // V1.0 strictly for Friday demo day
@@ -348,14 +339,17 @@ const FlightMap = () => {
                                     <div className="form-group">
                                         <div className="form-item">
                                             <span className="small-text inline">
-                                                Edit starting coordinates: &nbsp;
+                                                Edit starting coordinates:
+                                                &nbsp;
                                             </span>
                                             <div className="inline">
                                                 <Field
                                                     type="text"
                                                     name="latitude"
                                                     id="lat"
-                                                    defaultValue={initialLat.current}
+                                                    defaultValue={
+                                                        initialLat.current
+                                                    }
                                                     placeholder="Latitude (degrees)"
                                                     className={`form-control ${
                                                         touched.latitude &&
@@ -379,7 +373,9 @@ const FlightMap = () => {
                                                     type="text"
                                                     name="longitude"
                                                     id="long"
-                                                    defaultValue={initialLng.current}
+                                                    defaultValue={
+                                                        initialLng.current
+                                                    }
                                                     placeholder="Longitude (degrees)"
                                                     className={`form-control ${
                                                         touched.longitude &&
@@ -435,7 +431,6 @@ const FlightMap = () => {
                         >
                             Clear
                         </button>
-
                     </div>
 
                     <div className="position-map">
