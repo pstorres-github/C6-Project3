@@ -491,6 +491,12 @@ textarea.notes:focus {
     /* box-shadow: 0 0 10px #719ece; */
 }
 
+/* .form-field:focus {
+    outline: none !important;
+    border: var(--border-tiny) solid var(--secondary);
+    box-shadow: inset 0px 0px 0px var(--border-tiny) var(--secondary);
+} */
+
 /*  ||| Buttons */
 button {
     background: var(--button-standard-bg);
