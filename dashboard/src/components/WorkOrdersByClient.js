@@ -39,11 +39,10 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
 
     const columns = useMemo(
         () => [
-            { Header: 'Job Number', accessor: 'jobNumber', width: 50 },
+            { Header: 'Job Number', accessor: 'jobNumber'},
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
-                width: 300,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -62,7 +61,6 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
             {
                 Header: 'Work Order Details',
                 accessor: '_id',
-                width: 300,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -80,7 +78,7 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobDetails', width: 300 },
+            { Header: 'Details', accessor: 'jobDetails'},
             {
                 Header: 'Status',
                 accessor: 'status',

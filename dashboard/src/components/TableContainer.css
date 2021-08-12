@@ -5,12 +5,15 @@
     /* background: red; */
     width: calc(100vw - var(--padding) - var(--padding));
     /* width: calc(100vw - 4rem); */
+    width:100%;
+    padding: 0rem;
+    display: block;
 }
 
 table {
     margin-left: 0;
     padding-left: 0;
-    /*width: 100%;*/
+    width: 100%
     /*background: yellow;*/
 }
 
@@ -19,7 +22,8 @@ table {
 }
 
 tr {
-    width: calc(100vw - var(--padding) - var(--padding));
+    /*width: calc(100vw - var(--padding) - var(--padding));*/
+    height:fit-content
 }
 th,
 td {
@@ -40,8 +44,7 @@ tbody tr:hover {
     font-size: var(--h4);
 }
 
-.filter-search-box-cell {
-}
+
 .filter-search-box {
     border-radius: 0;
     padding: var(--padding-tiny);
@@ -131,4 +134,8 @@ tbody tr:hover {
     outline: none !important;
     /* border: var(--border-tiny) solid var(--secondary); */
     box-shadow: inset 0px 0px 0px var(--border-tiny) var(--secondary);
+}
+
+#custom-select {
+    width:100%
 }
