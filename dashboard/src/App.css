@@ -155,3 +155,7 @@ button.small-button {
     background: var(--ghost);
     margin-top: 10rem;
 }
+
+select {
+    width:auto
+}
