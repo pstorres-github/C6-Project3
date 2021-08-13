@@ -5,7 +5,7 @@
     /* background: red; */
     width: calc(100vw - var(--padding) - var(--padding));
     /* width: calc(100vw - 4rem); */
-    width:100%;
+    width: 100%;
     padding: 0rem;
     display: block;
 }
@@ -13,7 +13,7 @@
 table {
     margin-left: 0;
     padding-left: 0;
-    width: 100%
+    width: 100%;
     /*background: yellow;*/
 }
 
@@ -23,7 +23,7 @@ table {
 
 tr {
     /*width: calc(100vw - var(--padding) - var(--padding));*/
-    height:fit-content
+    height: fit-content;
 }
 th,
 td {
@@ -44,7 +44,6 @@ tbody tr:hover {
     font-size: var(--h4);
 }
 
-
 .filter-search-box {
     border-radius: 0;
     padding: var(--padding-tiny);
@@ -64,7 +63,6 @@ tbody tr:hover {
     font-size: var(--body);
     color: var(--quiet);
 }
-
 
 /* PT Previous table styles */
 /* .table {
@@ -124,11 +122,9 @@ tbody tr:hover {
 }
 
 .input-search-box-container {
-    display:inline-flex;
+    display: inline-flex;
     align-items: center;
 }
-
-
 
 /* ensures input box is not larger than the column width */
 .input-search-box {
@@ -136,7 +132,7 @@ tbody tr:hover {
     /* border-radius: 0; */
     border: 0;
     border-bottom: 0.125rem solid var(--quiet);
-    min-width:3rem;
+    min-width: 3rem;
     left: -0.5rem;
 }
 
@@ -147,12 +143,14 @@ tbody tr:hover {
 }
 
 #custom-select {
-    width:100%
+    width: 100%;
+}
+
+.select-simplified-style {
+    background: none;
+    border-style: none;
 }
 
 .select {
-    width:max-content
+    width: max-content;
 }
-
-
-

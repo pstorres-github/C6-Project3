@@ -103,7 +103,8 @@ acronym {
     font-size: var(--base);
     line-height: calc(var(--base) * 1.45);
 
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: auto;
+    font-smooth: always;
     text-rendering: optimizeLegibility;
 }
 
@@ -646,5 +647,6 @@ form > div {
 }
 
 .table-select {
-    width:100%
+    width: 100%;
 }
+
