@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import JobDetailContext from "../JobDetailContext";
+import FlightMap from "../components/FlightMap_Leaflet";
+
 import "./FlightReport.css";
 // import VideoUploadForm from "./VideoUploadForm"
 import Axios from "axios";
@@ -14,10 +16,13 @@ const FlightReport = ({ onSave, flight }) => {
   const [videoName, setVideoName] = useState();
   const [isUploading, setIsUpoading] = useState(false);
 
-
   // useState for other inputs
-  const [insertedFlightPlan, setInsertedFlightPlan] = useState(flight.flight_plan);
-  const [insertedFlightData, setInsertedFlightData] = useState(flight.flight_data);
+  const [insertedFlightPlan, setInsertedFlightPlan] = useState(
+    flight.flight_plan
+  );
+  const [insertedFlightData, setInsertedFlightData] = useState(
+    flight.flight_data
+  );
   const [insertedStatus, setInsertedStatus] = useState(flight.status);
   const [insertedJobTitle, setInsertedJobTitle] = useState(flight.jobTitle);
   const [insertedJobNumber, setInsertedJobNumber] = useState(flight.jobNumber);
@@ -43,7 +48,7 @@ const FlightReport = ({ onSave, flight }) => {
     setVideoName(fileName);
   };
 
-  // variables that will be reassigned inside onSaveClicked function 
+  // variables that will be reassigned inside onSaveClicked function
   let awsResponse;
   let dbResponse;
   let editedFlight;
@@ -60,12 +65,12 @@ const FlightReport = ({ onSave, flight }) => {
       status: insertedStatus,
       jobTitle: insertedJobTitle,
       jobNumber: insertedJobNumber,
-      jobDetails:insertedJobDetails,
+      jobDetails: insertedJobDetails,
       clientContact: insertedClientContact,
       clientEmail: insertedClientEmail,
       customerName: insertedCustomerName,
     };
-    
+
     // console.log("Editing flight", editedFlight);
     await onSave(editedFlight);
 
@@ -86,14 +91,13 @@ const FlightReport = ({ onSave, flight }) => {
       console.log("Error:", err);
     }
 
-
     // send a request to the server and upload the video URL to mongodb
     let videoFilenameUpdate;
     try {
       videoFilenameUpdate = await Axios({
         method: "PATCH",
         data: {
-          videoURL:   `http://localhost:3001/api/aws/download_video/${videoName}`
+          videoURL: `http://localhost:3001/api/aws/download_video/${videoName}`,
           //videoURL: `https://rmrvbucket.s3.us-east-2.amazonaws.com/${videoName}`,
         },
         withCredentials: true,
@@ -112,90 +116,145 @@ const FlightReport = ({ onSave, flight }) => {
       alert("Sorry, we couldn't your video, please try again later");
     }
     setIsUpoading(false);
-    history.push("/pilotconsole")
-  }
+    history.push("/pilotconsole");
+  };
 
-  // Set a new state when the user type something 
+  // Set a new state when the user type something
   const onInputChange = (event, setFunction) => {
     console.log("Changing input to be ", event.target.value);
-    setFunction(event.target.value)
+    setFunction(event.target.value);
   };
 
   if (flight && jobContext.activeJob) {
     return (
-      <div className="flight-form">
-        <label htmlFor="customerName">Client</label>
-        <input
-          className="form-input"
-          value={insertedCustomerName}
-          type="text"
-        />
-        <label htmlFor="clientEmail">E-mail</label>
-        <input className="form-input" value={insertedClientEmail} type="text" />
-        <label htmlFor="clientContact">Customer Contact Number</label>
-        <input
-          className="form-input"
-          value={insertedClientContact}
-          type="text"
-          onChange={(event) => onInputChange(event, setInsertedClientContact)}
-        />
-        <label htmlFor="jobTitle">Job Title</label>
-        <input className="form-input" value={insertedJobTitle} type="text" onChange={(event) => onInputChange(event, setInsertedJobTitle)} />
-        <label htmlFor="jobNumber">Job Number</label>
-        <input className="form-input" value={insertedJobNumber} type="text" onChange={(event) => onInputChange(event, setInsertedJobNumber)} />
-        <label htmlFor="jobDetails">Job Details</label>
-        <textarea
-          className="form-input"
-          value={insertedJobDetails}
-          type="text"
-          onChange={(event) => onInputChange(event, setInsertedJobDetails)}
-        />
-        <label>Job Status</label>
-        <select
-          value={insertedStatus}
-          className="form-input"
-          onChange={(event) => onInputChange(event, setInsertedStatus)}
-        >
-          <option disabled> Select one option</option>
-          <option value={"Pending"}>Pending</option>
-          <option value={"Completed"}>Completed</option>
-        </select>
-        <label>Flight Plan</label>
-        <div className="form-flight-plan">
-        {insertedFlightPlan.map((i) => {
-          return (
-            <div className="individual-flight-plan">
-              <label>Latitude</label>
-              <input className="form-input" value={i.lat} type="text" onChange={(event) => onInputChange(event, setInsertedFlightPlan)}/>
-              <label>Longitude</label>
-              <input className="form-input" value={i.lng} type="text" onChange={(event) => onInputChange(event, setInsertedFlightPlan)} />
+      <>
+        <h1>Flight Report</h1>
+        <div className="flight-form">
+          <div className="form-1-form-2">
+            <div className="form-1">
+              <div className="section-label">
+                <label>Client Information</label>
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="customerName">Name</label>
+                <input value={insertedCustomerName} type="text" disabled />
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="clientEmail">E-mail</label>
+                <input value={insertedClientEmail} type="text" disabled />
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="clientContact">Contact Number</label>
+                <input
+                  value={insertedClientContact}
+                  type="text"
+                  disabled
+                />
+              </div>
             </div>
-          );
-        })}
+            <div className="form-2">
+              <div className="section-label-2">
+                <label>Job Information</label>
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="jobTitle">Job Title</label>
+                <input
+                  value={insertedJobTitle}
+                  type="text"
+                  onChange={(event) =>
+                    onInputChange(event, setInsertedJobTitle)
+                  }
+                />
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="jobNumber">Job Number</label>
+                <input
+                  value={insertedJobNumber}
+                  type="text"
+                  onChange={(event) =>
+                    onInputChange(event, setInsertedJobNumber)
+                  }
+                />
+              </div>
+              <div className="form-1-form-2-individual">
+                <label>Job Status</label>
+                <select
+                  value={insertedStatus}
+                  onChange={(event) => onInputChange(event, setInsertedStatus)}
+                >
+                  <option disabled> Select one option</option>
+                  <option value={"Pending"}>Pending</option>
+                  <option value={"Completed"}>Completed</option>
+                </select>
+              </div>
+              <div className="form-1-form-2-individual">
+                <label htmlFor="jobDetails">Job Details</label>
+                <textarea
+                  value={insertedJobDetails}
+                  type="text"
+                  onChange={(event) =>
+                    onInputChange(event, setInsertedJobDetails)
+                  }
+                />
+              </div>
+            <div className="videoUpload">
+              <label htmlFor="video-upload">Upload Video</label>
+              {isUploading && <p> uploading video...</p>}
+              <input
+                id="file"
+                name="file"
+                type="file"
+                // accept="image/*"
+                onChange={videoUpload} /*  */
+              />
+              {/* <VideoUploadForm /> */}
+            </div>
+            </div>
+          </div>
+          <div className="form-3-form-4">
+            <div className="form-3">
+              <div className="section-label">
+                <label>Flight Plan</label>
+              </div>
+                {insertedFlightPlan.map((i) => {
+                  return (
+                    <div className="individual-flight-plan">
+                      <label>Latitude</label>
+                      <input
+                        value={i.lat}
+                        type="text"
+                        onChange={(event) =>
+                          onInputChange(event, setInsertedFlightPlan)
+                        }
+                      />
+                      <label>Longitude</label>
+                      <input
+                        value={i.lng}
+                        type="text"
+                        onChange={(event) =>
+                          onInputChange(event, setInsertedFlightPlan)
+                        }
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="form-4">
+              <FlightMap />
+            </div>
+          </div>
         </div>
-        <div className="videoUpload">
-        <label htmlFor="video-upload">Upload Video</label>
-        {isUploading && <p> uploading video...</p>}
-        <input
-          id="file"
-          name="file"
-          type="file"
-          // accept="image/*"
-          onChange={videoUpload}
-        />
-          {/* <VideoUploadForm /> */}
-        </div>
-        <button className="form-input-btn" onClick={onSaveClicked}>
-          Submit Report
-        </button>
-        <button
-          onClick={() => {
-            history.push("/pilotconsole");
-          }}
-        >
-          Back to Pilot Console
-        </button>
-      </div>
+              <div className="form-input-btn">
+                <button onClick={onSaveClicked}>Submit Report</button>
+                <button
+                  onClick={() => {
+                    history.push("/pilotconsole");
+                  }}
+                >
+                  Back to Pilot Console
+                </button>
+              </div>
+      </>
     );
   } else {
     return null;
