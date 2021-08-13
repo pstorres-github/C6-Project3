@@ -1,6 +1,5 @@
 import './WorkOrdersByClient.css'
 
-import { NavLink, useHistory } from 'react-router-dom'
 import React, { useContext, useEffect, useState, useMemo } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
@@ -12,8 +11,6 @@ import { faEdit } from '@fortawesome/free-regular-svg-icons'
 const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
     const [userFlights, setUserFlights] = useState([])
     const authContext = useContext(AuthenticationContext)
-
-    const history = useHistory()
 
     useEffect(() => {
         const fetchFlights = async () => {
@@ -78,7 +75,7 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobDetails'},
+            { Header: 'Job Description', accessor: 'jobDetails'},
             {
                 Header: 'Status',
                 accessor: 'status',

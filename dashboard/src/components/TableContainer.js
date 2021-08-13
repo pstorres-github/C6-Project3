@@ -1,7 +1,6 @@
 import './Defaults.css'
 import './TableContainer.css'
 import {
-    useBlockLayout,
     useFilters,
     usePagination,
     useResizeColumns,
@@ -9,8 +8,10 @@ import {
     useTable,
     useFlexLayout
 } from 'react-table'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import React, {useState} from 'react'
+import React from 'react'
 
 
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
@@ -52,7 +53,8 @@ const TableContainer = ({ columns, data, selectedJob }) => {
             columns,
             data,
             defaultColumn,
-            initialState: { pageIndex: 0 }
+            initialState: { pageIndex: 0 },
+            autoResetPage: false
         },
         // additional hooks to use the table features
         useResizeColumns,
@@ -60,8 +62,8 @@ const TableContainer = ({ columns, data, selectedJob }) => {
         //useBlockLayout,
         useFilters,
         useSortBy,
-        usePagination,
-
+        usePagination
+        
     )
 
 
@@ -190,6 +192,8 @@ const DefaultColumnFilter = ({
     }
 }) => {
     return (
+        <div className='input-search-box-container'>
+        <FontAwesomeIcon icon={faSearch}/>
         <input
             className="input-search-box"
             value={filterValue || ''}
@@ -198,6 +202,8 @@ const DefaultColumnFilter = ({
             }}
             placeholder={`search ...`}
         />
+        
+        </div>
     )
 }
 

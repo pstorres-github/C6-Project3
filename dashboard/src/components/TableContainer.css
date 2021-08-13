@@ -65,6 +65,7 @@ tbody tr:hover {
     color: var(--quiet);
 }
 
+
 /* PT Previous table styles */
 /* .table {
     display: inline-block;
@@ -122,12 +123,21 @@ tbody tr:hover {
     background: var(--secondary);
 }
 
+.input-search-box-container {
+    display:inline-flex;
+    align-items: center;
+}
+
+
+
 /* ensures input box is not larger than the column width */
 .input-search-box {
     width: 100%;
     /* border-radius: 0; */
     border: 0;
     border-bottom: 0.125rem solid var(--quiet);
+    min-width:3rem;
+    left: -0.5rem;
 }
 
 .input-search-box:focus {
@@ -139,3 +149,10 @@ tbody tr:hover {
 #custom-select {
     width:100%
 }
+
+.select {
+    width:max-content
+}
+
+
+

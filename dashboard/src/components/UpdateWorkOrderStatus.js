@@ -1,28 +1,21 @@
 import Axios from 'axios'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import './ConfirmModal_custom.css'; // Import custom css for the confirm modal
 
 
-const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
-    const [update, setUpdate] = useState(false)
-    const [status, setStatus] = useState()
+const UpdateWorkOrderStatus = ({ currentStatus, workOrderID, handleChildUpdated }) => {
 
-    const handleChange = (event) => {
-        console.log('selected', event.target.value)
-        setStatus(event.target.value)
-        console.log('work order ID', workOrderID)
-    }
+    const [status, setStatus] = useState(currentStatus)
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (value) => {
         let statusUpdate
         
         /* DELETE STATUS */
-        if (status === 'Delete') {
+        if (value === 'Delete') {
 
             //complete modal before continuing
             async function modalAlert () {
@@ -40,7 +33,7 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
                                 <p>Deleting work order cannot be undone, and all data within the work order will be lost.</p>
         
                                 <div className='confirm-modal-button-group'>
-                                    <button onClick={onClose}>Cancel</button>
+                                    <button className='featured' onClick={onClose}>Cancel</button>
                                     <button
                                         onClick={async () => {
                                             await deleteWorkOrder();
@@ -81,7 +74,7 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
             try {
                 statusUpdate = await Axios({
                     method: 'PATCH',
-                    data: { status: status },
+                    data: { status: value },
                     withCredentials: true,
                     url: `http://localhost:3001/api/work_orders/work_order/${workOrderID}`
                 })
@@ -92,67 +85,26 @@ const UpdateWorkOrderStatus = ({ workOrderID, handleChildUpdated }) => {
             console.log('Updated status sent to database')
        }
     
-        setUpdate(false)
         handleChildUpdated()
     }
 
     return (
         <div>
-            {/* <div  className="tiny-text inline right" >
-                { !update && <button onClick={()=>{setUpdate(true)}}>EDIT</button> } 
-            </div> */}
-
-            {!update && (
-                <button
-                    className="smaller"
-                    onClick={(event) => {
-                        event.stopPropagation() //prevent preview modal from showing up when clicked
-                        setUpdate(true)
-                    }}
+            
+                <select className='table-select'
+                        value={status} 
+                        onChange={(event) => {setStatus(event.target.value); handleSubmit(event.target.value)}}
+                        onClick={(event)=> event.stopPropagation()}
                 >
-                    <FontAwesomeIcon icon={faEdit} className="icon" />
-                    Edit
-                </button>
-            )}
-
-            {update && (
-                <div>
-                    <label htmlFor="status-assign">
-                        {' '}
-                        Update Status:
-                        <select onChange={(event) => handleChange(event)} onClick={(event)=> event.stopPropagation()}>
-                            <option selected disabled>
-                                --Select--
-                            </option>
-                            <option value={'Requested'}>Requested</option>
-                            <option value={'Pending'}>Pending</option>
-                            <option value={'Completed'}>Completed</option>
-                            <option value={'Cancelled'}>Cancelled</option>
-                            <option value={'Delete'}>Delete</option>
-                        </select>
-                    </label>
-                    <br></br>
-                    <button
-                        onClick={(event) => {
-                            event.stopPropagation()
-                            handleSubmit()
-                        }}
-                    >
-                        {' '}
-                        Submit{' '}
-                    </button>
-                    <button
-                        onClick={(event) => {
-                            event.stopPropagation()
-                            setUpdate(false)
-                        }}
-                    >
-                        {' '}
-                        Cancel{' '}
-                    </button>
-                </div>
-            )}
-        </div>
+                <option selected disabled>
+                    --Select--
+                </option>
+                <option value={'Pending'}>Pending</option>
+                <option value={'Completed'}>Completed</option>
+                <option value={'Cancelled'}>Cancelled</option>
+                <option value={'Delete'}>Delete</option>
+                </select>
+            </div>
     )
 }
 export default UpdateWorkOrderStatus

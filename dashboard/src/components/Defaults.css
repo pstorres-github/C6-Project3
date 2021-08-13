@@ -644,3 +644,7 @@ form > div {
     margin-right: 0;
     padding: 0;
 }
+
+.table-select {
+    width:100%
+}
