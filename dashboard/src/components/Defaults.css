@@ -103,7 +103,8 @@ acronym {
     font-size: var(--base);
     line-height: calc(var(--base) * 1.45);
 
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: auto;
+    font-smooth: always;
     text-rendering: optimizeLegibility;
 }
 
@@ -115,6 +116,7 @@ acronym {
     --padding-tiny: 0.25rem;
     --padding-beefy: 2rem;
     --mini: 0.0125rem;
+    --border-tiny: 0.0625rem;
     --border-radius-tiny: 0.25rem;
     --border-radius-small: 0.5rem;
     --border-radius-medium: 1rem;
@@ -161,7 +163,8 @@ acronym {
     --black: black;
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
-    --secondary: black;
+    /* --secondary: black; */
+    --secondary: var(--badge-blue);
     --highlight: var(--button-clicked);
 
     --alert: var(--button-warn-bg);
@@ -562,7 +565,8 @@ textarea.notes::selection {
 
 textarea.notes:focus {
     outline: none !important;
-    border: 0px solid red;
+    /* border: var(--border-tiny) solid var(--secondary); */
+    box-shadow: inset 0px 0px 0px var(--border-tiny) var(--secondary);
     /* box-shadow: 0 0 10px #719ece; */
 }
 
@@ -641,3 +645,8 @@ form > div {
     margin-right: 0;
     padding: 0;
 }
+
+.table-select {
+    width: 100%;
+}
+

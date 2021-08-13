@@ -1,54 +1,11 @@
-import './ArtificialHorizon.css'
-
-import React, { useContext, useEffect } from 'react'
-
-import TelemetryContext from '../TelemetryContext'
-import { findAllByTestId } from '@testing-library/react'
-
-const ArtificialHorizon = () => {
-    const telemetryContext = useContext(TelemetryContext)
-
-    const translate =
-        90 + (1000 * telemetryContext.pitch + 90000) / 360 - 250 - 180 / 2
-    const transformString = {
-        transform: `rotate(${telemetryContext.roll}deg) translateY(${translate}%) scale(10)`
-    }
-
-    useEffect(() => {
-        const AoB = document.getElementById('angle-of-bank-indicator')
-
-        if (-60 <= telemetryContext.roll && telemetryContext.roll <= 60) {
-            AoB.style.opacity = 1
-            // console.log('visible')
-        } else {
-            AoB.style.opacity = 0
-            // console.log('invisible')
-        }
-    }, [telemetryContext])
-
-    const bankRotation = {
-        transform: `rotate(${telemetryContext.roll}deg)`
-    }
-
-    const PitchIndicator = (props) => (
-        // console.log(props.fill)
-
-        <svg
-            version="1.1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 7604.6 7604.6"
-            // style="enable-background:new 0 0 7604.6 7604.6;"
-            xmlSpace="preserve"
-        >
-            <style>{`.st0{fill=${props.fill}}`}</style>
-            <path
-                id="pitch"
-                class="st0"
-                d="M7604.6,3804.8H0.2c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5h7604.4c1.4,0,2.5,1.1,2.5,2.5
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 7604.6 7604.6" style="enable-background:new 0 0 7604.6 7604.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path id="pitch" class="st0" d="M7604.6,3804.8H0.2c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5h7604.4c1.4,0,2.5,1.1,2.5,2.5
 	S7606,3804.8,7604.6,3804.8z M3962.9,4013.5c0-1.4-1.1-2.5-2.5-2.5h-315.9c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5h315.9
 	C3961.8,4016,3962.9,4014.9,3962.9,4013.5z M3984.2,4024.3h14.6v-2.3h-5.8v-19.7h-4.1l-5.8,5.5l1.6,1.7l5.6-5.2h0.2v17.8h-6.3v2.3
 	V4024.3z M4009.9,4024.8c5.4,0,7.7-4.2,7.7-11.4s-2.3-11.4-7.7-11.4s-7.7,4.2-7.7,11.4C4002.2,4020.6,4004.5,4024.8,4009.9,4024.8z
@@ -311,90 +268,5 @@ const ArtificialHorizon = () => {
 	h-105.3c-0.7,0-1.2,0.6-1.2,1.2s0.6,1.2,1.2,1.2h105.3C3855.8,3645.1,3856.3,3644.6,3856.3,3643.9z M3909.5,3696.7
 	c0-1-0.8-1.8-1.8-1.8h-210.6c-1,0-1.8,0.8-1.8,1.8s0.8,1.8,1.8,1.8h210.6C3908.7,3698.5,3909.5,3697.7,3909.5,3696.7z
 	 M3856.3,3749.5c0-0.7-0.6-1.2-1.2-1.2h-105.3c-0.7,0-1.2,0.6-1.2,1.2s0.6,1.2,1.2,1.2h105.3
-	C3855.8,3750.8,3856.3,3750.2,3856.3,3749.5z"
-            />
-        </svg>
-    )
-
-    let altitude = telemetryContext.altitude
-    let speed = Math.abs(telemetryContext.speedX)
-
-    const hdgString = {
-        transform: `translateY(80%) rotate(${-telemetryContext.yaw}deg)`
-    }
-
-    return (
-        <div className="horizon">
-            <div className="alt-text">
-                <div className="float-right inline plex">{altitude}</div>
-            </div>
-            <div className="air-text plex">{speed}</div>
-            <div className="static-frame">
-                <img
-                    src="./assets/HUD_static-frame.svg"
-                    alt="Artificial Horizon Base Frame"
-                />
-            </div>
-
-            <div className="pitch-mask">
-                {/* <div className="pitch-indicator-test" style={transformString}> */}
-                {/* <div className="pitch-indicator-test">
-                    <img
-                        className="pitch-translate"
-                        src="./assets/HUD_pitch-indicator_TEST.svg"
-                        alt="pitch indicator svg"
-                        width="100%"
-                    />
-                </div> */}
-                <div className="pitch-indicator" style={transformString}>
-                    <img
-                        className="pitch-translate"
-                        src="./assets/HUD_pitch-indicator_SOLO.svg"
-                        alt="pitch indicator svg"
-                        width="100%"
-                    />
-                    {/* <PitchIndicator fill="#FFFFFF" /> INLINE SVG */}
-                </div>
-            </div>
-
-            <div className="pitch-indicator-colour" style={transformString}>
-                <img
-                    className="pitch-translate"
-                    src="./assets/HUD_pitch-indicator_colour.svg"
-                    alt="pitch indicator svg"
-                    width="100%"
-                />
-            </div>
-
-            <div className="heading-indicator" style={hdgString}>
-                <img
-                    src="./assets/HUD_heading-indicator.svg"
-                    alt="Heading Indicator"
-                />
-            </div>
-            {/* <div className="pitch-indicator" style={pitchPosition}>
-                <img
-                    src="./assets/HUD_pitch-indicator.svg"
-                    alt="Pitch Indicator"
-                />
-            </div> */}
-
-            <div className="horizon-indicator">&nbsp;</div>
-
-            <div
-                className="angle-of-bank-indicator"
-                id="angle-of-bank-indicator"
-                style={bankRotation}
-            >
-                <div id="angle-of-bank-indicator-visibility">
-                    <img
-                        src="./assets/HUD_angle-of-bank-indicator.svg"
-                        alt="Angle of Bank Indicator"
-                    />
-                </div>
-            </div>
-        </div>
-    )
-}
-
-export default ArtificialHorizon
+	C3855.8,3750.8,3856.3,3750.2,3856.3,3749.5z"/>
+</svg>

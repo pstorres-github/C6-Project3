@@ -1,9 +1,4 @@
-//import './WorkOrdersByClient.css'
-
-import { NavLink, useHistory } from 'react-router-dom'
-import React, { useContext, useEffect, useState, useMemo, useRef } from 'react'
-
-import AuthenticationContext from '../AuthenticationContext'
+import React, { useEffect, useState, useMemo} from 'react'
 import TableContainer, { SelectColumnFilter } from './TableContainer.js'
 import Axios from 'axios'
 import AssignPilot from './AssignPilot.js'
@@ -16,8 +11,9 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
     //    - assign pilot to work order
     //    - delete work order from database
     //    - ???
-
-    const [pilotList, setPilotList] = useState('')
+    const [userFlights, setUserFlights] = useState([])
+    const [childUpdated, setChildUpdated] = useState(false)
+    const [pilotList, setPilotList] = useState([])
 
     useEffect(() => {
         async function getPilots() {
@@ -25,15 +21,8 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
             setPilotList(data)
         }
         getPilots()
-    }, [])
+    }, [childUpdated])
 
-    const [userFlights, setUserFlights] = useState([])
-    const [pilots, setPilots] = useState([])
-    const [childUpdated, setChildUpdated] = useState(false)
-
-    const authContext = useContext(AuthenticationContext)
-
-    const history = useHistory()
 
     /* access all flights */
     useEffect(() => {
@@ -64,16 +53,13 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
-                width: 200,
                 Cell: ({ cell }) => {
                     const { value, row } = cell //row is destructured, can access the row content by row.original."accessor" name
                     return (
                         <>
-                            {/* <em><FontAwesomeIcon icon={["far", "coffee"]} /> Pilot:</em> */}
-                            <FontAwesomeIcon icon={['far', 'id-badge']} />
-                            {value ? value : 'None Assigned'}
-                            <div className="inline right tiny-text">
+                            <div>
                                 <AssignPilot
+                                    currentPilot={value}
                                     pilotList={pilotList}
                                     workOrderID={row.original._id}
                                     handleChildUpdated={handleChildUpdated}
@@ -91,7 +77,6 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
             {
                 Header: 'Work Order',
                 accessor: '_id',
-                width: 325,
                 Cell: ({ cell }) => {
                     const { value } = cell
                     if (!value) return null
@@ -113,21 +98,19 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                     )
                 }
             },
-            { Header: 'Details', accessor: 'jobDetails', width: 200 },
+            { Header: 'Job Description', accessor: 'jobDetails'},
             {
                 Header: 'Status',
                 accessor: 'status',
                 Filter: SelectColumnFilter,
                 filter: 'equals',
-                width: 200,
                 Cell: ({ cell, row }) => {
                     const { value } = cell
-                    if (!value) return null
                     return (
                         <>
-                            {value}
-                            <div className="inline right smaller" onClick={event=>event.stopPropagation}>
+                            <div onClick={event=>event.stopPropagation}>
                                 <UpdateWorkOrderStatus
+                                    currentStatus={value}
                                     workOrderID={row.original._id}
                                     handleChildUpdated={handleChildUpdated}
                                     
@@ -138,10 +121,11 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                 }
             }
         ],
-        [childUpdated]
-    )
+        //[childUpdated, pilotList]
+        [pilotList]
+        )
 
-    if (!pilots) return null
+    if (!pilotList) return null
 
     if (userFlights.length === 0)
         return <p>There are no previous flights for this user</p>

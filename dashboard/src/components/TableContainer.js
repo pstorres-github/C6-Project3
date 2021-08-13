@@ -1,16 +1,18 @@
 import './Defaults.css'
 import './TableContainer.css'
-
 import {
-    useBlockLayout,
     useFilters,
     usePagination,
     useResizeColumns,
     useSortBy,
-    useTable
+    useTable,
+    useFlexLayout
 } from 'react-table'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import React, {useState} from 'react'
+import React from 'react'
+
 
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
@@ -20,9 +22,10 @@ const TableContainer = ({ columns, data, selectedJob }) => {
     const defaultColumn = React.useMemo(
         () => ({
             // if desired to override the default width for a column, this should be done in the parent component
-            //defaultWidth: 300,
-            //minWidth: 100,
-            //maxWidth: 500,
+            minWidth: 20, // minWidth is only used as a limit for resizing
+            width: 50, // width is used for both the flex-basis and flex-grow
+            maxWidth: 200, // maxWidth is only used as a limit for resizing
+          
             Filter: DefaultColumnFilter
 
         }),
@@ -43,7 +46,6 @@ const TableContainer = ({ columns, data, selectedJob }) => {
         nextPage,
         previousPage,
         setPageSize,
-        useFlexLayout,
         state: { pageIndex, pageSize }
     } = useTable(
         {
@@ -51,15 +53,19 @@ const TableContainer = ({ columns, data, selectedJob }) => {
             columns,
             data,
             defaultColumn,
-            initialState: { pageIndex: 0 }
+            initialState: { pageIndex: 0 },
+            autoResetPage: false
         },
         // additional hooks to use the table features
         useResizeColumns,
-        useBlockLayout,
+        useFlexLayout,
+        //useBlockLayout,
         useFilters,
         useSortBy,
         usePagination
+        
     )
+
 
     /* displays sorting indicator icon on table header if table header is clicked on */
     const generateSortingIndicator = (column) => {
@@ -67,7 +73,6 @@ const TableContainer = ({ columns, data, selectedJob }) => {
     }
 
     return (
-        
        <div className="table-container">
             {/* table body */}
             <table className="full-width-table" {...getTableProps()}>
@@ -162,6 +167,7 @@ const TableContainer = ({ columns, data, selectedJob }) => {
             </div>
         </div>
 
+
     )
 }
 export default TableContainer
@@ -186,6 +192,8 @@ const DefaultColumnFilter = ({
     }
 }) => {
     return (
+        <div className='input-search-box-container'>
+        <FontAwesomeIcon icon={faSearch}/>
         <input
             className="input-search-box"
             value={filterValue || ''}
@@ -194,6 +202,8 @@ const DefaultColumnFilter = ({
             }}
             placeholder={`search ...`}
         />
+        
+        </div>
     )
 }
 

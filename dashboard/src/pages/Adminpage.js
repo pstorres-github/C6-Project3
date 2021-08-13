@@ -2,7 +2,6 @@ import AuthenticationContext from '../AuthenticationContext'
 import React from 'react'
 import WorkOrdersAdmin from '../components/WorkOrdersAdmin'
 import { useContext, useState,useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import accountTypeIcons from '../components/AccountTypeIcons'
 import Preview from '../components/Preview'
 import {
@@ -14,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Adminpage = () => {
     const authContext = useContext(AuthenticationContext)
-    const history = useHistory()
     const [selectedJob, setSelectedJob] = useState()
     const [userFlights, setUserFlights] = useState()
     const [tableUpdated, setTableUpdated] = useState(false)

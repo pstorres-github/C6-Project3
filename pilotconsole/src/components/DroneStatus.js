@@ -1,11 +1,15 @@
 import './DroneStatus.css'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import TelemetryContext from '../TelemetryContext' //use this context to store drone status as well
+
 
 const DroneStatus = ({ DroneConnection }) => {
     const [connectionStatus, setConnectionstatus] = useState('Disconnected')
 
     let [connectionIndicator, setConnectionIndicator] = useState('alert')
+
+    const telemetryContext = useContext(TelemetryContext)
 
     let colours = {
         disconnected: 'red',
@@ -17,7 +21,7 @@ const DroneStatus = ({ DroneConnection }) => {
         // backgroundColor: `${colours.alert}`
     }
 
-    console.log(connectionStyle)
+    //console.log(connectionStyle)
 
     switch (connectionStatus) {
         case 'Connected':
@@ -50,6 +54,7 @@ const DroneStatus = ({ DroneConnection }) => {
             // Reception Listener
             if (msg !== null) {
                 setConnectionstatus('Connected')
+                telemetryContext.setDroneStatus('Connected')
                 // setConnectionIndicator('connected')
                 console.log('Response : ' + msg.toString()) // Response from Drone
 
@@ -57,6 +62,7 @@ const DroneStatus = ({ DroneConnection }) => {
                 clearTimeout(receptionCheck) // Reception Status Updated
                 receptionCheck = setTimeout(() => {
                     setConnectionstatus('Disconnected')
+                    telemetryContext.setDroneStatus('Disconnected')
                     // setConnectionIndicator('disconnected')
                     // document.documentElement.style.setProperty(
                     //     '--status',

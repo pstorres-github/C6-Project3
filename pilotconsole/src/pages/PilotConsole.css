@@ -46,9 +46,11 @@ button:hover {
             500px
         )
         1fr;
+    /* 12.5vw 9.25vw 9.25vw 500px 1fr; */
     grid-template-rows:
         2.5vh clamp(125px, 9.25vw, 500px) clamp(125px, 9.25vw, 500px)
         clamp(125px, 10vh, 350px) 1fr 15rem;
+    /* 2.5vh 9.25vw 9.25vw 10vh 1fr 15rem; */
     grid-gap: 10px;
     margin: 10px;
 }
@@ -57,6 +59,8 @@ button:hover {
     grid-row: 1;
     grid-column-start: 4;
     grid-column-end: 5;
+    display:flex;
+    justify-content: space-between
 }
 
 .console-drone-status {
