@@ -1,99 +1,163 @@
+@import './Defaults.css';
+
+h1 {
+  text-align: center;
+  background-color: var(--ghost-hover);
+}
+
 .flight-form {
   margin: 3rem auto;
-  width: 70%;
-  /* height: 10rem; */
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
-  background-color: lightblue;
+  width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: var(--ghost-hover);
   border-radius: 10px;
-  display: block;
-  text-align: center;
-}
-
-label {
-  padding-left: 2rem;
-}
-
-.form-input {
-  margin-left: 2rem;
   display: flex;
-}
-
-flight-form label,
-form-flight-plan label,
-.flight-form input,
-.form-flight-plan input,
-.flight-form textarea,
-.form-flight-plan textarea {
-  display: flex;
-}
-
-.flight-form,
-.form-flight-plan label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  flex-direction: row;
 }
 
 .flight-form input,
 .flight-form select,
 .flight-form textarea {
-  width: 93%;
-  font: inherit;
-  border: 1px solid rgb(163, 30, 30);
-  background: #f8f8f8;
-  padding: 0.15rem 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: var(--ghost);
+  color: var(--primary);
 }
 
 .flight-form input:focus,
-.flight-form textarea:focus {
+.flight-form textarea:focus,
+.flight-form select:focus  {
   outline: none;
   background: #ebebeb;
-  border-color: #510077;
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
-.form-flight-plan {
-  margin: 10px auto;
-  width: 50%;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
-  background-color: lightblue;
-  border-radius: 10px;
-  display: block;
-  text-align: left;
+.flight-form input:disabled {
+  color: var(--quiet);
 }
-.individual-flight-plan {
+
+.section-label {
+  font-weight: bold;
+}
+
+.section-label-2 {
+  font-weight: bold;
+  padding-top: 2rem;
+}
+
+.flight-form label {
+  /* font-weight: bold; */
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.form-input-btn {
   display: flex;
-  margin: 3px auto;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
-  background-color: lightblue;
-  border-radius: 10px;
-}
-
-.form-flight-plan,
-.individual-flight-plan input,
-.form-flight-plan,
-.individual-flight-plan select,
-.form-flight-plan,
-.individual-flight-plan textarea {
-  width: 80%;
-  font: inherit;
-  border: 1px solid rgb(163, 30, 30);
-  background: #f8f8f8;
-  padding: 0.15rem 0.25rem;
+  justify-content: center;
 }
 
 button {
   margin: 1rem;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--button-standard-text);
+  background-color: var(--button-standard-bg);
+}
+
+button:hover {
+  color: var(--button-standard-text-hover);
+  background-color: var(--button-standard-bg-hover);
+}
+
+.form-1-form-2 {
+  display: flex;
+  flex-direction: column;
+  width:50%;
+}
+
+.form-3-form-4 {
+  display: flex;
+  flex-direction: column;
+  width:50%;
+}
+
+
+.form-1,
+.form-2 {
+  margin: auto;
+  width: 90%;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.form-1-form-2-individual input,
+.form-1-form-2-individual select,
+.form-1-form-2-individual textarea {
+  display: flex;
+  align-self: center;
+  width: 90%;
+  margin-left: 1.5rem;
+}
+
+.form-1-form-2-individual label {
+  width: 90%;
+  margin-left: 1rem;
+  /* margin-top: 1rem; */
+}
+
+.form-3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.form-4 {
+  display: flex;
+  align-self:center;
+  align-content: center;
+  margin-top: 3rem;
+  background: var(--ghost);
+  width: 100%;
+  height: 100%
+}
+
+.form-3 label {
+  margin-right: 1rem;
+}
+
+.form-3 input {
+  width: fit-content;
+}
+.individual-flight-plan {
+  display:flex;
+  flex-direction: row;
+  width: fit-content;
+  margin-top: 1.5rem
+  /* justify-content: center; */
+}
+
+.individual-flight-plan label {
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .videoUpload {
-  display: block;
-  text-align: center;
+  margin-bottom:1rem
 }
 
-.videoUpload input{
-  margin-left: 2rem;
-  background: none;
-  border: none
+.videoUpload label {
+  width: 90%;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
+
+.videoUpload input {
+  margin-left: 1.3rem;
+  background: none;
+  border: none;
+}
+
