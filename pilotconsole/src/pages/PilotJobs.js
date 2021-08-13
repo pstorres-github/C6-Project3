@@ -6,7 +6,7 @@ import "./PilotJobs.css"
 import { useHistory } from "react-router-dom"
 import Header from '../components/Header'
 
-const PilotJobs = ({updateJobNumber}) => {
+const PilotJobs = () => {
 
     const history = useHistory() 
     const authContext = useContext(AuthenticationContext)
@@ -45,15 +45,19 @@ const PilotJobs = ({updateJobNumber}) => {
             </div>
 
             <div className='pilot-jobs-table'>
-                <h3>Select job to load into console:</h3>    
-            
+
+                <div className='table-header'>
+                    <h5>Assigned jobs:</h5>    
+                    <h6>Select job to load into pilot console:</h6>    
+                </div>
+
                 <div className='table-pilot-job-header'>
                     <div className='table-column-1'>Job Number</div>
-                    <div className='table-column-2'>Description</div> 
+                    <div className='table-column-2'>Job Description</div> 
                     <div className='table-column-3'>Client Name</div> 
                     <div className='table-column-4'>Client Contact</div> 
-                    <div className='table-column-5'>Client E-mail</div> 
-                    <div className='table-column-6'>Status</div> 
+                    <div className='table-column-5'>Client Email</div> 
+                    <div className='table-column-6'>Job Status</div> 
                 </div>
 
                 { networkAvailable && 
@@ -64,7 +68,7 @@ const PilotJobs = ({updateJobNumber}) => {
                                     <div className='table-column-1'>{jobData.jobNumber}</div>
                                     <div className='table-column-2'>{jobData.jobDetails}</div> 
                                     <div className='table-column-3'>{jobData.customerName}</div> 
-                                    <div className='table-column-4'>{jobData.customerContact}</div> 
+                                    <div className='table-column-4'>{jobData.clientContact}</div> 
                                     <div className='table-column-5'>{jobData.clientEmail}</div> 
                                     <div className='table-column-6'>{jobData.status}</div> 
                                 </div>
