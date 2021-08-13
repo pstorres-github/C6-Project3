@@ -153,7 +153,7 @@ button.small-button {
     padding: var(--padding);
 
     background: var(--ghost);
-    margin-top: 10rem;
+    /* margin-top: 10rem; */
 }
 
 select {
