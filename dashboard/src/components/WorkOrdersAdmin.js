@@ -121,8 +121,9 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                 }
             }
         ],
-        [childUpdated, pilotList]
-    )
+        //[childUpdated, pilotList]
+        [pilotList]
+        )
 
     if (!pilotList) return null
 
