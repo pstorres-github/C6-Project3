@@ -20,34 +20,49 @@ import Adminpage from './pages/Adminpage'
 import { useContext } from 'react'
 
 function App() {
+    
+    const displayHeader = () => {
+        return (
+            <div className="app-header">
+                <Header />
+            </div>
+        ) 
+    }
+    
     return (
         <div className="contain">
             <AuthenticationProvider>
                 <Router>
-                    <div className="app-header">
-                        <Header />
-                    </div>
 
-                    <div className="app-content">
                         <Switch>
                             <Route exact path="/" render={() => <Homepage />} />
-                            <PrivateRoute exact path="/workorders">
-                                <Workorders />
+    
+                            <PrivateRoute exact path="/workorders" roles={["admin","customer","pilot"]}>
+                               {displayHeader()}
+                                <div className="app-content">
+                                    <Workorders />
+                                </div>
                             </PrivateRoute>
-                            {/*<PrivateRoute exact path="/schedulejobs">
-                                <ScheduleJobs />
-                            </PrivateRoute>*/}
-                            <PrivateRoute exact path="/workorders/:id">
-                                <WorkOrderDetails />
+    
+                            <PrivateRoute exact path="/workorders/:id" roles={["admin","customer","pilot"]}>
+                                {displayHeader()}
+                                <div className="app-content">
+                                    <WorkOrderDetails />
+                                </div>
                             </PrivateRoute>
-                            <PrivateRoute exact path="/pilot/:pilot">
+
+                            <PrivateRoute exact path="/pilot/:pilot" roles={["admin","customer","pilot"]}>
                                 <PilotInfo />
                             </PrivateRoute>
-                            <PrivateRoute exact path="/admin">
-                                <Adminpage />
+
+                            <PrivateRoute exact path="/admin" roles={["admin"]}>
+                                {displayHeader()}
+                                <div className="app-content">
+                                    <Adminpage />
+                                </div>
                             </PrivateRoute>
                         </Switch>
-                    </div>
+
                 </Router>
             </AuthenticationProvider>
         </div>
@@ -55,14 +70,21 @@ function App() {
 }
 
 // route wrapper.  Only allow access to PrivateRoutes if user is logged in
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ children, roles, ...rest}) {
     const authContext = useContext(AuthenticationContext)
     console.log('authentication', authContext.email)
+
+    const checkRoles = () => {
+        // check to see if current user is one of the allowed roles to access the site
+        let found = roles.find(role => (role===authContext.accountType)) ? true : false
+        return found
+
+    }
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                authContext.email ? (
+                (authContext.email && checkRoles()) ? (
                     children
                 ) : (
                     <Redirect
