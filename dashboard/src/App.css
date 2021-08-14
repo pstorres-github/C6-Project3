@@ -116,6 +116,7 @@ button.small-button {
     display: grid;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: var(--padding);
 }
 
 .status-card {
@@ -157,5 +158,5 @@ button.small-button {
 }
 
 select {
-    width:auto
+    width: auto;
 }
