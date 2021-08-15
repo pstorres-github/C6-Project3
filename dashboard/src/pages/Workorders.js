@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
-import DemoText from '../components/DemoText'
 import React from 'react'
 import Scheduling from '../components/Scheduling'
 import WorkOrdersByClient from '../components/WorkOrdersByClient'
