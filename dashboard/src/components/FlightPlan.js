@@ -191,7 +191,10 @@ const FlightPlan = ({
                             unnecessary waypoints by clicking on 'X' icon in
                             list.
                         </p>
-                        <button onClick={resetMarkers} className="space-before">
+                        <button
+                            onClick={resetMarkers}
+                            className="space-before cancel"
+                        >
                             Clear all waypoints from map
                         </button>
                     </div>
