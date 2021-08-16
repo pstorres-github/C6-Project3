@@ -155,6 +155,7 @@ acronym {
     /* --ghost: #f6f6f6; */
     --white: white;
     --ghost: hsla(0, 0%, 97.3%, 1);
+    --ghost-translucent: hsla(0, 0%, 97.3%, 0.8);
     --ghost-hover: hsla(0, 0%, 94.5%, 1);
     /* --button-clicked: hsla(199, 100%, 86.3%, 1); */
     --button-clicked: hsla(199, 100%, 88.8%, 1);
@@ -595,7 +596,7 @@ button.small-button {
 }
 
 .featured {
-    background-color: blue;
+    background-color: lightblue;
 }
 
 .secondary {
