@@ -63,7 +63,8 @@ const Adminpage = () => {
             </div>
             <div className="welcome-bar-secondary">
                 <p>
-                    User: {accountTypeIcons()} {authContext.email}
+                    {/* User: */}
+                    {accountTypeIcons()} {authContext.email}
                 </p>
             </div>
 
