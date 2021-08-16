@@ -596,6 +596,10 @@ button {
     padding-bottom: var(--padding-small);
     margin: var(--padding-tiny);
     border: 1px solid var(--quiet);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    height: 3rem;
     /* height: 2rem; */
     /* border-radius: 0.5rem; */
 }
@@ -605,12 +609,14 @@ button:hover {
     color: var(--button-standard-text-hover);
 }
 
-button .small-button {
-    margin: 0;
-    margin-right: 0.25rem;
-    padding: 0.25rem;
-    height: 1.75rem;
-    font-size: 0.75rem;
+.small-button {
+    margin-right: var(--padding-small);
+    padding: var(--padding-small) !important;
+    padding-left: var(--padding) !important;
+    padding-right: var(--padding) !important;
+    line-height: 0.25rem;
+    /* height: 2rem; */
+    /* font-size: 0.75rem; */
 }
 
 .no-border {
