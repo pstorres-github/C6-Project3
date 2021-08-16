@@ -36,7 +36,7 @@ const Workorders = () => {
             <div className="welcome-bar-secondary">
                 {/* <p>Email: {authContext.email} ({authContext.accountType})</p> */}
                 <p>
-                    UserName: {authContext.email} {accountTypeIcons()}
+                    User: {accountTypeIcons()} {authContext.email}
                 </p>
             </div>
             {/* </div> */}
