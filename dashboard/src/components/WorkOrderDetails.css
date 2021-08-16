@@ -224,7 +224,6 @@ it's driving me mad. */
 } */
 
 .leaflet-container {
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -236,6 +235,10 @@ it's driving me mad. */
     /* margin: 0; 
     padding: 0; */
     /* background: red; */
+}
+
+.workorder-map > .map-container > .map > .leaflet-embiggened {
+    position: absolute;
 }
 
 .workorder-map-label {
