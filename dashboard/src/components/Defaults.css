@@ -132,7 +132,8 @@ acronym {
     /* --button-standard-bg: hsla(132, 79%, 57%, 1); */
     /* --button-standard-bg: rgb(196, 196, 196); */
     /* --button-standard-bg-hover: hsla(132, 79%, 69%, 1); */
-    --button-standard-bg: var(--ghost);
+    /* --button-standard-bg: var(--ghost); */
+    --button-standard-bg: var(--white_);
     --button-standard-bg-hover: var(--ghost-hover);
     --button-standard-text-hover: hsla(221, 6%, 22%, 1);
     --button-warn-text: white;
@@ -584,8 +585,8 @@ button {
     color: var(--button-standard-text);
     padding: var(--padding-tiny);
     margin: var(--padding-tiny);
-    border: none;
-    height: 2rem;
+    border: 1px solid var(--quiet);
+    /* height: 2rem; */
     /* border-radius: 0.5rem; */
 }
 
@@ -594,12 +595,16 @@ button:hover {
     color: var(--button-standard-text-hover);
 }
 
-button.small-button {
+button .small-button {
     margin: 0;
     margin-right: 0.25rem;
     padding: 0.25rem;
     height: 1.75rem;
     font-size: 0.75rem;
+}
+
+.no-border {
+    border: none;
 }
 
 .featured {
@@ -648,6 +653,12 @@ button.small-button {
 .text-area-wide {
     /* columns: unset; */
     /* width: 100%; */
+}
+
+.space-before {
+    margin: 0;
+    margin-top: 2rem;
+    /* border: 1px solid var(--quiet); */
 }
 
 form > div {
