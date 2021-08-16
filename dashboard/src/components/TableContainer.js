@@ -8,7 +8,13 @@ import {
     useTable,
     useFlexLayout
 } from 'react-table'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {
+    faSearch,
+    faAngleRight,
+    faAngleDoubleRight,
+    faAngleLeft,
+    faAngleDoubleLeft
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import React from 'react'
@@ -122,27 +128,41 @@ const TableContainer = ({ columns, data, selectedJob }) => {
 
             {/* buttons for pagination */}
             <div className="pagination">
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    {' '}
-                    {'<<'}{' '}
+                <button
+                    className="no-border"
+                    onClick={() => gotoPage(0)}
+                    disabled={!canPreviousPage}
+                >
+                    {/* {' '}
+                    {'<<'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 </button>
                 <button
+                    className="no-border"
                     onClick={() => previousPage()}
                     disabled={!canPreviousPage}
                 >
-                    {' '}
-                    {'<'}{' '}
-                </button>
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    {' '}
-                    {'>'}{' '}
+                    {/* {' '}
+                    {'<'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleLeft} />
                 </button>
                 <button
+                    className="no-border"
+                    onClick={() => nextPage()}
+                    disabled={!canNextPage}
+                >
+                    {/* {' '}
+                    {'>'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleRight} />
+                </button>
+                <button
+                    className="no-border"
                     onClick={() => gotoPage(pageCount - 1)}
                     disabled={!canNextPage}
                 >
-                    {' '}
-                    {'>>'}{' '}
+                    {/* {' '}
+                    {'>>'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleDoubleRight} />
                 </button>
                 <span>
                     {' '}
@@ -155,6 +175,7 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                 </span>
 
                 <select
+                    className="select-simplified-style"
                     value={pageSize}
                     onChange={(e) => {
                         setPageSize(Number(e.target.value))
