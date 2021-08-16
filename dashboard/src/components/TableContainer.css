@@ -129,9 +129,9 @@ tbody tr:hover {
 /* ensures input box is not larger than the column width */
 .input-search-box {
     width: 100%;
-    /* border-radius: 0; */
+    border-radius: 0;
     border: 0;
-    border-bottom: 0.125rem solid var(--quiet);
+    border-bottom: 0.1625rem solid var(--ghost-hover);
     min-width: 3rem;
     left: -0.5rem;
 }
