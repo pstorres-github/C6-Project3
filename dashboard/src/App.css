@@ -8,11 +8,25 @@
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: right; */
-    margin-right: 2rem;
-    padding-right: 2rem;
+    /* margin-right: 2rem;
+    padding-right: 2rem; */
     /* justify-content: right; */
     /* font-size: calc(10px + 2vmin); */
-    color: white;
+    /* color: white; */
+}
+.app-header-container {
+    margin: 0;
+    padding: var(--padding-small);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header-logo {
+    grid-column: 1;
+}
+
+.header-logout {
+    grid-column: -1;
 }
 
 .smaller {

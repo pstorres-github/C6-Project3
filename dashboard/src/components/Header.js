@@ -14,14 +14,15 @@ const Header = () => {
     }
 
     return (
-        <div>
-            <div className="inline">
+        <div className="app-header-container">
+            <div className="header-logo"></div>
+            <div className="header-logout right">
                 {authContext.accountType && (
                     <button
                         onClick={() => {
                             logoutButton()
                         }}
-                        className="small-button"
+                        className="small-button cancel"
                     >
                         Logout
                     </button>
