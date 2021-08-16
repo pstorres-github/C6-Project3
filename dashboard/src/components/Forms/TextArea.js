@@ -9,7 +9,11 @@ function TextArea({ label, ...props }) {
         <>
             <label htmlFor={props.id || props.name}>
                 {label}
-                <textarea className="text-area" {...field} {...props} />
+                <textarea
+                    className="text-area text-area-wide"
+                    {...field}
+                    {...props}
+                />
             </label>{' '}
             {meta.touched && meta.error ? (
                 <div className="error">{meta.error}</div>

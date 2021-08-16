@@ -541,10 +541,18 @@ button:disabled {
     color: var(--placeholder-standard-text);
 }
 
+input[type='text'] {
+    width: 100%;
+}
+
 textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     resize: vertical;
-    min-width: 10rem;
-    max-width: 25rem;
+    width: 100%;
+    min-width: 20rem;
+    /* max-width: 25rem; */
 }
 
 textarea.notes {
@@ -634,7 +642,12 @@ button.small-button {
 }
 
 .text-area {
-    width: 26rem;
+    width: 100%;
+}
+
+.text-area-wide {
+    /* columns: unset; */
+    /* width: 100%; */
 }
 
 form > div {
@@ -649,4 +662,3 @@ form > div {
 .table-select {
     width: 100%;
 }
-
