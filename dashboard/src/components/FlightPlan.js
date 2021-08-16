@@ -184,15 +184,14 @@ const FlightPlan = ({
                 ) : (
                     <div className="map-instructions">
                         <p>
-                            Waypoint (Flight Path) Instructions:
+                            <h3>Flight Path Instructions:</h3>
                             <br />
-                            Click on map to add waypoints.
-                            <br />
-                            Markers can be dragged to new location if required.
-                            <br />
-                            Delete marker by clicking on 'X' icon in list.
+                            Click on map to add new waypoints. Markers can be
+                            dragged to new location if required. Delete
+                            unnecessary waypoints by clicking on 'X' icon in
+                            list.
                         </p>
-                        <button onClick={resetMarkers}>
+                        <button onClick={resetMarkers} className="space-before">
                             Clear all waypoints from map
                         </button>
                     </div>
