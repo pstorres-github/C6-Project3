@@ -7,7 +7,7 @@ h1 {
 
 .flight-form {
   margin: 3rem auto;
-  width: fit-content;
+  width:auto;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: var(--ghost-hover);
   border-radius: 10px;
@@ -115,11 +115,11 @@ button:hover {
 
 .form-4 {
   display: flex;
-  align-self:center;
+  align-self:flex-start;
   align-content: center;
   margin-top: 3rem;
   background: var(--ghost);
-  width: 100%;
+  width: 90%;
   height: 100%
 }
 
@@ -133,9 +133,11 @@ button:hover {
 .individual-flight-plan {
   display:flex;
   flex-direction: row;
-  width: fit-content;
   margin-top: 1.5rem
   /* justify-content: center; */
+}
+.individual-flight-plan input {
+  width: auto;
 }
 
 .individual-flight-plan label {

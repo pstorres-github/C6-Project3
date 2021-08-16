@@ -13,7 +13,6 @@ import JobDetailContext from '../JobDetailContext'
 import Orientation from '../components/Orientation'
 import Telemetry from '../components/Telemetry'
 import VideoFeed from '../components/VideoFeed'
-import VideoUploadForm from '../components/VideoUploadForm'
 import FlightRecording from '../components/FlightRecording'
 
 const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
@@ -50,7 +49,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div>
 
             <div className="console-flightplan">
-                <FlightMap />
+                <FlightMap displayExtras={'show'}/>
             </div>
 
             <div className="console-drone-status">
