@@ -1,6 +1,6 @@
 import './WorkOrderDetails.css'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useEffect, useRef, useState } from 'react'
 import { Redirect, useParams, useHistory } from 'react-router-dom'
 
 import FlightPlan from './FlightPlan.js'
@@ -13,6 +13,16 @@ const WorkOrderDetails = () => {
     const resetMapToggle = useRef(false) // required for flight plan component.  No reset required.
 
     const history = useHistory()
+
+    const mapSize = useRef()
+
+    // useLayoutEffect(() => {
+    //     // console.log(`type`, typeof mapSize)
+    //     // console.log(`mapSize`, mapSize)
+    //     console.log(`mapSize.current.clientWidth`, mapSize.current.clientWidth)
+    //     // let mapSizeWidth = mapSize.current.clientWidth
+    //     // console.log(mapSizeWidth, `mapSizeWidth`)
+    // }, [])
 
     useEffect(() => {
         const fetchFlight = async () => {
@@ -38,6 +48,36 @@ const WorkOrderDetails = () => {
 
     if (!userFlight) return null
 
+    // const GetMapSizeOnLoad = (props) => {
+    //     const mapSize = useRef()
+    //     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+    //     useLayoutEffect(() => {
+    //         if (mapSize.current) {
+    //             setDimensions({
+    //                 width: mapSize.current.offsetWidth,
+    //                 height: mapSize.current.offsetHeight
+    //             })
+    //         }
+    //     }, [])
+
+    //     console.log(dimensions.width, `width`)
+    //     return mapSize
+    // }
+
+    // GetMapSizeOnLoad()
+
+    // useLayoutEffect(() => {
+    // const getMapSize = async () => {
+
+    //     let workOrderMap = await document.querySelector('workorder-map')
+    //     let workOrderMapWidth = await workOrderMap.clientWidth
+    //     console.log(workOrderMapWidth, `workOrderMapWidth`)
+    // }
+
+    // getMapSize()
+    // })
+
     return (
         <div className="workorder-container">
             <div className="workorder-header">
@@ -45,11 +85,11 @@ const WorkOrderDetails = () => {
                     <div className="workorder-header-primary">
                         <h3>Hello, {userFlight.pilot}.</h3>
                     </div>
-                    <div className="workorder-header-primary align-right">
+                    <div className="workorder-header-secondary">
                         <h3>Work order</h3>
                         {/* Date: {userFlight.date} */}
                     </div>
-                    <div className="workorder-header-secondary">
+                    <div className="workorder-header-tertiary">
                         {userFlight.id.slice(0, 8)}
                     </div>
                     {/* <div className="workorder-header-secondary"> */}
@@ -62,17 +102,18 @@ const WorkOrderDetails = () => {
                 <h3>Analysis</h3>
             </div>
             <div className="workorder-video">
-                {/* <p>Video: Video will show here</p> */}
                 <video
                     src={userFlight.videoURL}
                     width={'100%'}
                     height={'100%'}
+                    margin={'0px'}
+                    padding={'0px'}
                     muted={'muted'}
                     autoPlay
                     controls
-                ></video>
-                {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+                />
             </div>
+            {/* <div>Analytics: {userFlight.analytics.video} </div> */}
 
             <div className="workorder-details-label">
                 <h3>Details</h3>
@@ -101,7 +142,7 @@ const WorkOrderDetails = () => {
             <div className="workorder-map-label">
                 <h3>Flight plan</h3>
             </div>
-            <div className="workorder-map">
+            <div className="workorder-map" ref={mapSize}>
                 <FlightPlan
                     mode="view"
                     initialValues={userFlight.flight_plan}
@@ -114,11 +155,12 @@ const WorkOrderDetails = () => {
             </div>
 
             <div className="workorder-nav">
-                <button 
+                <button
                     onClick={() => {
-                    history.goBack(-1)
-                    }} 
-                    className="">
+                        history.goBack(-1)
+                    }}
+                    className=""
+                >
                     Cancel
                 </button>{' '}
                 and return to work orders.
