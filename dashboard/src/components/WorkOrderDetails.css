@@ -113,6 +113,7 @@ it's driving me mad. */
 }
 
 .workorder-details {
+    background: var(--ghost);
     grid-row-start: 4;
     grid-row-end: 5;
     grid-column-start: 2;
