@@ -132,9 +132,15 @@ acronym {
     /* --button-standard-bg: hsla(132, 79%, 57%, 1); */
     /* --button-standard-bg: rgb(196, 196, 196); */
     /* --button-standard-bg-hover: hsla(132, 79%, 69%, 1); */
-    --button-standard-bg: var(--ghost);
+    /* --button-standard-bg: var(--ghost); */
+    --button-standard-text: var(--black);
+    --button-standard-bg: var(--white_);
     --button-standard-bg-hover: var(--ghost-hover);
     --button-standard-text-hover: hsla(221, 6%, 22%, 1);
+    --button-secondary-text: var(--secondary-text);
+    --button-secondary-bg: var(--secondary);
+    --button-secondary-bg-hover: #95c4f0;
+    --button-secondary-text-hover: var(--secondary-text);
     --button-warn-text: white;
     --button-warn-bg: hsla(39, 100%, 50%, 1);
     --button-warn-bg-hover: hsla(39, 100%, 62%, 1);
@@ -144,9 +150,10 @@ acronym {
     --button-alert-bg-hover: hsla(360, 100%, 63%, 1);
     --button-alert-text-hover: hsla(221, 6%, 22%, 1);
     --button-cancel-text: rgb(118, 118, 129);
+    --button-cancel-text: var(--quiet);
     --button-cancel-bg: ghostwhite;
-    --button-cancel-bg-hover: rgb(118, 118, 129);
-    --button-cancel-text-hover: ghostwhite;
+    --button-cancel-bg-hover: rgb(206, 200, 200);
+    --button-cancel-text-hover: rgb(127, 127, 127);
     --full-button: 5rem;
     --tall-button: 4.85rem;
     --small-button: calc(4.85rem / 2);
@@ -165,6 +172,8 @@ acronym {
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
     /* --secondary: black; */
+
+    --secondary-text: rgb(25, 75, 129);
     --secondary: var(--badge-blue);
     --highlight: var(--button-clicked);
 
@@ -542,10 +551,18 @@ button:disabled {
     color: var(--placeholder-standard-text);
 }
 
+input[type='text'] {
+    width: 100%;
+}
+
 textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     resize: vertical;
-    min-width: 10rem;
-    max-width: 25rem;
+    width: 100%;
+    min-width: 20rem;
+    /* max-width: 25rem; */
 }
 
 textarea.notes {
@@ -575,10 +592,16 @@ textarea.notes:focus {
 button {
     background: var(--button-standard-bg);
     color: var(--button-standard-text);
-    padding: var(--padding-tiny);
+    padding: var(--padding);
+    padding-top: var(--padding-small);
+    padding-bottom: var(--padding-small);
     margin: var(--padding-tiny);
-    border: none;
-    height: 2rem;
+    border: 1px solid var(--quiet);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    height: 3rem;
+    /* height: 2rem; */
     /* border-radius: 0.5rem; */
 }
 
@@ -587,12 +610,18 @@ button:hover {
     color: var(--button-standard-text-hover);
 }
 
-button.small-button {
-    margin: 0;
-    margin-right: 0.25rem;
-    padding: 0.25rem;
-    height: 1.75rem;
-    font-size: 0.75rem;
+.small-button {
+    margin-right: var(--padding-small);
+    padding: var(--padding-small) !important;
+    padding-left: var(--padding) !important;
+    padding-right: var(--padding) !important;
+    line-height: 0.25rem;
+    /* height: 2rem; */
+    /* font-size: 0.75rem; */
+}
+
+.no-border {
+    border: none;
 }
 
 .featured {
@@ -600,10 +629,13 @@ button.small-button {
 }
 
 .secondary {
-    background-color: lightblue;
+    border: 0;
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
 }
 .secondary:hover {
-    background-color: lightcoral;
+    background-color: var(--button-secondary-bg-hover);
+    color: var(--button-secondary-text-hover) !important;
 }
 
 .warn {
@@ -627,15 +659,32 @@ button.small-button {
 .cancel {
     background: var(--button-cancel-bg);
     color: var(--button-cancel-text);
-    border: 0.25px solid rgb(118, 118, 129);
+    border: none;
+    border: 1px solid rgba(118, 118, 129, 0.25);
+    /* box-shadow: inset 0 0 1px rgba(118, 118, 129, 0.25); */
 }
+
 .cancel:hover {
     background: var(--button-cancel-bg-hover);
     color: var(--button-cancel-text-hover);
+    border: none;
+    border: 1px solid var(--button-cancel-bg-hover);
+    /* box-shadow: inset 0 0 2px var(--button-cancel-bg-hover); */
 }
 
 .text-area {
-    width: 26rem;
+    width: 100%;
+}
+
+.text-area-wide {
+    /* columns: unset; */
+    /* width: 100%; */
+}
+
+.space-before {
+    margin: 0;
+    margin-top: 2rem;
+    /* border: 1px solid var(--quiet); */
 }
 
 form > div {
@@ -650,4 +699,3 @@ form > div {
 .table-select {
     width: 100%;
 }
-

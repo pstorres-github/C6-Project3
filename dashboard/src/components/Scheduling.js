@@ -152,16 +152,19 @@ function Scheduling(props) {
                                         updateWaypoints={updateWaypoints}
                                         initialValues={waypoints}
                                         mode="write"
+                                        className=""
                                         reset={resetMapToggle}
                                     />
                                 </div>
                                 {/* VDR hidden for demo day */}
-                                {/* <div className="grey">datepicker placeholder</div>
-                            <div className="grey">
-                                start/end time requests range placeholder
-                            </div> */}
+                                {/* <div className="grey">
+                                    datepicker placeholder
+                                </div>
+                                <div className="grey">
+                                    start/end time requests range placeholder
+                                </div> */}
                             </div>
-                            {/*  Will move this logic (ability to choose pilot) to administrator page 
+                            {/* Will move this logic (ability to choose pilot) to administrator page 
                         <div>
                             <Field as='select' name="pilot" onClick={(value)=>{console.log("value.value", Formik.values.pilot)}}>
                                 {pilots.map((pilot) => (
@@ -170,14 +173,14 @@ function Scheduling(props) {
                                     </option>
                                 ))}
                             </Field>
-                        </div>*/}
+                        </div> */}
                             {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
                             </Checkbox>
                         </div> */}
                             <div className="form-submit-section">
-                                <button type="submit">
+                                <button type="submit" className="secondary">
                                     {props.isSubmitting
                                         ? 'Submitting…'
                                         : 'Submit'}

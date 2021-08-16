@@ -1,7 +1,7 @@
 import AuthenticationContext from '../AuthenticationContext'
 import React from 'react'
 import WorkOrdersAdmin from '../components/WorkOrdersAdmin'
-import { useContext, useState,useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import accountTypeIcons from '../components/AccountTypeIcons'
 import Preview from '../components/Preview'
 import {
@@ -29,10 +29,8 @@ const Adminpage = () => {
             setUserFlights(responseData.flights)
         }
         fetchFlights()
-        }
+    }, [tableUpdated])
 
-    ,[tableUpdated])
-    
     const handleTableUpdated = () => {
         setTableUpdated(!tableUpdated)
         console.log('childUpdated')
@@ -41,19 +39,18 @@ const Adminpage = () => {
     if (!userFlights) return null
 
     const flightStats = () => {
+        let numberRequested = 0
+        let numberCompleted = 0
+        let numberPending = 0
 
-        let numberRequested=0
-        let numberCompleted=0
-        let numberPending=0
-
-        userFlights.forEach(flight => {
+        userFlights.forEach((flight) => {
             console.log(flight)
-            if (flight.status === "Requested") numberRequested++
-            if (flight.status === "Completed") numberCompleted++
-            if (flight.status === "Pending") numberPending++
-        });
+            if (flight.status === 'Requested') numberRequested++
+            if (flight.status === 'Completed') numberCompleted++
+            if (flight.status === 'Pending') numberPending++
+        })
 
-        return ([numberRequested, numberPending, numberCompleted])
+        return [numberRequested, numberPending, numberCompleted]
     }
 
     let jobNumbers = flightStats()
@@ -66,7 +63,8 @@ const Adminpage = () => {
             </div>
             <div className="welcome-bar-secondary">
                 <p>
-                    UserName: {authContext.email} {accountTypeIcons()}
+                    {/* User: */}
+                    {accountTypeIcons()} {authContext.email}
                 </p>
             </div>
 
@@ -77,7 +75,8 @@ const Adminpage = () => {
                     <FontAwesomeIcon
                         icon={faExclamationCircle}
                         className="status-card-icon"
-                    /><br/> 
+                    />
+                    <br />
                     {jobNumbers[0]} jobs awaiting pilot assignment
                 </div>
 
@@ -85,30 +84,33 @@ const Adminpage = () => {
                     <FontAwesomeIcon
                         icon={faClock}
                         className="status-card-icon"
-                    /><br/> 
+                    />
+                    <br />
                     {jobNumbers[1]} jobs are pending
-                </div>          
-                    
+                </div>
+
                 <div className="status-card">
                     <FontAwesomeIcon
                         icon={faCheckCircle}
                         className="status-card-icon"
                         size="5"
-                    /><br/>  
-                {jobNumbers[2]} jobs are completed
+                    />
+                    <br />
+                    {jobNumbers[2]} jobs are completed
                 </div>
-            
             </div>
 
             <div className="customer-workorder-preview">
-                <Preview selectedJob={selectedJob}/>
-                
+                <Preview selectedJob={selectedJob} />
             </div>
 
             <div className="app-content-bottom">
                 <div>
                     <h3>Work Order List</h3>
-                    <WorkOrdersAdmin selectedJob={job => setSelectedJob(job)} handleTableUpdated={handleTableUpdated}  />
+                    <WorkOrdersAdmin
+                        selectedJob={(job) => setSelectedJob(job)}
+                        handleTableUpdated={handleTableUpdated}
+                    />
                 </div>
             </div>
         </div>

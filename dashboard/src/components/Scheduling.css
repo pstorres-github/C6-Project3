@@ -1,6 +1,6 @@
 form {
     padding: var(--padding);
-    border-radius: var(--border-radius-large);
+    border-radius: var(--border-radius-tiny);
 
     /* display: flex;
     flex-direction: column;
@@ -54,7 +54,7 @@ textarea {
 
 /* fix this width to be responsive */
 .text-area {
-    width: 20rem !important;
+    width: 20rem;
     height: 150px;
 }
 
@@ -95,10 +95,14 @@ button {
 } */
 
 .scheduling-container {
-    width: 100%;
+    width: 66vw;
     padding: var(--padding);
     /* border: 1px solid black; */
     background: var(--ghost);
+
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr; */
 }
 
 .scheduling-form-details {
@@ -106,30 +110,51 @@ button {
     padding: 0;
 
     display: grid;
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-columns: 22vw 44vw;
 }
 
 .scheduling-form {
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
+
+    /* width: 100%; */
 
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row: 1;
 }
 
 .scheduling-map-container {
-    margin: 0;
-    padding: 0;
-
     grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: -1;
+    grid-column-end: -1;
+    grid-row: 1;
 }
 
 .form-submit-section {
     grid-row: 2;
+}
+
+.form-job-name {
+    width: 100%;
+}
+
+.scheduling-form > div > label {
+    margin: 0;
+    padding: 0;
+    padding-right: var(--padding);
+    padding-top: var(--padding-small);
+    width: 100%;
+}
+
+.scheduling-form > div > label > textarea {
+    width: 100%;
+    height: 150px;
+}
+
+.scheduling-map-container > .form-flight-plan > .map-container {
+    position: relative;
+    width: 100%;
+    width: calc(100% - 1rem);
+    padding-right: var(--padding);
 }

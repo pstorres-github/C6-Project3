@@ -8,26 +8,28 @@ import {
     useTable,
     useFlexLayout
 } from 'react-table'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {
+    faSearch,
+    faAngleRight,
+    faAngleDoubleRight,
+    faAngleLeft,
+    faAngleDoubleLeft
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import React from 'react'
 
-
 /* Code is based on react-table library requirements as per website: https://react-table.tanstack.com/ */
 
 const TableContainer = ({ columns, data, selectedJob }) => {
-
-      
     const defaultColumn = React.useMemo(
         () => ({
             // if desired to override the default width for a column, this should be done in the parent component
             minWidth: 20, // minWidth is only used as a limit for resizing
             width: 50, // width is used for both the flex-basis and flex-grow
             maxWidth: 200, // maxWidth is only used as a limit for resizing
-          
-            Filter: DefaultColumnFilter
 
+            Filter: DefaultColumnFilter
         }),
         []
     )
@@ -63,17 +65,18 @@ const TableContainer = ({ columns, data, selectedJob }) => {
         useFilters,
         useSortBy,
         usePagination
-        
     )
-
 
     /* displays sorting indicator icon on table header if table header is clicked on */
     const generateSortingIndicator = (column) => {
         return column.isSorted ? (column.isSortedDesc ? ' ⬇' : ' ⬆') : ''
     }
 
+    // forget this
+    // const placeholderSearch = '\uf002'
+
     return (
-       <div className="table-container">
+        <div className="table-container">
             {/* table body */}
             <table className="full-width-table" {...getTableProps()}>
                 <thead>
@@ -104,7 +107,12 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                     {page.map((row) => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()} onClick={()=>{selectedJob(row.original)}}>
+                            <tr
+                                {...row.getRowProps()}
+                                onClick={() => {
+                                    selectedJob(row.original)
+                                }}
+                            >
                                 {row.cells.map((cell) => {
                                     return (
                                         <td {...cell.getCellProps()}>
@@ -120,27 +128,41 @@ const TableContainer = ({ columns, data, selectedJob }) => {
 
             {/* buttons for pagination */}
             <div className="pagination">
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    {' '}
-                    {'<<'}{' '}
+                <button
+                    className="no-border"
+                    onClick={() => gotoPage(0)}
+                    disabled={!canPreviousPage}
+                >
+                    {/* {' '}
+                    {'<<'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 </button>
                 <button
+                    className="no-border"
                     onClick={() => previousPage()}
                     disabled={!canPreviousPage}
                 >
-                    {' '}
-                    {'<'}{' '}
-                </button>
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    {' '}
-                    {'>'}{' '}
+                    {/* {' '}
+                    {'<'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleLeft} />
                 </button>
                 <button
+                    className="no-border"
+                    onClick={() => nextPage()}
+                    disabled={!canNextPage}
+                >
+                    {/* {' '}
+                    {'>'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleRight} />
+                </button>
+                <button
+                    className="no-border"
                     onClick={() => gotoPage(pageCount - 1)}
                     disabled={!canNextPage}
                 >
-                    {' '}
-                    {'>>'}{' '}
+                    {/* {' '}
+                    {'>>'}{' '} */}
+                    <FontAwesomeIcon icon={faAngleDoubleRight} />
                 </button>
                 <span>
                     {' '}
@@ -153,6 +175,7 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                 </span>
 
                 <select
+                    className="select-simplified-style"
                     value={pageSize}
                     onChange={(e) => {
                         setPageSize(Number(e.target.value))
@@ -166,8 +189,6 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                 </select>
             </div>
         </div>
-
-
     )
 }
 export default TableContainer
@@ -192,17 +213,18 @@ const DefaultColumnFilter = ({
     }
 }) => {
     return (
-        <div className='input-search-box-container'>
-        <FontAwesomeIcon icon={faSearch}/>
-        <input
-            className="input-search-box"
-            value={filterValue || ''}
-            onChange={(e) => {
-                setFilter(e.target.value || undefined)
-            }}
-            placeholder={`search ...`}
-        />
-        
+        <div className="input-search-box-container">
+            <FontAwesomeIcon icon={faSearch} />
+            <input
+                className="input-search-box"
+                value={filterValue || ''}
+                onChange={(e) => {
+                    setFilter(e.target.value || undefined)
+                }}
+                // placeholder={[`!`, <FontAwesomeIcon icon={faSearch} />]}
+                // placeholder={`\\xf002`}
+                placeholder={``}
+            />
         </div>
     )
 }

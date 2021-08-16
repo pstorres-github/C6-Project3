@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
-import DemoText from '../components/DemoText'
 import React from 'react'
 import Scheduling from '../components/Scheduling'
 import WorkOrdersByClient from '../components/WorkOrdersByClient'
@@ -37,14 +36,15 @@ const Workorders = () => {
             <div className="welcome-bar-secondary">
                 {/* <p>Email: {authContext.email} ({authContext.accountType})</p> */}
                 <p>
-                    UserName: {authContext.email} {accountTypeIcons()}
+                    {/* User: */}
+                    {accountTypeIcons()} {authContext.email}
                 </p>
             </div>
             {/* </div> */}
 
             <div className="scheduling-interface">
                 <button
-                    className="big-button job-scheduling"
+                    className="big-button job-scheduling no-border"
                     onClick={() => {
                         setFormToggle(!formToggle)
                     }}
