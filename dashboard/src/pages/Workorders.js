@@ -43,7 +43,7 @@ const Workorders = () => {
 
             <div className="scheduling-interface">
                 <button
-                    className="big-button job-scheduling"
+                    className="big-button job-scheduling no-border"
                     onClick={() => {
                         setFormToggle(!formToggle)
                     }}
