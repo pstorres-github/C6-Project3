@@ -112,6 +112,7 @@ const UpdateWorkOrderStatus = ({
                 <option selected disabled>
                     --Select--
                 </option>
+                <option disabled value={'Requested'}>Requested</option>
                 <option value={'Pending'}>Pending</option>
                 <option value={'Completed'}>Completed</option>
                 <option value={'Cancelled'}>Cancelled</option>
