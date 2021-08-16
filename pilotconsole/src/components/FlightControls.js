@@ -47,10 +47,18 @@ const FlightControls = ({ DroneConnection }) => {
     }
 
     const [keysIsChecked, setKeysIsChecked] = useState(false)
+    const [stream, setStream] = useState(0)
 
     const handleKeys = () => {
         setKeysIsChecked(!keysIsChecked)
     }
+
+    useEffect(() => {
+        stream % 2 === 0 ? (
+            sendCommand('streamoff') || ghostHover('stream-button')
+        ) : (sendCommand('streamon') || ghostHover('stream-button')
+        )
+    }, [stream])
 
     // finding some directions in life
     // mostly up, down, left and right here
@@ -365,11 +373,10 @@ const FlightControls = ({ DroneConnection }) => {
                             className="flight-button plex smaller"
                             id="stream-button"
                             onClick={() => {
-                                sendCommand('streamon')
-                                ghostHover('stream-button')
+                                setStream(stream + 1)
                             }}
                         >
-                            Stream On
+                            Stream
                         </button>
                     </div>
                     {/* <div className="keys-button">
@@ -385,14 +392,6 @@ const FlightControls = ({ DroneConnection }) => {
                         </button>
                     </div> */}
                     {/* NOTE: set button to show state -VDR */}
-                    <div className="streamOffButton ">
-                        <button
-                            className="flight-button smaller"
-                            onClick={() => sendCommand('streamoff')}
-                        >
-                            Stream Off
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
