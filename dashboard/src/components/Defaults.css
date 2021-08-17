@@ -171,7 +171,8 @@ acronym {
     --black: black;
     --primary: black;
     --quiet: hsla(0, 0%, 60%, 1);
-    /* --secondary: black; */
+    --secondary: var(--badge-blue);
+    --highlight: var(--button-clicked);
 
     --secondary-text: rgb(25, 75, 129);
     --secondary: var(--badge-blue);
@@ -200,8 +201,7 @@ acronym {
 
 /* ||| Font definitions  */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap'); */
 @import url('https://use.typekit.net/yrh8vwl.css');
 
 @font-face {
@@ -234,9 +234,7 @@ acronym {
 
 /*  ||| Basic definitions */
 p {
-    /* font-family: 'GT-Flexa'; */
     font-family: 'Work Sans', sans-serif;
-    /* font-family: 'Source Code Pro', monospace; */
 
     /* padding-block-end: 1.125rem; */
     margin: 0 !important;
@@ -250,40 +248,28 @@ em {
 }
 
 h1 {
-    /* font-family: 'GT-Flexa'; */
-    /* font-family: 'Work Sans', sans-serif; */
-    font-family: 'Source Code Pro', monospace;
-
+    font-family: ibm-plex-mono, sans-serif;
     font-size: 3rem;
     line-height: 3rem;
     padding-top: 1rem;
     padding-bottom: 0.625rem;
 }
 h2 {
-    /* font-family: 'GT-Flexa'; */
-    /* font-family: 'Work Sans', sans-serif; */
-    font-family: 'Source Code Pro', monospace;
-
+    font-family: ibm-plex-mono, sans-serif;
     font-size: 2rem;
     line-height: 2rem;
     padding-top: 1rem;
     padding-bottom: 0.625rem;
 }
 h3 {
-    /* font-family: 'GT-Flexa'; */
-    /* font-family: 'Work Sans', sans-serif; */
-    font-family: 'Source Code Pro', monospace;
-
+    font-family: ibm-plex-mono, sans-serif;
     font-size: 1.125rem;
     line-height: 1.25rem;
     padding-top: 1rem;
     padding-bottom: 0.625rem;
 }
 h4 {
-    /* font-family: 'GT-Flexa'; */
-    /* font-family: 'Work Sans', sans-serif; */
-    font-family: 'Source Code Pro', monospace;
-
+    font-family: ibm-plex-mono, sans-serif;
     font-size: 1rem;
     line-height: 1rem;
     padding-top: 1rem;
@@ -311,15 +297,15 @@ details {
 }
 
 .plex {
-    /* font-family: ibm-plex-mono, sans-serif; */
-    font-family: 'Source Code Pro', monospace;
+    font-family: ibm-plex-mono, sans-serif;
+    /* font-family: 'Source Code Pro', monospace; */
     font-weight: 400;
     font-style: normal;
 }
 
 .plex-bold {
-    /* font-family: ibm-plex-mono, sans-serif; */
-    font-family: 'Source Code Pro', monospace;
+    font-family: ibm-plex-mono, sans-serif;
+    /* font-family: 'Source Code Pro', monospace; */
     font-weight: 700;
     font-style: normal;
 }
