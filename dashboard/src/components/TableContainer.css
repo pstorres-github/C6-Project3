@@ -34,6 +34,8 @@ td {
     padding-bottom: var(--padding);
     padding-left: var(--padding-small);
     padding-right: var(--padding-small);
+
+    align-self: center !important;
 }
 
 tbody tr:hover {
