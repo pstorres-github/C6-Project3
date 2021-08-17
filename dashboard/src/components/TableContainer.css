@@ -34,10 +34,13 @@ td {
     padding-bottom: var(--padding);
     padding-left: var(--padding-small);
     padding-right: var(--padding-small);
-
+}
+td {
+    height: clamp(3.5rem 5rem 20rem);
+    padding-top: var(--padding-small);
+    border-radius: 0;
     align-self: center !important;
 }
-
 tbody tr:hover {
     background-color: var(--ghost);
 }
