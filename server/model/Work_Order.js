@@ -5,8 +5,8 @@ const Schema = mongoose.Schema
 const workOrderSchema = new Schema(
     {
         customer: String,
-        date: String,
-        time: String,
+        date: Date,
+        time: Date,
         pilot: String,
         flight_plan: Array,
         flight_data: Array,
