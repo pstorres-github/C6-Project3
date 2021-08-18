@@ -1,7 +1,9 @@
 import './WorkOrderDetails.css'
 
-import React, { useLayoutEffect, useEffect, useRef, useState } from 'react'
-import { Redirect, useParams, useHistory } from 'react-router-dom'
+import React, {useEffect, useRef, useState, useContext } from 'react'
+import { useParams, useHistory} from 'react-router-dom'
+import AuthenticationContext from '../AuthenticationContext'
+
 
 import FlightPlan from './FlightPlan.js'
 
@@ -15,6 +17,11 @@ const WorkOrderDetails = () => {
     const history = useHistory()
 
     const mapSize = useRef()
+
+    const [date, setDate] = useState()
+    const [time, setTime] = useState()
+
+    const authContext = useContext(AuthenticationContext)
 
     // useLayoutEffect(() => {
     //     // console.log(`type`, typeof mapSize)
@@ -41,6 +48,10 @@ const WorkOrderDetails = () => {
             // console.log("flightById:", flightById);
             //console.log("responseData:", responseData);
             setUserFlight(responseData.flight)
+            const flightDate = new Date(responseData.flight.date)
+            setDate (flightDate.toDateString())
+            setTime (flightDate.toLocaleTimeString())
+                console.log(responseData.flight.date)
         }
         fetchFlight()
         // console.log('userFlight:', userFlight)
@@ -83,7 +94,7 @@ const WorkOrderDetails = () => {
             <div className="workorder-header">
                 <div className="workorder-header-inner-container">
                     <div className="workorder-header-primary">
-                        <h3>Hello, {userFlight.pilot}.</h3>
+                        <h3>Hello, {authContext.username}.</h3>
                     </div>
                     <div className="workorder-header-secondary">
                         <h3>Work order</h3>
@@ -121,14 +132,16 @@ const WorkOrderDetails = () => {
             <div className="workorder-details">
                 <div className="workorder-details-inner-container">
                     <div className="details-date plex">
-                        Date: {userFlight.date} /
+                        Date: {date}
                     </div>
-                    <div className="details-location plex">add: location</div>
+                    <div className="details-location plex">
+                        Job Title: {userFlight.jobTitle}
+                    </div>
                     <div className="details-pilot plex">
                         Pilot: {userFlight.pilot}
                     </div>
                     <div className="details-flight plex">
-                        Flight Time: {userFlight.time}
+                        Flight Time: {time}
                     </div>
                     <div className="details-data plex">
                         Flight Data: {userFlight.flight_data}
@@ -148,6 +161,7 @@ const WorkOrderDetails = () => {
                     initialValues={userFlight.flight_plan}
                     updateWaypoints={() => {}}
                     reset={resetMapToggle}
+                    flightData={userFlight.flight_data}
                 />
                 <p className="small-padding-top">
                     If completed, flight path is shown in red.
