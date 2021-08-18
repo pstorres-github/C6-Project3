@@ -49,7 +49,7 @@ const UpdateWorkOrderStatus = ({
                                     <button
                                         onClick={async () => {
                                             await deleteWorkOrder()
-                                            document.location.reload()
+                                            //document.location.reload()
                                             onClose()
                                         }}
                                     >

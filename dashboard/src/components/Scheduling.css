@@ -158,3 +158,8 @@ button {
     width: calc(100% - 1rem);
     padding-right: var(--padding);
 }
+
+.scheduling-date-picker > input {
+    width:50%
+}
+

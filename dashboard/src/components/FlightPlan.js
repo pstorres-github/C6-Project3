@@ -193,6 +193,7 @@ const FlightPlan = ({
                         </p>
                         <button
                             onClick={resetMarkers}
+                            type={"button"}
                             className="space-before cancel"
                         >
                             Clear all waypoints from map

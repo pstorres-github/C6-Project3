@@ -69,8 +69,32 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                     )
                 }
             },
-            { Header: 'Flight Date', accessor: 'date' },
-            { Header: 'Flight Time', accessor: 'time' },
+            { Header: 'Flight Date', accessor: 'date',
+                Cell: ({cell})=>{
+                    const {value} = cell
+                    let date = new Date(value)
+                    let formattedDate= date.toDateString()
+                    if (!value) return null
+                    return (
+                        <> 
+                        {formattedDate}
+                        </>
+                    )
+                }
+            },
+            { Header: 'Flight Time', accessor: 'time',
+                Cell: ({cell})=>{
+                    const {value} = cell
+                    let date = new Date(value)
+                    let formattedTime= date.toLocaleTimeString()
+                    if (!value) return null
+                    return (
+                        <> 
+                        {formattedTime}
+                        </>
+                    )
+                }   
+        },
             { Header: 'Client Contact', accessor: 'clientContact' },
             { Header: 'Client Email', accessor: 'clientEmail' },
             { Header: 'Job No', accessor: 'jobNumber' },

@@ -24,10 +24,11 @@ table {
 tr {
     /*width: calc(100vw - var(--padding) - var(--padding));*/
     height: fit-content;
+    border-bottom: 1px solid var(--ghost-hover);
 }
 th,
 td {
-    border-bottom: 1px solid var(--ghost-hover);
+    /* border-bottom: 1px solid var(--ghost-hover); */
     /* border-bottom: 1px solid black; */
     /* border-right: 1px solid black; */
     padding-top: var(--padding);

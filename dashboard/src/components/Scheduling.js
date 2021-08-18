@@ -1,24 +1,30 @@
+
 import './Defaults.css'
 import './WorkOrdersByClient'
 
 import * as Yup from 'yup'
 
-import { Field, Form, Formik, useField } from 'formik'
-import { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { Form, Formik } from 'formik'
+import { useContext, useRef, useState } from 'react'
 
 import AuthenticationContext from '../AuthenticationContext'
 import './Scheduling.css'
-import Checkbox from './Forms/Checkbox'
+
+//import Checkbox from './Forms/Checkbox'
 import FlightPlan from './FlightPlan.js'
-import Select from './Forms/Select'
+//import Select from './Forms/Select'
 import TextArea from './Forms/TextArea'
 import TextInput from './Forms/TextInput'
 import axios from 'axios'
-import { number } from 'yup/lib/locale'
-import { useHistory } from 'react-router-dom'
+//import { number } from 'yup/lib/locale'
+//import { useHistory } from 'react-router-dom'
+import Flatpickr from "react-flatpickr"
+import "flatpickr/dist/themes/light.css";
+
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
+    const [date, setDate] = useState(new Date())
 
     const [waypoints, setWaypoints] = useState([])
     //const [pilots, setPilots] = useState([])
@@ -29,17 +35,8 @@ function Scheduling(props) {
         console.log('waypoints', waypoints)
     }
 
-    /* moved ability to choose pilot to administrative page */
-    // useEffect(() => {
-    //     async function getPilots() {
-    //         let { data } = await axios.get('/api/users?account_type=pilot')
-    //         if (data) {
-    //             console.log('userdata', data)
-    //         }
-    //         setPilots(data)
-    //     }
-    //     getPilots()
-    // }, [])
+    
+
 
     return (
         <div className="scheduling-container">
@@ -93,10 +90,9 @@ function Scheduling(props) {
                                 customerName: authContext.username,
                                 customerID: authContext.userID,
                                 flight_plan: waypoints,
-                                status: 'Requested'
-                                // move pilot assignment to administrator page
-                                //pilotName: values.pilot.username,
-                                //pilotID: values.pilot.id
+                                status: 'Requested',
+                                date:date,
+                                time:date //both values are in the same field
                             })
 
                             console.log(`authContext: `, authContext)
@@ -105,6 +101,7 @@ function Scheduling(props) {
                             console.log(`Form post values: `, values)
                             // reloadOrders(values)
                             resetForm()
+                            setDate(new Date())
                             resetMapToggle.current = true
                             setSubmitting(false)
                         }, 500)
@@ -157,23 +154,21 @@ function Scheduling(props) {
                                     />
                                 </div>
                                 {/* VDR hidden for demo day */}
-                                {/* <div className="grey">
-                                    datepicker placeholder
+                                <div className="scheduling-date-picker">
+                                    Date and Time for Job: &nbsp;
+                                    <Flatpickr 
+                                        data-enable-time
+                                        value={date}
+                                        options={{ altInput: true,
+                                                dateFormat: "Y-m-d",
+                                                minDate:"today",
+                                                disableMobile:true
+                                             }}
+                                        onChange={date => {setDate(date); console.log(date)}}
+                                    />
                                 </div>
-                                <div className="grey">
-                                    start/end time requests range placeholder
-                                </div> */}
                             </div>
-                            {/* Will move this logic (ability to choose pilot) to administrator page 
-                        <div>
-                            <Field as='select' name="pilot" onClick={(value)=>{console.log("value.value", Formik.values.pilot)}}>
-                                {pilots.map((pilot) => (
-                                    <option value={"ME"}>
-                                        {pilot.username}
-                                    </option>
-                                ))}
-                            </Field>
-                        </div> */}
+                            
                             {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
