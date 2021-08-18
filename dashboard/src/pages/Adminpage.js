@@ -77,7 +77,8 @@ const Adminpage = () => {
                         className="status-card-icon"
                     />
                     <br />
-                    {jobNumbers[0]} jobs awaiting pilot assignment
+                    Jobs awaiting pilot assignment
+                    <p><strong>{jobNumbers[0]}</strong></p>
                 </div>
 
                 <div className="status-card">
@@ -86,7 +87,8 @@ const Adminpage = () => {
                         className="status-card-icon"
                     />
                     <br />
-                    {jobNumbers[1]} jobs are pending
+                    Pending Jobs
+                    <p><strong>{jobNumbers[1]}</strong></p>
                 </div>
 
                 <div className="status-card">
@@ -96,7 +98,8 @@ const Adminpage = () => {
                         size="5"
                     />
                     <br />
-                    {jobNumbers[2]} jobs are completed
+                    Completed Jobs
+                    <p><strong>{jobNumbers[2]}</strong></p>
                 </div>
             </div>
 
