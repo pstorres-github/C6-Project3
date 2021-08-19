@@ -18,6 +18,8 @@
     padding: 0;
 
     width: var(--tall-button);
+    /* border: 1px solid var(--ghost-hover); */
+    border: 0px solid var(--ghost-hover);
     border-radius: var(--border-radius-tiny);
     background: var(--ghost);
 }
@@ -338,7 +340,7 @@ to show state */
 } */
 
 /* These will be removed because their positioning makes no sense */
-.streamOffButton  {
+.streamOffButton {
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start: 2;
