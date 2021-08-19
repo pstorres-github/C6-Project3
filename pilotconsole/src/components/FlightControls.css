@@ -307,6 +307,8 @@
     text-align: center;
     text-transform: uppercase;
 
+    border: 0;
+
     /* grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;
