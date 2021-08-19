@@ -30,7 +30,7 @@ const AssignPilot = ({
     return (
         <div>
             <select
-                className="table-select select-simplified-style"
+                className="table-select dropdown select-simplified-style"
                 value={pilot}
                 onChange={(event) => {
                     setPilot(event.target.value)

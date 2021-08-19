@@ -110,6 +110,7 @@ acronym {
     --identify-me: red;
     --identify-2: cornsilk;
     --padding: 1rem;
+    --padding-small: 0.625rem;
     --padding-tiny: 0.25rem;
     --mini: 0.0125rem;
     --border-tiny: 0.0625rem;
@@ -141,9 +142,10 @@ acronym {
     --button-alert-bg-hover: hsla(360, 100%, 63%, 1);
     --button-alert-text-hover: hsla(221, 6%, 22%, 1);
     --button-cancel-text: rgb(118, 118, 129);
+    --button-cancel-text: var(--quiet);
     --button-cancel-bg: ghostwhite;
-    --button-cancel-bg-hover: rgb(118, 118, 129);
-    --button-cancel-text-hover: ghostwhite;
+    --button-cancel-bg-hover: rgb(206, 200, 200);
+    --button-cancel-text-hover: rgb(127, 127, 127);
     --full-button: 5rem;
     --tall-button: 4.85rem;
     --small-button: calc(4.85rem / 2);
@@ -163,6 +165,16 @@ acronym {
     --quiet: hsla(0, 0%, 60%, 1);
     --secondary: var(--badge-blue);
     --highlight: var(--button-clicked);
+
+    --secondary-text: rgb(25, 75, 129);
+    --secondary: var(--badge-blue);
+    --highlight: var(--button-clicked);
+
+    --alert: var(--button-warn-bg);
+    --error: var(--button-alert-bg);
+
+    --badge-blue: rgba(78, 161, 238, 1);
+    --medium-green: rgba(96, 211, 81, 1);
 
     /* text sizes */
     --base: 14px;
@@ -420,7 +432,7 @@ form {
     padding: 0;
 }
 
-select {
+.dropdown {
     /* reset */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -518,8 +530,14 @@ button {
     background: var(--button-standard-bg);
     color: var(--button-standard-text);
     padding: var(--padding-tiny);
+    padding-top: var(--padding-small);
+    padding-bottom: var(--padding-small);
     margin: var(--padding-tiny);
     border: none;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
     height: 2rem;
     /* border-radius: 0.5rem; */
 }
@@ -529,12 +547,19 @@ button:hover {
     color: var(--button-standard-text-hover);
 }
 
-button.small-button {
+.small-button {
+    position: relative;
+    top: -2px;
     margin: 0;
     margin-right: 0.25rem;
-    padding: 0.25rem;
+    padding: var(--padding-tiny) !important;
+    padding-left: var(--padding-small) !important;
+    padding-right: var(--padding-small) !important;
     height: 1.75rem;
     font-size: 0.75rem;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
 }
 
 .featured {
@@ -566,14 +591,24 @@ button.small-button {
     color: var(--button-alert-text-hover);
 }
 
-.cancel {
+.cancel,
+.small-button {
+    /* background: var(--button-cancel-bg);
+    color: var(--button-cancel-text);
+    border: 0.25px solid rgb(118, 118, 129); */
     background: var(--button-cancel-bg);
     color: var(--button-cancel-text);
-    border: 0.25px solid rgb(118, 118, 129);
+    border: none;
+    border: 1px solid rgba(118, 118, 129, 0.25);
 }
-.cancel:hover {
+.cancel:hover,
+.small-button:hover {
+    /* background: var(--button-cancel-bg-hover);
+    color: var(--button-cancel-text-hover); */
     background: var(--button-cancel-bg-hover);
     color: var(--button-cancel-text-hover);
+    border: none;
+    border: 1px solid var(--button-cancel-bg-hover);
 }
 
 .text-area {

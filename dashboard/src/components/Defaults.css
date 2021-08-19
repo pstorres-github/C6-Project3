@@ -468,7 +468,7 @@ form {
     padding: 0;
 }
 
-select {
+.dropdown {
     /* reset */
     -webkit-appearance: none;
     -moz-appearance: none;

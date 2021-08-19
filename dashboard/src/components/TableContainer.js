@@ -175,7 +175,7 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                 </span>
 
                 <select
-                    className="select-simplified-style"
+                    className="dropdown select-simplified-style "
                     value={pageSize}
                     onChange={(e) => {
                         setPageSize(Number(e.target.value))

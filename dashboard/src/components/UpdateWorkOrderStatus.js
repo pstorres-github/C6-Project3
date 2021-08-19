@@ -101,7 +101,7 @@ const UpdateWorkOrderStatus = ({
     return (
         <div>
             <select
-                className="table-select select-simplified-style"
+                className="table-select dropdown select-simplified-style"
                 value={status}
                 onChange={(event) => {
                     setStatus(event.target.value)
@@ -112,7 +112,9 @@ const UpdateWorkOrderStatus = ({
                 <option selected disabled>
                     --Select--
                 </option>
-                <option disabled value={'Requested'}>Requested</option>
+                <option disabled value={'Requested'}>
+                    Requested
+                </option>
                 <option value={'Pending'}>Pending</option>
                 <option value={'Completed'}>Completed</option>
                 <option value={'Cancelled'}>Cancelled</option>
