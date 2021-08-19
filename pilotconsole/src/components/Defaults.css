@@ -197,6 +197,7 @@ acronym {
 
 @font-face {
     font-family: 'Work Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
     /* src: url('../fonts/GT-Flexa-Mono-Medium-Trial.woff2') format('opentype'); */
     font-weight: normal;
     font-style: normal;
@@ -204,6 +205,7 @@ acronym {
 
 @font-face {
     font-family: 'Work Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
     /* src: url('../fonts/GT-Flexa-Mono-Medium-Italic-Trial.woff2') format('opentype'); */
     font-weight: normal;
     font-style: italic;
@@ -211,6 +213,7 @@ acronym {
 
 @font-face {
     font-family: 'Work Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
     /* src: url('../fonts/GT-Flexa-Mono-Bold-Trial.woff2') format('opentype'); */
     font-weight: 500;
     font-style: normal;
@@ -218,6 +221,7 @@ acronym {
 
 @font-face {
     font-family: 'Work Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
     /* src: url('../fonts/GT-Flexa-Mono-Black-Trial.woff2') format('opentype'); */
     font-weight: 700;
     font-style: normal;
@@ -226,6 +230,7 @@ acronym {
 /*  ||| Basic definitions */
 p {
     font-family: 'Work Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 
     /* padding-block-end: 1.125rem; */
     margin: 0 !important;
