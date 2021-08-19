@@ -1,9 +1,8 @@
 import './WorkOrderDetails.css'
 
-import React, {useEffect, useRef, useState, useContext } from 'react'
-import { useParams, useHistory} from 'react-router-dom'
+import React, { useEffect, useRef, useState, useContext } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import AuthenticationContext from '../AuthenticationContext'
-
 
 import FlightPlan from './FlightPlan.js'
 
@@ -49,9 +48,9 @@ const WorkOrderDetails = () => {
             //console.log("responseData:", responseData);
             setUserFlight(responseData.flight)
             const flightDate = new Date(responseData.flight.date)
-            setDate (flightDate.toDateString())
-            setTime (flightDate.toLocaleTimeString())
-                console.log(responseData.flight.date)
+            setDate(flightDate.toDateString())
+            setTime(flightDate.toLocaleTimeString())
+            console.log(responseData.flight.date)
         }
         fetchFlight()
         // console.log('userFlight:', userFlight)
@@ -132,21 +131,22 @@ const WorkOrderDetails = () => {
             <div className="workorder-details">
                 <div className="workorder-details-inner-container">
                     <div className="details-date plex">
-                        Date: {date}
+                        <h4>Date:</h4> {date}
                     </div>
                     <div className="details-location plex">
-                        Job Title: {userFlight.jobTitle}
+                        <h4>Job Title:</h4> {userFlight.jobTitle}
                     </div>
                     <div className="details-pilot plex">
-                        Pilot: {userFlight.pilot}
+                        <h4>Pilot:</h4> {userFlight.pilot}
                     </div>
                     <div className="details-flight plex">
-                        Flight Time: {time}
+                        <h4>Flight Time:</h4> {time}
                     </div>
                     <div className="details-data plex">
-                        Flight Data: {userFlight.flight_data}
+                        <h4>Flight Waypoints:</h4> {userFlight.flight_data}
                     </div>
                     <div className="details-status plex">
+                        <h4>Status:</h4>
                         {userFlight.status}
                     </div>
                 </div>
