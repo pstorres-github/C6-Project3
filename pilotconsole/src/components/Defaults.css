@@ -527,11 +527,15 @@ textarea.notes:focus {
 
 /*  ||| Buttons */
 button {
+    border: 1px solid var(--ghost-hover);
+    border-radius: 0.25rem !important;
+
     background: var(--button-standard-bg);
     color: var(--button-standard-text);
-    padding: var(--padding-tiny);
-    padding-top: var(--padding-small);
-    padding-bottom: var(--padding-small);
+    padding-top: var(--padding-tiny);
+    padding-bottom: var(--padding-tiny);
+    padding-left: var(--padding-small);
+    padding-right: var(--padding-small);
     margin: var(--padding-tiny);
     border: none;
     text-align: center;
@@ -552,7 +556,7 @@ button:hover {
     top: -2px;
     margin: 0;
     margin-right: 0.25rem;
-    padding: var(--padding-tiny) !important;
+    padding: var(--padding-tiny);
     padding-left: var(--padding-small) !important;
     padding-right: var(--padding-small) !important;
     height: 1.75rem;
