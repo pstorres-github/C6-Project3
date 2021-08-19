@@ -144,26 +144,33 @@ it's driving me mad. */
 .details-data {
     border-radius: 0;
     /* border-bottom: 1px solid var(--quiet); */
+    border-left: 1px solid var(--quiet);
     height: 100%;
     grid-row-start: 1;
     grid-row-end: -1;
-    grid-column: 1;
+    grid-column: 3;
 }
 
 .details-status {
     border-radius: 0;
-    border-left: 1px solid var(--quiet);
+    /* border-left: 1px solid var(--quiet); */
     height: 100%;
     grid-row: 3;
-    grid-column: 2/-1;
+    grid-column: 1;
 }
 
 .details-date {
     border-radius: 0;
-    border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 1;
+}
+
+.details-pilot {
+    border-radius: 0;
+    border-bottom: 1px solid var(--quiet);
+    grid-row: 2;
+    grid-column: 1;
 }
 
 .details-location {
@@ -171,14 +178,6 @@ it's driving me mad. */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 1;
-    grid-column: 3;
-}
-
-.details-pilot {
-    border-radius: 0;
-    border-left: 1px solid var(--quiet);
-    border-bottom: 1px solid var(--quiet);
-    grid-row: 2;
     grid-column: 2;
 }
 
@@ -187,7 +186,7 @@ it's driving me mad. */
     border-left: 1px solid var(--quiet);
     border-bottom: 1px solid var(--quiet);
     grid-row: 2;
-    grid-column: 3;
+    grid-column: 2;
     /* background: var(--ghost); */
 }
 
