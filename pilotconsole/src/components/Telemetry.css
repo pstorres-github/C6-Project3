@@ -12,11 +12,12 @@
 
     margin: 0rem;
     padding: 1rem;
-
     border-radius: var(--border-radius-small);
     /* margin: 0.5rem; */
+    /* background-color:darkgray; */
 }
 
 .telemetry-display:not(p) {
-    color: var(--quiet);
+    color: black;
+    /* background-color: darkgrey; */
 }

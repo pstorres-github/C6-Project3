@@ -35,20 +35,20 @@ const Telemetry = ({ DroneState }) => {
         // V1.0 strictly for Friday demo day
         <div className="telemetry-container">
             <div className="telemetry-display">
-                <p>
+                <p style={{color: 'orchid'}}>
                     Pitch:{' '}
                     <span className="plex">{telemetryContext.pitch}&deg;</span>
                 </p>
-                <p>
+                <p style={{color: 'orchid'}}>
                     Yaw:{' '}
                     <span className="plex">{telemetryContext.yaw}&deg;</span>
                 </p>
-                <p>
+                <p style={{color: 'orchid'}}>
                     Roll:{' '}
                     <span className="plex">{telemetryContext.roll}&deg;</span>
                 </p>
             </div>
-            <div className="telemetry-display">
+            <div className="telemetry-display" style={{color: 'cornflowerblue'}}>
                 <p>Altitude:</p>
                 <p>
                     <span className="plex">{telemetryContext.altitude} cm</span>
@@ -60,7 +60,7 @@ const Telemetry = ({ DroneState }) => {
                     </span>
                 </p>
             </div>
-            <div className="telemetry-display">
+            <div className="telemetry-display" style={{color: 'olive'}}>
                 <p>Speed:</p>
                 <p>
                     X:{' '}
@@ -75,7 +75,7 @@ const Telemetry = ({ DroneState }) => {
                     <span className="plex">{telemetryContext.speedZ} cm/s</span>
                 </p>
             </div>
-            <div className="telemetry-display">
+            <div className="telemetry-display" style={{color: 'brown'}}>
                 <p>Acceleration:</p>
                 <p>
                     X:{' '}
@@ -97,11 +97,11 @@ const Telemetry = ({ DroneState }) => {
                 </p>
             </div>
             <div className="telemetry-display">
-                <p>
+                <p style={{color: 'tomato'}}>
                     Battery:{' '}
                     <span className="plex">{telemetryContext.battery}%</span>
                 </p>
-                <p>
+                <p style={{color: 'darkmagenta'}}>
                     Temp:{' '}
                     <span className="plex">
                         {telemetryContext.lowTemp}-{telemetryContext.highTemp}
