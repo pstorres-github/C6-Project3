@@ -8,16 +8,53 @@
     /* height: calc(100% - var(--padding) - 0.5rem); */
     height: calc(100%);
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 0.5rem;
+    grid-gap: 0;
 
-    margin: 0rem;
-    padding: 1rem;
+    margin: 0;
+    padding: 0;
     border-radius: var(--border-radius-small);
     /* margin: 0.5rem; */
     /* background-color:darkgray; */
 }
 
 .telemetry-display:not(p) {
+    padding: var(--padding);
     color: black;
     /* background-color: darkgrey; */
+}
+
+.begin {
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    border-left: 1px solid var(--ghost-hover);
+    border-top: 1px solid var(--ghost-hover);
+    border-bottom: 1px solid var(--ghost-hover);
+
+    padding: var(--padding-small);
+}
+
+.middle {
+    border-radius: 0px;
+    border-left: 1px solid var(--ghost-hover);
+    border-top: 1px solid var(--ghost-hover);
+    border-bottom: 1px solid var(--ghost-hover);
+
+    padding: var(--padding-small);
+}
+
+.end {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: var(--border-radius-small);
+    border-bottom-right-radius: var(--border-radius-small);
+
+    border-left: 1px solid var(--ghost-hover);
+    border-right: 1px solid var(--ghost-hover);
+    border-top: 1px solid var(--ghost-hover);
+    border-bottom: 1px solid var(--ghost-hover);
+
+    padding: var(--padding-small);
 }

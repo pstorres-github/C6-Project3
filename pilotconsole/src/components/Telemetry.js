@@ -34,21 +34,24 @@ const Telemetry = ({ DroneState }) => {
     return (
         // V1.0 strictly for Friday demo day
         <div className="telemetry-container">
-            <div className="telemetry-display">
-                <p style={{color: 'orchid'}}>
+            <div className="telemetry-display begin">
+                <p style={{ color: 'orchid' }}>
                     Pitch:{' '}
                     <span className="plex">{telemetryContext.pitch}&deg;</span>
                 </p>
-                <p style={{color: 'orchid'}}>
+                <p style={{ color: 'orchid' }}>
                     Yaw:{' '}
                     <span className="plex">{telemetryContext.yaw}&deg;</span>
                 </p>
-                <p style={{color: 'orchid'}}>
+                <p style={{ color: 'orchid' }}>
                     Roll:{' '}
                     <span className="plex">{telemetryContext.roll}&deg;</span>
                 </p>
             </div>
-            <div className="telemetry-display" style={{color: 'cornflowerblue'}}>
+            <div
+                className="telemetry-display middle"
+                style={{ color: 'cornflowerblue' }}
+            >
                 <p>Altitude:</p>
                 <p>
                     <span className="plex">{telemetryContext.altitude} cm</span>
@@ -60,7 +63,10 @@ const Telemetry = ({ DroneState }) => {
                     </span>
                 </p>
             </div>
-            <div className="telemetry-display" style={{color: 'olive'}}>
+            <div
+                className="telemetry-display middle"
+                style={{ color: 'olive' }}
+            >
                 <p>Speed:</p>
                 <p>
                     X:{' '}
@@ -75,7 +81,10 @@ const Telemetry = ({ DroneState }) => {
                     <span className="plex">{telemetryContext.speedZ} cm/s</span>
                 </p>
             </div>
-            <div className="telemetry-display" style={{color: 'brown'}}>
+            <div
+                className="telemetry-display middle"
+                style={{ color: 'brown' }}
+            >
                 <p>Acceleration:</p>
                 <p>
                     X:{' '}
@@ -96,12 +105,12 @@ const Telemetry = ({ DroneState }) => {
                     </span>
                 </p>
             </div>
-            <div className="telemetry-display">
-                <p style={{color: 'tomato'}}>
+            <div className="telemetry-display end">
+                <p style={{ color: 'tomato' }}>
                     Battery:{' '}
                     <span className="plex">{telemetryContext.battery}%</span>
                 </p>
-                <p style={{color: 'darkmagenta'}}>
+                <p style={{ color: 'darkmagenta' }}>
                     Temp:{' '}
                     <span className="plex">
                         {telemetryContext.lowTemp}-{telemetryContext.highTemp}
