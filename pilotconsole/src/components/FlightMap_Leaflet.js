@@ -132,12 +132,17 @@ const FlightMap = ({ displayExtras }) => {
                 jobContext.flightPlan[0].lng
             )
         }
-    }, [jobContext.flightPlan.length])
+    }, [jobContext.flightPlan])
 
     //start recording if drone connected
     useEffect(() => {
         if (telemetryContext.droneStatus === 'Connected') startRecording()
         if (telemetryContext.droneStatus === 'Disconnected') stopRecording()
+        //on unload, stop recording
+        return (()=> {
+            stopRecording()
+        })
+        
     }, [telemetryContext.droneStatus])
 
     // set up custom 'pin' type marker for flight path
@@ -157,7 +162,12 @@ const FlightMap = ({ displayExtras }) => {
         setCenterLat(lat)
         setCenterLng(lng)
         // update coordinate array with new coordinates
-        setCoordinates((coordinates) => [[Number(lat), Number(lng)]])
+        //update coordinates with new
+        setCoordinates((coordinates) => [
+            ...coordinates,
+            [Number(lat), Number(lng)]
+        ])
+        console.log("coordinates in starting", coordinates)
     }
 
     function calculateDistanceAndBearing(NS_Distance, EW_Distance) {
@@ -199,7 +209,7 @@ const FlightMap = ({ displayExtras }) => {
 
         // convert distance from drone from cm to km
         //**NOTE:  Due to the small scale of movement, this function pretends that a cm is actually a meter.  Otherwise the scale is too small to render on the google map
-        let distance = newDistance / 1000
+        let distance = newDistance / 100
         console.log('distance in km', distance)
 
         let latB = Math.asin(
@@ -299,6 +309,7 @@ const FlightMap = ({ displayExtras }) => {
                                         initialLat.current,
                                         initialLng.current
                                     )
+                                    jobContext.updateFlightData([])
                                     onClose()
                                 }}
                             >
@@ -310,6 +321,8 @@ const FlightMap = ({ displayExtras }) => {
             }
         })
     }
+
+    if (!jobContext.flightPlan) return null
 
     return (
         // V1.0 strictly for Friday demo day
@@ -333,7 +346,7 @@ const FlightMap = ({ displayExtras }) => {
                                     </p>
                                 </div> */}
                                 <Formik
-                                    initialValues={{ lat: '', lng: '' }}
+                                    initialValues={{ latitude: initialLat.current, longitude: initialLng.current }}
                                     // validates against the validation schema defined as Yup Object
 
                                     validationSchema={Yup.object({
@@ -444,7 +457,7 @@ const FlightMap = ({ displayExtras }) => {
                 <div id="mapid">
                     <Map
                         center={defaultCenter}
-                        zoom={13}
+                        zoom={17}
                         scrollWheelZoom={true}
                         //whenCreated={(map) => setMap(map)}
                     >
@@ -463,7 +476,10 @@ const FlightMap = ({ displayExtras }) => {
                                 {initialLat.current}, Lng: {initialLng.current}
                             </Tooltip>
                         </Marker>
-                        <Polyline positions={coordinates} color={'red'} />
+
+                        {/*coordinates && <Polyline positions={coordinates} color={'red'} /> */}             
+                        { (jobContext.flightData) &&  <Polyline positions={jobContext.flightData} color={'red'} />}
+
 
                         {/* if view mode, do not allow updates to map. */}
                         {jobContext.flightPlan &&
