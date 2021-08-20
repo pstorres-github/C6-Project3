@@ -319,6 +319,19 @@ const FlightMap = ({ displayExtras }) => {
                     {displayExtras === 'show' && (
                         <>
                             <div className="form-container">
+                                {/* <div className="lat-long inline">
+                                    <p className="small">
+                                        Current latitude:{' '}
+                                        <span className="plex small">
+                                            {positionLat.current}&deg;
+                                        </span>
+                                        &nbsp; longitude:{' '}
+                                        <span className="plex small">
+                                            {positionLong.current}
+                                            &deg;
+                                        </span>
+                                    </p>
+                                </div> */}
                                 <Formik
                                     initialValues={{ lat: '', lng: '' }}
                                     // validates against the validation schema defined as Yup Object
@@ -341,85 +354,69 @@ const FlightMap = ({ displayExtras }) => {
                                     {({ errors, touched }) => (
                                         <Form className="form-initial-location">
                                             <div className="form-group">
-                                                <div className="form-item">
-                                                    <span className="small-text inline">
-                                                        Edit starting
-                                                        coordinates: &nbsp;
-                                                    </span>
-                                                    <div className="inline">
-                                                        <Field
-                                                            type="text"
-                                                            name="latitude"
-                                                            id="lat"
-                                                            defaultValue={
-                                                                initialLat.current
-                                                            }
-                                                            placeholder="Latitude (degrees)"
-                                                            className={`form-control ${
-                                                                touched.latitude &&
-                                                                errors.latitude
-                                                                    ? 'is-invalid'
-                                                                    : ''
-                                                            }`}
-                                                        />
-                                                        <ErrorMessage
-                                                            component="div"
-                                                            name="latitude"
-                                                            className="invalid-feedback"
-                                                        />
-                                                    </div>
-                                                    <div className="form-item inline">
-                                                        {/* <label htmlFor="longitude">
+                                                <label className="lat-long-label">
+                                                    Starting coordinates:{' '}
+                                                </label>
+                                                <div className="form-lat">
+                                                    <Field
+                                                        type="text"
+                                                        name="latitude"
+                                                        id="lat"
+                                                        defaultValue={
+                                                            initialLat.current
+                                                        }
+                                                        placeholder="Latitude (degrees)"
+                                                        className={`form-control ${
+                                                            touched.latitude &&
+                                                            errors.latitude
+                                                                ? 'is-invalid'
+                                                                : ''
+                                                        }`}
+                                                    />
+                                                    <ErrorMessage
+                                                        component="div"
+                                                        name="latitude"
+                                                        className="invalid-feedback"
+                                                    />
+                                                </div>
+                                                <div className="form-long">
+                                                    {/* <label htmlFor="longitude">
                                                     Enter starting longitude
                                                     coordinate in degrees:
                                                 </label> */}
-                                                        <Field
-                                                            type="text"
-                                                            name="longitude"
-                                                            id="long"
-                                                            defaultValue={
-                                                                initialLng.current
-                                                            }
-                                                            placeholder="Longitude (degrees)"
-                                                            className={`form-control ${
-                                                                touched.longitude &&
-                                                                errors.longitude
-                                                                    ? 'is-invalid'
-                                                                    : ''
-                                                            }`}
-                                                        />
-                                                        <ErrorMessage
-                                                            component="div"
-                                                            name="longitude"
-                                                            className="invalid-feedback"
-                                                        />
-                                                    </div>
-                                                    <div className="form-item inline">
-                                                        <button
-                                                            type="submit"
-                                                            className="map-button inline"
-                                                        >
-                                                            Submit
-                                                        </button>
-                                                    </div>
+                                                    <Field
+                                                        type="text"
+                                                        name="longitude"
+                                                        id="long"
+                                                        defaultValue={
+                                                            initialLng.current
+                                                        }
+                                                        placeholder="Longitude (degrees)"
+                                                        className={`form-control ${
+                                                            touched.longitude &&
+                                                            errors.longitude
+                                                                ? 'is-invalid'
+                                                                : ''
+                                                        }`}
+                                                    />
+                                                    <ErrorMessage
+                                                        component="div"
+                                                        name="longitude"
+                                                        className="invalid-feedback"
+                                                    />
+                                                </div>
+                                                <div className="form-submit">
+                                                    <button
+                                                        type="submit"
+                                                        className="small-button"
+                                                    >
+                                                        Submit
+                                                    </button>
                                                 </div>
                                             </div>
                                         </Form>
                                     )}
                                 </Formik>
-                            </div>
-                            <div className="lat-long inline">
-                                <p className="small-text">
-                                    Current lat:{' '}
-                                    <span className="plex">
-                                        {positionLat.current}&deg;
-                                    </span>
-                                    &nbsp; long:{' '}
-                                    <span className="plex">
-                                        {positionLong.current}
-                                        &deg;
-                                    </span>
-                                </p>
                             </div>
 
                             {/* <div className="spacer inline"></div> */}

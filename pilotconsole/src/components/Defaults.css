@@ -106,6 +106,10 @@ acronym {
     text-rendering: optimizeLegibility;
 }
 
+svg {
+    shape-rendering: 'crispEdges';
+}
+
 :root {
     --identify-me: red;
     --identify-2: cornsilk;

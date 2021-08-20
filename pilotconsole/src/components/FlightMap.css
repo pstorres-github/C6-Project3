@@ -22,8 +22,8 @@
 }
 
 .menu-container {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 
     height: 100%;
 
@@ -31,7 +31,8 @@
 
     display: grid;
     grid-template-columns: 4.125rem 1fr 1fr 1.125rem;
-    grid-template-rows: 1.125rem 4.35rem auto auto;
+    /* grid-template-rows: 1.125rem 4.35rem auto auto; */
+    grid-template-rows: 1.125rem min-content auto auto;
     gap: 0;
 }
 
@@ -96,18 +97,109 @@ console.log(document.getElementById('id').getBoundingClientRect())
     grid-column-start: 2;
     grid-column-end: 4;
 
-    margin: 0;
+    /* margin: 0;
     padding: 0;
-    padding-top: var(padding-tiny);
+    padding-top: var(padding-tiny); */
     background-color: var(--ghost-transparent);
     /* background-color: red; */
-
-    text-align: right;
 }
 
 input[name='latitude'],
 input[name='longitude'] {
     border: 0px solid white;
+}
+
+.form-group {
+    /* background: royalblue; */
+    padding: var(--padding-small);
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    display: grid;
+    margin: 0;
+    gap: 0px !important;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr) auto;
+}
+
+.form-lat {
+    grid-column: 1;
+    /* width: max-content; */
+    width: 100%;
+
+    margin-right: 0px;
+    padding-left: var(--padding);
+    padding-right: 0px;
+    /* background: red; */
+    justify-self: end;
+}
+
+.form-long {
+    grid-column: 2;
+    /* padding-left: var(--padding-tiny); */
+    /* width: max-content; */
+    width: 100%;
+
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    justify-self: start;
+    /* background: greenyellow; */
+}
+
+.form-lat > input {
+    /* padding: 0; */
+    width: 100%;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.form-long > input {
+    width: 100%;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.lat-long-label {
+    margin: 0px;
+    padding: 0px;
+    padding-left: var(--padding-small);
+    text-align: left;
+
+}
+
+.form-submit {
+    grid-column: 3;
+
+    align-self: center;
+    justify-self: start;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+    padding-left: var(--padding-tiny);
+    padding-top: var(--padding-tiny);
+    padding-right: var(--padding-small);
+    /* background: blue; */
+}
+
+.form-submit > button {
+    width: 100%;
+}
+
+.form-item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-right: var(--padding-tiny);
+    padding-right: var(--padding-tiny);
+}
+
+.map-button {
+    /* padding-left: var(--padding-tiny); */
+    /* border: 4px solid red; */
 }
 
 .recording-container {
@@ -145,17 +237,4 @@ input[name='longitude'] {
     display: inline-block;
     margin: 0;
     margin-left: var(--padding-tiny);
-}
-
-.form-item {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    margin-right: var(--padding-tiny);
-    padding-right: var(--padding-tiny);
-}
-
-.map-button {
-    padding-left: var(--padding-tiny);
-    /* border: 4px solid red; */
 }
