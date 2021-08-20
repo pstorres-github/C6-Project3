@@ -18,7 +18,7 @@
 }
 
 .telemetry-display:not(p) {
-    padding: var(--padding);
+    /* padding: var(--padding); */
     color: black;
     /* background-color: darkgrey; */
 }
