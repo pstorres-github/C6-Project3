@@ -238,3 +238,7 @@ input[name='longitude'] {
     margin: 0;
     margin-left: var(--padding-tiny);
 }
+
+.leaflet-bottom {
+    visibility: hidden;
+}
