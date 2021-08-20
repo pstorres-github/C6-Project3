@@ -51,6 +51,7 @@
 
     z-index: 0;
     /* background-color: chartreuse; */
+    overflow: hidden;
 }
 
 .mapid {
@@ -69,11 +70,10 @@ console.log(document.getElementById('id').getBoundingClientRect())
 
 .leaflet-container {
     width: 100%;
-    height: 46.35vh;
+    height: 37vh;
+    height: 46vh;
     /* height: 40vh; */
     /* height: 100%; */
-
-    overflow: hidden;
 }
 
 .lat-long {
@@ -122,12 +122,23 @@ input[name='longitude'] {
     grid-row-end: -1;
     grid-column-start: 2;
     grid-column-end: 4;
-    padding-left: var(--padding);
-    padding-top: var(--padding-tiny);
-    padding-bottom: 1.125rem;
-    background-color: var(--ghost-transparent);
-    /* background-color: blue; */
     align-self: end;
+
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.recording-background {
+    grid-column: 2;
+
+    width: max-content;
+    justify-self: end;
+
+    padding: var(--padding-small);
+    padding-bottom: var(--padding-tiny);
+    background-color: var(--ghost-transparent);
+    /* border: 1px solid var(--quiet); */
+    margin-bottom: var(--padding);
 }
 
 .recording-button {

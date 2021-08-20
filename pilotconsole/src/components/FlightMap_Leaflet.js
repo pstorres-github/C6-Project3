@@ -424,18 +424,20 @@ const FlightMap = ({ displayExtras }) => {
 
                             {/* <div className="spacer inline"></div> */}
                             <div className="recording-container">
-                                <span className="small-text">
-                                    Storing flight data: &nbsp;
-                                    {recording && <> In Progress...</>}
-                                    {!recording && <> Paused... </>}
-                                </span>
+                                <div className="recording-background">
+                                    <span className="small-text">
+                                        Storing flight data: &nbsp;
+                                        {recording && <> In Progress...</>}
+                                        {!recording && <> Paused... </>}
+                                    </span>
 
-                                <button
-                                    onClick={handleClearRecording}
-                                    className="recording-button small-button"
-                                >
-                                    Clear
-                                </button>
+                                    <button
+                                        onClick={handleClearRecording}
+                                        className="recording-button small-button"
+                                    >
+                                        Clear
+                                    </button>
+                                </div>
                             </div>
                         </>
                     )}
