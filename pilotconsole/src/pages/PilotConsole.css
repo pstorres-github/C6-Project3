@@ -53,7 +53,7 @@ button:hover {
         clamp(125px, 10vh, 500px) 1fr 15rem; */
     /* 2.5vh 9.25vw 9.25vw 10vh 1fr 15rem; */
     grid-template-rows:
-        2.5vh
+        2.5rem
         clamp(125px, 9.25vmax, 500px)
         clamp(125px, 9.25vmax, 500px)
         auto
