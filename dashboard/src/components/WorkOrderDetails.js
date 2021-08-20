@@ -4,12 +4,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import AuthenticationContext from '../AuthenticationContext'
 
-import videoMessage from '../assets/videoUnavailable(2).png'
-
-import {
-    faExclamationCircle
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import videoMessage from '../assets/videoUnavailable.png'
 
 import FlightPlan from './FlightPlan.js'
 
@@ -134,17 +129,14 @@ const WorkOrderDetails = () => {
             )}
             {!userFlight.videoURL && (
                 <div className="workorder-video">
-                    <FontAwesomeIcon icon={faExclamationCircle} />
-                    <> This video is not available</>
-
-                {/* <img
+                <img
                     src={videoMessage}
                     alt={'This video is unavailable'}
                     width={'100%'}
                     height={'100%'}
                     margin={'0px'}
                     padding={'0px'}
-                /> */}
+                /> 
             </div>
             )}
                 
