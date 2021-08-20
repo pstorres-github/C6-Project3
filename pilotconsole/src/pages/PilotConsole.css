@@ -28,7 +28,7 @@ button:hover {
     /* VDR TEMP refactor */
     /* width: calc(100vw - var(--padding) - 0.5rem);
     height: calc(100vh - var(--padding) - 0.5rem); */
-    width: calc(100vw - var(--padding) - 2rem);
+    width: calc(101vw - var(--padding) - 2rem);
     height: calc(100vh - var(--padding) - 1.75rem);
 
     /* before changes */
@@ -48,11 +48,17 @@ button:hover {
         1fr;
     /* 12.5vw 9.25vw 9.25vw 500px 1fr; */
     grid-template-rows:
-        2.5vh clamp(125px, 9.25vw, 500px) clamp(125px, 9.25vw, 500px)
+        3vh clamp(125px, 9.25vw, 500px) clamp(125px, 9.25vw, 500px)
         clamp(125px, 10vh, 350px) 1fr 15rem;
     /* 2.5vh 9.25vw 9.25vw 10vh 1fr 15rem; */
     grid-gap: 10px;
-    margin: 10px;
+    /* margin: 10px; */
+    /* margin-top: 12px;
+    margin-bottom: 0px; */
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 12.5px;
+    margin-bottom: 0px;
 }
 
 .console-user-info {
@@ -60,7 +66,7 @@ button:hover {
     grid-column-start: 4;
     grid-column-end: 5;
     display:flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .console-drone-status {
