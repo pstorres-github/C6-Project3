@@ -6,6 +6,11 @@ import AuthenticationContext from '../AuthenticationContext'
 
 import videoMessage from '../assets/videoUnavailable(2).png'
 
+import {
+    faExclamationCircle
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import FlightPlan from './FlightPlan.js'
 
 const WorkOrderDetails = () => {
@@ -129,14 +134,17 @@ const WorkOrderDetails = () => {
             )}
             {!userFlight.videoURL && (
                 <div className="workorder-video">
-                <img
+                    <FontAwesomeIcon icon={faExclamationCircle} />
+                    <> This video is not available</>
+
+                {/* <img
                     src={videoMessage}
                     alt={'This video is unavailable'}
                     width={'100%'}
                     height={'100%'}
                     margin={'0px'}
                     padding={'0px'}
-                />
+                /> */}
             </div>
             )}
                 
