@@ -314,7 +314,7 @@ const FlightMap = ({ displayExtras }) => {
     return (
         // V1.0 strictly for Friday demo day
         <div className="flightmap-container">
-            <div className="position-query">
+            <div className="menu">
                 <div className="menu-container">
                     {displayExtras === 'show' && (
                         <>
@@ -432,74 +432,60 @@ const FlightMap = ({ displayExtras }) => {
 
                                 <button
                                     onClick={handleClearRecording}
-                                    className="recording-button"
+                                    className="recording-button small-button"
                                 >
                                     Clear
                                 </button>
                             </div>
                         </>
                     )}
-                    <div className="position-map">
-                        <div id="mapid">
-                            <Map
-                                center={defaultCenter}
-                                zoom={13}
-                                scrollWheelZoom={true}
-                                //whenCreated={(map) => setMap(map)}
-                            >
-                                {/*<TileLayer
+                </div>
+            </div>
+            <div className="position-map">
+                <div id="mapid">
+                    <Map
+                        center={defaultCenter}
+                        zoom={13}
+                        scrollWheelZoom={true}
+                        //whenCreated={(map) => setMap(map)}
+                    >
+                        {/*<TileLayer
                                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     />*/}
 
-                                <TileLayer
-                                    attribution={attribution3}
-                                    url={URL3}
-                                />
-                                <TileLayer
-                                    attribution={attribution2}
-                                    url={URL2}
-                                />
+                        <TileLayer attribution={attribution3} url={URL3} />
+                        <TileLayer attribution={attribution2} url={URL2} />
 
-                                <Marker key={'start'} position={defaultCenter}>
+                        <Marker key={'start'} position={defaultCenter}>
+                            <Tooltip>
+                                {' '}
+                                Starting Position <br /> Lat:{' '}
+                                {initialLat.current}, Lng: {initialLng.current}
+                            </Tooltip>
+                        </Marker>
+                        <Polyline positions={coordinates} color={'red'} />
+
+                        {/* if view mode, do not allow updates to map. */}
+                        {jobContext.flightPlan &&
+                            jobContext.flightPlan.map((markers, index) => (
+                                <Marker
+                                    icon={markerIcon}
+                                    markerIndex={index}
+                                    key={index}
+                                    position={[
+                                        Number(markers.lat),
+                                        Number(markers.lng)
+                                    ]}
+                                >
                                     <Tooltip>
                                         {' '}
-                                        Starting Position <br /> Lat:{' '}
-                                        {initialLat.current}, Lng:{' '}
-                                        {initialLng.current}
+                                        Location {index + 1} <br /> Lat:{' '}
+                                        {markers.lat}, Lng: {markers.lng}
                                     </Tooltip>
                                 </Marker>
-                                <Polyline
-                                    positions={coordinates}
-                                    color={'red'}
-                                />
-
-                                {/* if view mode, do not allow updates to map. */}
-                                {jobContext.flightPlan &&
-                                    jobContext.flightPlan.map(
-                                        (markers, index) => (
-                                            <Marker
-                                                icon={markerIcon}
-                                                markerIndex={index}
-                                                key={index}
-                                                position={[
-                                                    Number(markers.lat),
-                                                    Number(markers.lng)
-                                                ]}
-                                            >
-                                                <Tooltip>
-                                                    {' '}
-                                                    Location {index +
-                                                        1} <br /> Lat:{' '}
-                                                    {markers.lat}, Lng:{' '}
-                                                    {markers.lng}
-                                                </Tooltip>
-                                            </Marker>
-                                        )
-                                    )}
-                            </Map>
-                        </div>
-                    </div>
+                            ))}
+                    </Map>
                 </div>
             </div>
         </div>

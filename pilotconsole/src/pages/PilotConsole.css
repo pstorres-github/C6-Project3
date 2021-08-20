@@ -28,8 +28,9 @@ button:hover {
     /* VDR TEMP refactor */
     /* width: calc(100vw - var(--padding) - 0.5rem);
     height: calc(100vh - var(--padding) - 0.5rem); */
-    width: calc(100vw - var(--padding) - 2rem);
-    height: calc(100vh - var(--padding) - 1.75rem);
+    width: calc(100vw - var(--padding) - 1rem);
+    height: 100%;
+    height: calc(100vh - var(--padding) - 1rem);
 
     /* before changes */
     /* grid-template-columns: 12.5vw 12.5rem 12.5rem 1fr;
@@ -40,27 +41,34 @@ button:hover {
     grid-template-rows: 2.5vh 9.25vw 9.25vw 0.75fr 1fr 15rem; */
 
     grid-template-columns:
-        clamp(250px, 12.5vw, 500px) clamp(125px, 9.25vw, 500px) clamp(
+        clamp(250px, 12.5vmax, 500px) clamp(125px, 9.25vmax, 500px) clamp(
             125px,
             9.25vw,
             500px
         )
         1fr;
     /* 12.5vw 9.25vw 9.25vw 500px 1fr; */
-    grid-template-rows:
+    /* grid-template-rows:
         2.5vh clamp(125px, 9.25vw, 500px) clamp(125px, 9.25vw, 500px)
-        clamp(125px, 10vh, 350px) 1fr 15rem;
+        clamp(125px, 10vh, 500px) 1fr 15rem; */
     /* 2.5vh 9.25vw 9.25vw 10vh 1fr 15rem; */
+    grid-template-rows:
+        2.5vh
+        clamp(125px, 9.25vmax, 500px)
+        clamp(125px, 9.25vmax, 500px)
+        10rem
+        auto
+        15rem;
     grid-gap: 10px;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .console-user-info {
     grid-row: 1;
     grid-column-start: 4;
     grid-column-end: 5;
-    display:flex;
-    justify-content: space-between
+    display: flex;
+    justify-content: space-between;
 }
 
 .console-drone-status {
@@ -90,18 +98,21 @@ button:hover {
 
 .console-telemetry {
     /* this requires a mountain of work */
+    margin: 0;
+    padding: 0;
     grid-row-start: 4;
     grid-row-end: 5;
     grid-column-start: 1;
     grid-column-end: 4;
     overflow-wrap: break-word;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .console-flightplan {
     /* map module etc */
     background-color: var(--ghost);
     margin: 0;
+    padding: 0;
     grid-row-start: 5;
     grid-row-end: -1;
     grid-column-start: 1;

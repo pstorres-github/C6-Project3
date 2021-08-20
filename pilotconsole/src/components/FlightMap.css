@@ -1,55 +1,79 @@
 @import './Defaults.css';
 
 .flightmap-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
     width: 100%;
     height: 100%;
 }
 
-.position-query {
-    width: 100%;
+.menu {
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    margin: 0;
+    padding: 0;
+
     height: 100%;
 }
 
 .menu-container {
-    background-color: var(--ghost);
-    width: 100%;
-    /* height: 2.5vh; */
+    margin: 0;
+    padding: 0;
+
     height: 100%;
-    margin: 0rem;
-    padding: var(--padding);
+
     border-radius: var(--border-radius-small);
 
     display: grid;
-    grid-template-columns: 4rem 1fr 1fr;
-    grid-template-rows: 2.5rem auto 1fr auto;
+    grid-template-columns: 4.125rem 1fr 1fr 1.125rem;
+    grid-template-rows: 1.125rem 4.35rem auto auto;
+    gap: 0;
 }
 
-/* VDR This is a bit of a dunce move,
-but we're up against time
-refactor this later */
 .spacer {
-    width: 7.5rem;
-}
-
-/* VDR Also the height of the map is borked
-by this vh reading. refactor this later. */
-.leaflet-container {
-    height: 28vh;
-    width: 100%;
-    overflow: hidden;
+    width: 0rem;
 }
 
 .position-map {
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    /* border: 3px solid red; */
     width: 100%;
     height: 100%;
 
     z-index: 0;
-    grid-row-start: 2;
-    grid-row-end: -1;
-    grid-column-start: 1;
-    grid-column-end: -1;
-    /* background-color: var(--identify-me); */
-    /* padding-top: var(padding); */
+    /* background-color: chartreuse; */
+}
+
+.mapid {
+    /* height: max-content; */
+    height: 100%;
+}
+
+/* 46vh is a temp happypath solution for the
+time being. This needs to be refactored
+to get size and then responsively set the size of the
+map element. Requires an event listener/useRef? and an
+await for componentDidMount.
+var height = document.getElementById('foo').offsetHeight
+console.log(document.getElementById('id').getBoundingClientRect())
+-VDR. */
+
+.leaflet-container {
+    width: 100%;
+    height: 46.35vh;
+    /* height: 40vh; */
+    /* height: 100%; */
+
+    overflow: hidden;
 }
 
 .lat-long {
@@ -70,12 +94,13 @@ by this vh reading. refactor this later. */
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 2;
-    grid-column-end: -1;
+    grid-column-end: 4;
 
     margin: 0;
     padding: 0;
     padding-top: var(padding-tiny);
     background-color: var(--ghost-transparent);
+    /* background-color: red; */
 
     text-align: right;
 }
@@ -96,13 +121,13 @@ input[name='longitude'] {
     grid-row-start: 4;
     grid-row-end: -1;
     grid-column-start: 2;
-    grid-column-end: -1;
+    grid-column-end: 4;
     padding-left: var(--padding);
-    /* padding-bottom: var(--padding-tiny); */
-    padding-bottom: 0px;
-    /* padding-top: var(--padding-tiny); */
-    padding-top: 0px;
+    padding-top: var(--padding-tiny);
+    padding-bottom: 1.125rem;
     background-color: var(--ghost-transparent);
+    /* background-color: blue; */
+    align-self: end;
 }
 
 .recording-button {
