@@ -247,6 +247,8 @@
 }
 
 .emergency-box {
+    border-radius: var(--border-radius-small);
+
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;
@@ -287,6 +289,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: var(--border-radius-medium);
 }
 
 .emergency-button {
@@ -302,12 +305,12 @@
     background: #cb5a5e;
 
     border-bottom: 0;
-    border-radius: var(--border-radius-tiny);
 
     text-align: center;
     text-transform: uppercase;
 
     border: 0;
+    border-radius: var(--border-radius-tiny);
 
     /* grid-row-start: 3;
     grid-row-end: 4;

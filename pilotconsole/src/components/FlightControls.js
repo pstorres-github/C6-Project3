@@ -33,17 +33,21 @@ const FlightControls = ({ DroneConnection }) => {
 
     function ghost(button) {
         return new Promise((resolve) => {
-            setTimeout(() => {
-                document.getElementById(button).style.backgroundColor =
-                    'var(--ghost)'
-            }, 250)
+            if (document.getElementById(button).style != null) {
+                setTimeout(() => {
+                    document.getElementById(button).style.backgroundColor =
+                        'var(--ghost)'
+                }, 250)
+            }
         })
     }
 
     async function ghostHover(button) {
-        document.getElementById(button).style.backgroundColor =
-            'var(--button-clicked)'
-        const result = await ghost(button)
+        if (document.getElementById(button).style != null) {
+            document.getElementById(button).style.backgroundColor =
+                'var(--button-clicked)'
+            const result = await ghost(button)
+        }
     }
 
     const [keysIsChecked, setKeysIsChecked] = useState(false)
