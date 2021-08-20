@@ -147,7 +147,18 @@ input[name='longitude'] {
 
     justify-self: start;
     /* background: greenyellow; */
+    border-left: 1px solid var(--ghost-hover);
 }
+/* 
+.form-long:before {
+    content: '';
+    background: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    width: 1px;
+} */
 
 .form-lat > input {
     /* padding: 0; */
@@ -166,7 +177,6 @@ input[name='longitude'] {
     padding: 0px;
     padding-left: var(--padding-small);
     text-align: left;
-
 }
 
 .form-submit {
@@ -241,4 +251,13 @@ input[name='longitude'] {
 
 .leaflet-bottom {
     visibility: hidden;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+    text-align: center !important;
+    margin-top: 0.2rem;
+    border-radius: var(--border-radius-tiny) !important;
 }
