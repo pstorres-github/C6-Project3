@@ -3,18 +3,19 @@
 .telemetry-container {
     background-color: var(--ghost);
     display: grid;
-    /* width: calc(100% - var(--padding) - 0.5re); */
+    /* width: calc(100% - var(--padding) - 0.5rem); */
     width: calc(100%);
     /* height: calc(100% - var(--padding) - 0.5rem); */
-    height: calc(100%);
+    /* height: calc(100% - var(--padding-tiny) - 1rem); */
+    /* height: calc(100%); */
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0;
 
     margin: 0;
     padding: 0;
     border-radius: var(--border-radius-small);
-    /* margin: 0.5rem; */
-    /* background-color:darkgray; */
+    margin-bottom: 10px;
+    /* background-color: darkgray; */
 }
 
 .telemetry-display:not(p) {
@@ -24,6 +25,8 @@
 }
 
 .begin {
+    margin: 0;
+    padding: 0;
     border-top-left-radius: var(--border-radius-small);
     border-bottom-left-radius: var(--border-radius-small);
     border-top-right-radius: 0px;
@@ -37,6 +40,8 @@
 }
 
 .middle {
+    margin: 0;
+    padding: 0;
     border-radius: 0px;
     border-left: 1px solid var(--ghost-hover);
     border-top: 1px solid var(--ghost-hover);
@@ -46,6 +51,8 @@
 }
 
 .end {
+    margin: 0;
+    padding: 0;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: var(--border-radius-small);
