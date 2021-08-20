@@ -1,6 +1,13 @@
 /* Ignore this for now */
 @import '../components/Defaults.css';
 
+/* kludgy faux- parent conditional */
+html,
+body {
+    height: 100vh !important;
+    overflow: hidden !important;
+}
+
 /* parent container */
 .horizon {
     display: grid;
