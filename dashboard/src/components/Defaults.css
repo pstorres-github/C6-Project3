@@ -520,63 +520,6 @@ label {
     user-select: none;
 }
 
-.login-layout {
-    display: grid;
-    grid-template-rows: 2fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    /* padding: 30px 32px 32px; */
-    box-sizing: border-box;
-    transition: color 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
-    cursor: text;
-}
-
-.row-upper {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row: 2;
-    /* background: rebeccapurple; */
-}
-
-.row-upper,
-.row-lower {
-    /* padding: var(--padding); */
-    /* padding-top: 0; */
-    padding-bottom: var(--padding-small);
-    margin: 0;
-}
-
-.row-upper > input,
-.row-lower > input {
-    width: 100%;
-}
-
-.row-upper > label,
-.row-lower > label {
-    margin: 0;
-    padding: 0;
-}
-
-.row-lower {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row: 3;
-    /* background: purple; */
-}
-
-.row-bottom-left {
-    grid-column: 1;
-    grid-row: 4;
-}
-
-.row-bottom-right {
-    margin: 0;
-    padding: var(--padding-tiny);
-    padding-top: var(--padding);
-    grid-column: 2;
-    grid-row: 4;
-    text-align: right;
-}
-
 button:disabled {
     cursor: not-allowed;
     opacity: 0.3;

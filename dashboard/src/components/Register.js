@@ -79,11 +79,17 @@ const Register = () => {
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
                     <Form className="form-login-register">
-                        <div className="form-group">
-                            <div className="col-md">
+                        <div className="login-layout">
+                            <div className="row-one">
+                                <div className="login-header">
+                                    <h3>Register a new account</h3>
+                                </div>
+                            </div>
+                            <div className="row-two">
                                 <label htmlFor="username">
                                     Customer/Company Name
                                 </label>
+
                                 <Field
                                     type="text"
                                     name="username"
@@ -100,10 +106,7 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
-
-                        <div className="form-group">
-                            <div className="col-md">
+                            <div className="row-three">
                                 <label htmlFor="e-mail">Email Address</label>
                                 <Field
                                     type="email"
@@ -121,10 +124,8 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div className="col-md">
+                            <div className="row-four-left">
                                 <label htmlFor="password">Password</label>
                                 <Field
                                     type="password"
@@ -142,10 +143,8 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div className="col-md">
+                            <div className="row-four-right">
                                 <label htmlFor="confirmPassword">
                                     Confirm Password
                                 </label>
@@ -166,13 +165,15 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
+                            <div className="row-five-right">
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >
+                                    Register and Login
+                                </button>
+                            </div>
                         </div>
-
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                            {' '}
-                            Register and Login{' '}
-                        </button>
                     </Form>
                 )}
             </Formik>

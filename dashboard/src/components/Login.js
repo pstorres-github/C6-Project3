@@ -16,7 +16,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState(false)
 
     return (
-        <div className="container">
+        <div className="login-register-login-form">
             <Formik
                 initialValues={{ email: '', password: '' }}
                 // validates against the validation schema defined as Yup Object
@@ -48,62 +48,63 @@ const Login = () => {
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
                     <Form className="form-login-register">
-                        <div className="form-group">
-                            <div className="login-layout">
-                                <div className="row-upper">
-                                    <label htmlFor="e-mail">
-                                        Email Address&nbsp;&nbsp;
-                                    </label>
-                                    <Field
-                                        type="email"
-                                        name="email"
-                                        placeholder="Enter e-mail"
-                                        className={`form-control ${
-                                            touched.email && errors.email
-                                                ? 'is-invalid'
-                                                : ''
-                                        }`}
-                                    />
-                                    <ErrorMessage
-                                        component="div"
-                                        name="email"
-                                        className="invalid-feedback"
-                                    />
-                                </div>
-
-                                <div className="row-lower">
-                                    <label htmlFor="password">
-                                        Password&nbsp;&nbsp;
-                                    </label>
-                                    <Field
-                                        type="password"
-                                        name="password"
-                                        placeholder="Enter password"
-                                        className={`form-control ${
-                                            touched.password && errors.password
-                                                ? 'is-invalid'
-                                                : ''
-                                        }`}
-                                    />
-                                    <ErrorMessage
-                                        component="div"
-                                        name="password"
-                                        className="invalid-feedback"
-                                    />
-                                </div>
-
-                                <div className="row-bottom-right">
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary"
-                                    >
-                                        {' '}
-                                        Submit{' '}
-                                    </button>
+                        <div className="login-layout">
+                            <div className="row-one">
+                                <div className="login-header">
+                                    <h3>Login to your account</h3>
                                 </div>
                             </div>
-                        </div>
+                            <div className="row-two">
+                                <label htmlFor="e-mail">
+                                    Email Address&nbsp;&nbsp;
+                                </label>
+                                <Field
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter e-mail"
+                                    className={`form-control ${
+                                        touched.email && errors.email
+                                            ? 'is-invalid'
+                                            : ''
+                                    }`}
+                                />
+                                <ErrorMessage
+                                    component="div"
+                                    name="email"
+                                    className="invalid-feedback"
+                                />
+                            </div>
 
+                            <div className="row-three">
+                                <label htmlFor="password">
+                                    Password&nbsp;&nbsp;
+                                </label>
+                                <Field
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter password"
+                                    className={`form-control ${
+                                        touched.password && errors.password
+                                            ? 'is-invalid'
+                                            : ''
+                                    }`}
+                                />
+                                <ErrorMessage
+                                    component="div"
+                                    name="password"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+
+                            <div className="row-four-right">
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
                         {loginError && (
                             <p className="login-error"> {loginError} </p>
                         )}
