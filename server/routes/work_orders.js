@@ -37,7 +37,7 @@ router.get('/:user', async (req, res, next) => {
     // console.log('userInfo:', userInfo)
     let userFlights
     try {
-        userFlights = await Work_Order.find({ customerName: userInfo })
+        userFlights = await Work_Order.find({ customerName: userInfo }).sort({date:1})
     } catch (err) {
         const error = 'Fetching items failed'
         return next(error)
@@ -79,7 +79,7 @@ router.get('/pilot/:pilot', async (req, res, next) => {
     // console.log('pilot:', pilot)
     let pilotFlights;
     try{
-        pilotFlights = await Work_Order.find({ pilot: pilot})
+        pilotFlights = await Work_Order.find({ pilot: pilot}).sort({date:1})
     } catch (err) {
         const error = 'Fetching pilot flights failed'
         return next(error)
