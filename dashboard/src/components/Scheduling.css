@@ -33,24 +33,24 @@ label {
     /* margin: 0.5rem; */
 }
 
-input,
+/* input,
 select,
 textarea {
     position: relative;
-    left: -1.25rem;
-    margin: var(--padding);
-    margin-top: var(--padding-tiny);
-    margin-bottom: var(--padding-tiny);
+ left: -1.25rem; 
+margin: var(--padding);
+margin-top: var(--padding-tiny);
+margin-bottom: var(--padding-tiny);
 
-    /* margin-top: 0.25rem;
-    margin-left: 0rem;
-    margin-bottom: 1rem; */
-    min-width: 7.5rem;
-    width: 10rem;
-    /* padding: 0.75rem; */
-    /* border: 0.5px solid lightgray; */
-    /* border-radius: 0.25rem; */
-}
+width: clamp(7.5rem, 100%, 25rem);
+
+/* margin-top: 0.25rem;
+margin-left: 0rem;
+margin-bottom: 1rem; 
+
+min-width: 7.5rem;
+width: 10rem; */
+/* } */
 
 /* fix this width to be responsive */
 .text-area {
@@ -160,6 +160,5 @@ button {
 }
 
 .scheduling-date-picker > input {
-    width:50%
+    width: 50%;
 }
-

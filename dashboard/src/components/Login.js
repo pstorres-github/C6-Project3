@@ -49,8 +49,8 @@ const Login = () => {
                 {({ errors, touched }) => (
                     <Form className="form-login-register">
                         <div className="form-group">
-                            <div className="label-column">
-                                <div className="column-left">
+                            <div className="login-layout">
+                                <div className="row-upper">
                                     <label htmlFor="e-mail">
                                         Email Address&nbsp;&nbsp;
                                     </label>
@@ -71,7 +71,7 @@ const Login = () => {
                                     />
                                 </div>
 
-                                <div className="column-right">
+                                <div className="row-lower">
                                     <label htmlFor="password">
                                         Password&nbsp;&nbsp;
                                     </label>
@@ -91,14 +91,18 @@ const Login = () => {
                                         className="invalid-feedback"
                                     />
                                 </div>
+
+                                <div className="row-bottom-right">
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary"
+                                    >
+                                        {' '}
+                                        Submit{' '}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                            {' '}
-                            Submit{' '}
-                        </button>
 
                         {loginError && (
                             <p className="login-error"> {loginError} </p>

@@ -490,12 +490,6 @@ form {
 input,
 select,
 textarea {
-    position: relative;
-    /* left: -0.5rem; */
-    margin-left: var(--padding-tiny);
-    margin-right: var(--padding-tiny);
-    margin-top: var(--padding-tiny);
-    margin-bottom: var(--padding-tiny);
     padding: var(--padding-small);
 
     border: 0.5px solid var(--ghost-hover);
@@ -520,30 +514,67 @@ label {
     font-size: var(--body);
     margin: var(--padding-tiny);
 
-    position: absolute;
+    /* position: absolute; */
     /* transform: translate(0px, -15px); */
     transition: opacity 0.2s ease-in-out 0.2s;
     user-select: none;
 }
 
-.label-column {
+.login-layout {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    padding: 30px 32px 32px;
+    /* padding: 30px 32px 32px; */
     box-sizing: border-box;
     transition: color 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
     cursor: text;
 }
 
-.column-left {
+.row-upper {
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
+    grid-row: 2;
+    /* background: rebeccapurple; */
 }
 
-.column-right {
-    grid-column-start: 2;
+.row-upper,
+.row-lower {
+    /* padding: var(--padding); */
+    /* padding-top: 0; */
+    padding-bottom: var(--padding-small);
+    margin: 0;
+}
+
+.row-upper > input,
+.row-lower > input {
+    width: 100%;
+}
+
+.row-upper > label,
+.row-lower > label {
+    margin: 0;
+    padding: 0;
+}
+
+.row-lower {
+    grid-column-start: 1;
     grid-column-end: 3;
+    grid-row: 3;
+    /* background: purple; */
+}
+
+.row-bottom-left {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.row-bottom-right {
+    margin: 0;
+    padding: var(--padding-tiny);
+    padding-top: var(--padding);
+    grid-column: 2;
+    grid-row: 4;
+    text-align: right;
 }
 
 button:disabled {
