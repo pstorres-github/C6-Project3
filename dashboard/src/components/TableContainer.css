@@ -134,18 +134,35 @@ tbody tr:hover {
 
 /* ensures input box is not larger than the column width */
 .input-search-box {
-    width: 100%;
     border-radius: 0;
     border: 0;
     border-bottom: 0.1625rem solid var(--ghost-hover);
     min-width: 3rem;
-    left: -0.5rem;
+
+    /* these are causing a misalignment of the input fields
+    I'm checking to see if turning them off effects others */
+    position: relative;
+    margin-left: var(--padding-tiny);
+    margin-right: var(--padding-tiny);
+    /* margin-top: var(--padding-tiny);
+    margin-bottom: var(--padding-tiny); */
+    width: 75%;
+    width: 100%;
+    /* width: calc(80% - 0.5rem); */
+    margin-right: 0.625rem;
+    /* right: -1rem; */
+    margin-left: 0.625rem;
 }
 
 .input-search-box:focus {
     outline: none !important;
     /* border: var(--border-tiny) solid var(--secondary); */
     box-shadow: inset 0px 0px 0px var(--border-tiny) var(--secondary);
+}
+
+.filter-search-box-cell > #custom-select {
+    /* width: 95%; */
+    width: calc(100% - 0.5rem);
 }
 
 #custom-select {
