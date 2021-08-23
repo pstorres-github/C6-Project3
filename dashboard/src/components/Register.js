@@ -15,7 +15,7 @@ const Register = () => {
     const history = useHistory()
 
     return (
-        <div className="container">
+        <div className="">
             <Formik
                 initialValues={{ username: '', email: '', password: '' }}
                 // validates against the validation schema defined as Yup Object
