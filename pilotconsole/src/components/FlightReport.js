@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import JobDetailContext from '../JobDetailContext'
 import FlightMap from '../components/FlightMap_Leaflet'
+import logowide from '../assets/brand/black/silvereyes_sm_square_wide_b.svg'
 
 import './FlightReport.css'
 // import VideoUploadForm from "./VideoUploadForm"
@@ -136,7 +137,19 @@ const FlightReport = ({ onSave, flight }) => {
     if (flight && jobContext.activeJob) {
         return (
             <div className="fightreport-container">
-                <h1>Flight Report</h1>
+                <div className="report-header">
+                    <div className="report-logo inline">
+                        <img
+                            class="logo"
+                            src={logowide}
+                            alt="silvereyes"
+                            height="28px"
+                        ></img>
+                    </div>
+                    <div className="report-title inline">
+                        <h4>Flight Report</h4>
+                    </div>
+                </div>
                 <div className="flight-form">
                     <div className="form-1-form-2">
                         <div className="form-1">
@@ -151,7 +164,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     disabled
                                 />
                             </div>
-                            <div className="form-1-form-2-individual">
+                            <div className="form-1-form-2-individual inline-half">
                                 <label htmlFor="clientEmail">E-mail</label>
                                 <input
                                     value={insertedClientEmail}
@@ -159,7 +172,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     disabled
                                 />
                             </div>
-                            <div className="form-1-form-2-individual">
+                            <div className="form-1-form-2-individual inline-half">
                                 <label htmlFor="clientContact">
                                     Contact Number
                                 </label>
@@ -187,7 +200,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     }
                                 />
                             </div>
-                            <div className="form-1-form-2-individual">
+                            <div className="form-1-form-2-individual inline-half">
                                 <label htmlFor="jobNumber">Job Number</label>
                                 <input
                                     value={insertedJobNumber}
@@ -200,7 +213,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     }
                                 />
                             </div>
-                            <div className="form-1-form-2-individual">
+                            <div className="form-1-form-2-individual inline-half">
                                 <label>Job Status</label>
                                 <select
                                     value={insertedStatus}
@@ -215,7 +228,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     </option>
                                 </select>
                             </div>
-                            <div className="form-1-form-2-individual">
+                            <div className="form-1-form-2-individual full">
                                 <label htmlFor="jobDetails">Job Details</label>
                                 <textarea
                                     value={insertedJobDetails}
@@ -251,7 +264,7 @@ const FlightReport = ({ onSave, flight }) => {
                             </div>
                             {insertedFlightPlan.map((i) => {
                                 return (
-                                    <div className="individual-flight-plan">
+                                    <div className="individual-flight-plan ">
                                         <label>Latitude</label>
                                         <input
                                             value={i.lat}
