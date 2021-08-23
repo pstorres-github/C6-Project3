@@ -165,10 +165,21 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                            <div className="row-five-right">
+                            <div className="row-five text-right">
+                                <button
+                                    onClick={() => {
+                                        history.goBack(-1)
+                                    }}
+                                    // onClick={() => {
+                                    //     setViewMode('login')
+                                    // }}
+                                    className="cancel inline"
+                                >
+                                    Cancel
+                                </button>
                                 <button
                                     type="submit"
-                                    className="btn btn-primary"
+                                    className="btn btn-primary inline"
                                 >
                                     Register and Login
                                 </button>
