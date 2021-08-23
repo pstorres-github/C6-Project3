@@ -343,6 +343,25 @@ details {
     padding: 1rem;
 }
 
+.half {
+    width: 50%;
+}
+
+.full {
+    width: 100%;
+}
+
+.inline-half:nth-of-type(odd) {
+    width: calc(50%);
+    display: inline-block;
+}
+
+.inline-half:nth-of-type(even) {
+    width: calc(50%);
+    display: inline-block;
+    padding-left: var(--padding) !important;
+}
+
 .inline {
     display: inline-block;
 }
