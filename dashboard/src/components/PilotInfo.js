@@ -45,18 +45,18 @@ const PilotInfo = () => {
 
     console.log("listOfFlights:", listOfFlights);
 
-    const sumOfFlightTime = listOfFlights
-      .slice(1)
-      .reduce(
-        (prev, cur) => moment.duration(cur).add(prev),
-        moment.duration(listOfFlights[0])
-      );
+    // const sumOfFlightTime = listOfFlights
+    //   .slice(1)
+    //   .reduce(
+    //     (prev, cur) => moment.duration(cur).add(prev),
+    //     moment.duration(listOfFlights[0])
+    //   );
 
-    totalHoursOfFlight = moment
-      .utc(sumOfFlightTime.asMilliseconds())
-      .format("HH:mm:ss");
+    // totalHoursOfFlight = moment
+    //   .utc(sumOfFlightTime.asMilliseconds())
+    //   .format("HH:mm:ss");
   }
-  console.log("totalHoursOfFlight:", totalHoursOfFlight);
+  // console.log("totalHoursOfFlight:", totalHoursOfFlight);
 
   return (
     <React.Fragment>
@@ -83,7 +83,7 @@ const PilotInfo = () => {
           {pilotData && (
             <div>
               <div>Number of flights: {listOfFlights.length}</div>
-              <div>Hours of flight: {totalHoursOfFlight} </div>
+              {/* <div>Hours of flight: {totalHoursOfFlight} </div> */}
             </div>
           )}
           {!pilotData && (
