@@ -208,8 +208,8 @@ const FlightMap = ({ displayExtras }) => {
         const bearing = newBearing * (Math.PI / 180)
 
         // convert distance from drone from cm to km
-        //**NOTE:  Due to the small scale of movement, this function pretends that a cm is actually a meter.  Otherwise the scale is too small to render on the google map
-        let distance = newDistance / 100
+        //**NOTE:  Due to the small scale of movement, this function pretends that a cm is actually bigger.  Otherwise the scale is too small to render on the google map
+        let distance = newDistance / 300
         console.log('distance in km', distance)
 
         let latB = Math.asin(
