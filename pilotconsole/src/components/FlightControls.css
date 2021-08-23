@@ -359,6 +359,10 @@ to show state */
     grid-column-end: 2;
 }
 
+.stream-active {
+    box-shadow: inset 0px 0px 2px 5px #05d617;
+}
+
 /* .batteryStatus {
     grid-row-start: 1;
     grid-row-end: 2;

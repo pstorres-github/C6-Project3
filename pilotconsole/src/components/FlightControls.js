@@ -50,6 +50,20 @@ const FlightControls = ({ DroneConnection }) => {
         }
     }
 
+    // this is for the green glow on the stream button when on, but I'm too tired
+    // async function streamActive(button) {
+    //     if (document.getElementById(button).style != null) {
+    //         document.getElementById(button).style.boxShadow =
+    //             'inset 0px 0px 0px var(--padding-tiny) #05d617'
+    //         const result = await ghost(button)
+    //     }
+    // }
+    // useEffect(() => {
+    //     stream % 2 === 0
+    //         ? sendCommand('streamoff') || ghostHover('stream-button')
+    //         : sendCommand('streamon') || streamActive('stream-button')
+    // }, [stream])
+
     const [keysIsChecked, setKeysIsChecked] = useState(false)
     const [stream, setStream] = useState(0)
 
@@ -58,10 +72,9 @@ const FlightControls = ({ DroneConnection }) => {
     }
 
     useEffect(() => {
-        stream % 2 === 0 ? (
-            sendCommand('streamoff') || ghostHover('stream-button')
-        ) : (sendCommand('streamon') || ghostHover('stream-button')
-        )
+        stream % 2 === 0
+            ? sendCommand('streamoff') || ghostHover('stream-button')
+            : sendCommand('streamon') || ghostHover('stream-button')
     }, [stream])
 
     // finding some directions in life
