@@ -116,6 +116,8 @@ svg {
     --padding: 1rem;
     --padding-small: 0.625rem;
     --padding-tiny: 0.25rem;
+    --padding-beefy: 2rem;
+
     --mini: 0.0125rem;
     --border-tiny: 0.0625rem;
     --border-radius-tiny: 0.25rem;
@@ -457,16 +459,19 @@ form {
 input,
 select,
 textarea {
-    position: relative;
+    /* position: relative;
     left: -0.5rem;
     margin-left: var(--padding-tiny);
     margin-right: var(--padding-tiny);
     margin-top: var(--padding-tiny);
     margin-bottom: var(--padding-tiny);
-    padding: var(--padding-tiny);
+    padding: var(--padding-tiny); */
 
-    border: 0.5px solid lightgray;
+    padding: var(--padding-small);
+
+    border: 0.5px solid var(--ghost-hover);
     border-radius: 0.25rem;
+
     background-color: ghostwhite;
     /* min-width: 10rem; */
     /* max-width: 25rem; */
@@ -474,7 +479,7 @@ textarea {
 
 input {
     font-size: var(--small);
-    color: red;
+    /* color: red; */
 }
 /* label {
     margin-left: var(--padding);
