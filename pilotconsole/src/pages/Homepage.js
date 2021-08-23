@@ -6,6 +6,8 @@ import AuthenticationContext from '../AuthenticationContext'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import { useHistory } from 'react-router-dom'
+import logo from '../assets/brand/white/silvereyes_sm_square_wide.svg'
+import bg1 from '../assets/backgrounds/1.png'
 
 const Homepage = () => {
     const authContext = useContext(AuthenticationContext)
@@ -22,40 +24,53 @@ const Homepage = () => {
 
     return (
         <div className="grid-container">
+            <img class="background-image img1" src={bg1} alt=""></img>
+
             <div className="header"></div>
             <div className="section-hero">
-                <h1>Pilot Console</h1>
+                <img
+                    class="logo"
+                    src={logo}
+                    alt="silvereyes"
+                    width="450px"
+                ></img>
             </div>
-            <div className="section-info"> </div>
+            <div className="section-info">
+                <h3>Pilot console</h3>
+            </div>
             <div className="section-login-guest">
-                <h4> Welcome, Guest</h4>
-                {/* <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button> */}
-                <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                        history.push('/pilotconsole')
-                    }}
-                >
-                    Continue
-                </button>
+                <div className="section-login-guest-left">
+                    <h4> Welcome, Guest</h4>
+                </div>
+                <div className="section-login-guest-right">
+                    {/* <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button> */}
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                            history.push('/pilotconsole')
+                        }}
+                    >
+                        Continue
+                    </button>
+                </div>
             </div>
             <div className="section-login-registered ">
-                <h4>Login to your account</h4>
                 {viewMode === 'logIn' && (
                     <>
                         <Login />
-                        <p>Not registered?</p>
-                        <br />
-                        <br /> <br />
-                        <br />
-                        <button
-                            className="btn btn-primary"
-                            onClick={() => {
-                                setViewMode('register')
-                            }}
-                        >
-                            Register Here
-                        </button>
+                        <div className="row-five">
+                            <p className="register">
+                                Not registered?{' '}
+                                <span
+                                    className="register-link"
+                                    onClick={() => {
+                                        setViewMode('register')
+                                    }}
+                                >
+                                    Register here.
+                                </span>
+                            </p>
+                        </div>
                     </>
                 )}
 

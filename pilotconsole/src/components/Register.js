@@ -15,7 +15,7 @@ const Register = () => {
     const [registerError, setRegisterError] = useState(true)
 
     return (
-        <div className="container">
+        <div className="">
             <Formik
                 initialValues={{ username: '', email: '', password: '' }}
                 // validates against the validation schema defined as Yup Object
@@ -57,28 +57,40 @@ const Register = () => {
                         }).then((registerInfo) => {
                             console.log(registerInfo.data)
                         })
-                    } catch (error) {    
-                        setRegisterError('Problem encountered registering user.  Please try again later.')
+                    } catch (error) {
+                        setRegisterError(
+                            'Problem encountered registering user.  Please try again later.'
+                        )
                     }
 
                     // Once registration is complete, continue to log user in
-                    let registerStatus = await authContext.login(values.email, values.password)
-                    
-                    if (registerStatus==='Network Unavailable') {
-                        setRegisterError('Network unavailable.  Please try again later.')
-                    }    
-                    else if (registerStatus === true)
+                    let registerStatus = await authContext.login(
+                        values.email,
+                        values.password
+                    )
+
+                    if (registerStatus === 'Network Unavailable') {
+                        setRegisterError(
+                            'Network unavailable.  Please try again later.'
+                        )
+                    } else if (registerStatus === true)
                         history.push('/pilotconsole')
-                    else 
-                        setRegisterError('Problem encountered registering user.  Please try again later.')
+                    else
+                        setRegisterError(
+                            'Problem encountered registering user.  Please try again later.'
+                        )
                 }}
-                
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
-                    <Form>
-                        <div className="form-group">
-                            <div class="col-md">
+                    <Form className="form-login-register">
+                        <div className="login-layout">
+                            <div className="row-one">
+                                <div className="login-header">
+                                    <h4>Register a new account</h4>
+                                </div>
+                            </div>
+                            <div className="row-two">
                                 <label htmlFor="username">
                                     Pilot Name/Company
                                 </label>
@@ -98,10 +110,8 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div class="col-md">
+                            <div className="row-three">
                                 <label htmlFor="e-mail">Email Address</label>
                                 <Field
                                     type="email"
@@ -119,10 +129,8 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div class="col-md">
+                            <div className="row-four-left">
                                 <label htmlFor="password">Password</label>
                                 <Field
                                     type="password"
@@ -140,10 +148,8 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div class="col-md">
+                            <div className="row-four-right">
                                 <label htmlFor="confirmPassword">
                                     Confirm Password
                                 </label>
@@ -164,21 +170,31 @@ const Register = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
+
+                            {registerError && (
+                                <p className="error"> {registerError} </p>
+                            )}
+
+                            <div className="row-five text-right">
+                                <button
+                                    onClick={() => {
+                                        history.goBack(-1)
+                                    }}
+                                    // onClick={() => {
+                                    //     setViewMode('login')
+                                    // }}
+                                    className="cancel inline"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >
+                                    Register and Login
+                                </button>
+                            </div>
                         </div>
-
-                        {registerError && (
-                            <p className="error"> {registerError} </p>
-                        )}
-
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                            {' '}
-                            Register and Login{' '}
-                        </button>
-
-
-                    
-                    
                     </Form>
                 )}
             </Formik>

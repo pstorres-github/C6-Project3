@@ -16,7 +16,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState(false)
 
     return (
-        <div className="container">
+        <div className="login-register-login-form">
             <Formik
                 initialValues={{ email: '', password: '' }}
                 // validates against the validation schema defined as Yup Object
@@ -30,28 +30,33 @@ const Login = () => {
                 onSubmit={async (values) => {
                     // on submission of form, set the values to be sent to login function
                     // if login fails, will ask user to try again
-                        let loginStatus = await authContext.login(
-                            values.email,
-                            values.password
+                    let loginStatus = await authContext.login(
+                        values.email,
+                        values.password
+                    )
+                    if (loginStatus === 'Network Unavailable')
+                        setLoginError(
+                            'Network unavailable.  Please try again later or login as guest.'
                         )
-                        if (loginStatus==='Network Unavailable')
-                            setLoginError(
-                                'Network unavailable.  Please try again later or login as guest.'
-                            )
-                        else if (loginStatus===true) {        
-                            history.push('/pilotconsole')
-                        } else {
-                            setLoginError(
-                                'Invalid e-mail or password.  Please try again or login as guest'
-                            )
+                    else if (loginStatus === true) {
+                        history.push('/pilotconsole')
+                    } else {
+                        setLoginError(
+                            'Invalid e-mail or password.  Please try again or login as guest'
+                        )
                     }
                 }}
             >
                 {/* touched object = true if field has been visited.  errors stores the all validation errros */}
                 {({ errors, touched }) => (
-                    <Form>
-                        <div className="form-group">
-                            <div class="">
+                    <Form className="form-login-register">
+                        <div className="login-layout">
+                            <div className="row-one">
+                                <div className="login-header">
+                                    <h4>Log in to your account</h4>
+                                </div>
+                            </div>
+                            <div className="row-two">
                                 <label htmlFor="e-mail">Email Address</label>
                                 <Field
                                     type="email"
@@ -69,10 +74,8 @@ const Login = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <div class="">
+                            <div className="row-three">
                                 <label htmlFor="password">Password</label>
                                 <Field
                                     type="password"
@@ -90,13 +93,16 @@ const Login = () => {
                                     className="invalid-feedback"
                                 />
                             </div>
-                        </div>
 
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                            {' '}
-                            Submit{' '}
-                        </button>
+                            <div className="row-four-right">
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
 
                         {loginError && (
                             <p className="login-error"> {loginError} </p>
