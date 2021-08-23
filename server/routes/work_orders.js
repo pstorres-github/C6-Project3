@@ -19,7 +19,7 @@ function checkAuthentication(req, res, next) {
 router.get('/', async (req, res) => {
     let data
     try {
-        data = await Work_Order.find({})
+        data = await Work_Order.find({}).sort({date:1})
     } catch (err) { 
         const error = 'Fetching items failed'
         return next(error)
