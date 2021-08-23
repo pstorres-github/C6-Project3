@@ -56,8 +56,8 @@
     border-radius: 0;
 
     /* border-radius: var(--border-radius-small); */
-    filter: brightness(60%);
-    filter: brightness(10%);
+    filter: brightness(40%);
+    /* filter: brightness(10%); */
 }
 
 .img1 {

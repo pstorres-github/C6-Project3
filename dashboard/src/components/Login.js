@@ -51,7 +51,7 @@ const Login = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h3>Login to your account</h3>
+                                    <h2>Login to your account</h2>
                                 </div>
                             </div>
                             <div className="row-two">

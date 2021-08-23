@@ -82,7 +82,7 @@ const Register = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h3>Register a new account</h3>
+                                    <h2>Register a new account</h2>
                                 </div>
                             </div>
                             <div className="row-two">
