@@ -30,7 +30,6 @@ const Header = () => {
                         Sign-in
                     </button>
                 )}
-                &nbsp;
                 <button
                     onClick={() => {
                         history.push('/pilotConsole')
