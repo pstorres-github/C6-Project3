@@ -50,7 +50,9 @@ const FlightControls = ({ DroneConnection }) => {
         }
     }
 
-    // this is for the green glow on the stream button when on, but I'm too tired
+    // this is for the green glow on the
+    // stream button when on, but I'm too tired
+    
     // async function streamActive(button) {
     //     if (document.getElementById(button).style != null) {
     //         document.getElementById(button).style.boxShadow =
