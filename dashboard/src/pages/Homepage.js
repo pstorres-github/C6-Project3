@@ -7,6 +7,7 @@ import Register from '../components/Register'
 import bg1 from '../assets/backgrounds/1.png'
 import bg2 from '../assets/backgrounds/6.png'
 import bg3 from '../assets/backgrounds/5.png'
+import logo from '../assets/brand/white/silvereyes_sm_square_wide.svg'
 
 const Homepage = () => {
     const [viewMode, setViewMode] = useState('logIn')
@@ -99,7 +100,13 @@ const Homepage = () => {
             <div className="section-hero">
                 {/* <h1>Team Silvereyes</h1> */}
                 {/* <h2>Customer dashboard</h2> */}
-                <h1>logo</h1>
+                {/* <h1>logo</h1> */}
+                <img
+                    class="logo"
+                    src={logo}
+                    alt="silvereyes"
+                    width="450px"
+                ></img>
             </div>
 
             <div className="section-login">
