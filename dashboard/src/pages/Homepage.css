@@ -16,6 +16,11 @@
     grid-column-start: 2;
     grid-column-end: 4;
     text-align: center;
+
+    padding-bottom: calc(var(--padding-beefy) * 2);
+    display: flex;
+    justify-self: center;
+    align-self: flex-end;
 }
 
 .section-hero h1 {
