@@ -57,23 +57,30 @@ const PilotJobs = () => {
                     <div className='table-column-3'>Client Name</div> 
                     <div className='table-column-4'>Client Contact</div> 
                     <div className='table-column-5'>Client Email</div> 
-                    <div className='table-column-6'>Job Status</div> 
+                    <div className='table-column-6'>Date</div> 
+                    <div className='table-column-7'>Time</div> 
+                    <div className='table-column-8'>Job Status</div> 
                 </div>
 
                 { networkAvailable && 
                     <div className='table-body'>
-                        {jobData.map(jobData => (
-                            <div key={jobData._id} onClick={()=>{jobContext.updateActiveJob(jobData._id); history.push('/pilotconsole')}}>
-                                <div className='table-pilot-job-item'>
-                                    <div className='table-column-1'>{jobData.jobNumber}</div>
-                                    <div className='table-column-2'>{jobData.jobDetails}</div> 
-                                    <div className='table-column-3'>{jobData.customerName}</div> 
-                                    <div className='table-column-4'>{jobData.clientContact}</div> 
-                                    <div className='table-column-5'>{jobData.clientEmail}</div> 
-                                    <div className='table-column-6'>{jobData.status}</div> 
-                                </div>
-                            </div>    
-                        ))}
+                        {jobData.map(jobData => {
+                            let date = new Date(jobData.date)
+                            return (
+                                <div key={jobData._id} onClick={()=>{jobContext.updateActiveJob(jobData._id); history.push('/pilotconsole')}}>
+                                    <div className='table-pilot-job-item'>
+                                        <div className='table-column-1'>{jobData.jobNumber}</div>
+                                        <div className='table-column-2'>{jobData.jobDetails}</div> 
+                                        <div className='table-column-3'>{jobData.customerName}</div> 
+                                        <div className='table-column-4'>{jobData.clientContact}</div> 
+                                        <div className='table-column-5'>{jobData.clientEmail}</div>
+                                        <div className='table-column-6'>{date.toDateString()}</div> 
+                                        <div className='table-column-7'>{date.toLocaleTimeString()}</div>                            
+                                        <div className='table-column-8'>{jobData.status}</div> 
+                                    </div>
+                                </div>    
+                            )
+                        })}
                     </div> 
                 }
 

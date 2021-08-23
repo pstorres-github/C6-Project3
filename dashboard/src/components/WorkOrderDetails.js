@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import AuthenticationContext from '../AuthenticationContext'
 
+import videoMessage from '../assets/videoUnavailable.png'
+
 import FlightPlan from './FlightPlan.js'
 
 const WorkOrderDetails = () => {
@@ -111,6 +113,7 @@ const WorkOrderDetails = () => {
             <div className="workorder-video-label">
                 <h3>Analysis</h3>
             </div>
+            {userFlight.videoURL && (
             <div className="workorder-video">
                 <video
                     src={userFlight.videoURL}
@@ -123,7 +126,21 @@ const WorkOrderDetails = () => {
                     controls
                 />
             </div>
-            {/* <div>Analytics: {userFlight.analytics.video} </div> */}
+            )}
+            {!userFlight.videoURL && (
+                <div className="workorder-video">
+                <img
+                    src={videoMessage}
+                    alt={'This video is unavailable'}
+                    width={'100%'}
+                    height={'100%'}
+                    margin={'0px'}
+                    padding={'0px'}
+                /> 
+            </div>
+            )}
+                
+            {/* <div>Analytics: {userFlight.analytics.video} </div>  */}
 
             <div className="workorder-details-label">
                 <h3>Details</h3>
