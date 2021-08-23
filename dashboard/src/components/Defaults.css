@@ -453,6 +453,10 @@ details {
     width: 100%;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .right {
     float: right;
 }
