@@ -55,9 +55,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="row-two">
-                                <label htmlFor="e-mail">
-                                    Email Address&nbsp;&nbsp;
-                                </label>
+                                <label htmlFor="e-mail">Email Address</label>
                                 <Field
                                     type="email"
                                     name="email"
