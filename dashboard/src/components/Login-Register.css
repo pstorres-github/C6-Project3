@@ -12,6 +12,11 @@
     text-align: center;
 }
 
+.form-login-register {
+    padding-left: var(--padding-beefy) !important;
+    padding-right: var(--padding-beefy) !important;
+}
+
 .login-register-login-form,
 .login-register-register-form {
     grid-row: 2;
@@ -75,7 +80,9 @@
     grid-row: 3;
 }
 
-.row-one,
+.row-one {
+    padding-bottom: var(--padding);
+}
 .row-two,
 .row-three {
     /* padding: var(--padding); */
@@ -135,6 +142,8 @@
 
 .row-five {
     grid-row: 5;
+    grid-column-start: 1;
+    grid-column-end: -1;
     padding-left: 0;
     margin-left: 0;
 }
