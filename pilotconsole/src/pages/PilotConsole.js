@@ -29,11 +29,11 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
                 Welcome: {authContext.username}
                 {authContext.username !== 'Guest Pilot'}
                 {jobContext.activeJob ? (
-                    <> | Job: {jobContext.activeJob}</>
+                    <> | Job: {jobContext.activeJob.toString().slice(0, 8)}</>
                 ) : (
                     <> | No job loaded</>
                 )}
-                <FlightRecording/>
+                <FlightRecording />
             </div>
 
             <div className="console-horizon">
@@ -49,7 +49,7 @@ const PilotConsole = ({ DroneConnection, DroneState, DroneVideoFeed }) => {
             </div>
 
             <div className="console-flightplan">
-                <FlightMap displayExtras={'show'}/>
+                <FlightMap displayExtras={'show'} />
             </div>
 
             <div className="console-drone-status">
