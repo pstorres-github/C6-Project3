@@ -514,7 +514,7 @@ textarea {
 
 input {
     font-size: var(--body);
-    color: var(--secondary);
+    color: var(--primary);
     /* color: red; */
 }
 /* label {
