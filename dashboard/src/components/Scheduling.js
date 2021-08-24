@@ -162,7 +162,8 @@ function Scheduling(props) {
                                         options={{ altInput: true,
                                                 dateFormat: "Y-m-d",
                                                 minDate:"today",
-                                                disableMobile:true
+                                                disableMobile:true,
+                                                minuteIncrement:1
                                              }}
                                         onChange={date => {setDate(date); console.log(date)}}
                                     />

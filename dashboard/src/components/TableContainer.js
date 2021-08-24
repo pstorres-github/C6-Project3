@@ -75,6 +75,8 @@ const TableContainer = ({ columns, data, selectedJob }) => {
     // forget this
     // const placeholderSearch = '\uf002'
 
+    // 08-23:  Removed ascending/descending sort for demo day
+
     return (
         <div className="table-container">
             {/* table body */}
@@ -84,9 +86,9 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th {...column.getHeaderProps()}>
-                                    <div {...column.getSortByToggleProps()}>
+                                    <div /*...column.getSortByToggleProps()*/>
                                         {column.render('Header')}
-                                        {generateSortingIndicator(column)}
+                                        {/*generateSortingIndicator(column)*/}
                                         <Filter column={column} />
                                     </div>
                                     <div
@@ -109,9 +111,9 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                         return (
                             <tr
                                 {...row.getRowProps()}
-                                onClick={() => {
-                                    selectedJob(row.original)
-                                }}
+                                //onClick={() => {
+                                //    selectedJob(row.original)
+                                //}}
                             >
                                 {row.cells.map((cell) => {
                                     return (

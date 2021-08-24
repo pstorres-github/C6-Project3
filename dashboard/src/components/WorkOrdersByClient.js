@@ -36,7 +36,22 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
 
     const columns = useMemo(
         () => [
-            { Header: 'Job Number', accessor: 'jobNumber'},
+            {   
+                Header: 'Job Number', 
+                accessor: 'jobNumber',
+                Cell: ({cell,row}) => {
+                    const { value } = cell
+                    return (
+                        <>
+                            <div>
+                                <button className="no-border" onClick={()=>selectedJob(row.original._id)}>
+                                    {value}
+                                </button>
+                            </div>
+                        </>
+                    )
+                }
+            },    
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
