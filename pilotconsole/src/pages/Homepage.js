@@ -6,7 +6,7 @@ import AuthenticationContext from '../AuthenticationContext'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import { useHistory } from 'react-router-dom'
-import logo from '../assets/brand/white/silvereyes_sm_square_wide.svg'
+import logo from '../assets/brand/white/silvereyes_sm_square_45.svg'
 import bg1 from '../assets/backgrounds/1.png'
 
 const Homepage = () => {
