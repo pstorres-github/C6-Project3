@@ -54,9 +54,11 @@ function Scheduling(props) {
                         jobTitle: Yup.string()
                             .min(3, 'Must be at least three characters.')
                             .required('Required.'),
-                        jobNumber: Yup.string()
-                            .min(3, 'Must be at least three characters.')
-                            .required('Required.'),
+                        jobNumber: Yup.string().min(
+                            3,
+                            'Must be at least three characters.'
+                        ),
+                        // .required('Required.'),
                         clientContact: Yup.string()
                             .min(10, 'Must be at least 10 characters.')
                             .required('Required.')
