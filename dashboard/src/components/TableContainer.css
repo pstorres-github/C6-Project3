@@ -191,5 +191,11 @@ tbody tr:hover {
 }
 
 .pagesize {
-    background-image:none !important;
+    background-image: none !important;
+}
+
+td > i {
+    padding: var(--padding-small);
+    background: var(--button-warn-bg);
+    color: var(--button-alert-text);
 }
