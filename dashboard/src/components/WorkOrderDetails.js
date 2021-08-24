@@ -160,7 +160,15 @@ const WorkOrderDetails = () => {
                         <h4>Flight Time:</h4> {time}
                     </div>
                     <div className="details-data plex">
-                        <h4>Flight Waypoints:</h4> {userFlight.flight_data}
+                        <h4>Flight Waypoints:</h4> {userFlight.flight_data.map((waypoint) => {
+                            console.log ("flight_data from waypoint:", userFlight.flight_data)
+                            return (
+                                <>
+                                <>{waypoint[0]}, {waypoint[1]}</>
+                                <br />
+                                </>
+                            )
+                        })}
                     </div>
                     <div className="details-status plex">
                         <h4>Status:</h4>

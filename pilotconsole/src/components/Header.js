@@ -2,7 +2,7 @@ import AuthenticationContext from '../AuthenticationContext'
 import JobDetailContext from '../JobDetailContext'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import logo45 from '../assets/brand/black/silvereyes_large_b.svg'
+import logo45 from '../assets/brand/black/silvereyes_sm_square_45_b.svg'
 
 const Header = () => {
     const authContext = useContext(AuthenticationContext)
