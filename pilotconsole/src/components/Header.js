@@ -28,7 +28,7 @@ const Header = () => {
                         }}
                         className="small-button"
                     >
-                        Sign-in
+                        Login
                     </button>
                 )}
                 &nbsp;
