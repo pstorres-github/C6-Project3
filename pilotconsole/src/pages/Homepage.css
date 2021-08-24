@@ -17,7 +17,7 @@
     grid-column-end: 4;
     text-align: center;
 
-    padding-bottom: calc(var(--padding-beefy) * 2);
+    padding-bottom: calc(var(--padding-beefy));
     display: flex;
     justify-self: center;
     align-self: flex-end;
@@ -65,7 +65,7 @@
     text-align: left;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.5fr;
 }
 
 .section-login-guest-left {
