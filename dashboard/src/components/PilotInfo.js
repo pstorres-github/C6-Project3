@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import ReactDOM from "react-dom"
-import moment from "moment";
+//import moment from "moment";
 import Modal from "../components/modal/Modal";
+
+import { faPortrait } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import './PilotInfo.css'
 
 const PilotInfo = () => {
   const [pilotData, setPilotData] = useState();
@@ -32,7 +37,7 @@ const PilotInfo = () => {
   }, []);
 
   let listOfFlights = [];
-  let totalHoursOfFlight;
+  //let totalHoursOfFlight;
 
   if (pilotData) {
     console.log("pilotData:", pilotData);
@@ -78,8 +83,17 @@ const PilotInfo = () => {
           setShow(false)
           history.push("/workorders")
         }}>
-        <div className="content">
-          <div>Pilot: {pilotName}</div>
+        <div className="pilot-info-wrapper">
+          
+          <FontAwesomeIcon
+              icon={faPortrait}
+              className="pilot-icon"
+          />
+
+          <br></br>
+          <h3>Pilot: {pilotName}</h3>
+          <br></br>
+          
           {pilotData && (
             <div>
               <div>Number of flights: {listOfFlights.length}</div>
