@@ -51,7 +51,7 @@
 
 .login-layout {
     display: grid;
-    grid-template-rows: 15rem 6.25rem 6.25rem 6.25rem auto;
+    grid-template-rows: auto 6.25rem 6.25rem 6.25rem auto;
     grid-template-columns: 1fr 1fr;
     /* padding: 30px 32px 32px; */
     box-sizing: border-box;
@@ -146,6 +146,7 @@
     grid-column-end: -1;
     padding-left: 0;
     margin-left: 0;
+    padding-bottom: var(--padding-beefy);
 }
 
 .row-five-left {
