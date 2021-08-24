@@ -68,7 +68,7 @@ const VideoUploadForm = () => {
     return (
       <>
         <label htmlFor="video-upload">Upload Video</label>
-        {isUploading && <p> uploading video...</p>}
+        {isUploading && <p> Uploading Video...</p>}
         <input
           id="file"
           name="file"
@@ -77,7 +77,7 @@ const VideoUploadForm = () => {
           onChange={videoUpload}
         />
         <button type="submit" onClick={submitFileToAWS}>
-          upload video
+          Upload Video
         </button>
       </>
     );

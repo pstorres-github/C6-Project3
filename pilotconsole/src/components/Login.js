@@ -36,13 +36,13 @@ const Login = () => {
                     )
                     if (loginStatus === 'Network Unavailable')
                         setLoginError(
-                            'Network unavailable.  Please try again later or login as guest.'
+                            'Network Unavailable.  Please Try Again Later or Login as Guest'
                         )
                     else if (loginStatus === true) {
                         history.push('/pilotconsole')
                     } else {
                         setLoginError(
-                            'Invalid e-mail or password.  Please try again or login as guest'
+                            'Invalid e-mail or password.  Please Try Again or Login as Guest'
                         )
                     }
                 }}
@@ -53,7 +53,7 @@ const Login = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h4>Login to Your Account</h4>
+                                    <h4>Account Login</h4>
                                 </div>
                             </div>
                             <div className="row-two">
