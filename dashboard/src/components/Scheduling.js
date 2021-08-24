@@ -174,7 +174,7 @@ function Scheduling(props) {
                             </Checkbox>
                         </div> */}
                             <div className="form-submit-section">
-                                <button type="submit" className="secondary">
+                                <button type="submit" className="">
                                     {props.isSubmitting
                                         ? 'Submitting…'
                                         : 'Submit'}
