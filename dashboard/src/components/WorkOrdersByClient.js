@@ -109,7 +109,7 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                                     icon={faEdit}
                                     className="icon"
                                 />
-                                Edit
+                                Details
                             </a>
                         </>
                     )
