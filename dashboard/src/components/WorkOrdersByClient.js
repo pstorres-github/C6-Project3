@@ -58,7 +58,8 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                 accessor: 'pilot',
                 Cell: ({ cell }) => {
                     const { value } = cell
-                    if (!value) return null
+                    if (!value) {return <i>Assignment Pending</i>}
+                    else
                     return (
                         <>
                             {value} 
