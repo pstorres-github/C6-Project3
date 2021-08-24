@@ -53,7 +53,7 @@ const Login = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h4>Log in to your account</h4>
+                                    <h4>Login to Your Account</h4>
                                 </div>
                             </div>
                             <div className="row-two">
@@ -61,7 +61,7 @@ const Login = () => {
                                 <Field
                                     type="email"
                                     name="email"
-                                    placeholder="Enter e-mail"
+                                    placeholder="Enter E-mail"
                                     className={`form-control ${
                                         touched.email && errors.email
                                             ? 'is-invalid'
@@ -80,7 +80,7 @@ const Login = () => {
                                 <Field
                                     type="password"
                                     name="password"
-                                    placeholder="Enter password"
+                                    placeholder="Enter Password"
                                     className={`form-control ${
                                         touched.password && errors.password
                                             ? 'is-invalid'
@@ -98,8 +98,9 @@ const Login = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary"
+                                    style={{"width": "87px"}}
                                 >
-                                    Submit
+                                    Login
                                 </button>
                             </div>
                         </div>

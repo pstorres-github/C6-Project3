@@ -17,6 +17,7 @@ const Header = () => {
                     src={logo45}
                     alt="silvereyes"
                     height="28px"
+                    style={{"padding-right": '10px'}}
                 ></img>
             </div>
             <div className="navigation inline">
@@ -27,7 +28,7 @@ const Header = () => {
                         }}
                         className="small-button"
                     >
-                        Sign-in
+                        Login
                     </button>
                 )}
                 &nbsp;

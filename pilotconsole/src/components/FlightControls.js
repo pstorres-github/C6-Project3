@@ -300,7 +300,7 @@ const FlightControls = ({ DroneConnection }) => {
                                 ghostHover('ccw-button')
                             }}
                         >
-                            ↻
+                            ↺
                         </button>
                     </div>
                     <div className="cwButton">
@@ -312,7 +312,7 @@ const FlightControls = ({ DroneConnection }) => {
                                 ghostHover('cw-button')
                             }}
                         >
-                            ↺
+                            ↻
                         </button>
                     </div>
                     <div className="forwardButton">
