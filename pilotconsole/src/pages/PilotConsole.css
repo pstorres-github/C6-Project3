@@ -1,4 +1,3 @@
-/* Ignore this for now */
 @import '../components/Defaults.css';
 
 button {
@@ -18,27 +17,14 @@ button {
 }
 
 button:hover {
-    /* background: var(--button-standard-bg-hover); */
     background: var(--button-clicked);
     color: var(--button-standard-text-hover);
 }
 
 .console-container {
     display: grid;
-    /* VDR TEMP refactor */
-    /* width: calc(100vw - var(--padding) - 0.5rem);
-    height: calc(100vh - var(--padding) - 0.5rem); */
     width: calc(100vw - var(--padding) - 1rem);
-    height: 100%;
     height: calc(100vh - var(--padding) - 1rem);
-
-    /* before changes */
-    /* grid-template-columns: 12.5vw 12.5rem 12.5rem 1fr;
-    grid-template-rows: 2.5vh 12.5rem 12.5rem 0.75fr 1fr 15rem; */
-
-    /* normalize horizon component to vh/vw */
-    /* grid-template-columns: 12.5vw 9.25vw 9.25vw 1fr;
-    grid-template-rows: 2.5vh 9.25vw 9.25vw 0.75fr 1fr 15rem; */
 
     grid-template-columns:
         clamp(250px, 12.5vmax, 500px) clamp(125px, 9.25vmax, 500px) clamp(
@@ -47,13 +33,9 @@ button:hover {
             500px
         )
         1fr;
-    /* 12.5vw 9.25vw 9.25vw 500px 1fr; */
-    /* grid-template-rows:
-        2.5vh clamp(125px, 9.25vw, 500px) clamp(125px, 9.25vw, 500px)
-        clamp(125px, 10vh, 500px) 1fr 15rem; */
-    /* 2.5vh 9.25vw 9.25vw 10vh 1fr 15rem; */
+
     grid-template-rows:
-        2.5rem
+        2.5vh
         clamp(125px, 9.25vmax, 500px)
         clamp(125px, 9.25vmax, 500px)
         auto
