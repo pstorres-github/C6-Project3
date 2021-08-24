@@ -161,7 +161,7 @@ const FlightPlan = ({
                 {/* list of coordinates of the markers and delete icon */}
                 {markers.map((markers, index) => (
                     // only show X (delete icon) if NOT in view mode
-                    <>
+                    <div className="coodinates-single">
                         {' '}
                         {mode === 'write' && (
                             <img
@@ -174,8 +174,7 @@ const FlightPlan = ({
                         )}
                         #{index + 1}, Lat:{Number(markers.lat)}, Lng
                         {Number(markers.lng)}
-                        <br />
-                    </>
+                    </div>
                 ))}
 
                 {/* if view mode, do not allow updates to map, thus do not show instructions */}
@@ -193,7 +192,7 @@ const FlightPlan = ({
                         </p>
                         <button
                             onClick={resetMarkers}
-                            type={"button"}
+                            type={'button'}
                             className="space-before cancel"
                         >
                             Clear all waypoints from map
