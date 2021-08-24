@@ -200,9 +200,9 @@ const WorkOrderDetails = () => {
                     }}
                     className=""
                 >
-                    Cancel
+                    Go Back
                 </button>{' '}
-                and return to work orders.
+                to work orders.
             </div>
         </div>
     )
