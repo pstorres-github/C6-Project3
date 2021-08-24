@@ -1,4 +1,3 @@
-
 import './Defaults.css'
 import './WorkOrdersByClient'
 
@@ -18,9 +17,8 @@ import TextInput from './Forms/TextInput'
 import axios from 'axios'
 //import { number } from 'yup/lib/locale'
 //import { useHistory } from 'react-router-dom'
-import Flatpickr from "react-flatpickr"
-import "flatpickr/dist/themes/light.css";
-
+import Flatpickr from 'react-flatpickr'
+import 'flatpickr/dist/themes/light.css'
 
 function Scheduling(props) {
     const authContext = useContext(AuthenticationContext)
@@ -34,9 +32,6 @@ function Scheduling(props) {
         setWaypoints(newWaypoints)
         console.log('waypoints', waypoints)
     }
-
-    
-
 
     return (
         <div className="scheduling-container">
@@ -91,8 +86,8 @@ function Scheduling(props) {
                                 customerID: authContext.userID,
                                 flight_plan: waypoints,
                                 status: 'Requested',
-                                date:date,
-                                time:date //both values are in the same field
+                                date: date,
+                                time: date //both values are in the same field
                             })
 
                             console.log(`authContext: `, authContext)
@@ -142,6 +137,24 @@ function Scheduling(props) {
                                         rows="4"
                                     />
                                 </div>
+                                <div className="scheduling-date-picker">
+                                    <label>Date and time for job:</label>
+                                    <Flatpickr
+                                        data-enable-time
+                                        value={date}
+                                        options={{
+                                            altInput: true,
+                                            dateFormat: 'Y-m-d',
+                                            minDate: 'today',
+                                            disableMobile: true,
+                                            minuteIncrement: 1
+                                        }}
+                                        onChange={(date) => {
+                                            setDate(date)
+                                            console.log(date)
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <div className="scheduling-map-container">
                                 <div className="form-flight-plan">
@@ -153,23 +166,8 @@ function Scheduling(props) {
                                         reset={resetMapToggle}
                                     />
                                 </div>
-                                {/* VDR hidden for demo day */}
-                                <div className="scheduling-date-picker">
-                                    Date and Time for Job: &nbsp;
-                                    <Flatpickr 
-                                        data-enable-time
-                                        value={date}
-                                        options={{ altInput: true,
-                                                dateFormat: "Y-m-d",
-                                                minDate:"today",
-                                                disableMobile:true,
-                                                minuteIncrement:1
-                                             }}
-                                        onChange={date => {setDate(date); console.log(date)}}
-                                    />
-                                </div>
                             </div>
-                            
+
                             {/* <div>
                             <Checkbox name="checkBox">
                                 I checked this checkbox.
