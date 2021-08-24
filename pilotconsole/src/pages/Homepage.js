@@ -36,11 +36,11 @@ const Homepage = () => {
                 ></img>
             </div>
             <div className="section-info">
-                <h3>Pilot console</h3>
+                <h3>Pilot Console</h3>
             </div>
             <div className="section-login-guest">
                 <div className="section-login-guest-left">
-                    <h4> Welcome, Guest</h4>
+                    <h4> Welcome, Guest Pilot</h4>
                 </div>
                 <div className="section-login-guest-right">
                     {/* <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button> */}
@@ -60,14 +60,14 @@ const Homepage = () => {
                         <Login />
                         <div className="row-five">
                             <p className="register">
-                                Not registered?{' '}
+                                Not Registered?{' '}
                                 <span
                                     className="register-link"
                                     onClick={() => {
                                         setViewMode('register')
                                     }}
                                 >
-                                    Register here.
+                                    Register Here.
                                 </span>
                             </p>
                         </div>
