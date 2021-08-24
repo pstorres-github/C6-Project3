@@ -7,6 +7,7 @@ import TableContainer, { SelectColumnFilter } from './TableContainer.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
     const [userFlights, setUserFlights] = useState([])
@@ -60,8 +61,14 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                     if (!value) return null
                     return (
                         <>
-                            {value}
-                            <a href={`/pilot/${value}`}> View Pilot Info </a>
+                            {value} 
+                            <a href={`/pilot/${value}`}> 
+                            <FontAwesomeIcon
+                                    icon={faInfoCircle}
+                                    className="icon"
+                            />
+                                Info 
+                            </a>
                         </>
                     )
                 }

@@ -77,7 +77,7 @@ const Adminpage = () => {
                         className="status-card-icon"
                     />
                     <br />
-                    Jobs awaiting pilot assignment
+                    Require Pilot Assignment
                     <p><strong>{jobNumbers[0]}</strong></p>
                 </div>
 
