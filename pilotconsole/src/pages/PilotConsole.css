@@ -32,7 +32,8 @@ button:hover {
             9.25vw,
             500px
         )
-        1fr;
+        1fr
+        5fr;
 
     grid-template-rows:
         2.5vh
@@ -47,15 +48,15 @@ button:hover {
 
 .console-user-info {
     grid-row: 1;
-    grid-column-start: 4;
-    grid-column-end: 5;
+    grid-column-start: 5;
+    grid-column-end: -1;
     display: flex;
     justify-content: space-between;
 }
 
 .console-drone-status {
     grid-row: 1;
-    grid-column: 3;
+    grid-column: 4;
 }
 
 .console-flight-time {
@@ -66,7 +67,7 @@ button:hover {
 .console-app-header {
     grid-row: 1;
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
     margin: 0;
     padding: 0;
 }
@@ -127,7 +128,7 @@ button:hover {
     grid-row-start: 2;
     grid-row-end: 6;
     grid-column-start: 4;
-    grid-column-end: 5;
+    grid-column-end: -1;
 
     overflow: hidden;
     z-index: -1;
@@ -137,7 +138,7 @@ button:hover {
     grid-row-start: 6;
     grid-row-end: -1;
     grid-column-start: 4;
-    grid-column-end: 5;
+    grid-column-end: -1;
 }
 
 .range-slider__wrap {
