@@ -7,6 +7,7 @@ import TableContainer, { SelectColumnFilter } from './TableContainer.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
     const [userFlights, setUserFlights] = useState([])
@@ -36,17 +37,39 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
 
     const columns = useMemo(
         () => [
-            { Header: 'Job Number', accessor: 'jobNumber'},
+            {   
+                Header: 'Job Number', 
+                accessor: 'jobNumber',
+                Cell: ({cell,row}) => {
+                    const { value } = cell
+                    return (
+                        <>
+                            <div>
+                                <button className="no-border" onClick={()=>selectedJob(row.original._id)}>
+                                    {value}
+                                </button>
+                            </div>
+                        </>
+                    )
+                }
+            },    
             {
                 Header: 'Pilot',
                 accessor: 'pilot',
                 Cell: ({ cell }) => {
                     const { value } = cell
-                    if (!value) return null
+                    if (!value) {return <i>Assignment Pending</i>}
+                    else
                     return (
                         <>
-                            {value}
-                            <a href={`/pilot/${value}`}> View Pilot Info </a>
+                            {value} 
+                            <a href={`/pilot/${value}`}> 
+                            <FontAwesomeIcon
+                                    icon={faInfoCircle}
+                                    className="icon"
+                            />
+                                Info 
+                            </a>
                         </>
                     )
                 }
@@ -94,7 +117,7 @@ const WorkOrdersByClient = ({ newOrder, selectedJob }) => {
                                     icon={faEdit}
                                     className="icon"
                                 />
-                                Edit
+                                Details
                             </a>
                         </>
                     )

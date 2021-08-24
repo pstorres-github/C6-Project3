@@ -56,7 +56,8 @@ const TableContainer = ({ columns, data, selectedJob }) => {
             data,
             defaultColumn,
             initialState: { pageIndex: 0 },
-            autoResetPage: false
+            autoResetPage: false,
+            autoResetFilters: false
         },
         // additional hooks to use the table features
         useResizeColumns,
@@ -75,6 +76,8 @@ const TableContainer = ({ columns, data, selectedJob }) => {
     // forget this
     // const placeholderSearch = '\uf002'
 
+    // 08-23:  Removed ascending/descending sort for demo day
+
     return (
         <div className="table-container">
             {/* table body */}
@@ -84,9 +87,9 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th {...column.getHeaderProps()}>
-                                    <div {...column.getSortByToggleProps()}>
+                                    <div /*...column.getSortByToggleProps()*/>
                                         {column.render('Header')}
-                                        {generateSortingIndicator(column)}
+                                        {/*generateSortingIndicator(column)*/}
                                         <Filter column={column} />
                                     </div>
                                     <div
@@ -109,9 +112,9 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                         return (
                             <tr
                                 {...row.getRowProps()}
-                                onClick={() => {
-                                    selectedJob(row.original)
-                                }}
+                                //onClick={() => {
+                                //    selectedJob(row.original)
+                                //}}
                             >
                                 {row.cells.map((cell) => {
                                     return (
@@ -212,6 +215,7 @@ const DefaultColumnFilter = ({
         preFilteredRows: { length }
     }
 }) => {
+
     return (
         <div className="input-search-box-container">
             <FontAwesomeIcon icon={faSearch} />
@@ -250,6 +254,7 @@ export const SelectColumnFilter = ({
                 setFilter(e.target.value || undefined)
             }}
         >
+            <option> --Select-- </option>
             <option value="">All</option>
             {options.map((option) => (
                 <option key={option} value={option}>

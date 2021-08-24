@@ -424,6 +424,15 @@ details {
     justify-self: stretch;
 }
 
+.full-width {
+    width: 100%;
+    text-align: right;
+}
+
+.full-width button {
+    margin-right: 0;
+}
+
 .half-left {
     margin: 0;
     padding: 0;

@@ -36,13 +36,13 @@ const Login = () => {
                     )
                     if (loginStatus === 'Network Unavailable')
                         setLoginError(
-                            'Network unavailable.  Please try again later or login as guest.'
+                            'Network Unavailable.  Please Try Again Later or Login as Guest'
                         )
                     else if (loginStatus === true) {
                         history.push('/pilotconsole')
                     } else {
                         setLoginError(
-                            'Invalid e-mail or password.  Please try again or login as guest'
+                            'Invalid e-mail or password.  Please Try Again or Login as Guest'
                         )
                     }
                 }}
@@ -53,7 +53,7 @@ const Login = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h4>Log in to your account</h4>
+                                    <h4>Account Login</h4>
                                 </div>
                             </div>
                             <div className="row-two">
@@ -61,7 +61,7 @@ const Login = () => {
                                 <Field
                                     type="email"
                                     name="email"
-                                    placeholder="Enter e-mail"
+                                    placeholder="Enter E-mail"
                                     className={`form-control ${
                                         touched.email && errors.email
                                             ? 'is-invalid'
@@ -80,7 +80,7 @@ const Login = () => {
                                 <Field
                                     type="password"
                                     name="password"
-                                    placeholder="Enter password"
+                                    placeholder="Enter Password"
                                     className={`form-control ${
                                         touched.password && errors.password
                                             ? 'is-invalid'
@@ -98,8 +98,9 @@ const Login = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary"
+                                    style={{"width": "87px"}}
                                 >
-                                    Submit
+                                    Login
                                 </button>
                             </div>
                         </div>

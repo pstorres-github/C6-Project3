@@ -22,7 +22,7 @@ const Register = () => {
                 validationSchema={Yup.object({
                     username: Yup.string().required('Username is Required'),
                     email: Yup.string()
-                        .email('Invalid email address format')
+                        .email('Invalid Email Address Format')
                         .required('E-mail is Required'),
                     password: Yup.string()
                         .min(5, 'Minimum 5 Characters')
@@ -59,7 +59,7 @@ const Register = () => {
                         })
                     } catch (error) {
                         setRegisterError(
-                            'Problem encountered registering user.  Please try again later.'
+                            'Problem Encountered Registering User.  Please Try Again Later.'
                         )
                     }
 
@@ -71,13 +71,13 @@ const Register = () => {
 
                     if (registerStatus === 'Network Unavailable') {
                         setRegisterError(
-                            'Network unavailable.  Please try again later.'
+                            'Network Unavailable.  Please Try Again Later.'
                         )
                     } else if (registerStatus === true)
                         history.push('/pilotconsole')
                     else
                         setRegisterError(
-                            'Problem encountered registering user.  Please try again later.'
+                            'Problem Encountered Registering User.  Please Try Again Later.'
                         )
                 }}
             >
@@ -87,17 +87,17 @@ const Register = () => {
                         <div className="login-layout">
                             <div className="row-one">
                                 <div className="login-header">
-                                    <h4>Register a new account</h4>
+                                    <h4>Register a New Account</h4>
                                 </div>
                             </div>
                             <div className="row-two">
                                 <label htmlFor="username">
-                                    Pilot Name/Company
+                                    Pilot Name
                                 </label>
                                 <Field
                                     type="text"
                                     name="username"
-                                    placeholder="Enter Pilot Name or Company Name"
+                                    placeholder="Enter Pilot Name"
                                     className={`form-control ${
                                         touched.username && errors.username
                                             ? 'is-invalid'

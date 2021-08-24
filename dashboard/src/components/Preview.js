@@ -25,7 +25,7 @@ const Preview = ({ selectedJob }) => {
         if (selectedJob) {
             const fetchFlight = async () => {
                 let flightById = await fetch(
-                    `/api/work_orders/work_order/${selectedJob._id}`,
+                    `/api/work_orders/work_order/${selectedJob}`,
                     {
                         method: 'GET',
                         headers: {

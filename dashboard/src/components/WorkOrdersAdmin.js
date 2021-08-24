@@ -94,10 +94,25 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
                         </>
                     )
                 }   
-        },
+            },
             { Header: 'Client Contact', accessor: 'clientContact' },
             { Header: 'Client Email', accessor: 'clientEmail' },
-            { Header: 'Job No', accessor: 'jobNumber' },
+            { 
+                Header: 'Job No',
+                accessor: 'jobNumber',
+                Cell: ({cell,row}) => {
+                    const { value } = cell
+                    return (
+                        <>
+                            <div>
+                                <button className="no-border" onClick={()=>selectedJob(row.original._id)}>
+                                    {value}
+                                </button>
+                            </div>
+                        </>
+                    )
+                }    
+            },
             {
                 Header: 'Work Order',
                 accessor: '_id',
@@ -147,6 +162,7 @@ const WorkOrdersAdmin = ({ selectedJob, handleTableUpdated }) => {
         ],
         //[childUpdated, pilotList]
         [pilotList]
+        
         )
 
     if (!pilotList) return null
