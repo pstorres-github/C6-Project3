@@ -172,8 +172,10 @@ const FlightPlan = ({
                                 onClick={() => deleteMarker(index)}
                             />
                         )}
-                        #{index + 1}, Lat:{Number(markers.lat)}, Lng
-                        {Number(markers.lng)}
+                        #{index + 1}, Latitude:{' '}
+                        {Number(markers.lat).toString().slice(0, 7)}
+                        ,&nbsp;Longitude:{' '}
+                        {Number(markers.lng).toString().slice(0, 9)}
                     </div>
                 ))}
 
