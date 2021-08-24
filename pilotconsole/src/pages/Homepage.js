@@ -40,7 +40,7 @@ const Homepage = () => {
             </div>
             <div className="section-login-guest">
                 <div className="section-login-guest-left">
-                    <h4> Welcome, Guest Pilot</h4>
+                    <h4>Welcome, Aircrew</h4>
                 </div>
                 <div className="section-login-guest-right">
                     {/* <button className="btn btn-primary" onClick={() => { loginAsGuest() }}> Continue as a Guest </button> */}
@@ -50,7 +50,7 @@ const Homepage = () => {
                             history.push('/pilotconsole')
                         }}
                     >
-                        Continue
+                        Login as Guest
                     </button>
                 </div>
             </div>
