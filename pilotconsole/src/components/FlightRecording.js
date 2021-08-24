@@ -1,4 +1,4 @@
-import {useContext, useState, useRef} from 'react'
+import { useContext, useState, useRef } from 'react'
 import JobDetailContext from '../JobDetailContext'
 import "./FlightRecording.css";
 
@@ -27,46 +27,46 @@ const FlightRecording = () => {
         // gets all the windows available for streaming
         const inputSources = await desktopCapturer.getSources({
             types: ['window', 'screen']
-          });
-        
+        });
+
         // search for 'Pilot Console'
-        let pilotConsoleFound=false
-        let screen1Found=false
+        let pilotConsoleFound = false
+        let screen1Found = false
         inputSources.forEach(source => {
             console.log(source)
-            if (source.name==="Pilot Console") {
+            if (source.name === "Pilot Console") {
                 sourceID_PilotConsole = source.id
-                pilotConsoleFound=true
-            }    
-            if (source.name==="Screen 1") {
+                pilotConsoleFound = true
+            }
+            if (source.name === "Screen 1") {
                 sourceID_Screen1 = source.id
                 screen1Found = true
             }
-            if (source.name==="Entire Screen") {
+            if (source.name === "Entire Screen") {
                 sourceID_EntireScreen = source.id
             }
 
         });
 
         // if 'Pilot Console' window isn't found, default to record Screen 1 or Entire Screen
-        if (pilotConsoleFound) 
+        if (pilotConsoleFound)
             sourceID = sourceID_PilotConsole
         else if (screen1Found)
-            sourceID = sourceID_Screen1 
-        else 
+            sourceID = sourceID_Screen1
+        else
             sourceID = sourceID_EntireScreen
 
         return sourceID
 
-    }  
- 
-    async function onClickStartButton () {
+    }
+
+    async function onClickStartButton() {
         //getVideoSources()
         let stream
 
         // set up media recorder to read the stream from the pilot console screen
         let sourceID = await init()
-        
+
         //set stream to get 'Pilot Console' screen
         try {
             stream = await navigator.mediaDevices.getUserMedia({
@@ -82,11 +82,11 @@ const FlightRecording = () => {
                     }
                 }
             })
-        }    
+        }
         catch (error) {
             console.log(error)
         }
-        
+
         if (stream) {
 
             const options = { mimeType: 'video/webm; codecs=vp9' }
@@ -105,7 +105,7 @@ const FlightRecording = () => {
     }
 
     // action on recording stopped triggered from pilot console
-    function onClickStopButton () {
+    function onClickStopButton() {
         mediaRecorder.current.stop()
         setRecording(false)
     }
@@ -125,13 +125,13 @@ const FlightRecording = () => {
         console.log(blob)
         const buffer = Buffer.from(await blob.arrayBuffer())
 
-        function defineFilePath () {
+        function defineFilePath() {
             const d = new Date()
             console.log(jobContext.activeJob)
             if (jobContext.activeJob) {
                 //get jobID, slice to 8 characters
                 let jobID = (jobContext.activeJob).slice(0, 8)
-                    return (`WO${jobID}_${d.getMonth().toString()}-${d.getDate()}-${d.getFullYear()}_${d.getHours()}${d.getMinutes()}.webm`)
+                return (`WO${jobID}_${d.getMonth().toString()}-${d.getDate()}-${d.getFullYear()}_${d.getHours()}${d.getMinutes()}.webm`)
             }
             else return (`Flight_${d.getMonth().toString()}-${d.getDate()}-${d.getFullYear()}_${d.getHours()}${d.getMinutes()}.webm`)
         }
@@ -141,17 +141,17 @@ const FlightRecording = () => {
             defaultPath: defineFilePath()
         })
 
-        if (filePath) 
-                writeFile(filePath, buffer, () => console.log('Drone flight saved', filePath))
+        if (filePath)
+            writeFile(filePath, buffer, () => console.log('Drone flight saved', filePath))
 
     }
 
     return (
         <div className="flightrecording-container">
-            {recording && <span className="flightrecording-message">Screen recording in progress &nbsp;</span>}
+            {recording && <span className="flightrecording-message">Screen Recording in Progress &nbsp;</span>}
             Flight Screen Recording:&nbsp;
-            {!recording && <button className="small-button flightrecording-button" onClick={onClickStartButton}><span className="dot"/>Record</button>}
-            {recording && <button className="small-button flightrecording-button" onClick={onClickStopButton}><span className="square"/>Stop</button>}
+            {!recording && <button className="small-button flightrecording-button" onClick={onClickStartButton}><span className="dot" /> Record</button>}
+            {recording && <button className="small-button flightrecording-button" onClick={onClickStopButton}><span className="square" />Stop</button>}
 
         </div>
     )
