@@ -195,6 +195,8 @@ tbody tr:hover {
 }
 
 td > i {
+    position: relative;
+    left: -0.5rem;
     padding: var(--padding-small);
     background: var(--button-warn-bg);
     color: var(--button-alert-text);
