@@ -189,3 +189,7 @@ tbody tr:hover {
 .select {
     width: max-content;
 }
+
+.pagesize {
+    background-image:none !important;
+}
