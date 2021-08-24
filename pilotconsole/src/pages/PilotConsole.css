@@ -169,4 +169,5 @@ input[type='range'].range-slider {
 .logo {
     position: relative;
     top: -1px;
+    padding-right: var(--padding-tiny);
 }
