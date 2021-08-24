@@ -87,19 +87,26 @@ const TableContainer = ({ columns, data, selectedJob }) => {
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th {...column.getHeaderProps()}>
-                                    <div /*...column.getSortByToggleProps()*/>
-                                        {column.render('Header')}
-                                        {/*generateSortingIndicator(column)*/}
-                                        <Filter column={column} />
+                                    <div className="header-container">
+                                        <div className="table-header-row-one">
+                                            <div /*...column.getSortByToggleProps()*/
+                                            >
+                                                {column.render('Header')}
+                                                {/*generateSortingIndicator(column)*/}
+                                            </div>
+                                            <div className="table-header-row-two">
+                                                <Filter column={column} />
+                                            </div>
+                                        </div>
+                                        <div
+                                            {...column.getResizerProps()}
+                                            className={`resizer ${
+                                                column.isResizing
+                                                    ? 'isResizing'
+                                                    : ''
+                                            }`}
+                                        />
                                     </div>
-                                    <div
-                                        {...column.getResizerProps()}
-                                        className={`resizer ${
-                                            column.isResizing
-                                                ? 'isResizing'
-                                                : ''
-                                        }`}
-                                    />
                                 </th>
                             ))}
                         </tr>
@@ -215,7 +222,6 @@ const DefaultColumnFilter = ({
         preFilteredRows: { length }
     }
 }) => {
-
     return (
         <div className="input-search-box-container">
             <FontAwesomeIcon icon={faSearch} />

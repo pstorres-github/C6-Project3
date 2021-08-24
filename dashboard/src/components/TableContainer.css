@@ -128,6 +128,20 @@ tbody tr:hover {
     background: var(--secondary);
 }
 
+.table-header-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.table-header-row-one {
+    grid-row: 1;
+    /* height: clamp(1.5rem 2.5rem 3rem) !important; */
+}
+.table-header-row-two {
+    grid-row: 2;
+    /* height: clamp(1.5rem 2.5rem 3rem) !important; */
+}
+
 .input-search-box-container {
     display: inline-flex;
     align-items: center;
@@ -140,19 +154,16 @@ tbody tr:hover {
     border-bottom: 0.1625rem solid var(--ghost-hover);
     min-width: 3rem;
 
-    /* these are causing a misalignment of the input fields
-    I'm checking to see if turning them off effects others */
     position: relative;
     margin-left: var(--padding-tiny);
     margin-right: var(--padding-tiny);
-    /* margin-top: var(--padding-tiny);
-    margin-bottom: var(--padding-tiny); */
-    width: 75%;
+
     width: 100%;
-    /* width: calc(80% - 0.5rem); */
     margin-right: 0.625rem;
-    /* right: -1rem; */
     margin-left: 0.625rem;
+    /* position: relative;
+    display: flex;
+    align-self: flex-end; */
 }
 
 .input-search-box:focus {
