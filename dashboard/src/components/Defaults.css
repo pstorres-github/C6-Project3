@@ -145,13 +145,13 @@ acronym {
     --button-warn-bg: hsla(39, 100%, 50%, 1);
     --button-warn-bg-hover: hsla(39, 100%, 62%, 1);
     --button-warn-text-hover: hsla(221, 6%, 22%, 1);
-    --button-alert-text: ghostwhite;
+    --button-alert-text: rgba(248, 248, 248, 1);
     --button-alert-bg: hsla(360, 100%, 50%, 1);
     --button-alert-bg-hover: hsla(360, 100%, 63%, 1);
     --button-alert-text-hover: hsla(221, 6%, 22%, 1);
     --button-cancel-text: rgb(118, 118, 129);
     --button-cancel-text: var(--quiet);
-    --button-cancel-bg: ghostwhite;
+    --button-cancel-bg: rgba(248, 248, 248, 1);
     --button-cancel-bg-hover: rgb(206, 200, 200);
     --button-cancel-text-hover: rgb(127, 127, 127);
     --full-button: 5rem;
@@ -507,7 +507,7 @@ textarea {
 
     border: 0.5px solid var(--ghost-hover);
     border-radius: 0.25rem;
-    /* background-color: ghostwhite; */
+    /* background-color: rgba(248, 248, 248, 1); */
     /* min-width: 10rem; */
     /* max-width: 25rem; */
 }
