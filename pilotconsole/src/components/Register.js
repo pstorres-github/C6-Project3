@@ -8,7 +8,7 @@ import { useContext, useState } from 'react'
 // import "bootstrap/dist/css/bootstrap.css"
 import { useHistory } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({setViewMode}) => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
 
@@ -178,11 +178,8 @@ const Register = () => {
                             <div className="row-five text-right">
                                 <button
                                     onClick={() => {
-                                        history.goBack(-1)
-                                    }}
-                                    // onClick={() => {
-                                    //     setViewMode('login')
-                                    // }}
+                                         setViewMode('logIn')
+                                     }}
                                     className="cancel inline"
                                 >
                                     Cancel

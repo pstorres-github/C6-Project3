@@ -74,7 +74,7 @@ const Homepage = () => {
                     </>
                 )}
 
-                {viewMode === 'register' && <Register />}
+                {viewMode === 'register' && <Register setViewMode={(viewMode)=>setViewMode(viewMode)}/>}
             </div>
         </div>
     )
