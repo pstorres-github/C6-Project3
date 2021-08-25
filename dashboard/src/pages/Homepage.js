@@ -12,7 +12,7 @@ import logo from '../assets/brand/white/silvereyes_sm_square_wide.svg'
 const Homepage = () => {
     const [viewMode, setViewMode] = useState('logIn')
     const bgChange = useRef()
-
+    
     useEffect(() => {
         let bgChange = true
 
@@ -138,7 +138,7 @@ const Homepage = () => {
                     </>
                 )}
 
-                {viewMode === 'register' && <Register />}
+                {viewMode === 'register' && <Register setViewMode={(viewMode)=>setViewMode(viewMode)}/>}
             </div>
         </div>
     )

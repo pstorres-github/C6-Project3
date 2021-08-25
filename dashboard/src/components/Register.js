@@ -10,7 +10,7 @@ import Axios from 'axios'
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({setViewMode}) => {
     const authContext = useContext(AuthenticationContext)
     const history = useHistory()
 
@@ -166,13 +166,8 @@ const Register = () => {
                                 />
                             </div>
                             <div className="row-five text-right">
-                                <button
-                                    onClick={() => {
-                                        history.goBack(-1)
-                                    }}
-                                    // onClick={() => {
-                                    //     setViewMode('login')
-                                    // }}
+                                <button                                    
+                                    onClick={() => {setViewMode('logIn')}}
                                     className="cancel inline"
                                 >
                                     Cancel
