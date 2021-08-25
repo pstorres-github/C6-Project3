@@ -11,7 +11,7 @@ const VideoFeed = ({ DroneVideoFeed }) => {
             node: 'player',
             mode: 'video',
             fps: 30,
-            flushingTime: 10,
+            flushingTime: 1,
         })
 
         const parseVideo = (dataStream) => {

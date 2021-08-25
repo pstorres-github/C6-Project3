@@ -135,15 +135,15 @@ const FlightMap = ({ displayExtras }) => {
     }, [jobContext.flightPlan])
 
     //start recording if drone connected
-    useEffect(() => {
-        if (telemetryContext.droneStatus === 'Connected') startRecording()
-        if (telemetryContext.droneStatus === 'Disconnected') stopRecording()
-        //on unload, stop recording
-        return (()=> {
-            stopRecording()
-        })
+    // useEffect(() => {
+    //     if (telemetryContext.droneStatus === 'Connected') startRecording()
+    //     if (telemetryContext.droneStatus === 'Disconnected') stopRecording()
+    //     //on unload, stop recording
+    //     return (()=> {
+    //         stopRecording()
+    //     })
         
-    }, [telemetryContext.droneStatus])
+    // }, [telemetryContext.droneStatus])
 
     // set up custom 'pin' type marker for flight path
     const markerIcon = L.icon({
