@@ -263,7 +263,6 @@ button:hover {
 }
 
 .pilot-text-area {
-    color: red;
     max-width: 50%;
     height: 200px;
     resize: both !important;
