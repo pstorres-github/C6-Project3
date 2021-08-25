@@ -7,7 +7,7 @@
     width: calc(100%);
     /* height: calc(100% - var(--padding) - 0.5rem); */
     /* height: calc(100% - var(--padding-tiny) - 1rem); */
-    /* height: calc(100%); */
+    height: 100%;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0;
 
@@ -18,8 +18,15 @@
     /* background-color: darkgray; */
 }
 
+.telemetry-display p,
+.telemetry-display span {
+    font-size: 0.9rem;
+    margin: 0 !important;
+    margin-bottom: -3px !important;
+}
+
 .telemetry-display:not(p) {
-    /* padding: var(--padding); */
+    padding: calc(var(--padding-small) * 0.5) !important;
     color: black;
     /* background-color: darkgrey; */
 }
