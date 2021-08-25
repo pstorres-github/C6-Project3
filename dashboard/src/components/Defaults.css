@@ -108,6 +108,18 @@ acronym {
     text-rendering: optimizeLegibility;
 }
 
+* > img {
+    border-width: unset;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
 :root {
     --identify-me: red;
     --identify-2: cornsilk;

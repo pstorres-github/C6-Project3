@@ -262,16 +262,24 @@ input[name='longitude'] {
     border-radius: var(--border-radius-tiny) !important;
 }
 
-.leaflet-tile-container > img {
+.leaflet-tile > img {
+    border-width: unset;
     margin: 0 !important;
     padding: 0 !important;
     border-radius: 0 !important;
-    border-width: unset;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
 }
 
-.leaflet-tile-container {
+.leaflet-tile {
+    border-width: unset;
     margin: 0 !important;
     padding: 0 !important;
     border-radius: 0 !important;
-    border-width: unset;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
 }
