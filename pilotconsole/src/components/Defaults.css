@@ -526,7 +526,6 @@ button:disabled {
 textarea {
     resize: vertical;
     min-width: 10rem;
-    max-width: 25rem;
 }
 
 textarea.notes {
