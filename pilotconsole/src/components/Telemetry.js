@@ -101,7 +101,7 @@ const Telemetry = ({ DroneState }) => {
                 <p>
                     Z:{' '}
                     <span className="plex">
-                        {telemetryContext.accelerationZ} cm/s&sup2;
+                        {telemetryContext.accelerationZ + 1000} cm/s&sup2;
                     </span>
                 </p>
             </div>
