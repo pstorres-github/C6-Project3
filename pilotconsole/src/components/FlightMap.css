@@ -72,7 +72,7 @@ console.log(document.getElementById('id').getBoundingClientRect())
 .leaflet-container {
     width: 100%;
     height: 37vh;
-    height: 46vh;
+    height: 55vh;
     /* height: 40vh; */
     /* height: 100%; */
 }
@@ -260,4 +260,18 @@ input[name='longitude'] {
     text-align: center !important;
     margin-top: 0.2rem;
     border-radius: var(--border-radius-tiny) !important;
+}
+
+.leaflet-tile-container > img {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border-width: unset;
+}
+
+.leaflet-tile-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border-width: unset;
 }
