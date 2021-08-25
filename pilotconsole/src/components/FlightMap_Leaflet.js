@@ -473,7 +473,7 @@ const FlightMap = ({ displayExtras }) => {
                             <Tooltip>
                                 {' '}
                                 Starting Position <br /> Lat:{' '}
-                                {initialLat.current}, Lng: {initialLng.current}
+                                {Math.round(initialLat.current*1000)/1000}, Lng: {Math.round(initialLng.current*1000)/1000}
                             </Tooltip>
                         </Marker>
 
@@ -496,7 +496,7 @@ const FlightMap = ({ displayExtras }) => {
                                     <Tooltip>
                                         {' '}
                                         Location {index + 1} <br /> Lat:{' '}
-                                        {markers.lat}, Lng: {markers.lng}
+                                        {Math.round(markers.lat*1000)/1000}, Lng: {Math.round(markers.lng*1000)/1000}
                                     </Tooltip>
                                 </Marker>
                             ))}
