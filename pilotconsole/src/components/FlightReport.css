@@ -197,6 +197,7 @@ button:hover {
 .form-3 input {
     width: fit-content;
 }
+
 .individual-flight-plan {
     display: flex;
     flex-direction: row;
@@ -247,4 +248,23 @@ button:hover {
     /* margin-left: 1.3rem; */
     background: none;
     border: none;
+}
+
+.form-2-form-2 {
+    width: 100%;
+}
+
+.form-2 {
+    width: 100%;
+}
+
+.job-details-container {
+    width: 100%;
+}
+
+.pilot-text-area {
+    color: red;
+    max-width: 50%;
+    height: 200px;
+    resize: both !important;
 }

@@ -228,7 +228,7 @@ const FlightReport = ({ onSave, flight }) => {
                                     </option>
                                 </select>
                             </div>
-                            <div className="form-1-form-2-individual full">
+                            <div className="form-1-form-2-individual full job-details-container">
                                 <label htmlFor="jobDetails">Job Details</label>
                                 <textarea
                                     value={insertedJobDetails}
@@ -239,6 +239,7 @@ const FlightReport = ({ onSave, flight }) => {
                                             setInsertedJobDetails
                                         )
                                     }
+                                    className="pilot-text-area"
                                 />
                             </div>
                             <div className="videoUpload">
