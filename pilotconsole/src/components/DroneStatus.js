@@ -9,7 +9,7 @@ const DroneStatus = ({ DroneConnection }) => {
 
     let [connectionIndicator, setConnectionIndicator] = useState('alert')
 
-    const telemetryContext = useContext(TelemetryContext)
+    // const telemetryContext = useContext(TelemetryContext)
 
     let colours = {
         disconnected: 'red',
@@ -54,7 +54,7 @@ const DroneStatus = ({ DroneConnection }) => {
             // Reception Listener
             if (msg !== null) {
                 setConnectionstatus('Connected')
-                telemetryContext.setDroneStatus('Connected')
+                // telemetryContext.setDroneStatus('Connected')
                 // setConnectionIndicator('connected')
                 console.log('Response : ' + msg.toString()) // Response from Drone
 
@@ -62,7 +62,7 @@ const DroneStatus = ({ DroneConnection }) => {
                 clearTimeout(receptionCheck) // Reception Status Updated
                 receptionCheck = setTimeout(() => {
                     setConnectionstatus('Disconnected')
-                    telemetryContext.setDroneStatus('Disconnected')
+                    // telemetryContext.setDroneStatus('Disconnected')
                     // setConnectionIndicator('disconnected')
                     // document.documentElement.style.setProperty(
                     //     '--status',
